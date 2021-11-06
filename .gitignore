@@ -1,0 +1,12 @@
+# What should go in here? 
+# 1. Non-public data (ignored by default)
+# 2. Access keys, tokens, passwords
+# 3. Binary files > 25 MB
+
+data
+paper/paper.pdf
+talk/talk.pdf
+.DS_Store
+*/.DS_Store
+
+.Rproj.user
