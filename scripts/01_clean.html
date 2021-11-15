@@ -227,16 +227,20 @@ library(assertthat)</code></pre>
 <pre class="r"><code>library(skimr)</code></pre>
 <div id="functions" class="section level1">
 <h1>Functions</h1>
+<pre class="r"><code>reorderer = function(chr, ...) {
+    chr |&gt; 
+        as_factor() |&gt; 
+        fct_relevel(...)
+}</code></pre>
 <div id="turn-likert-scales-into-factors" class="section level2">
 <h2>Turn Likert scales into factors</h2>
 <pre class="r"><code>likert = function(chr) {
-    chr |&gt; 
-        as_factor() |&gt; 
-        fct_relevel(&#39;Strongly Disagree&#39;, 
-                    &#39;Disagree&#39;, 
-                    &#39;Unsure&#39;, 
-                    &#39;Agree&#39;, 
-                    &#39;Strongly Agree&#39;)
+    reorderer(chr, 
+              &#39;Strongly Disagree&#39;, 
+              &#39;Disagree&#39;, 
+              &#39;Unsure&#39;, 
+              &#39;Agree&#39;, 
+              &#39;Strongly Agree&#39;)
 }</code></pre>
 </div>
 <div id="true---true" class="section level2">
@@ -308,7 +312,26 @@ library(assertthat)</code></pre>
                   likert)) |&gt; 
     ## SRS items are true/false
     mutate(across(matches(&#39;SRS&#39;), 
-                  is_true))</code></pre>
+                  is_true)) |&gt; 
+    ## Other parsing
+    mutate(Age = as.integer(Age), 
+           ReligiousServ = reorderer(ReligiousServ, 
+                                     &#39;Never&#39;, 
+                                     &#39;A few times per year&#39;, 
+                                     &#39;Once every month or two&#39;, 
+                                     &#39;2-3 times per month&#39;, 
+                                     &#39;Once per week&#39;, 
+                                     &#39;More than once per week&#39;, 
+                                     &#39;Daily&#39;), 
+           Education = reorderer(Education, 
+                                 &#39;Less than high school&#39;, 
+                                 &#39;High school, or some college&#39;, 
+                                 &#39;Bachelor\&#39;s degree or higher&#39;), 
+           Values = case_when(Values == &#39;0&#39; ~ &#39;no values&#39;, 
+                              Values == &#39;1&#39; ~ &#39;public health&#39;, 
+                              Values == &#39;2&#39; ~ &#39;economic growth&#39;), 
+           Conclusion = case_when(Conclusion == &#39;1&#39; ~ &#39;causes harm&#39;, 
+                                  Conclusion == &#39;0&#39; ~ &#39;does not cause harm&#39;))</code></pre>
 <pre><code>## select: dropped 84 variables (METI1_1, METI1_2, METI1_3, METI1_4, METI1_5, …)</code></pre>
 <pre><code>## inner_join: added 14 columns (METI01, METI02, METI03, METI04, METI05, …)</code></pre>
 <pre><code>##             &gt; rows only in x  (    0)</code></pre>
@@ -366,6 +389,11 @@ library(assertthat)</code></pre>
 <pre><code>##         converted &#39;SRS09&#39; from character to logical (0 new NA)</code></pre>
 <pre><code>##         converted &#39;SRS10&#39; from character to logical (0 new NA)</code></pre>
 <pre><code>##         converted &#39;SRS11&#39; from character to logical (0 new NA)</code></pre>
+<pre><code>## mutate: converted &#39;Age&#39; from character to integer (0 new NA)</code></pre>
+<pre><code>##         converted &#39;ReligiousServ&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>##         converted &#39;Education&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>##         changed 1,027 values (100%) of &#39;Values&#39; (0 new NA)</code></pre>
+<pre><code>##         changed 1,027 values (100%) of &#39;Conclusion&#39; (0 new NA)</code></pre>
 </div>
 <div id="data-validation" class="section level1">
 <h1>Data validation</h1>
@@ -391,7 +419,20 @@ library(assertthat)</code></pre>
     all() |&gt; 
     assert_that(msg = &#39;Missing values for Education&#39;)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<p>Skim</p>
+</div>
+<div id="no-missing-values-for-values-or-conclusion" class="section level2">
+<h2>No missing values for Values or Conclusion</h2>
+<pre class="r"><code>dataf |&gt; 
+    pull(Values, Conclusion) |&gt; 
+    is.na() |&gt; 
+    not() |&gt; 
+    all() |&gt; 
+    assert_that(msg = &#39;Missing values in Values or Conclusion&#39;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+</div>
+<div id="skim" class="section level1">
+<h1>Skim</h1>
 <pre class="r"><code>skim(dataf)</code></pre>
 <pre><code>## Warning: Couldn&#39;t find skimmers for class: hash, sha224, hmac; No user-defined
 ## `sfl` provided. Falling back to `character`.</code></pre>
@@ -420,11 +461,11 @@ library(assertthat)</code></pre>
 </tr>
 <tr class="even">
 <td align="left">character</td>
-<td align="left">29</td>
+<td align="left">26</td>
 </tr>
 <tr class="odd">
 <td align="left">factor</td>
-<td align="left">36</td>
+<td align="left">38</td>
 </tr>
 <tr class="even">
 <td align="left">logical</td>
@@ -432,7 +473,7 @@ library(assertthat)</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">numeric</td>
-<td align="left">14</td>
+<td align="left">15</td>
 </tr>
 <tr class="even">
 <td align="left">________________________</td>
@@ -570,16 +611,6 @@ library(assertthat)</code></pre>
 <td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="left">Age</td>
-<td align="right">1</td>
-<td align="right">1.00</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">0</td>
-<td align="right">64</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
 <td align="left">GenderIdentity</td>
 <td align="right">0</td>
 <td align="right">1.00</td>
@@ -589,7 +620,7 @@ library(assertthat)</code></pre>
 <td align="right">5</td>
 <td align="right">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">GenderIdentity_5_TEXT</td>
 <td align="right">1026</td>
 <td align="right">0.00</td>
@@ -599,7 +630,7 @@ library(assertthat)</code></pre>
 <td align="right">1</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">GenderLived</td>
 <td align="right">3</td>
 <td align="right">1.00</td>
@@ -609,7 +640,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="right">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Race/Ethnicity</td>
 <td align="right">0</td>
 <td align="right">1.00</td>
@@ -619,7 +650,7 @@ library(assertthat)</code></pre>
 <td align="right">19</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Race/Ethnicity_6_TEXT</td>
 <td align="right">1018</td>
 <td align="right">0.01</td>
@@ -629,7 +660,7 @@ library(assertthat)</code></pre>
 <td align="right">9</td>
 <td align="right">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">ReligiousAffil</td>
 <td align="right">0</td>
 <td align="right">1.00</td>
@@ -639,7 +670,7 @@ library(assertthat)</code></pre>
 <td align="right">19</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">ReligiousAffil_8_TEXT</td>
 <td align="right">927</td>
 <td align="right">0.10</td>
@@ -647,16 +678,6 @@ library(assertthat)</code></pre>
 <td align="right">66</td>
 <td align="right">0</td>
 <td align="right">54</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">ReligiousServ</td>
-<td align="right">1</td>
-<td align="right">1.00</td>
-<td align="right">5</td>
-<td align="right">23</td>
-<td align="right">0</td>
-<td align="right">7</td>
 <td align="right">0</td>
 </tr>
 <tr class="odd">
@@ -700,36 +721,26 @@ library(assertthat)</code></pre>
 <td align="right">0</td>
 </tr>
 <tr class="odd">
-<td align="left">Education</td>
+<td align="left">Values</td>
 <td align="right">0</td>
 <td align="right">1.00</td>
-<td align="right">21</td>
-<td align="right">28</td>
+<td align="right">9</td>
+<td align="right">15</td>
 <td align="right">0</td>
 <td align="right">3</td>
 <td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="left">Values</td>
-<td align="right">0</td>
-<td align="right">1.00</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
 <td align="left">Conclusion</td>
 <td align="right">0</td>
 <td align="right">1.00</td>
-<td align="right">1</td>
-<td align="right">1</td>
+<td align="right">11</td>
+<td align="right">19</td>
 <td align="right">0</td>
 <td align="right">2</td>
 <td align="right">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">PoliticalIdeology_8_TEXT - Parent Topics</td>
 <td align="right">1027</td>
 <td align="right">0.00</td>
@@ -739,7 +750,7 @@ library(assertthat)</code></pre>
 <td align="right">0</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">PoliticalIdeology_8_TEXT - Topics</td>
 <td align="right">1027</td>
 <td align="right">0.00</td>
@@ -1052,6 +1063,22 @@ library(assertthat)</code></pre>
 <td align="right">5</td>
 <td align="left">Agr: 420, Str: 225, Dis: 185, Uns: 169</td>
 </tr>
+<tr class="odd">
+<td align="left">ReligiousServ</td>
+<td align="right">1</td>
+<td align="right">1.00</td>
+<td align="left">FALSE</td>
+<td align="right">7</td>
+<td align="left">Nev: 575, A f: 225, Onc: 97, Mor: 44</td>
+</tr>
+<tr class="even">
+<td align="left">Education</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="left">FALSE</td>
+<td align="right">3</td>
+<td align="left">Bac: 585, Hig: 431, Les: 11</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Variable type: logical</strong></p>
@@ -1164,6 +1191,19 @@ library(assertthat)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">Age</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">44.42</td>
+<td align="right">16.18</td>
+<td align="right">18</td>
+<td align="right">30</td>
+<td align="right">44</td>
+<td align="right">59</td>
+<td align="right">83</td>
+<td align="left">▇▆▆▇▂</td>
+</tr>
+<tr class="even">
 <td align="left">METI01</td>
 <td align="right">1</td>
 <td align="right">1</td>
@@ -1176,7 +1216,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▃▂▁</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI02</td>
 <td align="right">1</td>
 <td align="right">1</td>
@@ -1189,7 +1229,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▃▁▁</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">METI03</td>
 <td align="right">0</td>
 <td align="right">1</td>
@@ -1202,7 +1242,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▂▂▁▁</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI04</td>
 <td align="right">2</td>
 <td align="right">1</td>
@@ -1215,7 +1255,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▂▁▁</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">METI05</td>
 <td align="right">1</td>
 <td align="right">1</td>
@@ -1228,7 +1268,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▃▁▁</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI06</td>
 <td align="right">1</td>
 <td align="right">1</td>
@@ -1241,7 +1281,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▃▁▁</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">METI07</td>
 <td align="right">0</td>
 <td align="right">1</td>
@@ -1254,7 +1294,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▃▂▂</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI08</td>
 <td align="right">0</td>
 <td align="right">1</td>
@@ -1267,7 +1307,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▅▂▂</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">METI09</td>
 <td align="right">2</td>
 <td align="right">1</td>
@@ -1280,7 +1320,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▅▇▂▂</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI10</td>
 <td align="right">2</td>
 <td align="right">1</td>
@@ -1293,7 +1333,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▅▇▂▂</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">METI11</td>
 <td align="right">2</td>
 <td align="right">1</td>
@@ -1306,7 +1346,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▇▂▂</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI12</td>
 <td align="right">5</td>
 <td align="right">1</td>
@@ -1319,7 +1359,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▅▂▂</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">METI13</td>
 <td align="right">5</td>
 <td align="right">1</td>
@@ -1332,7 +1372,7 @@ library(assertthat)</code></pre>
 <td align="right">7</td>
 <td align="left">▇▃▅▂▃</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">METI14</td>
 <td align="right">2</td>
 <td align="right">1</td>
@@ -1347,7 +1387,18 @@ library(assertthat)</code></pre>
 </tr>
 </tbody>
 </table>
-</div>
+<p>Note that <code>skim()</code> only shows the 4 most common values for factors, in descending order</p>
+<pre class="r"><code>count(dataf, ViS36)</code></pre>
+<pre><code>## count: now 6 rows and 2 columns, ungrouped</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   ViS36                 n
+##   &lt;fct&gt;             &lt;int&gt;
+## 1 Strongly Disagree    23
+## 2 Disagree            185
+## 3 Unsure              169
+## 4 Agree               420
+## 5 Strongly Agree      225
+## 6 &lt;NA&gt;                  5</code></pre>
 </div>
 <div id="write-out" class="section level1">
 <h1>Write out</h1>

@@ -8,15 +8,19 @@ library(magrittr)
 library(skimr)
 
 #' # Functions #
-#' ## Turn Likert scales into factors
-likert = function(chr) {
+reorderer = function(chr, ...) {
     chr |> 
         as_factor() |> 
-        fct_relevel('Strongly Disagree', 
-                    'Disagree', 
-                    'Unsure', 
-                    'Agree', 
-                    'Strongly Agree')
+        fct_relevel(...)
+}
+#' ## Turn Likert scales into factors
+likert = function(chr) {
+    reorderer(chr, 
+              'Strongly Disagree', 
+              'Disagree', 
+              'Unsure', 
+              'Agree', 
+              'Strongly Agree')
 }
 
 #' ## True -> TRUE
@@ -66,7 +70,27 @@ dataf = dataf_raw |>
                   likert)) |> 
     ## SRS items are true/false
     mutate(across(matches('SRS'), 
-                  is_true))
+                  is_true)) |> 
+    ## Other parsing
+    mutate(Age = as.integer(Age), 
+           ReligiousServ = reorderer(ReligiousServ, 
+                                     'Never', 
+                                     'A few times per year', 
+                                     'Once every month or two', 
+                                     '2-3 times per month', 
+                                     'Once per week', 
+                                     'More than once per week', 
+                                     'Daily'), 
+           Education = reorderer(Education, 
+                                 'Less than high school', 
+                                 'High school, or some college', 
+                                 'Bachelor\'s degree or higher'), 
+           Values = case_when(Values == '0' ~ 'no values', 
+                              Values == '1' ~ 'public health', 
+                              Values == '2' ~ 'economic growth'), 
+           Conclusion = case_when(Conclusion == '1' ~ 'causes harm', 
+                                  Conclusion == '0' ~ 'does not cause harm'))
+           
 
 
 #' # Data validation #
@@ -87,8 +111,20 @@ dataf |>
     all() |> 
     assert_that(msg = 'Missing values for Education')
 
-#' Skim
+#' ## No missing values for Values or Conclusion
+dataf |> 
+    pull(Values, Conclusion) |> 
+    is.na() |> 
+    not() |> 
+    all() |> 
+    assert_that(msg = 'Missing values in Values or Conclusion')
+
+
+#' # Skim #
 skim(dataf)
+
+#' Note that `skim()` only shows the 4 most common values for factors, in descending order
+count(dataf, ViS36)
 
 
 #' # Write out #

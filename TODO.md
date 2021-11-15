@@ -1,6 +1,6 @@
 - 01_clean.R
-    -[] parse ordered vars: Age, ReligiousServ, PoliticalIdeology, Education
-    -[] parse Values, Conclusion
+    -[] parse ordered vars: 
+        -[] PoliticalIdeology, 
     -[] split GenderIdentity, GenderLived, Race/Ethnicity
     
 - README.md
