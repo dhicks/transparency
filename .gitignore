@@ -9,6 +9,8 @@ talk/talk.pdf
 .DS_Store
 */.DS_Store
 secrets/
+full_replication_scientists_values.csv
+replication_preference.csv
 
 .Rproj.user
 Box
