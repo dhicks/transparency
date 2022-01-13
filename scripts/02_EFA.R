@@ -24,8 +24,8 @@ d_clean = read_rds(here(data_dir, 'data.Rds'))
 
 #EFA for the ViS items, checking factor structure; need to check if N is large enough for a split to do CFA on
 d_vis <- subset(d_clean, select = c(ViS01:ViS36)) |> 
-  mutate(across(everything(), as.numeric)) |> 
-  set_names(vis_labels$tag)
+    mutate(across(everything(), as.numeric)) |> 
+    set_names(vis_labels$tag)
 
 #if N is big enough to reasonably split for EFA and CFA,
 set.seed(032585) #for reproducibility
@@ -35,26 +35,64 @@ d_vis_cfa <- d_vis[dummy_sep == 1, ] #extract data where dummy == 1
 
 
 ## Descriptive visualizations ----
-## Share of respondents agreeing or strongly agreeing
+## Share of respondents (agreeing or strongly agreeing)
 d_vis_efa |> 
-  pivot_longer(everything(), names_to = 'item', values_to = 'value') |> 
-  count(item, value) |> 
-  group_by(item) |> 
-  mutate(share = n / sum(n)) |> 
-  ungroup() |> 
-  # filter(value >= 4) |> 
-  ggplot(aes(fct_rev(item), share, fill = as.factor(value))) +
-  geom_col() +
-  geom_hline(yintercept = .5, linetype = 'dashed') +
-  gghighlight(value >= 4,
-                           unhighlighted_params = list(fill = NULL,
-                                                       alpha = .5)) +
-  xlab('ViSS item') +
-  scale_y_continuous(labels = scales::percent_format()) +
-  # scale_fill_viridis_d(option = 'A', guide = 'none', direction = -1) +
-  scale_fill_brewer(palette = 'RdBu', guide = 'none') +
-  coord_flip() +
-  theme_minimal()
+    pivot_longer(everything(), names_to = 'item', values_to = 'value') |> 
+    count(item, value) |> 
+    group_by(item) |> 
+    mutate(share = n / sum(n)) |> 
+    ungroup() |> 
+    # filter(value >= 4) |> 
+    ggplot(aes(fct_rev(item), share, fill = as.factor(value))) +
+    geom_col() +
+    geom_hline(yintercept = .5, linetype = 'dashed') +
+    gghighlight(value >= 4,
+                unhighlighted_params = list(fill = NULL,
+                                            alpha = .5)) +
+    xlab('ViSS item') +
+    scale_y_continuous(labels = scales::percent_format()) +
+    # scale_fill_viridis_d(option = 'A', guide = 'none', direction = -1) +
+    scale_fill_brewer(palette = 'RdBu', guide = 'none') +
+    coord_flip() +
+    theme_minimal()
+
+## Diverging bar plot
+orient = function(count_df, level_col = response, ref_level = 3, value_col = n) {
+    ## Set the orientation of each level's bar as `plot_value`
+    ## The reference level gets two bars, one positive and one negative
+    ## Based on <https://stackoverflow.com/questions/51201852/faceted-horizontal-divergent-stacked-bar-plot-including-negative-values-using-dp/51217969#51217969>
+    ref_negative = count_df |> 
+        filter({{level_col}} == ref_level) |> 
+        mutate(plot_value = -{{value_col}}/2)
+    
+    count_df |> 
+        mutate({{value_col}} := as.numeric({{value_col}}),
+               plot_value     = case_when({{level_col}}  <  ref_level ~ -{{value_col}}, 
+                                          {{level_col}} == ref_level  ~ {{value_col}}/2, 
+                                          {{level_col}}  >  ref_level ~ {{value_col}})) |> 
+        bind_rows(ref_negative)
+}
+
+
+d_vis_efa |> 
+    pivot_longer(everything(), names_to = 'item', values_to = 'response') |> 
+    count(item, response) |> 
+    group_by(item) |> 
+    mutate(share = n / sum(n)) |> 
+    ungroup() |> 
+    orient(value_col = share) |> 
+    arrange(item, response) |> 
+    ggplot(aes(fct_rev(item), plot_value, fill = as.factor(response))) +
+    geom_col(data = ~ filter(.x, plot_value > 0), 
+             position = position_stack(reverse = TRUE)) +
+    geom_col(data = ~ filter(.x, plot_value < 0), 
+             position = position_stack()) +
+    xlab('ViSS item') +
+    scale_y_continuous(labels = scales::percent_format(), 
+                       name = 'share of respondents') +
+    scale_fill_brewer(palette = 'RdBu', guide = 'none') +
+    coord_flip() +
+    theme_minimal()
 
 
 
