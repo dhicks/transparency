@@ -104,8 +104,8 @@ vis_fa <- fa.parallel(d_vis_efa, fm = "minres", fa = "fa")
 
 #check item loadings for N factor solutions (look for substantial cross-loadings or no substantial loadings)
 #do for as many factor solution options as seems prudent; what is recommended by fa.parallel, visual inspection of scree, or eigenvectors
-three_factor <- fa(d_vis, nfactors = '3', rotate ="varimax")
-six_factor <- fa(d_vis, nfactors = '6', rotate ="varimax")
+three_factor <- fa(d_vis_efa, nfactors = '3', rotate ="varimax")
+six_factor <- fa(d_vis_efa, nfactors = '6', rotate ="varimax")
 #writing factor loadings to a csv for easier inspection
 write.csv(three_factor$loadings, here(data_dir, "three_factor_loadings.csv"))
 write.csv(six_factor$loadings, here(data_dir, "six_factor_loadings.csv"))
