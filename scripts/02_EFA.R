@@ -11,6 +11,7 @@ library(gghighlight)
 data_dir = here("data")
 
 source(here('R', 'vis_labels.R'))
+source(here('R', 'loading_table.R'))
 
 panderOptions("table.split.table",Inf)
 panderOptions("round",2)
@@ -107,8 +108,9 @@ vis_fa <- fa.parallel(d_vis_efa, fm = "minres", fa = "fa")
 three_factor <- fa(d_vis_efa, nfactors = '3', rotate ="varimax")
 six_factor <- fa(d_vis_efa, nfactors = '6', rotate ="varimax")
 #writing factor loadings to a csv for easier inspection
-write.csv(three_factor$loadings, here(data_dir, "three_factor_loadings.csv"))
-write.csv(six_factor$loadings, here(data_dir, "six_factor_loadings.csv"))
+loading_table(three_factor, path = here(data_dir, "three_factor_loadings.csv"))
+loading_table(six_factor,   path = here(data_dir, "six_factor_loadings.csv"))
+
 
 #CFA if sample is big enough to do EFA on first half and CFA on second half
 #lavaan package for CFA

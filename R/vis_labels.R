@@ -27,7 +27,7 @@ vis_labels = tribble(
     '25', 'scientism.1', 'Science is more reliable than any other way of producing knowledge.', 
     '26', 'scientism.2', 'Everyone, whatever their worldview, should accept evidence.based scientific conclusions', 
     '27', 'scientism.3', 'Science is the only source of justified belief or knowledge about ourselves and the world.', 
-    '28', 'stdpt.1', 'A scientific understanding of the social word depends on the background of the scientists carrying out the research.', 
+    '28', 'stdpt.1', 'A scientific understanding of the social world depends on the background of the scientists carrying out the research.', 
     '29', 'stdpt.2', 'People on the margins of society often have a unique understanding of that society that can benefit scientific research. ', 
     '30', 'stdpt.3', 'Science has a long history of ignoring the unique insights of women and people of color.', 
     '31', 'technocracy.1', 'Public policy should wait until all relevant scientific questions have been settled.', 
