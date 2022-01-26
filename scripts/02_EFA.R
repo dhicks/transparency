@@ -4,9 +4,12 @@ library(psych)
 library(pander)
 library(gvlma)
 library(tables)
-library(here)
 library(gghighlight)
 library(lavaan)
+
+library(visdat)
+
+library(here)
 
 data_dir = here("data")
 
@@ -14,13 +17,28 @@ source(here('R', 'vis_labels.R'))
 source(here('R', 'loading_table.R'))
 
 ## Load data ----
-d_clean = read_rds(here(data_dir, 'data.Rds'))
+d_clean = read_rds(here(data_dir, 'data.Rds')) |> 
+    select(pid, ViS01:ViS36) |> 
+    mutate(across(-pid, as.numeric)) |> 
+    set_names('pid', vis_labels$tag)
+
+## 0.3% missing values
+vis_miss(d_clean)
+## Items with missing values don't appear to cluster
+vis_miss(d_clean, cluster = TRUE)
+
+## 906 complete cases; 
+## 69 missing 1, 11 missing 2, 2 missing 3
+d_clean |> 
+    rowwise() |> 
+    summarize(missing = sum(is.na(c_across(-pid)))) |> 
+    count(missing)
+
 
 #EFA for the ViS items, checking factor structure; need to check if N is large enough for a split to do CFA on
-d_vis <- subset(d_clean, select = c(ViS01:ViS36)) |> 
-    na.omit() |> 
-    mutate(across(everything(), as.numeric)) |> 
-    set_names(vis_labels$tag)
+d_vis <- d_clean |> 
+    column_to_rownames('pid') |> 
+    na.omit()
 
 #if N is big enough to reasonably split for EFA and CFA,
 set.seed(032585) #for reproducibility
@@ -28,6 +46,7 @@ dummy_sep <- rbinom(nrow(d_vis), 1, 0.5) #create dummy indicator to randomly spl
 d_vis_efa <- d_vis[dummy_sep == 0, ] #extract data where dummy == 0
 d_vis_cfa <- d_vis[dummy_sep == 1, ] #extract data where dummy == 1
 
+vis_cor(d_vis_efa)
 
 ## Descriptive visualizations ----
 ## Share of respondents (agreeing or strongly agreeing)
@@ -103,8 +122,10 @@ vis_fa <- fa.parallel(d_vis_efa, fm = "minres", fa = "fa")
 three_factor <- fa(d_vis_efa, nfactors = '3', rotate ="varimax")
 six_factor <- fa(d_vis_efa, nfactors = '6', rotate ="varimax")
 #writing factor loadings to a csv for easier inspection
-loading_table(three_factor, path = here(data_dir, "three_factor_loadings.csv"))
-loading_table(six_factor,   path = here(data_dir, "six_factor_loadings.csv"))
+loading_table(three_factor, 
+              path = here(data_dir, "three_factor_loadings.csv"))
+loading_table(six_factor, 
+              path = here(data_dir, "six_factor_loadings.csv"))
 
 ## CFA ----
 #lavaan package for CFA

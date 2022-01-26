@@ -38,7 +38,7 @@ loading_table = function(model, threshold = .3, quiet = FALSE,
         select(-item.y)
     
     if (!is.null(path)) {
-        write_csv(loadings_clean, path)
+        write_csv(loadings_clean, path, na = '')
     }
     
     return(loadings_clean)
