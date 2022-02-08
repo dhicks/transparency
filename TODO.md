@@ -2,12 +2,14 @@
     -[] rewrite
 
 - Makefile
-    -[] everything(?)
+    -[] everything
 
 - factor analysis
     -[] biplots
     -[] score visualizations
     -[] export 6-factor model
 
+- renv
+    -[] set up
   
   
