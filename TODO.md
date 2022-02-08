@@ -2,11 +2,12 @@
     -[] rewrite
 
 - Makefile
-    -[] cleaning script
+    -[] everything(?)
 
-- DH transparency script
+- factor analysis
+    -[] biplots
+    -[] score visualizations
+    -[] export 6-factor model
 
-- factory analysis
-  -[ ] can be split? 
-  -[ ] diverging bar plot
+  
   
