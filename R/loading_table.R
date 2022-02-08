@@ -1,5 +1,8 @@
-loading_table = function(model, threshold = .3, quiet = FALSE, 
-                         path = NULL) {
+loading_table = function(model, 
+                         threshold = .3, 
+                         quiet = FALSE, 
+                         path = NULL, 
+                         overwrite = FALSE) {
     loadings_unfltd = model |> 
         ## Extract loadings and tidy
         loadings() |> 
@@ -38,7 +41,12 @@ loading_table = function(model, threshold = .3, quiet = FALSE,
         select(-item.y)
     
     if (!is.null(path)) {
-        write_csv(loadings_clean, path, na = '')
+        if (!file.exists(path) || overwrite) {
+            write_csv(loadings_clean, path, na = '')
+        }
+        if (file.exists(path) && !overwrite) {
+            warning('CSV already exists; skipping overwrite')
+        }
     }
     
     return(loadings_clean)

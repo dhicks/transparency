@@ -16,6 +16,9 @@ data_dir = here("data")
 source(here('R', 'vis_labels.R'))
 source(here('R', 'loading_table.R'))
 
+## Should the script overwrite existing loadings tables? 
+overwrite_loading_tables = FALSE
+
 ## Load data ----
 d_clean = read_rds(here(data_dir, 'data.Rds')) |> 
     select(pid, ViS01:ViS36) |> 
@@ -121,24 +124,29 @@ vis_fa <- fa.parallel(d_vis_efa, fm = "minres", fa = "fa")
 #do for as many factor solution options as seems prudent; what is recommended by fa.parallel, visual inspection of scree, or eigenvalues
 three_factor <- fa(d_vis_efa, nfactors = '3', rotate ="varimax")
 six_factor <- fa(d_vis_efa, nfactors = '6', rotate ="varimax")
+
 #writing factor loadings to a csv for easier inspection
-loading_table(three_factor, 
-              path = here(data_dir, "three_factor_loadings.csv"))
-loading_table(six_factor, 
-              path = here(data_dir, "six_factor_loadings.csv"))
+three_clean = loading_table(three_factor, 
+                            path = here(data_dir, 
+                                        "three_factor_loadings.csv"), 
+                            overwrite = overwrite_loading_tables)
+six_clean = loading_table(six_factor, 
+                          path = here(data_dir, 
+                                      "six_factor_loadings.csv"), 
+                          overwrite = overwrite_loading_tables)
 
 ## CFA ----
 #lavaan package for CFA
 #specify the items in each latent variable/factor
 
 #six factor model recommended by EFA parallel analysis and inflexion point on scree plot
-six_factor_model <- ' factor_1 =~ item1 + item2
-                    factor_2 =~ item3 + item4
-                    factor_3 =~ item5 + item6
-                    factor_4 =~ item7 + item8
-                    factor_5 =~ item9 + item10
-                    factor_6 =~ item11 + item12
-                    '
+six_factor_model <- 'scientism =~ scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1
+                     broadview =~ ir.3 + aims.2 + aims.3
+                     cynicism =~ coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2 + stdpt.1
+                     power =~ stdpt.3 + coi.3 + stdpt.2
+                     textbook =~ consensus.2 + fallible.1 + pluralism.3 + pluralism.1 + vfi.2
+                     vfi =~ vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3'
+
 fit6 <- cfa(six_factor_model, data = d_vis_cfa)
 summary(fit6, fit.measures = TRUE)
 fitmeasures(fit6, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
