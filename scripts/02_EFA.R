@@ -15,6 +15,7 @@ data_dir = here("data")
 
 source(here('R', 'vis_labels.R'))
 source(here('R', 'loading_table.R'))
+source(here('R', 'scores.R'))
 
 ## Should the script overwrite existing loadings tables? 
 overwrite_loading_tables = FALSE
@@ -153,6 +154,8 @@ fit6 <- cfa(six_factor_model, data = d_vis_cfa)
 summary(fit6, fit.measures = TRUE)
 fitmeasures(fit6, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 
+score_grid(fit6, d_vis_cfa)
+
 #three factor model based on eigenvalues > 1
 three_factor_model <- ' factor_1 =~ scientism.1 + scientism.3 + technocracy.2 + factvalue.3 + coi.3 + aims.1 + stdpt.2 + fallible.3
                         factor_2 =~ pluralism.1 + nonsubj.3 + vfi.2 + pluralism.3 + technocracy.1 + fallible.1 + consensus.2 + aims.3 + aims.2 + nonsubj.2
@@ -161,3 +164,5 @@ three_factor_model <- ' factor_1 =~ scientism.1 + scientism.3 + technocracy.2 + 
 fit3 <- cfa(three_factor_model, data = d_vis_cfa)
 summary(fit3, fit.measures = TRUE)
 fitmeasures(fit3, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
+
+score_grid(fit3, d_vis_cfa)

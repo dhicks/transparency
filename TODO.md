@@ -9,7 +9,3 @@
     -[] score visualizations
     -[] export 6-factor model
 
-- renv
-    -[] set up
-  
-  
