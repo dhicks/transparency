@@ -1,5 +1,6 @@
 library(car)
 library(tidyverse)
+theme_set(theme_bw())
 library(psych)
 library(pander)
 library(gvlma)
@@ -143,12 +144,12 @@ communalities <- 1 - apply(six_factor$loadings^2,1,sum)
 #specify the items in each latent variable/factor
 
 #six factor model recommended by EFA parallel analysis and inflexion point on scree plot
-six_factor_model <- ' factor_1 =~ scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1
-                    factor_2 =~ ir.3 + aims.2 + aims.3
-                    factor_3 =~ coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2
-                    factor_4 =~ stdpt.3 + coi.3 + stdpt.2
-                    factor_5 =~ consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1
-                    factor_6 =~ vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3
+six_factor_model <- 'scientism =~ scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1
+                    vis =~ ir.3 + aims.2 + aims.3
+                    cynicism =~ coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2
+                    stdpt =~ stdpt.3 + coi.3 + stdpt.2
+                    textbook =~ consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1
+                    vfi =~ vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3
                     '
 fit6 <- cfa(six_factor_model, data = d_vis_cfa)
 summary(fit6, fit.measures = TRUE)
@@ -157,9 +158,9 @@ fitmeasures(fit6, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 score_grid(fit6, d_vis_cfa)
 
 #three factor model based on eigenvalues > 1
-three_factor_model <- ' factor_1 =~ scientism.1 + scientism.3 + technocracy.2 + factvalue.3 + coi.3 + aims.1 + stdpt.2 + fallible.3
-                        factor_2 =~ pluralism.1 + nonsubj.3 + vfi.2 + pluralism.3 + technocracy.1 + fallible.1 + consensus.2 + aims.3 + aims.2 + nonsubj.2
-                        factor_3 =~ coi.1 + consensus.3 + nonsubj.1 + ir.1 + stdpt.1 + coi.2
+three_factor_model <- ' scientism =~ scientism.1 + scientism.3 + technocracy.2 + factvalue.3 + coi.3 + aims.1 + stdpt.2 + fallible.3
+                        textbook =~ pluralism.1 + nonsubj.3 + vfi.2 + pluralism.3 + technocracy.1 + fallible.1 + consensus.2 + aims.3 + aims.2 + nonsubj.2
+                        cynicism =~ coi.1 + consensus.3 + nonsubj.1 + ir.1 + stdpt.1 + coi.2
                         '
 fit3 <- cfa(three_factor_model, data = d_vis_cfa)
 summary(fit3, fit.measures = TRUE)
