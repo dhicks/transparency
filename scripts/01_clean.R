@@ -171,3 +171,59 @@ count(dataf, ViS36)
 #' # Write out #
 write_csv(dataf, here('data', 'data.csv'))
 write_rds(dataf, here('data', 'data.Rds'))
+
+
+#' # Elliott et al. data #
+#' The data collected by Elliott et al. is similar to ours.  Two important differences: 
+#' 
+#' 1. For their DV, they use a 7-point semantic difference scale that partially overlaps with METI.  *: item also in METI. 
+#'     - competent*
+#'     - credible
+#'     - expert
+#'     - honest*
+#'     - intelligent*
+#'     - sincere*
+#'     - trustworthy
+#'     
+#'    They don't include a codebook, but I think the `sd` items correspond to these, and `sdind` to their mean. 
+#' 2. They collect fewer demographic variables, and generally structure them differently. 
+#'     - age: Binned, values 1-10
+#'     - sex: Dichotomous
+#'     - ideology: 1 = "very conservative" to 7 = "very liberal"
+#'     - education: 1 = "up to high school diploma or equivalent" to 4 = "graduate/professional degree"
+
+emad_xwalk = tribble(
+    ~ condition, ~ Disclosure,         ~ Values, ~ Conclusion, 
+    'conditio',        FALSE,                NA,         'causes harm',
+    'conditi0',        FALSE,                NA, 'does not cause harm',
+    'conditi1',         TRUE,   'public health',         'causes harm',
+    'conditi2',         TRUE,   'public health', 'does not cause harm',
+    'conditi3',         TRUE, 'economic growth',         'causes harm',
+    'conditi4',         TRUE, 'economic growth', 'does not cause harm'
+)
+
+## Elliott, McCright, Allen, and Dietz
+emad = read_csv(here('data', 'elliot_et_al', 'Values and Science Experiment 1.csv'))
+
+emad_clean = emad |> 
+    ## Condition should be 1 variable, not 6
+    pivot_longer(conditio:conditi4, names_to = 'condition', values_to = 'condition_indicator') |> 
+    filter(condition_indicator == 1) |> 
+    select(-condition_indicator) |> 
+    ## Disclosure, Values, Conclusion
+    left_join(emad_xwalk, by = 'condition') %>% 
+    ## Disclosure _||_ Values
+    mutate(Values = if_else(Disclosure, 
+                            Values, 
+                            sample(c('public health', 'economic growth'), nrow(.), replace = TRUE))) |> 
+    ## I'm guessing that `sd` variables are positive affect, and `sdind` appears to be their mean
+    select(ourid, Values, Conclusion, Disclosure, 
+           starts_with('sd'), pa_mean = sdind, 
+           ## NB demographics are generally handled differently
+           age, sex, ideology, educatio) |> 
+    rename_with(~ str_replace(., 'sd', 'pa_'), starts_with('sd'))
+
+assert_that(identical(nrow(emad), nrow(emad_clean)))
+
+write_csv(emad_clean, here('data', 'emad.csv'))
+write_rds(emad_clean, here('data', 'emad.Rds'))

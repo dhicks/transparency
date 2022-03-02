@@ -5,7 +5,7 @@
     -[] everything
 
 - factor analysis
-    -[] biplots
-    -[] score visualizations
+    -[x] biplots
+    -[x] score visualizations
     -[] export 6-factor model
 
