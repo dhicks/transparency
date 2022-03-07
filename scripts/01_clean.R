@@ -25,10 +25,10 @@ convert_gender = function(resp) {
     map_chr(str_c, collapse = ' & ')
 }
 
-#' #' ## True -> TRUE
-#' is_true = function(chr) {
-#'     chr == 'True'
-#' }
+# ## True -> TRUE
+# is_true = function(chr) {
+#     chr == 'True'
+# }
 
 #' # Load data #
 # full survey + pre_clean

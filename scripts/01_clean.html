@@ -11,7 +11,7 @@
 
 <meta name="author" content="danhicks" />
 
-<meta name="date" content="2022-03-02" />
+<meta name="date" content="2022-03-07" />
 
 <title>01_clean.R</title>
 
@@ -361,7 +361,7 @@ pre code {
 
 <h1 class="title toc-ignore">01_clean.R</h1>
 <h4 class="author">danhicks</h4>
-<h4 class="date">2022-03-02</h4>
+<h4 class="date">2022-03-07</h4>
 
 </div>
 
@@ -436,8 +436,15 @@ convert_gender = function(resp) {
                     .x == &#39;4&#39; ~ &#39;Genderqueer/Gender non-binary/Gender fluid&#39;,
                     .x == &#39;5&#39; ~ &#39;Different Identity&#39;)) |&gt; 
     map_chr(str_c, collapse = &#39; &amp; &#39;)
-}</code></pre>
-<p>#’ ## True -&gt; TRUE is_true = function(chr) { chr == ‘True’ } # Load data #</p>
+}
+
+# ## True -&gt; TRUE
+# is_true = function(chr) {
+#     chr == &#39;True&#39;
+# }</code></pre>
+</div>
+<div id="load-data" class="section level1">
+<h1>Load data</h1>
 <pre class="r"><code># full survey + pre_clean
 dataf_raw_survey &lt;- read_csv(here(&#39;data&#39;, &quot;full_replication_scientists_values.csv&quot;))</code></pre>
 <pre><code>## Rows: 1050 Columns: 169
@@ -549,7 +556,7 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 ## #   ViS34 &lt;chr&gt;, ViS35 &lt;chr&gt;, ViS36 &lt;chr&gt;, METI1_1 &lt;chr&gt;, METI1_2 &lt;chr&gt;, …</code></pre>
 <pre class="r"><code># preference question + pre_clean
 dataf_raw_preference &lt;- read_csv(here(&#39;data&#39;, &quot;replication_preference.csv&quot;)) </code></pre>
-<pre><code>## Rows: 649 Columns: 21
+<pre><code>## Rows: 879 Columns: 21
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (21): StartDate, EndDate, Status, IPAddress, Progress, Duration (in seco...
@@ -577,9 +584,9 @@ dataf_raw_preference &lt;- read_csv(here(&#39;data&#39;, &quot;replication_prefe
             UserLanguage,
             `Create New Field or Choose From Dropdown...`, 
             PROLIFIC_PID))</code></pre>
-<pre><code>## slice: removed 2 rows (&lt;1%), 647 rows remaining
+<pre><code>## slice: removed 2 rows (&lt;1%), 877 rows remaining
 ## filter: no rows removed
-## mutate: new variable &#39;pid&#39; (character) with 647 unique values and 0% NA
+## mutate: new variable &#39;pid&#39; (character) with 877 unique values and 0% NA
 ## select: dropped 17 variables (StartDate, EndDate, Status, IPAddress, Duration (in seconds), …)</code></pre>
 </div>
 <div id="consolidate-meti-items" class="section level1">
@@ -626,9 +633,9 @@ dataf_raw_preference &lt;- read_csv(here(&#39;data&#39;, &quot;replication_prefe
   drop_na(SRS01:SRS11) |&gt; 
   select(-matches(&#39;.x&#39;, &#39;.y&#39;))</code></pre>
 <pre><code>## full_join: added 7 columns (Progress.x, Finished.x, IC.x, Progress.y, Finished.y, …)</code></pre>
-<pre><code>##            &gt; rows only in x     380</code></pre>
+<pre><code>##            &gt; rows only in x     150</code></pre>
 <pre><code>##            &gt; rows only in y       0</code></pre>
-<pre><code>##            &gt; matched rows       647</code></pre>
+<pre><code>##            &gt; matched rows       877</code></pre>
 <pre><code>##            &gt;                 =======</code></pre>
 <pre><code>##            &gt; rows total       1,027</code></pre>
 <pre><code>## select: dropped 84 variables (METI1_1, METI1_2, METI1_3, METI1_4, METI1_5, …)</code></pre>
@@ -1296,28 +1303,28 @@ dataf_raw_preference &lt;- read_csv(here(&#39;data&#39;, &quot;replication_prefe
 </tr>
 <tr class="even">
 <td align="left">Progress.y</td>
-<td align="right">363</td>
-<td align="right">0.63</td>
-<td align="right">3</td>
+<td align="right">144</td>
+<td align="right">0.85</td>
+<td align="right">2</td>
 <td align="right">3</td>
 <td align="right">0</td>
-<td align="right">1</td>
+<td align="right">2</td>
 <td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="left">Finished.y</td>
-<td align="right">363</td>
-<td align="right">0.63</td>
+<td align="right">144</td>
+<td align="right">0.85</td>
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">0</td>
-<td align="right">1</td>
+<td align="right">2</td>
 <td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="left">IC.y</td>
-<td align="right">363</td>
-<td align="right">0.63</td>
+<td align="right">144</td>
+<td align="right">0.85</td>
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">0</td>
@@ -1326,8 +1333,8 @@ dataf_raw_preference &lt;- read_csv(here(&#39;data&#39;, &quot;replication_prefe
 </tr>
 <tr class="odd">
 <td align="left">pref</td>
-<td align="right">363</td>
-<td align="right">0.63</td>
+<td align="right">144</td>
+<td align="right">0.85</td>
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">0</td>
@@ -1802,7 +1809,7 @@ write_rds(dataf, here(&#39;data&#39;, &#39;data.Rds&#39;))</code></pre>
 <h1>Elliott et al. data</h1>
 <p>The data collected by Elliott et al. is similar to ours. Two important differences:</p>
 <ol style="list-style-type: decimal">
-<li>For their DV, they use a semantic difference scale that partially overlaps with METI. *: item also in METI.
+<li>For their DV, they use a 7-point semantic difference scale that partially overlaps with METI. *: item also in METI.
 <ul>
 <li>competent*</li>
 <li>credible</li>
@@ -1852,9 +1859,11 @@ emad = read_csv(here(&#39;data&#39;, &#39;elliot_et_al&#39;, &#39;Values and Sci
                             Values, 
                             sample(c(&#39;public health&#39;, &#39;economic growth&#39;), nrow(.), replace = TRUE))) |&gt; 
     ## I&#39;m guessing that `sd` variables are positive affect, and `sdind` appears to be their mean
-    select(ourid, Values, Conclusion, Disclosure, pa_mean = sdind, 
+    select(ourid, Values, Conclusion, Disclosure, 
+           starts_with(&#39;sd&#39;), pa_mean = sdind, 
            ## NB demographics are generally handled differently
-           age, sex, ideology, educatio)</code></pre>
+           age, sex, ideology, educatio) |&gt; 
+    rename_with(~ str_replace(., &#39;sd&#39;, &#39;pa_&#39;), starts_with(&#39;sd&#39;))</code></pre>
 <pre><code>## pivot_longer: reorganized (conditio, conditi0, conditi1, conditi2, conditi3, …) into (condition, condition_indicator) [was 498x51, now 2988x47]
 ## filter: removed 2,490 rows (83%), 498 rows remaining
 ## select: dropped one variable (condition_indicator)
@@ -1865,7 +1874,8 @@ emad = read_csv(here(&#39;data&#39;, &#39;elliot_et_al&#39;, &#39;Values and Sci
 ##            &gt;                 =====
 ##            &gt; rows total       498
 ## mutate: changed 158 values (32%) of &#39;Values&#39; (158 fewer NA)
-## select: renamed one variable (pa_mean) and dropped 40 variables</code></pre>
+## select: renamed one variable (pa_mean) and dropped 33 variables
+## rename_with: renamed 7 variables (pa_1, pa_2, pa_3, pa_4, pa_5, …)</code></pre>
 <pre class="r"><code>assert_that(identical(nrow(emad), nrow(emad_clean)))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>write_csv(emad_clean, here(&#39;data&#39;, &#39;emad.csv&#39;))
