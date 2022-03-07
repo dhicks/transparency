@@ -219,9 +219,12 @@ emad_clean = emad |>
     ## I'm guessing that `sd` variables are positive affect, and `sdind` appears to be their mean
     select(ourid, Values, Conclusion, Disclosure, 
            starts_with('sd'), pa_mean = sdind, 
+           tradeoff,
            ## NB demographics are generally handled differently
            age, sex, ideology, educatio) |> 
-    rename_with(~ str_replace(., 'sd', 'pa_'), starts_with('sd'))
+    rename_with(~ str_replace(., 'sd', 'pa_'), starts_with('sd')) |> 
+    mutate(part_values = if_else(tradeoff >= 3, 'public health', 'economic growth'), 
+           shared_values = Values == part_values)
 
 assert_that(identical(nrow(emad), nrow(emad_clean)))
 

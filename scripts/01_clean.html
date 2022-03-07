@@ -1861,9 +1861,12 @@ emad = read_csv(here(&#39;data&#39;, &#39;elliot_et_al&#39;, &#39;Values and Sci
     ## I&#39;m guessing that `sd` variables are positive affect, and `sdind` appears to be their mean
     select(ourid, Values, Conclusion, Disclosure, 
            starts_with(&#39;sd&#39;), pa_mean = sdind, 
+           tradeoff,
            ## NB demographics are generally handled differently
            age, sex, ideology, educatio) |&gt; 
-    rename_with(~ str_replace(., &#39;sd&#39;, &#39;pa_&#39;), starts_with(&#39;sd&#39;))</code></pre>
+    rename_with(~ str_replace(., &#39;sd&#39;, &#39;pa_&#39;), starts_with(&#39;sd&#39;)) |&gt; 
+    mutate(part_values = if_else(tradeoff &gt;= 3, &#39;public health&#39;, &#39;economic growth&#39;), 
+           shared_values = Values == part_values)</code></pre>
 <pre><code>## pivot_longer: reorganized (conditio, conditi0, conditi1, conditi2, conditi3, …) into (condition, condition_indicator) [was 498x51, now 2988x47]
 ## filter: removed 2,490 rows (83%), 498 rows remaining
 ## select: dropped one variable (condition_indicator)
@@ -1874,8 +1877,10 @@ emad = read_csv(here(&#39;data&#39;, &#39;elliot_et_al&#39;, &#39;Values and Sci
 ##            &gt;                 =====
 ##            &gt; rows total       498
 ## mutate: changed 158 values (32%) of &#39;Values&#39; (158 fewer NA)
-## select: renamed one variable (pa_mean) and dropped 33 variables
-## rename_with: renamed 7 variables (pa_1, pa_2, pa_3, pa_4, pa_5, …)</code></pre>
+## select: renamed one variable (pa_mean) and dropped 32 variables
+## rename_with: renamed 7 variables (pa_1, pa_2, pa_3, pa_4, pa_5, …)
+## mutate: new variable &#39;part_values&#39; (character) with 3 unique values and &lt;1% NA
+##         new variable &#39;shared_values&#39; (logical) with 3 unique values and &lt;1% NA</code></pre>
 <pre class="r"><code>assert_that(identical(nrow(emad), nrow(emad_clean)))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>write_csv(emad_clean, here(&#39;data&#39;, &#39;emad.csv&#39;))
