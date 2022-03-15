@@ -137,7 +137,10 @@ six_clean = loading_table(six_factor,
                                       "six_factor_loadings.csv"), 
                           overwrite = overwrite_loading_tables)
 
+six_clean
+
 communalities <- 1 - apply(six_factor$loadings^2,1,sum)
+communalities
 
 ## CFA ----
 #lavaan package for CFA
@@ -147,7 +150,7 @@ communalities <- 1 - apply(six_factor$loadings^2,1,sum)
 six_factor_model <- 'scientism =~ scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1
                     vis =~ ir.3 + aims.2 + aims.3
                     cynicism =~ coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2
-                    stdpt =~ stdpt.3 + coi.3 + stdpt.2
+                    power =~ stdpt.3 + coi.3 + stdpt.2
                     textbook =~ consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1
                     vfi =~ vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3
                     '
@@ -156,6 +159,8 @@ summary(fit6, fit.measures = TRUE)
 fitmeasures(fit6, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 
 score_grid(fit6, d_vis_cfa)
+
+
 
 #three factor model based on eigenvalues > 1
 three_factor_model <- ' scientism =~ scientism.1 + scientism.3 + technocracy.2 + factvalue.3 + coi.3 + aims.1 + stdpt.2 + fallible.3
@@ -167,3 +172,18 @@ summary(fit3, fit.measures = TRUE)
 fitmeasures(fit3, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 
 score_grid(fit3, d_vis_cfa)
+
+
+## Write out data and models ----
+d_vis |> 
+    rownames_to_column('pid') |> 
+    mutate(fa_scientism = scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1,
+           fa_vis = ir.3 + aims.2 + aims.3,
+           fa_cynicism = coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2,
+           fa_power = stdpt.3 + coi.3 + stdpt.2,
+           fa_textbook = consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1,
+           fa_vfi = vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3) |> 
+    mutate(across(starts_with('fa_'), scale), 
+           across(starts_with('fa_'), as.numeric)) |> 
+    write_csv(here(data_dir, 'fa_six.csv'))
+
