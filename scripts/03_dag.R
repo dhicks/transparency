@@ -106,7 +106,10 @@ cor(as.integer(dataf$PoliticalIdeology), as.integer(dataf$pref),
     use = 'complete.obs', 
     method = 'spearman')
 
-
+glm(I(part_values == 'economic growth') ~ PoliticalIdeology, 
+    family = 'binomial', 
+    data = dataf) |> 
+    summary()
 
 ## DAG ----
 #' # DAG #
@@ -146,12 +149,15 @@ dag |>
     plot_adjustments(exposure = 'conclusion') +
     scale_color_manual(values = 'black')
 
-lm(pa_mean ~ Conclusion, data = emad_df) |> 
-    summary()
+model_b_emad = lm(pa_mean ~ Conclusion, data = emad_df)
+summary(model_b_emad)
 model_b = lm(meti_mean ~ Conclusion, data = dataf)
 summary(model_b)
 plot_residuals(model_b)
-plot_estimate(model_b, 'Conclusion')
+
+plot_estimate(list(emad = model_b_emad, 
+                   hl = model_b),
+              str_detect(term, 'Conclusion'))
 
 
 ## C. Transparency penalty ----
@@ -173,12 +179,15 @@ dag |>
     plot_adjustments('disclose') + 
     scale_color_manual(values = 'black')
 
-lm(pa_mean ~ Disclosure, data = emad_df) |> 
-    summary()
+model_c_emad = lm(pa_mean ~ Disclosure, data = emad_df)
+summary(model_c_emad)
 model_c = lm(meti_mean ~ Disclosure, data = dataf)
 summary(model_c)
 plot_residuals(model_c)
-plot_estimate(model_c, 'Disclosure')
+# plot_estimate(model_c, 'Disclosure')
+plot_estimate(list(emad = model_c_emad, 
+                   hl = model_c), 
+              str_detect(term, 'Disclosure'))
 
 
 
@@ -214,7 +223,7 @@ dag |>
     plot_adjustments('shared_values')
 
 #' So, all together, we just need to adjust for participant values and scientist values.  
-emad_df |> 
+model_d_emad = emad_df |> 
     filter(Disclosure) %>%
     lm(pa_mean ~ shared_values + part_values + Values, data = .) |> 
     summary()
@@ -223,8 +232,10 @@ model_d = dataf |>
     lm(meti_mean ~ shared_values + part_values + Values, data = .)
 summary(model_d)
 plot_residuals(model_d)
-plot_estimate(model_d, 'shared_values')
-
+# plot_estimate(model_d, 'shared_values')
+plot_estimate(list(emad = model_d_emad, 
+                   hl = model_d), 
+              str_detect(term, 'shared_values'))
 
 #' But we can include demographics to check the accuracy of the graph.  In the Elliott et al. data, this holds true:  adding other demographics doesn't change the estimated effect for shared values of 0.4.  
 #' TODO: this for our data
@@ -265,12 +276,15 @@ dag |>
                  'conclusion_x_part_values -> METI <- conclusion')) |> 
     plot_adjustments('conclusion_x_part_values')
 
-lm(pa_mean ~ Conclusion*part_values, data = emad_df) |> 
-    summary()
+model_eb_emad = lm(pa_mean ~ Conclusion*part_values, data = emad_df)
+summary(model_eb_emad)
 model_eb = lm(meti_mean ~ Conclusion*part_values, data = dataf)
 summary(model_eb)
 plot_residuals(model_eb)
-plot_estimate(model_eb, ':')
+# plot_estimate(model_eb, ':')
+plot_estimate(list(emad = model_eb_emad, 
+                   hl = model_eb), 
+              str_detect(term, ':'))
 
 #' Again, include demographics as a check.  
 #' TODO
@@ -293,8 +307,8 @@ dag |>
                  'disclosure -> METI')) |> 
     plot_adjustments('disclosure_x_part_values')
 
-lm(pa_mean ~ Disclosure*part_values, data = emad_df) |> 
-    summary()
+model_ec_emad = lm(pa_mean ~ Disclosure*part_values, data = emad_df)
+summary(model_ec_emad)
 lm(pa_mean ~ Disclosure*part_values+ 
        sex + ideology + educatio + age, data = emad_df) |> 
     summary()
@@ -302,7 +316,10 @@ lm(pa_mean ~ Disclosure*part_values+
 model_ec = lm(meti_mean ~ Disclosure*part_values, data = dataf)
 summary(model_ec)
 plot_residuals(model_ec)
-plot_estimate(model_ec, ':')
+# plot_estimate(model_ec, ':')
+plot_estimate(list(emad = model_ec_emad, 
+                   hl = model_ec), 
+              str_detect(term, ':'))
 
 emad_df |> 
     filter(!is.na(part_values)) |> 
@@ -316,26 +333,48 @@ dag |>
                  'shared_values_x_part_values -> METI')) |> 
     plot_adjustments('shared_values_x_part_values')
 
-emad_df |> 
+model_ed_emad = emad_df |> 
     filter(Disclosure) %>%
-    lm(pa_mean ~ shared_values*part_values, data = .) |> 
-    summary()
+    lm(pa_mean ~ shared_values*part_values, data = .)
+summary(model_ed_emad)
 emad_df |> 
     filter(Disclosure) %>%
     lm(pa_mean ~ shared_values*part_values+ 
            sex + ideology + educatio + age, data = .) |> 
     summary()
 
-dataf |> 
+model_ed = dataf |> 
     filter(Disclosure) %>%
-    lm(meti_mean ~ shared_values*part_values, data = .) |> 
-    summary()
+    lm(meti_mean ~ shared_values*part_values, data = .)
+summary(model_ed)
+
+plot_estimate(list(emad = model_ed_emad, 
+                   hl = model_ed), 
+              str_detect(term, ':'))
 
 dataf |> 
     filter(!is.na(part_values), Disclosure) |> 
     ggplot(aes(shared_values, meti_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
+
+#' And political ideology appears to be either entirely upstream or independent to this
+dataf |> 
+    filter(Disclosure) %>%
+    lm(meti_mean ~ shared_values*part_values + PoliticalIdeology, data = .) |> 
+    summary()
+
+#' Apparently independent
+dataf |> 
+    filter(Disclosure) %>%
+    lm(meti_mean ~ PoliticalIdeology, data = .) |> 
+    summary()
+
+dataf |> 
+    filter(Disclosure) |> 
+    ggplot(aes(PoliticalIdeology, meti_mean, group = PoliticalIdeology)) +
+    geom_violin(draw_quantiles = .5) +
+    geom_beeswarm()
 
 
 ## F. VISS ----

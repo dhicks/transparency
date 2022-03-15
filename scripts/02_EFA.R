@@ -53,6 +53,7 @@ d_vis_cfa <- d_vis[dummy_sep == 1, ] #extract data where dummy == 1
 
 vis_cor(d_vis_efa)
 
+
 ## Descriptive visualizations ----
 ## Share of respondents (agreeing or strongly agreeing)
 d_vis_efa |> 
@@ -113,11 +114,13 @@ d_vis_efa |>
     coord_flip() +
     theme_minimal()
 
+
 ## checking EFA assumptions ----
 cor.matrix <- cor(d_vis_efa)
 bartlett <- bartlett.test(d_vis_efa) #testing whether correlation matrix is significantly different from identity matrix
 kmo <- KMO(d_vis_efa) #checking adequacy of sample size
 det <- det(cor.matrix) #checking for possible multicollinearity
+
 
 ## EFA ----
 vis_fa <- fa.parallel(d_vis_efa, fm = "minres", fa = "fa")
@@ -136,7 +139,6 @@ six_clean = loading_table(six_factor,
                           path = here(data_dir, 
                                       "six_factor_loadings.csv"), 
                           overwrite = overwrite_loading_tables)
-
 six_clean
 
 communalities <- 1 - apply(six_factor$loadings^2,1,sum)
@@ -175,7 +177,7 @@ score_grid(fit3, d_vis_cfa)
 
 
 ## Write out data and models ----
-d_vis |> 
+six_discrete = d_vis |> 
     rownames_to_column('pid') |> 
     mutate(fa_scientism = scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1,
            fa_vis = ir.3 + aims.2 + aims.3,
@@ -184,6 +186,9 @@ d_vis |>
            fa_textbook = consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1,
            fa_vfi = vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3) |> 
     mutate(across(starts_with('fa_'), scale), 
-           across(starts_with('fa_'), as.numeric)) |> 
-    write_csv(here(data_dir, 'fa_six.csv'))
+           across(starts_with('fa_'), as.numeric))
+
+score_grid(scores = six_discrete)
+
+write_csv(six_discrete, here(data_dir, 'fa_six.csv'))
 

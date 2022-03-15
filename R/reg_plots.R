@@ -6,12 +6,21 @@ plot_residuals = function(model) {
         stat_smooth(method = 'lm')
 }
 
-plot_estimate = function(model, exposure) {
-    model |> 
-        broom::tidy(conf.int = TRUE) |> 
-        filter(str_detect(term, exposure)) |> 
-        ggplot(aes(term, estimate, ymin = conf.low, ymax = conf.high)) +
-        geom_pointrange() +
+plot_estimate = function(models, ...) {
+    extract_estimates = function(model, ...) {
+        model |> 
+            broom::tidy(conf.int = TRUE) |> 
+            filter(...)
+    }
+    
+    estimates_df = map_dfr(models, extract_estimates, ..., .id = 'study')
+    # return(estimates_df)
+    
+    ggplot(estimates_df, 
+           aes(term, estimate, 
+               ymin = conf.low, ymax = conf.high, 
+               color = study)) +
+        geom_pointrange(position = position_dodge(width = .25)) +
         geom_hline(yintercept = c(threshold, -threshold), linetype = 'dashed') +
         coord_flip()
 }

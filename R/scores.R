@@ -21,10 +21,15 @@ scores = function(lavaan, data) {
 #' Plot a scatterplot matrix of scores
 #' 
 #' Given a fitted model and data, calculate scores and plot scatterplots
-score_grid = function(lavaan, data) {
-    scores_df = scores(lavaan, data)
+score_grid = function(lavaan = NULL, data = NULL, scores = NULL) {
+    if (is.null(data) && is.null(scores)) {
+        error('At least one of data and scores must be non-NULL')
+    }
+    if (is.null(scores)) {
+        scores = scores(lavaan, data)
+    }
     
-    ggplot(scores_df, aes(x = .panel_x, y = .panel_y)) +
+    ggplot(scores, aes(x = .panel_x, y = .panel_y)) +
         ggpubr::stat_cor(label.x.npc = 'center', label.y.npc = 'center', 
                          geom = 'rect', alpha = .8,
                          mapping = aes(fill = after_stat(r), 
