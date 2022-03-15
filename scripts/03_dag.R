@@ -8,7 +8,7 @@
 # TODO: 
 #     -[] clean code
 #     -[] double check direction of coding for ideology and tradeoff in Elliott et al.
-#     -[] estimate plots showing both us + Elliott et al.
+#     -[x] estimate plots showing both us + Elliott et al.
 #     -[] better plots for interactions
     
     
@@ -76,6 +76,8 @@ threshold
 #' \(i) Political liberals are more likely to prioritize public health over economic growth, compared to political conservatives; but (ii) a majority of political conservatives prioritize public health.
 #' 
 #' NB 1. No DAG here because this isn't a causal claim.  2. Direction of ideology coding is reversed between the two studies. 
+#' 
+#' Compared to Elliott et al., our strong conservatives placed lower value on public health, and overall conservatives are about 50-50. 
 
 emad_df |>
     count(ideology, tradeoff) |>
@@ -85,6 +87,8 @@ emad_df |>
     ggplot(aes(ideology, n, fill = as.factor(tradeoff))) +
     geom_col() +
     scale_fill_viridis_d()
+
+last_plot() + aes(y = share)
 
 dataf |> 
     filter(!is.na(pref)) |> 
@@ -97,6 +101,8 @@ dataf |>
     scale_fill_viridis_d()
 
 last_plot() + aes(y = share)
+
+table(dataf$PoliticalIdeology, dataf$pref)
 
 cor(emad_df$ideology, emad_df$tradeoff, 
     use = 'complete.obs',
@@ -376,6 +382,23 @@ dataf |>
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
+#' Because the effect is with *scientist* values
+dataf |> 
+    filter(!is.na(part_values), Disclosure) |> 
+    ggplot(aes(Values, meti_mean)) +
+    geom_boxplot() +
+    facet_wrap(vars(part_values))
+
+dataf |> 
+    filter(Disclosure) %>% 
+    lm(meti_mean ~ Values, data = .) |> 
+    summary()
+## Swamped by uncertainty
+dataf %>% 
+    filter(Disclosure) %>%
+    lm(meti_mean ~ Values*part_values, data = .) |> 
+    summary()
+
 
 ## F. VISS ----
 #' # F. VISS #
@@ -383,6 +406,7 @@ dataf |>
 
 
 #' ## VISS and demographics ##
+#' Continuous and ordinal demographics
 dataf |> 
     ggplot(aes(x = .panel_x, y = .panel_y)) +
     ggpubr::stat_cor(label.x.npc = 'center', label.y.npc = 'center', 
@@ -401,10 +425,12 @@ dataf |>
                                    fill = after_stat(r))) +
     ggforce::facet_matrix(rows = vars(starts_with('fa_')),
                           cols = vars(Age, ReligiousServ, PoliticalIdeology, 
-                                      PoliticalAffiliation, Education)) +
+                                      PoliticalAffiliation, Education), 
+                          switch = 'y') +
     scale_fill_gradient2(limits = c(-1, 1)) +
     theme_bw()
 
+#' Categorical demographics
 dataf |> 
     ggplot(aes(x = .panel_x, y = .panel_y)) +
     geom_boxplot(aes(group = .panel_y), varwidth = TRUE, 
@@ -412,8 +438,8 @@ dataf |>
     ggforce::facet_matrix(cols = vars(starts_with('fa_')),
                           rows = vars(`Race/Ethnicity`, gender,
                                       ReligiousAffil,
-                                      part_values
-                          )) +
+                                      part_values), 
+                          switch = 'y') +
     theme_bw()
 
 
