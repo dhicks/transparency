@@ -68,8 +68,7 @@ ggplot() +
 
 #' Across our dataset, standard deviation of mean trust.  Use one-third of this as meaningful. 
 sd(dataf$meti_mean)
-threshold = sd(dataf$meti_mean)/3
-threshold
+meaningful = sd(dataf$meti_mean)/3
 
 ## A. Modest correlation between values and ideology ----
 #' # A. Modest correlation between values and ideology #
@@ -245,27 +244,40 @@ plot_estimate(list(emad = model_d_emad,
 
 #' But we can include demographics to check the accuracy of the graph.  In the Elliott et al. data, this holds true:  adding other demographics doesn't change the estimated effect for shared values of 0.4.  
 #' TODO: this for our data
-emad_df |> 
+dataf |> 
     filter(Disclosure) %>% 
-    lm(pa_mean ~ shared_values + part_values + sex, data = .) |> 
-    summary()
-
-emad_df |> 
-    filter(Disclosure) %>% 
-    lm(pa_mean ~ shared_values + part_values + sex + ideology, data = .) |> 
-    summary()
-
-emad_df |> 
-    filter(Disclosure) %>% 
-    lm(pa_mean ~ shared_values + part_values + sex + ideology + educatio, 
+    lm(meti_mean ~ shared_values + part_values + Values +
+           Age + gender + `Race/Ethnicity` + ReligiousAffil + ReligiousServ + 
+           PoliticalIdeology + Education,
        data = .) |> 
+    broom::tidy()
+
+#' And actually participant values is independent of shared values: from a participant's perspective (given their values), they have an equal chance of seeing a scientist with same or different values. 
+dataf |> 
+    filter(Disclosure) |> 
+    count(part_values, Values, shared_values)
+
+#' So dropping participant values from the regression doesn't change the estimated effect of shared values. 
+
+dataf |> 
+    filter(Disclosure) %>% 
+    lm(meti_mean ~ shared_values + Values, data = .) |> 
     summary()
 
-emad_df |> 
-    filter(Disclosure) %>% 
-    lm(pa_mean ~ shared_values + part_values + sex + 
-           ideology + educatio + age, 
-       data = .) |> 
+#' But scientist values *does* confound the estimate. 
+dataf |> 
+    filter(Disclosure) %>%
+    lm(meti_mean ~ shared_values, data = .) |> 
+    summary()
+
+#' ## Scientist values ##
+#' We didn't specify this possibility in advance, but all this suggests scientist values, not shared values, have an effect. This is randomly assigned, so no adjustments needed. 
+plot_adjustments(dag, 'sci_values') +
+    scale_color_manual(values = 'black')
+
+dataf |> 
+    filter(Disclosure) %>%
+    lm(meti_mean ~ Values, data = .) |> 
     summary()
 
 
@@ -382,7 +394,7 @@ dataf |>
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
-#' Because the effect is with *scientist* values
+#' Because the effect is with *scientist* values (we also saw this at the end of D)
 dataf |> 
     filter(!is.na(part_values), Disclosure) |> 
     ggplot(aes(Values, meti_mean)) +
@@ -393,7 +405,8 @@ dataf |>
     filter(Disclosure) %>% 
     lm(meti_mean ~ Values, data = .) |> 
     summary()
-## Swamped by uncertainty
+
+#' Any interaction with participant values is swamped by uncertainty
 dataf %>% 
     filter(Disclosure) %>%
     lm(meti_mean ~ Values*part_values, data = .) |> 
@@ -402,7 +415,7 @@ dataf %>%
 
 ## F. VISS ----
 #' # F. VISS #
-#' Effects c-e will vary depending the participant's views of the role of values in science [the latent variables from the six-factor model]
+#' *Effects c-e will vary depending the participant's views of the role of values in science (the latent variables from the six-factor model)*
 
 
 #' ## VISS and demographics ##
@@ -460,7 +473,7 @@ lm(meti_mean ~ fa_scientism + fa_vis + fa_cynicism +
     geom_hline(yintercept = c(threshold, -threshold), linetype = 'dashed') +
     coord_flip()
 
-#' ## B and C ##
+#' ## B (Consumer Risk) and C (Disclosure) ##
 dag |> 
     add_arrows(c('conclusion -> conclusion_x_viss <- viss', 
                  'conclusion_x_viss -> METI <- conclusion')) |> 
@@ -490,7 +503,7 @@ lm(meti_mean ~ Disclosure*fa_scientism +
    data = dataf) |> 
     summary()
 
-#' ## D. ##
+#' ## D: Shared values ##
 dag |> 
     add_arrows(c('shared_values -> shared_values_x_viss <- viss', 
                  'shared_values_x_viss -> METI')) |> 
@@ -506,3 +519,37 @@ dataf |>
                    shared_values*fa_vfi, 
    data = .) |> 
     summary()
+
+#' In D, we saw that the expected shared values effect is better conceived as a scientist values effect.
+dag |> 
+    add_arrows(c('sci_values -> sci_values_x_viss <- viss', 
+                 'sci_values_x_viss -> METI')) |> 
+    plot_adjustments('sci_values_x_viss')
+
+model = dataf |> 
+    filter(Disclosure) %>%
+    lm(meti_mean ~ Values*fa_scientism + 
+                   Values*fa_vis + 
+                   Values*fa_cynicism + 
+                   Values*fa_power + 
+                   Values*fa_textbook + 
+                   Values*fa_vfi, 
+       data = .)
+summary()
+
+cross_df(list(Values = c('public health', 'economic growth'), 
+              fa_scientism = 0, 
+              fa_vis = 0, 
+              fa_cynicism = 0,
+              fa_power = seq(-2, 2, by = .1), 
+              fa_textbook = 0, 
+              fa_vfi = 0)) %>%
+    broom::augment(model, newdata = .) |> 
+    ggplot(aes(fa_power, .fitted, group = Values, color = Values)) +
+    geom_line()
+
+dataf |> 
+    filter(Disclosure) |> 
+    ggplot(aes(fa_power, meti_mean, color = Values)) +
+    geom_point() +
+    stat_smooth(method = lm)
