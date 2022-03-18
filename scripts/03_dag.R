@@ -420,6 +420,7 @@ dataf %>%
 
 
 #' ## VISS and demographics ##
+#' *[formatting]*
 #' Continuous and ordinal demographics
 dataf |> 
     ggplot(aes(x = .panel_x, y = .panel_y)) +
@@ -459,6 +460,7 @@ dataf |>
 
 #' ## VISS effects by themselves ##
 #' Will be difficult to disentangle from demographics
+#' *[scale: 1-5 vs. 0-1 for binary vars]*
 dag |> 
     plot_adjustments('viss')
 
