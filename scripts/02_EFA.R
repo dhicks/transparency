@@ -160,6 +160,7 @@ fit6 <- cfa(six_factor_model, data = d_vis_cfa)
 summary(fit6, fit.measures = TRUE)
 fitmeasures(fit6, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 
+#+ fig.height = 8, fig.width = 8
 score_grid(fit6, d_vis_cfa)
 
 
@@ -179,14 +180,36 @@ score_grid(fit3, d_vis_cfa)
 ## Write out data and models ----
 six_discrete = d_vis |> 
     rownames_to_column('pid') |> 
-    mutate(fa_scientism = scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1,
-           fa_vis = ir.3 + aims.2 + aims.3,
-           fa_cynicism = coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2,
-           fa_power = stdpt.3 + coi.3 + stdpt.2,
-           fa_textbook = consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1,
-           fa_vfi = vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3) |> 
-    mutate(across(starts_with('fa_'), scale), 
-           across(starts_with('fa_'), as.numeric))
+    rowwise() |>
+    mutate(fa_scientism = mean(c_across(c(scientism.1, 
+                                        fallible.3,
+                                        ir.2,
+                                        aims.1,
+                                        technocracy.2,
+                                        factvalue.1))),
+           fa_vis = mean(c_across(c(ir.3,
+                                  aims.2,
+                                  aims.3))),
+           fa_cynicism = mean(c_across(c(coi.1,
+                                       consensus.3,
+                                       factvalue.2,
+                                       nonsubj.1,
+                                       fallible.2,
+                                       ir.1,
+                                       coi.2))),
+           fa_power = mean(c_across(c(stdpt.3,
+                                    coi.3,
+                                    stdpt.2))),
+           fa_textbook = mean(c_across(c(consensus.2,
+                                       fallible.2,
+                                       pluralism.3,
+                                       pluralism.1,
+                                       vfi.1))),
+           fa_vfi = mean(c_across(c(vfi.3,
+                                  nonsubj.2,
+                                  technocracy.1,
+                                  factvalue.3)))) |> 
+    ungroup()
 
 score_grid(scores = six_discrete)
 
