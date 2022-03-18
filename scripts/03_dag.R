@@ -28,30 +28,30 @@ emad_df = read_rds(here('data', 'emad.Rds'))
 viss_df = read_csv(here('data', 'fa_six.csv')) |> 
     select(pid, starts_with('fa_'))
 dataf = read_rds(here('data', 'data.Rds')) |> 
-    select(pid, Values, Conclusion, Disclosure, 
-           pref, meti_mean, 
-           SRS_sum,
-           Age, GenderIdentity, GenderLived, `Race/Ethnicity`, 
-           ReligiousAffil, ReligiousServ, 
-           PoliticalIdeology, PoliticalAffiliation,
-           Education) |> 
-    mutate(pid = as.character(pid),
-           ## Reverse coding of METI so that increased METI -> increased trust
-           meti_mean = 8 - meti_mean, 
-           part_values = if_else(pref >= 3, 
-                                 'public health', 
-                                 'economic growth'), 
-           shared_values = part_values == Values, 
-           across(c(Age, ReligiousServ, PoliticalIdeology, 
-                  PoliticalAffiliation, Education), 
-                  as.integer),
-           PoliticalIdeology = if_else(PoliticalIdeology %in% c(8, 9), 
-                                       NA_integer_, PoliticalIdeology),
-           gender = interaction(GenderIdentity, GenderLived), 
-           across(c(`Race/Ethnicity`, ReligiousAffil, gender), 
-                  fct_infreq)) |> 
     left_join(viss_df, by = 'pid')
-
+    # select(pid, sci_values, conclusion, disclosure, 
+    #        pref, meti_mean, 
+    #        SRS_sum,
+    #        Age, GenderIdentity, GenderLived, `Race/Ethnicity`, 
+    #        ReligiousAffil, ReligiousServ, 
+    #        political_ideology, PoliticalAffiliation,
+    #        Education) |> 
+    # mutate(pid = as.character(pid),
+    #        ## Reverse coding of METI so that increased METI -> increased trust
+    #        meti_mean = 8 - meti_mean, 
+    #        part_values = if_else(pref >= 3, 
+    #                              'public health', 
+    #                              'economic growth'), 
+    #        shared_values = part_values == sci_values, 
+    #        across(c(Age, ReligiousServ, political_ideology, 
+    #               PoliticalAffiliation, Education), 
+    #               as.integer),
+    #        political_ideology = if_else(political_ideology %in% c(8, 9), 
+    #                                    NA_integer_, political_ideology),
+    #        gender = interaction(GenderIdentity, GenderLived), 
+    #        across(c(`Race/Ethnicity`, ReligiousAffil, gender), 
+    #               fct_infreq)) |> 
+    
 
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 
@@ -69,6 +69,7 @@ ggplot() +
 #' Across our dataset, standard deviation of mean trust.  Use one-third of this as meaningful. 
 sd(dataf$meti_mean)
 meaningful = sd(dataf$meti_mean)/3
+meaningful
 
 ## A. Modest correlation between values and ideology ----
 #' # A. Modest correlation between values and ideology #
@@ -91,27 +92,27 @@ last_plot() + aes(y = share)
 
 dataf |> 
     filter(!is.na(pref)) |> 
-    count(PoliticalIdeology, pref) |> 
-    group_by(PoliticalIdeology) |> 
+    count(political_ideology, pref) |> 
+    group_by(political_ideology) |> 
     mutate(share = n / sum(n)) |> 
     ungroup() |> 
-    ggplot(aes(PoliticalIdeology, n, fill = pref)) +
+    ggplot(aes(political_ideology, n, fill = pref)) +
     geom_col() +
     scale_fill_viridis_d()
 
 last_plot() + aes(y = share)
 
-table(dataf$PoliticalIdeology, dataf$pref)
+table(dataf$political_ideology, dataf$pref)
 
 cor(emad_df$ideology, emad_df$tradeoff, 
     use = 'complete.obs',
     method = 'spearman')
 
-cor(as.integer(dataf$PoliticalIdeology), as.integer(dataf$pref), 
+cor(as.integer(dataf$political_ideology), as.integer(dataf$pref), 
     use = 'complete.obs', 
     method = 'spearman')
 
-glm(I(part_values == 'economic growth') ~ PoliticalIdeology, 
+glm(I(part_values == 'economic growth') ~ political_ideology, 
     family = 'binomial', 
     data = dataf) |> 
     summary()
@@ -139,11 +140,11 @@ ggplot(dag, aes(x = x, y = y,
 #' # B. Consumer risk sensitivity #
 #' *Scientists who find that a chemical harms human health are perceived as more trustworthy than scientists who find that a chemical does not cause harm.*
 
-ggplot(emad_df, aes(Conclusion, pa_mean)) +
+ggplot(emad_df, aes(conclusion, pa_mean)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
-ggplot(dataf, aes(Conclusion, meti_mean)) +
+ggplot(dataf, aes(conclusion, meti_mean)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
@@ -154,26 +155,26 @@ dag |>
     plot_adjustments(exposure = 'conclusion') +
     scale_color_manual(values = 'black')
 
-model_b_emad = lm(pa_mean ~ Conclusion, data = emad_df)
+model_b_emad = lm(pa_mean ~ conclusion, data = emad_df)
 summary(model_b_emad)
-model_b = lm(meti_mean ~ Conclusion, data = dataf)
+model_b = lm(meti_mean ~ conclusion, data = dataf)
 summary(model_b)
 plot_residuals(model_b)
 
 plot_estimate(list(emad = model_b_emad, 
                    hl = model_b),
-              str_detect(term, 'Conclusion'))
+              str_detect(term, 'conclusion'))
 
 
 ## C. Transparency penalty ----
 #' # C. Transparency penalty #
 #' *Scientists who disclose values are perceived as less trustworthy than scientists who do not.* 
 
-ggplot(emad_df, aes(Disclosure, pa_mean)) +
+ggplot(emad_df, aes(disclosure, pa_mean)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
-ggplot(dataf, aes(Disclosure, meti_mean)) +
+ggplot(dataf, aes(disclosure, meti_mean)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
@@ -184,15 +185,15 @@ dag |>
     plot_adjustments('disclose') + 
     scale_color_manual(values = 'black')
 
-model_c_emad = lm(pa_mean ~ Disclosure, data = emad_df)
+model_c_emad = lm(pa_mean ~ disclosure, data = emad_df)
 summary(model_c_emad)
-model_c = lm(meti_mean ~ Disclosure, data = dataf)
+model_c = lm(meti_mean ~ disclosure, data = dataf)
 summary(model_c)
 plot_residuals(model_c)
-# plot_estimate(model_c, 'Disclosure')
+# plot_estimate(model_c, 'disclosure')
 plot_estimate(list(emad = model_c_emad, 
                    hl = model_c), 
-              str_detect(term, 'Disclosure'))
+              str_detect(term, 'disclosure'))
 
 
 
@@ -229,12 +230,12 @@ dag |>
 
 #' So, all together, we just need to adjust for participant values and scientist values.  
 model_d_emad = emad_df |> 
-    filter(Disclosure) %>%
-    lm(pa_mean ~ shared_values + part_values + Values, data = .) |> 
+    filter(disclosure) %>%
+    lm(pa_mean ~ shared_values + part_values + sci_values, data = .) |> 
     summary()
 model_d = dataf |> 
-    filter(Disclosure) %>%
-    lm(meti_mean ~ shared_values + part_values + Values, data = .)
+    filter(disclosure) %>%
+    lm(meti_mean ~ shared_values + part_values + sci_values, data = .)
 summary(model_d)
 plot_residuals(model_d)
 # plot_estimate(model_d, 'shared_values')
@@ -245,28 +246,28 @@ plot_estimate(list(emad = model_d_emad,
 #' But we can include demographics to check the accuracy of the graph.  In the Elliott et al. data, this holds true:  adding other demographics doesn't change the estimated effect for shared values of 0.4.  
 #' TODO: this for our data
 dataf |> 
-    filter(Disclosure) %>% 
-    lm(meti_mean ~ shared_values + part_values + Values +
-           Age + gender + `Race/Ethnicity` + ReligiousAffil + ReligiousServ + 
-           PoliticalIdeology + Education,
+    filter(disclosure) %>% 
+    lm(meti_mean ~ shared_values + part_values + sci_values +
+           age + gender + race_ethnicity + religious_affil + religious_serv + 
+           political_ideology + education,
        data = .) |> 
     broom::tidy()
 
 #' And actually participant values is independent of shared values: from a participant's perspective (given their values), they have an equal chance of seeing a scientist with same or different values. 
 dataf |> 
-    filter(Disclosure) |> 
-    count(part_values, Values, shared_values)
+    filter(disclosure) |> 
+    count(part_values, sci_values, shared_values)
 
 #' So dropping participant values from the regression doesn't change the estimated effect of shared values. 
 
 dataf |> 
-    filter(Disclosure) %>% 
-    lm(meti_mean ~ shared_values + Values, data = .) |> 
+    filter(disclosure) %>% 
+    lm(meti_mean ~ shared_values + sci_values, data = .) |> 
     summary()
 
 #' But scientist values *does* confound the estimate. 
 dataf |> 
-    filter(Disclosure) %>%
+    filter(disclosure) %>%
     lm(meti_mean ~ shared_values, data = .) |> 
     summary()
 
@@ -276,8 +277,8 @@ plot_adjustments(dag, 'sci_values') +
     scale_color_manual(values = 'black')
 
 dataf |> 
-    filter(Disclosure) %>%
-    lm(meti_mean ~ Values, data = .) |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ sci_values, data = .) |> 
     summary()
 
 
@@ -294,9 +295,9 @@ dag |>
                  'conclusion_x_part_values -> METI <- conclusion')) |> 
     plot_adjustments('conclusion_x_part_values')
 
-model_eb_emad = lm(pa_mean ~ Conclusion*part_values, data = emad_df)
+model_eb_emad = lm(pa_mean ~ conclusion*part_values, data = emad_df)
 summary(model_eb_emad)
-model_eb = lm(meti_mean ~ Conclusion*part_values, data = dataf)
+model_eb = lm(meti_mean ~ conclusion*part_values, data = dataf)
 summary(model_eb)
 plot_residuals(model_eb)
 # plot_estimate(model_eb, ':')
@@ -306,14 +307,14 @@ plot_estimate(list(emad = model_eb_emad,
 
 #' Again, include demographics as a check.  
 #' TODO
-lm(pa_mean ~ Conclusion*part_values+ 
+lm(pa_mean ~ conclusion*part_values+ 
        sex + ideology + educatio + age, 
    data = emad_df) |> 
     summary()
 
 emad_df |> 
     filter(!is.na(part_values)) |> 
-    ggplot(aes(Conclusion, pa_mean)) +
+    ggplot(aes(conclusion, pa_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
@@ -325,13 +326,13 @@ dag |>
                  'disclosure -> METI')) |> 
     plot_adjustments('disclosure_x_part_values')
 
-model_ec_emad = lm(pa_mean ~ Disclosure*part_values, data = emad_df)
+model_ec_emad = lm(pa_mean ~ disclosure*part_values, data = emad_df)
 summary(model_ec_emad)
-lm(pa_mean ~ Disclosure*part_values+ 
+lm(pa_mean ~ disclosure*part_values+ 
        sex + ideology + educatio + age, data = emad_df) |> 
     summary()
 
-model_ec = lm(meti_mean ~ Disclosure*part_values, data = dataf)
+model_ec = lm(meti_mean ~ disclosure*part_values, data = dataf)
 summary(model_ec)
 plot_residuals(model_ec)
 # plot_estimate(model_ec, ':')
@@ -341,7 +342,7 @@ plot_estimate(list(emad = model_ec_emad,
 
 emad_df |> 
     filter(!is.na(part_values)) |> 
-    ggplot(aes(Disclosure, pa_mean)) +
+    ggplot(aes(disclosure, pa_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
@@ -352,17 +353,17 @@ dag |>
     plot_adjustments('shared_values_x_part_values')
 
 model_ed_emad = emad_df |> 
-    filter(Disclosure) %>%
+    filter(disclosure) %>%
     lm(pa_mean ~ shared_values*part_values, data = .)
 summary(model_ed_emad)
 emad_df |> 
-    filter(Disclosure) %>%
+    filter(disclosure) %>%
     lm(pa_mean ~ shared_values*part_values+ 
            sex + ideology + educatio + age, data = .) |> 
     summary()
 
 model_ed = dataf |> 
-    filter(Disclosure) %>%
+    filter(disclosure) %>%
     lm(meti_mean ~ shared_values*part_values, data = .)
 summary(model_ed)
 
@@ -371,45 +372,45 @@ plot_estimate(list(emad = model_ed_emad,
               str_detect(term, ':'))
 
 dataf |> 
-    filter(!is.na(part_values), Disclosure) |> 
+    filter(!is.na(part_values), disclosure) |> 
     ggplot(aes(shared_values, meti_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
 #' And political ideology appears to be either entirely upstream or independent to this
 dataf |> 
-    filter(Disclosure) %>%
-    lm(meti_mean ~ shared_values*part_values + PoliticalIdeology, data = .) |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ shared_values*part_values + political_ideology, data = .) |> 
     summary()
 
 #' Apparently independent
 dataf |> 
-    filter(Disclosure) %>%
-    lm(meti_mean ~ PoliticalIdeology, data = .) |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ political_ideology, data = .) |> 
     summary()
 
 dataf |> 
-    filter(Disclosure) |> 
-    ggplot(aes(PoliticalIdeology, meti_mean, group = PoliticalIdeology)) +
+    filter(disclosure) |> 
+    ggplot(aes(political_ideology, meti_mean, group = political_ideology)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
 #' Because the effect is with *scientist* values (we also saw this at the end of D)
 dataf |> 
-    filter(!is.na(part_values), Disclosure) |> 
-    ggplot(aes(Values, meti_mean)) +
+    filter(!is.na(part_values), disclosure) |> 
+    ggplot(aes(sci_values, meti_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
 dataf |> 
-    filter(Disclosure) %>% 
-    lm(meti_mean ~ Values, data = .) |> 
+    filter(disclosure) %>% 
+    lm(meti_mean ~ sci_values, data = .) |> 
     summary()
 
 #' Any interaction with participant values is swamped by uncertainty
 dataf %>% 
-    filter(Disclosure) %>%
-    lm(meti_mean ~ Values*part_values, data = .) |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ sci_values*part_values, data = .) |> 
     summary()
 
 
@@ -437,8 +438,8 @@ dataf |>
                      mapping = aes(label = after_stat(r.label), 
                                    fill = after_stat(r))) +
     ggforce::facet_matrix(rows = vars(starts_with('fa_')),
-                          cols = vars(Age, ReligiousServ, PoliticalIdeology, 
-                                      PoliticalAffiliation, Education), 
+                          cols = vars(age, religious_serv, political_ideology, 
+                                      political_affiliation, education), 
                           switch = 'y') +
     scale_fill_gradient2(limits = c(-1, 1)) +
     theme_bw()
@@ -449,8 +450,8 @@ dataf |>
     geom_boxplot(aes(group = .panel_y), varwidth = TRUE, 
                  orientation = NA) +
     ggforce::facet_matrix(cols = vars(starts_with('fa_')),
-                          rows = vars(`Race/Ethnicity`, gender,
-                                      ReligiousAffil,
+                          rows = vars(race_ethnicity, gender,
+                                      religious_affil,
                                       part_values), 
                           switch = 'y') +
     theme_bw()
@@ -463,15 +464,17 @@ dag |>
 
 lm(meti_mean ~ fa_scientism + fa_vis + fa_cynicism +
                    fa_power + fa_textbook + fa_vfi +
-           Age + gender + `Race/Ethnicity` + ReligiousAffil + ReligiousServ +
-           PoliticalIdeology + PoliticalAffiliation + Education, 
+           age + gender + race_ethnicity + religious_affil + religious_serv +
+           political_ideology + political_affiliation + education, 
    data = dataf) |> 
-    broom::tidy(conf.int = TRUE) |> 
-    filter(str_detect(term, 'fa_')) |> 
-    ggplot(aes(term, estimate, ymin = conf.low, ymax = conf.high)) +
-    geom_pointrange() +
-    geom_hline(yintercept = c(threshold, -threshold), linetype = 'dashed') +
-    coord_flip()
+    list() |> 
+    plot_estimate(str_detect(term, 'fa_'))
+    # broom::tidy(conf.int = TRUE) |>
+    # filter(str_detect(term, 'fa_')) |>
+    # ggplot(aes(term, estimate, ymin = conf.low, ymax = conf.high)) +
+    # geom_pointrange() +
+    # geom_hline(yintercept = c(meaningful, -meaningful), linetype = 'dashed') +
+    # coord_flip()
 
 #' ## B (Consumer Risk) and C (Disclosure) ##
 dag |> 
@@ -479,14 +482,16 @@ dag |>
                  'conclusion_x_viss -> METI <- conclusion')) |> 
     plot_adjustments('conclusion_x_viss')
 
-lm(meti_mean ~ Conclusion*fa_scientism + 
-       Conclusion*fa_vis + 
-       Conclusion*fa_cynicism + 
-       Conclusion*fa_power + 
-       Conclusion*fa_textbook + 
-       Conclusion*fa_vfi, 
+lm(meti_mean ~ conclusion*fa_scientism + 
+       conclusion*fa_vis + 
+       conclusion*fa_cynicism + 
+       conclusion*fa_power + 
+       conclusion*fa_textbook + 
+       conclusion*fa_vfi, 
    data = dataf) |> 
     summary()
+    # list() |>
+    # plot_estimate(str_detect(term, 'fa_'))
 
 dag |> 
     add_arrows(c('disclosure -> disclosure_x_viss <- viss', 
@@ -494,12 +499,12 @@ dag |>
                  'disclosure -> METI')) |> 
     plot_adjustments('disclosure_x_viss')
 
-lm(meti_mean ~ Disclosure*fa_scientism + 
-               Disclosure*fa_vis + 
-               Disclosure*fa_cynicism + 
-               Disclosure*fa_power + 
-               Disclosure*fa_textbook + 
-               Disclosure*fa_vfi, 
+lm(meti_mean ~ disclosure*fa_scientism + 
+               disclosure*fa_vis + 
+               disclosure*fa_cynicism + 
+               disclosure*fa_power + 
+               disclosure*fa_textbook + 
+               disclosure*fa_vfi, 
    data = dataf) |> 
     summary()
 
@@ -510,7 +515,7 @@ dag |>
     plot_adjustments('shared_values_x_viss')
 
 dataf |> 
-    filter(Disclosure) %>% 
+    filter(disclosure) %>% 
     lm(meti_mean ~ shared_values*fa_scientism + 
                    shared_values*fa_vis + 
                    shared_values*fa_cynicism + 
@@ -526,30 +531,33 @@ dag |>
                  'sci_values_x_viss -> METI')) |> 
     plot_adjustments('sci_values_x_viss')
 
-model = dataf |> 
-    filter(Disclosure) %>%
-    lm(meti_mean ~ Values*fa_scientism + 
-                   Values*fa_vis + 
-                   Values*fa_cynicism + 
-                   Values*fa_power + 
-                   Values*fa_textbook + 
-                   Values*fa_vfi, 
+model_fd = dataf |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ sci_values*fa_scientism + 
+                   sci_values*fa_vis + 
+                   sci_values*fa_cynicism + 
+                   sci_values*fa_power + 
+                   sci_values*fa_textbook + 
+                   sci_values*fa_vfi, 
        data = .)
-summary()
+summary(model_fd)
 
-cross_df(list(Values = c('public health', 'economic growth'), 
-              fa_scientism = 0, 
-              fa_vis = 0, 
-              fa_cynicism = 0,
-              fa_power = seq(-2, 2, by = .1), 
-              fa_textbook = 0, 
-              fa_vfi = 0)) %>%
-    broom::augment(model, newdata = .) |> 
-    ggplot(aes(fa_power, .fitted, group = Values, color = Values)) +
+cross_df(list(sci_values = c('public health', 'economic growth'), 
+              fa_scientism = 3, 
+              fa_vis = 3, 
+              fa_cynicism = seq(1, 5, by = .1),
+              fa_power = 3, 
+              fa_textbook = 3, 
+              fa_vfi = 3)) %>%
+    broom::augment(model_fd, newdata = ., interval = 'confidence') |> 
+    ggplot(aes(fa_cynicism, .fitted, group = sci_values, 
+               color = sci_values, fill = sci_values)) +
+    geom_ribbon(aes(ymin = .lower, ymax = .upper), alpha = .25) +
     geom_line()
 
 dataf |> 
-    filter(Disclosure) |> 
-    ggplot(aes(fa_power, meti_mean, color = Values)) +
+    filter(disclosure) |> 
+    ggplot(aes(fa_cynicism, meti_mean, color = sci_values)) +
     geom_point() +
     stat_smooth(method = lm)
+
