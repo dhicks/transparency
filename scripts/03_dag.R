@@ -561,3 +561,8 @@ dataf |>
     geom_point() +
     stat_smooth(method = lm)
 
+dataf |> 
+    filter(disclosure) %>% 
+    lm(meti_mean ~ political_ideology*sci_values, data = .) |> 
+    summary()
+
