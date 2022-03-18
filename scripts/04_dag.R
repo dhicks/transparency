@@ -9,11 +9,12 @@
 #     -[] clean code
 #     -[] double check direction of coding for ideology and tradeoff in Elliott et al.
 #     -[x] estimate plots showing both us + Elliott et al.
-#     -[] better plots for interactions
-    
+#     -[] predicted value plots for E and F
+
     
 library(tidyverse)
 theme_set(theme_minimal())
+library(broom)
 library(ggbeeswarm)
 library(dagitty)
 library(ggdag)
@@ -23,35 +24,19 @@ library(here)
 source(here('R', 'plot_adjustments.R'))
 source(here('R', 'reg_plots.R'))
 
+library(car)
+options(contrasts = c('contr.Treatment', 'contr.poly'))
+options(decorate.contr.Treatment = '')
+
+## Load data ----
+## Elliott et al. data
 emad_df = read_rds(here('data', 'emad.Rds'))
 ## VISS six-factor model
 viss_df = read_csv(here('data', 'fa_six.csv')) |> 
     select(pid, starts_with('fa_'))
+## Our data
 dataf = read_rds(here('data', 'data.Rds')) |> 
     left_join(viss_df, by = 'pid')
-    # select(pid, sci_values, conclusion, disclosure, 
-    #        pref, meti_mean, 
-    #        SRS_sum,
-    #        Age, GenderIdentity, GenderLived, `Race/Ethnicity`, 
-    #        ReligiousAffil, ReligiousServ, 
-    #        political_ideology, PoliticalAffiliation,
-    #        Education) |> 
-    # mutate(pid = as.character(pid),
-    #        ## Reverse coding of METI so that increased METI -> increased trust
-    #        meti_mean = 8 - meti_mean, 
-    #        part_values = if_else(pref >= 3, 
-    #                              'public health', 
-    #                              'economic growth'), 
-    #        shared_values = part_values == sci_values, 
-    #        across(c(Age, ReligiousServ, political_ideology, 
-    #               PoliticalAffiliation, Education), 
-    #               as.integer),
-    #        political_ideology = if_else(political_ideology %in% c(8, 9), 
-    #                                    NA_integer_, political_ideology),
-    #        gender = interaction(GenderIdentity, GenderLived), 
-    #        across(c(`Race/Ethnicity`, ReligiousAffil, gender), 
-    #               fct_infreq)) |> 
-    
 
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 
@@ -201,11 +186,15 @@ plot_estimate(list(emad = model_c_emad,
 #' # D. Shared values #
 #' *Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.*
 
-ggplot(emad_df, aes(shared_values, pa_mean)) +
+emad_df |> 
+    filter(disclosure, !is.na(part_values)) |> 
+    ggplot(aes(shared_values, pa_mean)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
-ggplot(dataf, aes(shared_values, meti_mean)) +
+dataf |> 
+    filter(disclosure, !is.na(part_values)) |> 
+    ggplot(aes(shared_values, meti_mean)) +
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
