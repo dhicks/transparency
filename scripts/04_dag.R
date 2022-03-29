@@ -356,6 +356,7 @@ plot_predictions(model_ec, c('disclosure', 'part_values'),
 dataf |> 
     filter(!is.na(part_values)) |> 
     ggplot(aes(disclosure, meti_mean)) +
+    ggplot(aes(disclosure, pa_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
@@ -425,8 +426,8 @@ model_es = dataf |>
     filter(disclosure) %>% 
     lm(meti_mean ~ sci_values, data = .)
 summary(model_es)
-debug(plot)
 plot_predictions(model_es, 'sci_values')
+
 
 #' Any interaction with participant values is swamped by uncertainty
 dataf %>% 
@@ -515,6 +516,7 @@ dataf |>
 
 #' ## VISS effects by themselves ##
 #' Will be difficult to disentangle from demographics
+#' *[scale: 1-5 vs. 0-1 for binary vars]*
 dag |> 
     plot_adjustments('viss')
 
@@ -564,7 +566,6 @@ ggsave(here(out_dir, '04_cynicism_trust.png'),
        height = 3, width = 4, scale = 1)
 
 
-
 #' ## B (Consumer Risk) and C (Disclosure) ##
 dag |> 
     add_arrows(c('conclusion -> conclusion_x_viss <- viss', 
@@ -583,6 +584,12 @@ summary(model_fb)
 
 plot_predictions(model_fb, 
                  c('fa_cynicism', 'conclusion'))
+=======
+   data = dataf) |> 
+    summary()
+    # list() |>
+    # plot_estimate(str_detect(term, 'fa_'))
+>>>>>>> cleaning
 
 dag |> 
     add_arrows(c('disclosure -> disclosure_x_viss <- viss', 
