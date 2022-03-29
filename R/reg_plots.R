@@ -33,7 +33,7 @@ plot_estimate = function(models, ...) {
 plot_predictions = function(model, 
                             focal_vars, 
                             step = .1, 
-                            interaction_ci = FALSE,
+                            interaction_ci = TRUE,
                             return_plot = TRUE) {
     getmode <- function(v) {
         uniqv <- unique(v)
@@ -74,7 +74,8 @@ plot_predictions = function(model,
     
     predictions = broom::augment(model, 
                                  newdata = newdata, 
-                                 interval = 'confidence')
+                                 interval = 'confidence', 
+                                 level = .95)
     
     if (!return_plot) {
         ## If we're not returning a plot, return the predictions df
@@ -86,7 +87,9 @@ plot_predictions = function(model,
     
     if (identical(length(focal_vars), 1L)) {
         ## Single-variable plot
-        plot = ggplot(predictions, aes_string(focal_vars, '.fitted')) +
+        plot = ggplot(predictions, aes_string(focal_vars, 
+                                              '.fitted', 
+                                              group = 1L)) +
             geom_ribbon(aes(ymin = .lower, ymax = .upper), alpha = .25) +
             geom_line()
     } else if (identical(length(focal_vars), 2L)) {
