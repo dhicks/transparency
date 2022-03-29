@@ -356,7 +356,6 @@ plot_predictions(model_ec, c('disclosure', 'part_values'),
 dataf |> 
     filter(!is.na(part_values)) |> 
     ggplot(aes(disclosure, meti_mean)) +
-    ggplot(aes(disclosure, pa_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
@@ -584,12 +583,6 @@ summary(model_fb)
 
 plot_predictions(model_fb, 
                  c('fa_cynicism', 'conclusion'))
-=======
-   data = dataf) |> 
-    summary()
-    # list() |>
-    # plot_estimate(str_detect(term, 'fa_'))
->>>>>>> cleaning
 
 dag |> 
     add_arrows(c('disclosure -> disclosure_x_viss <- viss', 

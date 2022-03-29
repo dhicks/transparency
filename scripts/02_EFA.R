@@ -151,9 +151,9 @@ communalities
 #six factor model recommended by EFA parallel analysis and inflexion point on scree plot
 six_factor_model <- 'scientism =~ scientism.1 + fallible.3 + ir.2 + aims.1 + technocracy.2 + factvalue.1
                     vis =~ ir.3 + aims.2 + aims.3
-                    cynicism =~ coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2
+                    cynicism =~ coi.1 + consensus.3 + factvalue.2 + nonsubj.1 + fallible.2 + ir.1 + coi.2 + stdpt.1
                     power =~ stdpt.3 + coi.3 + stdpt.2
-                    textbook =~ consensus.2 + fallible.2 + pluralism.3 + pluralism.1 + vfi.1
+                    textbook =~ consensus.2 + fallible.1 + pluralism.3 + pluralism.1 + vfi.1
                     vfi =~ vfi.3 + nonsubj.2 + technocracy.1 + factvalue.3
                     '
 fit6 <- cfa(six_factor_model, data = d_vis_cfa)
@@ -196,12 +196,13 @@ six_discrete = d_vis |>
                                        nonsubj.1,
                                        fallible.2,
                                        ir.1,
-                                       coi.2))),
+                                       coi.2, 
+                                       stdpt.1))),
            fa_power = mean(c_across(c(stdpt.3,
                                     coi.3,
                                     stdpt.2))),
            fa_textbook = mean(c_across(c(consensus.2,
-                                       fallible.2,
+                                       fallible.1,
                                        pluralism.3,
                                        pluralism.1,
                                        vfi.1))),
