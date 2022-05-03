@@ -23,3 +23,45 @@ We retained 29 out of the original 36 items. The retained items, factor loadings
 For cross-validation purposes, we ran a CFA on the second sub-sample using the factor structure extracted from the EFA. We carried out the CFA with maximum likelihood estimation using the lavaan package (version #whatever) in R. Fit indices, unfortunately, revealed the model was insufficient to adequately fit the data, $$\chi^2$$(308) = 981.10, p < .001, CFI = .622, AGFI = .817, RMSEA = .071, and SRMR = .086. Typically, values exceeding .90 for CFI and AGFI indicate acceptable fit and values below .05 for RMSEA and SRMR indicate acceptable fit (Hu & Bentler, 1999).
 
 Despite results from the CFA, the strong theoretical coherence of the factor structure suggests ways in which future iterations of a scale to tap into peoples' perceived values about science could improve upon the current Values in Science scale. More precise item wording may be necessary to better capture elements of the aforementioned constructs. Similarly, additional items may be needed to capture more aspects of each the proposed latent constructs. Lastly, there may be additional relevant values and perceptions about science that are not captured at all in the present iteration of the Values in Science scale. Future work should consider each of these suggestions to build upon the preliminary work we report here on the development of a psychometrically valid instrument to capture peoples' values in science. Excepting the comparative fit index (CFI), the fit indices were close to thresholds indicative of acceptable model fit. As such, we have decided to continue with our subsequent analyses using the six-factor structure as a means of examining whether participant responses to the Values in Science scale has any potential predictive validity for participant responses to the perceived credibility of scientists who acknowledge the role of values in their scientific research. Results of any such tests must be interpreted with caution, however, in light of the CFA results.
+
+## Replication Analyses ##
+
+
+We tested the hypothesis of a modest correlation between values and ideology in two ways. First, to test (H1a) whether political liberals are more likely to prioritize public health over economic growth compared to conservatives, we conducted a Spearman's rank order correlation. Results revealed a significant correlation in line with the hypothesis, Spearman's rho = -.47, p < .001. Political liberals were more likely than conservatives to value public health over economic growth. To test (H1b) that a majority of political conservatives priortize public health over economic growth we cross-tabulated the data. Results revealed that, contrary to the hypothesis, slightly more than half of the self-reported political conservatives in our sample reported valuing economic growth (51.7%) over public health (48.3%).
+
+Next, we tested the hypotheses that (H2) scientists who find a chemical harms human health are perceived as more trustworthy than scientist who find that a chemical does not cause harm and (H3) a scientist who discloses values are perceived as less trustworthy than a scientist who does not. For this analysis, we regressed participants' METI ratings onto both the Conclusions and Disclosure experimental conditions. The full model was significant, adj. R^2 = .148, F(2, 985) = 86.59, p < .001 (see Table #). Specifically, results revealed that the conclusions reported by the scientist predicted participants' perceived trustworthiness in line with our hypothesis. Participants rated the scientist who reported that BPA causes harm as more trustworthy than the scientist who reported that BPA does not cause harm. By contrast, the results do not provide evidence in favor of our hypothesis that a scientist disclosing their values are perceived as less trustworthy than a scientist who does not disclose values. 
+
+Next, we tested the hypothesis that (H4) if the participant and scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist do not share the same values. For this and related analyses, we only included data from participants who were assigned to either of the Disclosure conditions and self-reported their own values, reducing the sample to 567. Following this, we created a new Shared Values variable as a composite of the participants' reported values and the scientist's values. For this analysis, because the Shared Values is a composit, we wanted to adjust the model to account for any direct contributions to participants' METI rating by either the scientist's values or the participants' values. Thus, we regression participant METI scores onto the participants' reported values, the scientist's values condition, and the composit Shared Values variable. The resulting model was significant, adj. R^2 = .065, F(3, 563) = 14.15, p < .001. However, contrary to expectations, Shared Values did not emerge as a significant predictor of participants' perceptions of the trustworthiness of the scientist. Rather, only the scientist's stated values significantly predicted how trustworthy participants rated the scientist such that a scientist who disclosed valuing public health was rated as more trustworthy than a scientist who disclosed valuing economic growth. 
+
+
+
+## Variation in Effect Sizes ## 
+
+We ran the following analyses to test our hypothesis that (H5) the magnitude of the effects found for the tests of H2-H4 vary depending on whether the participant prioritizes public health or economic growth. Results are presented in Table #.
+
+H5a - consumer risk sensitivity
+The full model was significant, adj. R^2 = .173, F(3, 840) = 59.95, p < .001. As with the earlier analysis, results showed a main effect of the Conclusions condition, such that participants rated the scientist who reported that BPA causes harm as more trustworthy than the scientist who reported that BPA does not cause harm. However, this effect was qualified by a significant interaction with participants' values. Participants who prioritized public health over economic growth and read about a scientist who concluded that BPA causes harm rated the scientist as more trustworthy than participants who read about a scientist who concluded that BPA does not cause harm, regardless of those participants' values.
+
+
+H5b - transparency penalty
+The full model was not significant, adj. R^2 < .001, F(3, 840) = 1.19, p = .31. As with the earlier analysis, our results do not provide evidence for a transparency penalty to the perceived trustworthiness of a scientist, either in general or interacting with participants' own reported values. 
+
+
+H5c - shared values
+The full model was significant, adj. R^2 = .065, F(3, 563) = 14.15, p < .001. 
+
+
+## Interactions with Values in Science Scale ##
+
+H6a
+The full model was significant, adj. R^2 = .163, F(13, 892) = 14.55, p < .001.
+
+H6b
+The full model was not significant, adj. R^2 = .008, F(13, 892) = 1.19, p = .08.
+
+H6c
+The full model was significant, adj. R^2 = .077, F(13, 520) = 3.354, p < .001.
+
+
+However, because of the results of the analysis reported above to test H4, we conducted an exploratory follow-up to test how 
+
