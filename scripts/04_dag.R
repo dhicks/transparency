@@ -11,7 +11,7 @@
 #     -[x] estimate plots showing both us + Elliott et al.
 #     -[] predicted value plots for E and F
 
-    
+
 library(tidyverse)
 theme_set(theme_minimal())
 library(broom)
@@ -224,6 +224,7 @@ dag |>
 model_d_emad = emad_df |> 
     filter(disclosure) %>%
     lm(pa_mean ~ shared_values + part_values + sci_values, data = .)
+summary(model_d_emad)
 model_d = dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ shared_values + part_values + sci_values, data = .)
@@ -429,22 +430,28 @@ plot_predictions(model_es, 'sci_values')
 
 
 #' Any interaction with participant values is swamped by uncertainty
+#' Though Emilio thinks this might be worth reporting bc of difference in variation btwn participant values groups
+#' How are participants thinking of economic growth?  Might be thinking of indirect effects, eg, good economy -> better hospitals and public health system 
 dataf %>% 
     filter(disclosure) %>%
     lm(meti_mean ~ sci_values*part_values, data = .) |> 
-    # summary()
-    plot_predictions(c('sci_values', 'part_values'), 
-                     interaction_ci = TRUE)
+    summary()
+plot_predictions(c('sci_values', 'part_values'), 
+                 interaction_ci = TRUE)
 
 
 ## F. VISS ----
 #' # F. VISS #
 #' *Effects c-e will vary depending the participant's views of the role of values in science (the latent variables from the six-factor model)*
+#' 
+#' Probably due to low psychometric qualities of VIS factors, seeing some inconsistency in *primary* effects (eg, primary effects estimates for fa_power across some of the models below).  
+#' Don't focus on outcomes of any particular model; at best these models provide very weak evidence
+#' Motivating future research to improve quality of prompts
 
 
 #' ## VISS and demographics ##
-#' *[formatting]*
 #' Continuous and ordinal demographics
+#+ fig.width = 10, fig.height = 8
 dataf |> 
     ggplot(aes(x = .panel_x, y = .panel_y)) +
     ggpubr::stat_cor(label.x.npc = 'center', label.y.npc = 'center', 
@@ -468,6 +475,7 @@ dataf |>
     scale_fill_gradient2(limits = c(-1, 1)) +
     theme_bw()
 
+#' 
 dataf |> 
     # filter(!disclosure) |> 
     ggplot(aes(political_ideology, fa_cynicism)) +
@@ -501,6 +509,7 @@ ggsave(here(out_dir, '04_cynicism_polid.png'),
        height = 3, width = 4, scale = 1)
 
 #' Categorical demographics
+#+ fig.width = 12, fig.height = 8
 dataf |> 
     ggplot(aes(x = .panel_x, y = .panel_y)) +
     geom_boxplot(aes(group = .panel_y), varwidth = TRUE, 
@@ -515,15 +524,18 @@ dataf |>
 
 #' ## VISS effects by themselves ##
 #' Will be difficult to disentangle from demographics
-#' *[scale: 1-5 vs. 0-1 for binary vars]*
 dag |> 
     plot_adjustments('viss')
 
 model_f = lm(meti_mean ~ fa_scientism + fa_vis + fa_cynicism +
-                   fa_power + fa_textbook + fa_vfi +
-           age + gender + race_ethnicity + religious_affil + religious_serv +
-           political_ideology + political_affiliation + education, 
-   data = dataf)
+                 fa_power + fa_textbook + fa_vfi +
+                 part_values +
+                 age + gender + race_ethnicity + 
+                 religious_affil + religious_serv +
+                 political_ideology + political_affiliation + education, 
+             data = dataf)
+
+summary(model_f)
 
 plot_estimate(list(model_f), str_detect(term, 'fa_'))
 
@@ -531,16 +543,23 @@ factors = c('fa_scientism', 'fa_vis', 'fa_cynicism',
             'fa_power', 'fa_textbook', 'fa_vfi') |> 
     set_names()
 
-map(factors, ~ plot_predictions(model_f, .x, return_plot = FALSE)) |> 
+# debug(plot_predictions)
+# plot_predictions(model_f, 'fa_textbook')
+
+map(factors, 
+    ~ plot_predictions(model_f, .x, return_plot = FALSE)) |> 
     map(~set_names(.x, 'value', 'fitted', 'lower', 'upper')) |> 
     bind_rows(.id = 'factor') |> 
     ggplot(aes(value, fitted, color = factor, fill = factor)) +
     geom_ribbon(aes(ymin = lower, ymax = upper), 
-                color = 'black', alpha = .25) +
+                color = 'transparent', alpha = .25) +
     geom_line(size = 1) +
     facet_wrap(vars(factor)) +
     scale_color_viridis_d(aesthetics = c('color', 'fill'), 
                           guide = 'none')
+
+ggsave(here(out_dir, '04_fa_effects.png'), 
+       height = 4, width = 6, scale = 1.5, bg = 'white')
 
 ggplot() +
     geom_point(aes(fa_cynicism, meti_mean), 
@@ -548,10 +567,10 @@ ggplot() +
                position = 'jitter',
                alpha = .25) +
     geom_ribbon(aes(fa_cynicism, .fitted, ymin = .lower, ymax = .upper), 
-              data = plot_predictions(model_f, 
-                                      'fa_cynicism', 
-                                      return_plot = FALSE), 
-              fill = 'blue', alpha = .5) +
+                data = plot_predictions(model_f, 
+                                        'fa_cynicism', 
+                                        return_plot = FALSE), 
+                fill = 'blue', alpha = .5) +
     geom_line(aes(fa_cynicism, .fitted), 
               data = plot_predictions(model_f, 
                                       'fa_cynicism', 
@@ -572,17 +591,19 @@ dag |>
     plot_adjustments('conclusion_x_viss')
 
 model_fb = lm(meti_mean ~ conclusion*fa_scientism + 
-       conclusion*fa_vis + 
-       conclusion*fa_cynicism + 
-       conclusion*fa_power + 
-       conclusion*fa_textbook + 
-       conclusion*fa_vfi, 
-   data = dataf)
+                  conclusion*fa_vis + 
+                  conclusion*fa_cynicism + 
+                  conclusion*fa_power + 
+                  conclusion*fa_textbook + 
+                  conclusion*fa_vfi, 
+              data = dataf)
 
 summary(model_fb)
 
 plot_predictions(model_fb, 
                  c('fa_cynicism', 'conclusion'))
+plot_predictions(model_fb, 
+                 c('fa_textbook', 'conclusion'))
 
 dag |> 
     add_arrows(c('disclosure -> disclosure_x_viss <- viss', 
@@ -591,16 +612,32 @@ dag |>
     plot_adjustments('disclosure_x_viss')
 
 model_fc = lm(meti_mean ~ disclosure*fa_scientism + 
-               disclosure*fa_vis + 
-               disclosure*fa_cynicism + 
-               disclosure*fa_power + 
-               disclosure*fa_textbook + 
-               disclosure*fa_vfi, 
-   data = dataf)
+                  disclosure*fa_vis + 
+                  disclosure*fa_cynicism + 
+                  disclosure*fa_power + 
+                  disclosure*fa_textbook + 
+                  disclosure*fa_vfi, 
+              data = dataf)
 summary(model_fc)
+
+model_fc_plus_demo = lm(meti_mean ~ disclosure*fa_scientism + 
+                            disclosure*fa_vis + 
+                            disclosure*fa_cynicism + 
+                            disclosure*fa_power + 
+                            disclosure*fa_textbook + 
+                            disclosure*fa_vfi +
+                            age + gender + race_ethnicity + religious_affil + 
+                            religious_serv +
+                            political_ideology + political_affiliation + education, 
+                        data = dataf)
+summary(model_fc_plus_demo)
+
 
 plot_predictions(model_fc, c('fa_scientism', 'disclosure'))
 plot_predictions(model_fc, c('fa_cynicism', 'disclosure'))
+plot_predictions(model_fc, c('fa_textbook', 'disclosure'))
+plot_predictions(model_fc, c('fa_power', 'disclosure'))
+plot_predictions(model_fc_plus_demo, c('fa_power', 'disclosure'))
 
 
 #' ## D: Shared values ##
@@ -612,12 +649,12 @@ dag |>
 model_fd = dataf |> 
     filter(disclosure) %>% 
     lm(meti_mean ~ shared_values*fa_scientism + 
-                   shared_values*fa_vis + 
-                   shared_values*fa_cynicism + 
-                   shared_values*fa_power + 
-                   shared_values*fa_textbook + 
-                   shared_values*fa_vfi, 
-   data = .)
+           shared_values*fa_vis + 
+           shared_values*fa_cynicism + 
+           shared_values*fa_power + 
+           shared_values*fa_textbook + 
+           shared_values*fa_vfi, 
+       data = .)
 summary(model_fd)
 
 plot_predictions(model_fd, c('fa_scientism', 'shared_values'))
@@ -632,16 +669,16 @@ dag |>
 model_fd = dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ sci_values*fa_scientism + 
-                   sci_values*fa_vis + 
-                   sci_values*fa_cynicism + 
-                   sci_values*fa_power + 
-                   sci_values*fa_textbook + 
-                   sci_values*fa_vfi, 
+           sci_values*fa_vis + 
+           sci_values*fa_cynicism + 
+           sci_values*fa_power + 
+           sci_values*fa_textbook + 
+           sci_values*fa_vfi, 
        data = .)
 summary(model_fd)
 
 map(factors, 
-        ~ plot_predictions(model_fd, c(.x, 'sci_values'), return_plot = FALSE)) |> 
+    ~ plot_predictions(model_fd, c(.x, 'sci_values'), return_plot = FALSE)) |> 
     map(~ set_names(.x, 'score', 'sci_values', 'fitted', 'lower', 'upper')) |> 
     bind_rows(.id = 'factor') |> 
     ggplot(aes(score, fitted, color = sci_values, fill = sci_values)) +

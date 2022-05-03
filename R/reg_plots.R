@@ -45,7 +45,7 @@ plot_predictions = function(model,
         select(-meti_mean) |> 
         summarize(across(c(where(is.numeric), where(is.logical)),
                          mean, na.rm = TRUE), 
-                  across(c(where(is.factor)), 
+                  across(c(where(is.factor), where(is.character)), 
                          getmode)) |> 
         as.list() |> 
         magrittr::inset(focal_vars, NULL)
@@ -68,7 +68,7 @@ plot_predictions = function(model,
     ## Build new data for predict
     newdata = focal_vars |> 
         set_names() |> 
-        map(minmax, step) |> 
+        map2(step, minmax) |> 
         c(defaults) |>
         cross_df()
     

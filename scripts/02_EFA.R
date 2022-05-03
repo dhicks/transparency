@@ -213,6 +213,8 @@ six_discrete = d_vis |>
     ungroup()
 
 score_grid(scores = six_discrete)
+ggsave(here('out', 'six_score_grid.png'), 
+       height = 5, width = 6, scale = 1.5)
 
 write_csv(six_discrete, here(data_dir, 'fa_six.csv'))
 
