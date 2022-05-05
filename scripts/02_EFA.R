@@ -9,6 +9,7 @@ library(gghighlight)
 library(lavaan)
 
 library(visdat)
+library(grid)
 
 library(here)
 
@@ -163,6 +164,91 @@ fitmeasures(fit6, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 #+ fig.height = 8, fig.width = 8
 score_grid(fit6, d_vis_cfa)
 
+## Correlation matrix
+fa_vars = c('scientism.1',
+            'fallible.3',
+            'ir.2',
+            'aims.1',
+            'technocracy.2',
+            'factvalue.1',
+            'ir.3',
+            'aims.2',
+            'aims.3',
+            'coi.1',
+            'consensus.3',
+            'factvalue.2',
+            'nonsubj.1',
+            'fallible.2',
+            'ir.1',
+            'coi.2',
+            'stdpt.1',
+            'stdpt.3',
+            'coi.3',
+            'stdpt.2',
+            'consensus.2',
+            'fallible.1',
+            'pluralism.3',
+            'pluralism.1',
+            'vfi.2',
+            'vfi.3',
+            'nonsubj.2',
+            'technocracy.1',
+            'factvalue.3')
+
+text_scientism = textGrob('scientism', gp=gpar(fontsize=13, fontface="bold"))
+text_vis = textGrob('VIS', gp=gpar(fontsize=13, fontface="bold"))
+text_cynicism = textGrob('cynicism', gp=gpar(fontsize=13, fontface="bold"))
+text_power = textGrob('power', gp=gpar(fontsize=13, fontface="bold"))
+text_textbook = textGrob('textbook', gp=gpar(fontsize=13, fontface="bold"))
+text_VFI = textGrob('VFI', gp=gpar(fontsize=13, fontface="bold"))
+
+six_corr_plot = d_vis_cfa |> 
+    cor() |> 
+    as_tibble(rownames = 'item1') |> 
+    pivot_longer(-item1, names_to = 'item2', values_to = 'cor') |> 
+    filter_at(vars(item1, item2), ~ .x %in% fa_vars) |> 
+    mutate(across(c(item1, item2), 
+                  ~ fct_relevel(.x, fa_vars))) |> 
+    ggplot(aes(item1, fct_rev(item2), fill = cor)) +
+    geom_raster() +
+    geom_hline(yintercept = cumsum(c(4, 5, 3, 8, 3, 6))+.5) +
+    geom_vline(xintercept = cumsum(rev(c(4, 5, 3, 8, 3, 6)))+.5) +
+    coord_equal(clip = 'off') +
+    scale_fill_gradient2(limits = c(-1, 1), name = 'R') +
+    labs(x = '', 
+         y = '') +
+    theme(#legend.position = c(.5, 0), legend.direction = 'horizontal',
+        legend.position = 'top', legend.margin = margin(),
+          axis.text.x = element_text(hjust = 1L, angle = 40, vjust = 1), 
+          plot.margin = margin(l = 50, r = 10, t = 0))
+six_corr_plot
+
+ann_x = -7
+six_corr_out = six_corr_plot + 
+    annotation_custom(text_scientism, 
+                  xmin = ann_x, xmax = ann_x, 
+                  ymin = 27, ymax = 27) +
+    annotation_custom(text_vis, 
+                      xmin = ann_x, xmax = ann_x, 
+                      ymin = 22, ymax = 22) +
+    annotation_custom(text_cynicism, 
+                      xmin = ann_x, xmax = ann_x, 
+                      ymin = 17, ymax = 17) +
+    annotation_custom(text_power, 
+                      xmin = ann_x, xmax = ann_x, 
+                      ymin = 11, ymax = 11) +
+    annotation_custom(text_textbook, 
+                      xmin = ann_x, xmax = ann_x, 
+                      ymin = 7, ymax = 7) +
+    annotation_custom(text_VFI, 
+                      xmin = ann_x, xmax = ann_x, 
+                      ymin = 2, ymax = 3)
+
+six_corr_out
+
+ggsave(here('out', '02_six_corr_matrix.png'), 
+       plot = six_corr_out,
+       height = 8, width = 8, scale = .75)
 
 
 #three factor model based on eigenvalues > 1

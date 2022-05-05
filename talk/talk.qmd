@@ -1,0 +1,130 @@
+---
+title: "Developing Measures of Public Perceptions of Values in Science"
+author: |
+    | Dan Hicks 
+    | Emilio Lobato
+    | University of California, Merced
+    | *[bitly]*
+toc: true
+format: 
+    revealjs:
+        toc-depth: 1
+        slide-number: true
+        center: false
+        <!--margin: 0.0-->
+link-citations: true
+---
+
+# Controversy and mismatch # {center="true"}
+
+## Mismatch hypothesis
+
+- A mismatch between **public understanding of philosophy of science** and **realities of scientific practice**
+- This mismatch contributes to public scientific controversies
+- In some cases, this mismatch has been deliberately exploited to manufacture doubt
+
+## John: Climategate vs. transparency
+
+:::: {.columns}
+::: {.column}
+![\n](img/John.jpg){fig-alt="Photo of Stephen John"}
+:::
+::: {.column}
+*[E]pistemic trust in science may be 'fragile' because based on a false 'folk philosophy of science'.* [@JohnEpistemicTrustEthics2017 6-7]
+:::
+::::
+
+- Inferring causation from correlation (observational data)
+- Refusing (desk rejecting) papers by climate skeptics
+- "[I]gnoring recalcitrant or strange data sets" [@JohnEpistemicTrustEthics2017 7]
+
+## Kovaka: Pro-science science denial {.smaller}
+
+:::: {.columns}
+::: {.column}
+*[P]eople have serious misconceptions about what scientific inquiry ought to look like. Their misconceptions interact with partisan biases to produce denial of human-caused climate change.* [@KovakaClimateChangeDenial2021 1]
+:::
+::: {.column}
+![\n](img/Kovaka.jpg){fig-alt="Photo of Karen Kovaka"}
+:::
+::::
+
+Misconceptions about 
+
+- Objectivity: "scientists as more objective than other people"; value-free ideal
+- Scientific method: "a universal, step-by-step scientific method," based on experiments
+- Uncertainty and fallibility: Galileo narratives and quest for certainty [@KovakaClimateChangeDenial2021 11-14]
+
+
+## Nature of science
+
+*[substantial area of research, esp. by education researchers; 
+but no scale we found considered role of values in a sophisticated way]
+
+"more than 25 NOS instruments have been developed over the past 50 years" [Neumann citing Lederman 2007]
+LiangStudentUnderstandingScience2006 -> Lombrozo et al -> Weisberg et al.
+Lombrozo et al version critiqued by Neumann
+    - N had science educators map L items to categories based on a lit review of NOS education research (1377, 1384); these don't correspond to L's phil sci-informed categories (1384ff), and don't include issues such as VFI
+    - psychometric critique
+
+## *[other empirical research]*
+
+*[Elliott et al; Safford et al]
+
+
+
+# Developing a Values in Science Scale (VISS)
+
+## VISS items ##
+
+36 items, 3 each for 12 different topics in the \
+science, values, and policy literature
+
+:::: {.columns}
+::: {.column}
+Aims of science\
+Conflicts of interest\
+Consensus\
+Fact-value distinction\
+Fallibilism\
+Inductive risk
+:::
+::: {.column}
+Non-subjectivity\
+Pluralism\
+Scientism\
+Standpoint theory\
+Technocracy\
+Value-free ideal
+:::
+::::
+
+## Data and methods ##
+
+- Online survey/marketing platform Prolific
+- Representative sample of 980 US adults
+- Replication of *[elliott et al.]* + VISS + demographics
+
+</br>
+
+- Exploratory factor analysis of VISS items
+- Statistical analysis of several findings from *[elliott et al]*
+
+## VISS factors ##
+
+<!--:::: {.columns}
+::: {.column width="30%"}
+Scientism\
+Values in science\
+Cynicism\
+Power\
+Textbook science\
+Value-free ideal
+:::
+::: {.column width="70%"}--->
+![\n](../out/02_six_corr_matrix.png){fig-alt="Screenshot of the factor correlation matrix.  The factors are labeled scientism, VIS (values in science), cynicism, power, textbook (science), and VFI (value-free ideal)" height="650"}
+
+
+
+
+
