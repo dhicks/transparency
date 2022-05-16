@@ -1,0 +1,25 @@
+---
+title: "Developing Measures of Public Perceptions of Values in Science"
+author: |
+    | Dan Hicks 
+    | Emilio Lobato
+    | University of California, Merced
+    | *[bitly]*
+output: 
+    slidy_presentation:
+        toc: false
+        slide_level: 3
+    beamer_presentation:
+        includes:
+            in_header: preamble.tex
+        latex_engine: 'lualatex'
+        theme: 'Frankfurt'
+        keep_tex: no
+        toc: false
+        slide_level: 3
+        pandoc_args: ["--lua-filter=tinycites.lua"]
+link-citations: true
+<!-- bibliography: -->
+---
+
+
