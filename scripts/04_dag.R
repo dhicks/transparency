@@ -35,12 +35,18 @@ data_dir = here('data')
 ## Load data ----
 ## Elliott et al. data
 emad_df = read_rds(here(data_dir, 'emad.Rds'))
-## VISS six-factor model
+## VISS item labels and six-factor model
+source(here('R', 'vis_labels.R'))
+vis_labels_vec = vis_labels |> 
+    pull(item) |> 
+    set_names(vis_labels$tag)
+
 viss_df = read_csv(here(data_dir, 'fa_six.csv')) |> 
     select(pid, starts_with('fa_'))
 ## Our data
 dataf = read_rds(here(data_dir, 'data.Rds')) |> 
-    left_join(viss_df, by = 'pid')
+    left_join(viss_df, by = 'pid') |> 
+    rename(vis_labels_vec)
 
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 

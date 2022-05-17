@@ -4,7 +4,7 @@ author: |
     | Dan Hicks 
     | Emilio Lobato
     | University of California, Merced
-    | [`bit.ly/3w1RJSA`](https://bit.ly/3w1RJSA)
+    | [`values-in-science-scale.netlify.app`](https://values-in-science-scale.netlify.app)
 toc: false
 toc-title: "Overview"
 format: 
@@ -226,7 +226,7 @@ Shared values effect
 
 # Fin # {.unlisted visibility='uncounted'}
 
-[`bit.ly/3w1RJSA`](https://bit.ly/3w1RJSA)
+[`values-in-science-scale.netlify.app`](https://values-in-science-scale.netlify.app)
 
 # Extra slides # {.unlisted visibility='uncounted'}
 
