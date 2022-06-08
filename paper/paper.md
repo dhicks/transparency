@@ -1,6 +1,6 @@
 ---
-title: "Title"
-author: Daniel J. Hicks
+title: "Something something values disclosure replication"
+author: "Daniel J. Hicks and Emilio Lobato""
 date: Typeset \today
 abstract: |
 	abstract
@@ -10,22 +10,9 @@ abstract: |
 
 # Introduction #
 
+# Methods and Materials #
+
 # Results #
-
-## Validation of Values in Science Scale ##
-
-To examine the underlying dimensionality of the Values in Science scale, we split the sample in half for the purposes of carrying out exploratory factor analysis (EFA) to see what underlying factor structure may be present based on participants' response and confirmatory factor analysis (CFA) to compare models that could be abstracted from the EFA. We created a dummy variable that randomly assigned participants to one of two groups, resulting in two sub-samples of 439 and 467 response sets, respectively. Before conducting the EFA, we checked whether the assumptions necessary for a valid EFA held. Bartlett's test of sphericity was significant, $$\chi^2$$ (`r bartlett$parameter`) = `r bartlett$statistic`, p = `r bartlett$p.value(round = 3)`. The Kaiser-Meyer-Olkin measure of sampling adequacy was `r kmo$MSA(round =2)`. The determinant of the correlation matrix was `r det(round = 5)`, indicating no multicollinearity issues.
-
-We conducted our factor analysis on the first sub-sample using the psych package (version #whatever) in R. Parallel analysis indicated we should retain six factors for an exploratory factor analysis, although only three factors had eigenvalues greater than 1.0. As such, we computed solutions for a three and a six factor solution using varimax rotation, deciding to retain items that had at least |.3| factor loading on only one of the resulting factors. The six-factor solution explained 33% of the variance and was preferred because the resulting factor structure was more easily interpretable than the three factor solution, which only explained 25% of the variance.
-
-We retained 29 out of the original 36 items. The retained items, factor loadings, and communalities are all shown in Table #. The first identified factor contains six items that cohere around scientistic perceptions of science, elevating the status of science as superior to other knowledge-production efforts. The second factor identified contains three items that emphasize the role of science within society, focusing on societal consequences of scientific endeavors. The third factor contains eight items that, together, appear to represent participants' level of cynicism regarding the credibility of scientists and the scientific community. The fourth factor contains three items that tap into participants' perceptions of the social power dynamics within the scientific community. The fifth factor identified contains five items that reflect perceptions of science as constrained to a relatively narrow set of methods and practices in order to be counted as science, i.e. a mythological "the" scientific method. The final factor identified contains four items that appear to tap into perceptions of science as capable of pure objectivity.
-
-For cross-validation purposes, we ran a CFA on the second sub-sample using the factor structure extracted from the EFA. We carried out the CFA with maximum likelihood estimation using the lavaan package (version #whatever) in R. Fit indices, unfortunately, revealed the model was insufficient to adequately fit the data, $$\chi^2$$(308) = 981.10, p < .001, CFI = .622, AGFI = .817, RMSEA = .071, and SRMR = .086. Typically, values exceeding .90 for CFI and AGFI indicate acceptable fit and values below .05 for RMSEA and SRMR indicate acceptable fit (Hu & Bentler, 1999).
-
-Despite results from the CFA, the strong theoretical coherence of the factor structure suggests ways in which future iterations of a scale to tap into peoples' perceived values about science could improve upon the current Values in Science scale. More precise item wording may be necessary to better capture elements of the aforementioned constructs. Similarly, additional items may be needed to capture more aspects of each the proposed latent constructs. Lastly, there may be additional relevant values and perceptions about science that are not captured at all in the present iteration of the Values in Science scale. Future work should consider each of these suggestions to build upon the preliminary work we report here on the development of a psychometrically valid instrument to capture peoples' values in science. Excepting the comparative fit index (CFI), the fit indices were close to thresholds indicative of acceptable model fit. As such, we have decided to continue with our subsequent analyses using the six-factor structure as a means of examining whether participant responses to the Values in Science scale has any potential predictive validity for participant responses to the perceived credibility of scientists who acknowledge the role of values in their scientific research. Results of any such tests must be interpreted with caution, however, in light of the CFA results.
-
-## Replication Analyses ##
-
 
 We tested the hypothesis of a modest correlation between values and ideology in two ways. First, to test (H1a) whether political liberals are more likely to prioritize public health over economic growth compared to conservatives, we conducted a Spearman's rank order correlation. Results revealed a significant correlation in line with the hypothesis, Spearman's rho = -.47, p < .001. Political liberals were more likely than conservatives to value public health over economic growth. To test (H1b) that a majority of political conservatives priortize public health over economic growth we cross-tabulated the data. Results revealed that, contrary to the hypothesis, slightly more than half of the self-reported political conservatives in our sample reported valuing economic growth (51.7%) over public health (48.3%).
 
@@ -51,15 +38,5 @@ To test whether the findings regarding Shared values vary as a function of parti
 Because of the findings from the analysis run to test H4, we conducted an unplanned post hoc analysis to further test the hypothesis that the effects found in the earlier analysis vary as a function of participants' values. For this test, we regression METI scores onto the Scientist's Values experimental condition, the Shared Values composite variable, and their interaction term. This is, as with the previous model and the model reported to test H4, a different linear combination of the same predictor variables and therefore the full model parameters are identical. However, presentation of the model this way renders a clearer picture of what variables we tested seem to be driving perceptions of the trustworthiness of a scientist. The evidence here suggests that if a scientist chooses to disclose their values alongside their presentation of scientific research, what values they share predicts their perceived trustworthiness, and that the scientist in our study who disclosed valuing public health was perceived a significantly more trustworthy than the scientist who disclosed valuing economic growth.
 
 
-## Interactions with Values in Science Scale ##
+# Conclusion #
 
-We ran the following analyses to test our hypothesis that (H6) the magnitude of the effects found for the above reported tests vary depending on the participant's views on the role of values in science. Results are presented in Table #.
-
-H6a
-To test whether participants' views on the role of values in science influence the effects of the consumer risk sensitivity hypothesis we tested, we regression participant METI ratings onto the Conclusions variable, participant scores on the six ViSS subscales, and their respective interaction terms. The full model was significant, adj. R^2 = .163, F(13, 892) = 14.55, p < .001.
-
-H6b
-To test whether participants' views on the role of values in science influence the effects of scientist values disclosure, we regression participant METI ratings onto the Disclosure variable, participant scores on the six ViSS subscales, and their respective interaction terms. The full model was not significant, adj. R^2 = .008, F(13, 892) = 1.19, p = .08.
-
-H6c
-To test whether participants' views on the role of values in science influence the effects of the shared values between participants and the scientist, we regression participant METI ratings onto the Shared Values variable, participant scores on the six ViSS subscales, and their respective interaction terms. The full model was significant, adj. R^2 = .077, F(13, 520) = 3.354, p < .001.
