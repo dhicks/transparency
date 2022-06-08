@@ -4,80 +4,76 @@ author: |
     | Dan Hicks 
     | Emilio Lobato
     | University of California, Merced
-    | *[bitly]*
-toc: true
+    | [`values-in-science-scale.netlify.app`](https://values-in-science-scale.netlify.app)
+toc: false
+toc-title: "Overview"
 format: 
     revealjs:
         toc-depth: 1
         slide-number: true
-        center: false
-        <!--margin: 0.0-->
+        self-contained: true
+        theme: [black, theming.scss]
 link-citations: true
+bibliography: ../paper/VISS.yaml
 ---
 
-# Controversy and mismatch # {center="true"}
+## Background & acknowledgment
 
-## Mismatch hypothesis
-
-- A mismatch between **public understanding of philosophy of science** and **realities of scientific practice**
-- This mismatch contributes to public scientific controversies
-- In some cases, this mismatch has been deliberately exploited to manufacture doubt
-
-## John: Climategate vs. transparency
-
-:::: {.columns}
-::: {.column}
-![\n](img/John.jpg){fig-alt="Photo of Stephen John"}
-:::
-::: {.column}
-*[E]pistemic trust in science may be 'fragile' because based on a false 'folk philosophy of science'.* [@JohnEpistemicTrustEthics2017 6-7]
-:::
-::::
-
-- Inferring causation from correlation (observational data)
-- Refusing (desk rejecting) papers by climate skeptics
-- "[I]gnoring recalcitrant or strange data sets" [@JohnEpistemicTrustEthics2017 7]
-
-## Kovaka: Pro-science science denial {.smaller}
-
-:::: {.columns}
-::: {.column}
-*[P]eople have serious misconceptions about what scientific inquiry ought to look like. Their misconceptions interact with partisan biases to produce denial of human-caused climate change.* [@KovakaClimateChangeDenial2021 1]
-:::
-::: {.column}
-![\n](img/Kovaka.jpg){fig-alt="Photo of Karen Kovaka"}
-:::
-::::
-
-Misconceptions about 
-
-- Objectivity: "scientists as more objective than other people"; value-free ideal
-- Scientific method: "a universal, step-by-step scientific method," based on experiments
-- Uncertainty and fallibility: Galileo narratives and quest for certainty [@KovakaClimateChangeDenial2021 11-14]
+- I'm a philosopher of science, STSer, data scientist
+    - Science, values, and policy
+    - Public scientific controversies
+- Emilio is a cognitive psychologist
+    - Conspiracy theories & other \
+      "epistemically unwarranted beliefs"
+    - Relationship between prejudice and EUBs
+</br>
+- This project was funded out of my faculty startup funds at UC Merced
 
 
-## Nature of science
+# Controversy and public understanding of science # {center="true"}
 
-*[substantial area of research, esp. by education researchers; 
-but no scale we found considered role of values in a sophisticated way]
+## Explaining public scientific controversies {.smaller}
 
-"more than 25 NOS instruments have been developed over the past 50 years" [Neumann citing Lederman 2007]
-LiangStudentUnderstandingScience2006 -> Lombrozo et al -> Weisberg et al.
-Lombrozo et al version critiqued by Neumann
-    - N had science educators map L items to categories based on a lit review of NOS education research (1377, 1384); these don't correspond to L's phil sci-informed categories (1384ff), and don't include issues such as VFI
-    - psychometric critique
+HPSTSers often explain controversies by appeal to public views on\ 
+science, values, and policy issues
 
-## *[other empirical research]*
+<!-- - "The scientific method" [@MercerWhyPopperCan2016; @JohnEpistemicTrustEthics2017] -->
+- Objectivity & value-free ideal [VFI] [@FernandezPintoLegitimizingValuesRegulatory2019; @KovakaClimateChangeDenial2021]
+- Consensus and dissent [@OreskesScientificConsensusClimate2004; @CookQuantifyingConsensusAnthropogenic2013; @JohnEpistemicTrustEthics2017; @MyersConsensusRevisitedQuantifying2021]
+- Paternalism/technocracy/elitism \
+    [@WynneSheepfarmingChernobylCase1989; @JordanTrustworthinessResearchParadigm2011; @LargentVaccineDebateModern2012; @NavinValuesVaccineRefusal2015; @GoldenbergVaccineHesitancyPublic2021]
+- Conflicts of interest, manufacturing doubt or certainty \
+    [@ElliottSciencePolicyTransparency2014; @FernandezPintoCommercialInterestsErosion2020; @GoldenbergVaccineHesitancyPublic2021]
+- Science's historical and/or contemporary role in oppression \
+    [@SchemanEpistemologyResuscitatedObjectivity2001; @WashingtonMedicalApartheidDark2008; @McHughMoreSkinDeep2011; @NelsonBodySoulBlack2011; @GrasswickUnderstandingEpistemicTrust2018;  @GoldenbergVaccineHesitancyPublic2021]
 
-*[Elliott et al; Safford et al]
+## But do the public hold these views? 
 
+(As a gross generalization)
+
+- Historians focus on actions of scientists or merchants of doubt
+- Sociologists look at very particular case studies that don't generalize to public at large
+- Philosophers don't offer any empirical evidence
+
+## Two notable exceptions {style="font-size:80%"}
+
+- <normsize>@WeisbergKnowledgeNatureScience2020</normsize>
+    - Evolution/creationism, climate, vaccines
+    - Using a "Nature of Science" instrument
+      [@LombrozoImportanceUnderstandingNature2008]
+    - But don't include any items from the science, values, and policy literature [[Table 1](https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/pusa/2021/pusa_30_2/0963662520977700/20210201/images/large/10.1177_0963662520977700-table1.jpeg){target="_blank"}]
+        
+- <normsize>@ElliottValuesEnvironmentalResearch2017</normsize>
+    - Does transparency about values in science reduce trust? 
+    - Online survey experiment
+    - But don't ask about participants' views on, eg, VFI
 
 
 # Developing a Values in Science Scale (VISS)
 
 ## VISS items ##
 
-36 items, 3 each for 12 different topics in the \
+[36 items](#prompts), 3 each for 12 different topics in the \
 science, values, and policy literature
 
 :::: {.columns}
@@ -101,28 +97,329 @@ Value-free ideal
 
 ## Data and methods ##
 
-- Online survey/marketing platform Prolific
+- Online survey platform Prolific
 - Representative sample of 980 US adults
-- Replication of *[elliott et al.]* + VISS + demographics
+- VISS + demographics + replication of <normsize>@ElliottValuesEnvironmentalResearch2017</normsize>
+- Approved by UC Merced IRB
 
 </br>
 
-- Exploratory factor analysis of VISS items
-- Statistical analysis of several findings from *[elliott et al]*
+- [Exploratory factor analysis](#factor-analysis-results) of VISS items
+- [Regression analysis](#replication-of-elliottvaluesenvironmentalresearch2017) of major findings from <normsize>@ElliottValuesEnvironmentalResearch2017</normsize>
 
-## VISS factors ##
+## Agreement/disagreement: </br> All VISS items ##
 
-<!--:::: {.columns}
-::: {.column width="30%"}
-Scientism\
-Values in science\
-Cynicism\
-Power\
-Textbook science\
-Value-free ideal
+```{r, fig.height=5.75}
+library(plotly)
+library(here)
+library(readr)
+
+barplotly = read_rds(here('out', '02_div_barplot.Rds'))
+barplotly
+```
+
+## Agreement/disagreement: </br>Top & bottom 5 ##
+
+```{r}
+library(gt)
+
+topbottom = read_rds(here('out', '02_topbottom.Rds'))
+
+topbottom |> 
+    group_by(group) |> 
+    gt() |> 
+    cols_label(agree_share = md('**(strongly)\nagree**'), 
+               item = md('**item**'), 
+               prompt = md('**prompt**')) |> 
+    fmt_percent(agree_share, decimals = 0) |> 
+    tab_style(cell_fill(color = 'blue', alpha = .25), 
+              cells_body(rows = group == 'top 5')) |> 
+    tab_style(cell_fill(color = 'red', alpha = .25), 
+                        cells_body(rows = group == 'bottom 5'))
+```
+
+## Ambiguous prompts {style="font-size:70%"}
+
+ir.1
+: Standards of scientific evidence are different in different situations.
+
+</br>
+Does this mean
+
+- *<blue>legitimate</blue>* standards of evidence can be *<blue>appropriately</blue>* different in different situations (eg, because of different downstream non-epistemic consequences); **or**
+- scientists *<red>illegitimately</red>* use different standards of evidence in different situations (eg, to reach their preferred conclusion)? 
+
+</br>
+
+- Measurement error:  \
+    How many participants understood the prompt one way vs. the other? 
+- Construct validity:  \
+    Does the item measure the thing you intended to measure? 
+- Requires understanding how participants interpret prompts
+
+
+
+
+
+
+
+
+
+
+# Replication of <normsize>@ElliottValuesEnvironmentalResearch2017</normsize>
+
+## Dr. Riley Spence and BPA {.smaller}
+
+:::: columns
+::: {.column width="65%"}
+Slide attributed to (fictional) Dr. Riley Spence
+
+![](img/cond4.png){fig-alt="Example of a stimulus from Elliott et al. (2017).  Slide reads: \"My conclusion. Protecting public health should be a top national priority.  I examined the scientific evidence on potential health risks of BPA.  I conclude that BPA in consumer products is not causing harm to people.\"" style="border: 1px solid black"}
 :::
-::: {.column width="70%"}--->
-![\n](../out/02_six_corr_matrix.png){fig-alt="Screenshot of the factor correlation matrix.  The factors are labeled scientism, VIS (values in science), cynicism, power, textbook (science), and VFI (value-free ideal)" height="650"}
+::: {.column width="35%"}
+- 6 different slides
+    - No values disclosure; protecting public health; promoting economic growth
+    - BPA is/is not causing harm
+- Muenster Epistemic Trustworthiness Inventory [@HendriksMeasuringLaypeopleTrust2015]
+    - eg, competent-incompetent, 1-7 scale
+:::
+::::
+    
+## Elliott et al. major findings
+
+Transparency penalty
+: If the scientist discloses values, participants tend to perceive them as less trustworthy
+
+Shared values effect
+: If the participant and scientist share the same values, participants tend to perceive the scientist as more trustworthy
+
+
+
+## Transparency penalty? 
+
+![](../out/04_transparency.png){fig-alt="Dotplot of trust ratings for Elliott et al. (2017) and our data, broken out by whether or not the scientist disclosed values.  Elliott et al. found an estimated effect of transparency of about -0.5 on a 1-7 scale; our data shows a negligible difference."}
+
+## Shared values effect? 
+
+![](../out/04_shared_part.png){fig-alt="Dotplot of trust ratings for our data, broken out by participant values (economic growth or public health) and whether they share disclosed values with the scientist.  The effect of shared values appears to be positive or negative depending on the participants' values."}
+
+## Scientist values effect
+
+![](../out/04_sci_part.png){fig-alt="Dotplot of trust ratings for our data, broken out by participant values (economic growth or public health) and the scientists' disclosed values.  Scientist valuing public health appears to increase trust, about 0.7 on a 1-7 scale, for both public health and economic growth participants."}
+
+
+
+
+# Future work #
+
+## Future work {}
+
+- Qualitative designs to revise prompts
+    - Paraphrase the prompt; think aloud
+    - Likely will reduce measurement error
+- Other endpoints
+    - Dueling expert scenarios
+    - Trust in science-policy institutions (EPA) rather than individual scientists [@BrownTrustExpertiseScientific2022\; Biddle yesterday]
+    - Policy support
+
+
+
+
+# Fin # {.unlisted visibility='uncounted'}
+
+[`values-in-science-scale.netlify.app`](https://values-in-science-scale.netlify.app)
+
+# Extra slides # {.unlisted visibility='uncounted'}
+
+## Prompts {.scrollable visibility='uncounted'}
+
+aims-1
+: The knowledge produced by scientific research is valuable even when it has no practical applications. 
+
+aims-2
+: A primary aim of science is to improve our understanding of threats to human health and the environment.
+
+aims-3
+: A primary aim of science is to develop new technology and stimulate economic growth.
+
+coi-1
+: Scientists will report conclusions that they think will get them more grant money even if the data does not fully support that conclusion.
+
+coi-2
+: Special interests can always find an scientist-for-hire who will support their point of view.
+
+coi-3
+: Research carried out by private companies is less trustworthy than research carried out by public instutitions.
+
+consensus-1
+: Progress in science happens when a lone dissenter challenges popular ideas.^K^
+
+consensus-2
+: Scientists rarely disagree with each other about the answers to scientific questions.
+
+consensus-3
+: The consensus of the scientific community is based on social status and prestige rather than evidence. 
+
+factvalue-1
+: Moral and social values are the kinds of things that can be confirmed or challenged by scientific evidence. 
+
+factvalue-2
+: If scientific findings conflict with important values that we hold, it's appropriate to be skeptical of the science.
+
+factvalue-3
+: Someone's moral and social values are more like their taste in music than scientific facts.
+
+fallible-1
+: Once a scientific theory has been established, it is never changed.^K^
+
+fallible-2
+: When a scientific theory changes or is revised, it means that the research that went into it initially was flawed.
+
+fallible-3
+: Scientific findings can be good enough to act on even when they're not entirely certain. 
+
+ir-1
+: Standards of scientific evidence are different in different situations.
+
+ir-2
+: Scientists are not responsible for harmful effects of the technologies they develop.
+
+ir-3
+: When scientific research has potential consequences for society, scientists must take these consequences into account when drawing conclusions.
+
+nonsubj-1
+: The results of scientific studies are always ambiguous and require interpretation.
+
+nonsubj-2
+: Good scientific research is always free of assumptions and speculation.
+
+nonsubj-3
+: Scientific conclusions are never a matter of interpretation or judgment.
+
+pluralism-1
+: Scientific investigations always require laboratory experiments.^K^
+
+pluralism-2
+: Scientific research is always conducted in the following order: 1. Observation, 2. Hypothesis, 3. Experiment, 4. Conclusion^K^
+
+pluralism-3
+: All scientists use the same strict requirements for determining when empirical data confirm a tested hypothesis.
+
+scientism-1
+: Science is more reliable than any other way of producing knowledge.
+
+scientism-2
+: Everyone, whatever their worldview, should accept evidence-based scientific conclusions
+
+scientism-3
+: Science is the only source of justified belief or knowledge about ourselves and the world.
+
+stdpt-1
+: A scientific understanding of the social word depends on the background of the scientists carrying out the research.
+
+stdpt-2
+: People on the margins of society often have a unique understanding of that society that can benefit scientific research. 
+
+stdpt-3
+: Science has a long history of ignoring the unique insights of women and people of color.
+
+technocracy-1
+: Public policy should wait until all relevant scientific questions have been settled.
+
+technocracy-2
+: When it comes to public policy, scientific evidence is more important than public opinion. 
+
+technocrac-3
+: Scientists have too much influence over public policy today. 
+
+vfi-1
+: Scientists are more objective than other people.^K^
+
+vfi-2
+: Scientists do not use imagination or creativity because doing so interferes with objectivity.^K^
+
+vfi-3
+: The evaluation and acceptance of scientific results must not be influenced by social and ethical values.^K^
+
+
+# Factor analysis results {visibility='uncounted'}
+
+## VISS factors ## {visibility='uncounted'}
+
+![\n](../out/02_six_corr_matrix.png){fig-alt="Screenshot of the factor correlation matrix.  The factors are labeled scientism, VIS (values in science), cynicism, power, textbook (science), and VFI (value-free ideal)"}
+
+::: {style="text-align:center"}
+<span style="color:red">⚠️ Psychometric properties of these factors aren't great ⚠️</span>
+:::
+
+## Factor analysis fit indices ## {visibility='uncounted' style="font-size:90%"}
+
+How well does the fitted FA model approximate the observed covariance structure? [@HuFitIndicesCovariance1998]
+
+</br>
+
+| statistic                                       | range   | want  | our model |
+|-------------------------------------------------|---------|-------|-----------|
+| Comparative fit index (CFI)                     | 0-1     | large | 0.6       |
+| Adjusted-goodness-of-fit index (AGFI)           | 0-1     | large | 0.8       |
+| Root-mean-square error of approximation (RMSEA) | >0      | small | 0.07      |
+| Standardized root-mean-square residual (SRMSR)  | >0      | small | 0.09      |
+
+## Scientism ## {visibility='uncounted'}
+
+:::: {.columns style="font-size:50%"}
+::: {.column}
+![\n](../out/02_scientism.png){fig-alt="Density plot for scientism factor scores.  The mode is just below 3.5, and values range from 1 to 5." width="100%"}
+
+- Science is more reliable than any other way of producing knowledge.
+- Scientific findings can be good enough to act on even when they're not entirely certain. 
+- The knowledge produced by scientific research is valuable even when it has no practical applications. 
+
+:::
+::: {.column}
+![\n](../out/04_scientism_polid.png){fig-alt="Plot of scientism against political ideology. There's a weak negative association: on average conservatives are about 0.5 point less scientistic than liberals." width="100%"}
+
+- Scientists are not responsible for harmful effects of the technologies they develop.
+- When it comes to public policy, scientific evidence is more important than public opinion. 
+- Moral and social values are the kinds of things that can be confirmed or challenged by scientific evidence. 
+:::
+::::
+
+
+## Cynicism ## {visibility='uncounted'}
+
+:::: {.columns style="font-size:40%"}
+::: {.column}
+![\n](../out/02_cynicism.png){fig-alt="Density plot for cynicism factor scores.  The mode is about 2.5, and values range from 1 to about 4.5." width="100%"}
+
+- Scientists will report conclusions that they think will get them more grant money even if the data does not fully support that conclusion.^K^  
+- The consensus of the scientific community is based on social status and prestige rather than evidence.
+- If scientific findings conflict with important values that we hold, it's appropriate to be skeptical of the science.
+- The results of scientific studies are always ambiguous and require interpretation.
+
+:::
+::: {.column}
+![\n](../out/04_cynicism_polid.png){fig-alt="Plot of cynicism against political ideology. There's a positive association: on average conservatives are about 1 point more cynical than liberals." width="100%"}
+
+- When a scientific theory changes or is revised, it means that the research that went into it initially was flawed. 
+- Special interests can always find an scientist-for-hire who will support their point of view. 
+- <span style="color:red">Standards of scientific evidence are different in different situations.</span>
+- <span style="color:red">A scientific understanding of the social world depends on the background of the scientists carrying out the research.</span> 
+:::
+::::
+
+## Factors and trust ## {visibility='uncounted' .smaller}
+
+![](../out/04_fa_effects.png){fig-alt="Estimated effects plot for all six VISS factors.  Power, VFI, and VIS factors are essentially flat.  Scientism and textbook are associated with increased trust, while cynicism is associated with decreased trust.  However, all effects are modest, highly unlikely to be greater than +/- 1 on the 1-7 trust scale."}
+
+
+
+
+
+    
+
+# References # {.unlisted visibility='uncounted' style="font-size:50%"}
+
 
 
 

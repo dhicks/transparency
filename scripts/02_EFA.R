@@ -1,6 +1,6 @@
 library(car)
 library(tidyverse)
-theme_set(theme_bw())
+theme_set(theme_minimal())
 library(psych)
 library(pander)
 library(gvlma)
@@ -10,6 +10,7 @@ library(lavaan)
 
 library(visdat)
 library(grid)
+library(plotly)
 
 library(here)
 
@@ -57,7 +58,8 @@ vis_cor(d_vis_efa)
 
 ## Descriptive visualizations ----
 ## Share of respondents (agreeing or strongly agreeing)
-d_vis_efa |> 
+d_vis |> 
+# d_vis_efa |> 
     pivot_longer(everything(), names_to = 'item', values_to = 'value') |> 
     count(item, value) |> 
     group_by(item) |> 
@@ -94,16 +96,31 @@ orient = function(count_df, level_col = response, ref_level = 3, value_col = n) 
         bind_rows(ref_negative)
 }
 
+sum_if = function(vec, condition) {
+    ## Sum of values of `vec` satisfying `condition`, eg, vec > 4
+    sum(vec[condition])
+}
 
-d_vis_efa |> 
+d_vis |> 
+# d_vis_efa |> 
     pivot_longer(everything(), names_to = 'item', values_to = 'response') |> 
     count(item, response) |> 
+    left_join(vis_labels, by = c('item' = 'tag')) |> 
     group_by(item) |> 
     mutate(share = n / sum(n)) |> 
     ungroup() |> 
     orient(value_col = share) |> 
-    arrange(item, response) |> 
-    ggplot(aes(fct_rev(item), plot_value, fill = as.factor(response))) +
+    group_by(item) |> 
+    mutate(agree_share = sum_if(share, response >= 4)) |> 
+    ungroup() |> 
+    arrange(agree_share, item, response) |> 
+    mutate(item = fct_inorder(item), 
+           share = scales::percent(share, accuracy = 1)) |> 
+    ggplot(aes(item, 
+               plot_value, 
+               fill = as.factor(response), 
+               label = share,
+               text = prompt)) +
     geom_col(data = ~ filter(.x, plot_value > 0), 
              position = position_stack(reverse = TRUE)) +
     geom_col(data = ~ filter(.x, plot_value < 0), 
@@ -113,8 +130,32 @@ d_vis_efa |>
                        name = 'share of respondents') +
     scale_fill_brewer(palette = 'RdBu', guide = 'none') +
     coord_flip() +
-    theme_minimal()
+    theme_minimal() #+
+    # theme(legend.position = 'none')
 
+div_barplot_plotly = ggplotly(tooltip = c('x', 'label', 'text')) |> 
+    hide_guides()
+div_barplot_plotly
+
+write_rds(div_barplot_plotly, here('out', '02_div_barplot.Rds'))
+
+## Top/bottom 5 by agreement
+topbottom = d_vis |> 
+    pivot_longer(everything(), names_to = 'item', values_to = 'response') |> 
+    count(item, response) |> 
+    group_by(item) |> 
+    mutate(share = n / sum(n)) |> 
+    summarize(agree_share = sum_if(share, response >= 4)) |> 
+    ungroup() |> 
+    arrange(desc(agree_share)) |> 
+    slice(1:5, 32:36) |> 
+    mutate(group = if_else(agree_share > .5, 'top 5', 'bottom 5')) |> 
+    left_join(vis_labels, by = c('item' = 'tag')) |> 
+    select(group, agree_share, item, prompt)
+
+topbottom
+
+write_rds(topbottom, here('out', '02_topbottom.Rds'))
 
 ## checking EFA assumptions ----
 cor.matrix <- cor(d_vis_efa)
@@ -218,16 +259,16 @@ six_corr_plot = d_vis_cfa |>
     labs(x = '', 
          y = '') +
     theme(#legend.position = c(.5, 0), legend.direction = 'horizontal',
-        legend.position = 'top', legend.margin = margin(),
-          axis.text.x = element_text(hjust = 1L, angle = 40, vjust = 1), 
-          plot.margin = margin(l = 50, r = 10, t = 0))
+        legend.position = 'right', legend.margin = margin(),
+        axis.text.x = element_text(hjust = 1L, angle = 40, vjust = 1), 
+        plot.margin = margin(l = 50, r = 10, t = 5, b = 0))
 six_corr_plot
 
 ann_x = -7
 six_corr_out = six_corr_plot + 
     annotation_custom(text_scientism, 
-                  xmin = ann_x, xmax = ann_x, 
-                  ymin = 27, ymax = 27) +
+                      xmin = ann_x, xmax = ann_x, 
+                      ymin = 27, ymax = 27) +
     annotation_custom(text_vis, 
                       xmin = ann_x, xmax = ann_x, 
                       ymin = 22, ymax = 22) +
@@ -248,7 +289,7 @@ six_corr_out
 
 ggsave(here('out', '02_six_corr_matrix.png'), 
        plot = six_corr_out,
-       height = 8, width = 8, scale = .75)
+       height = 5, width = 10, scale = 1)
 
 
 #three factor model based on eigenvalues > 1
@@ -263,7 +304,7 @@ fitmeasures(fit3, c('chisq','cfi','rmsea','rmsea.ci.upper','srmr','agfi'))
 score_grid(fit3, d_vis_cfa)
 
 
-## Write out data and models ----
+## Discrete version of 6-factor model ----
 six_discrete = d_vis |> 
     rownames_to_column('pid') |> 
     rowwise() |>
@@ -304,3 +345,23 @@ ggsave(here('out', 'six_score_grid.png'),
 
 write_csv(six_discrete, here(data_dir, 'fa_six.csv'))
 
+
+ggplot(six_discrete, aes(fa_scientism)) +
+    geom_density() +
+    geom_boxplot(width = .05, position = position_nudge(y = -.05)) +
+    scale_y_continuous(guide = 'none') +
+    labs(x = 'scientism', 
+         y = '')
+
+ggsave(here('out', '02_scientism.png'), 
+       height = 3, width = 4, scale = 1)
+
+ggplot(six_discrete, aes(fa_cynicism)) +
+    geom_density() +
+    geom_boxplot(width = .05, position = position_nudge(y = -.05)) +
+    scale_y_continuous(guide = 'none') +
+    labs(x = 'cynicism', 
+         y = '')
+
+ggsave(here('out', '02_cynicism.png'), 
+       height = 3, width = 4, scale = 1)

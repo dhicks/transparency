@@ -15,6 +15,7 @@
 library(tidyverse)
 theme_set(theme_minimal())
 library(broom)
+library(patchwork)
 library(ggbeeswarm)
 library(dagitty)
 library(ggdag)
@@ -34,12 +35,18 @@ data_dir = here('data')
 ## Load data ----
 ## Elliott et al. data
 emad_df = read_rds(here(data_dir, 'emad.Rds'))
-## VISS six-factor model
+## VISS item labels and six-factor model
+source(here('R', 'vis_labels.R'))
+vis_labels_vec = vis_labels |> 
+    pull(item) |> 
+    set_names(vis_labels$tag)
+
 viss_df = read_csv(here(data_dir, 'fa_six.csv')) |> 
     select(pid, starts_with('fa_'))
 ## Our data
 dataf = read_rds(here(data_dir, 'data.Rds')) |> 
-    left_join(viss_df, by = 'pid')
+    left_join(viss_df, by = 'pid') |> 
+    rename(vis_labels_vec)
 
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 
@@ -158,15 +165,34 @@ plot_estimate(list(emad = model_b_emad,
 #' # C. Transparency penalty #
 #' *Scientists who disclose values are perceived as less trustworthy than scientists who do not.* 
 
-ggplot(emad_df, aes(disclosure, pa_mean)) +
-    geom_violin(draw_quantiles = .5) +
-    geom_beeswarm()
-
-ggplot(dataf, aes(disclosure, meti_mean)) +
-    geom_violin(draw_quantiles = .5) +
-    geom_beeswarm()
-
-
+{
+    trans_plot_emad = ggplot(emad_df, aes(disclosure, pa_mean)) +
+        # geom_violin(draw_quantiles = .5) +
+        geom_beeswarm(alpha = .25, size = .3) +
+        stat_summary(fun.data = 'mean_cl_boot', color = 'red', 
+                     size = 1.5, fatten = 1/2) +
+        stat_summary(geom = 'line', group = 1L, color = 'red') +
+        labs(y = 'trust')
+    trans_plot_emad
+    
+    
+    trans_plot_us = ggplot(dataf, aes(disclosure, meti_mean)) +
+        geom_beeswarm(alpha = .25, size = .3) +
+        stat_summary(fun.data = 'mean_cl_boot', color = 'red', 
+                     size = 1.5, fatten = 1/2) +
+        stat_summary(geom = 'line', group = 1L, color = 'red') +
+        labs(y = 'trust')
+    trans_plot_us
+    
+    trans_plot_emad + 
+        ggtitle('Elliott et al. (2017)') +
+        trans_plot_us +
+        ggtitle('Hicks and Lobato')
+    
+    ggsave(here(out_dir, '04_transparency.png'), 
+           height = 3, width = 6, scale = 1, 
+           bg = 'white')
+}
 #' Again, disclosure/transparency is experimentally controlled, so no adjustment is required. 
 dag |> 
     add_arrows('disclose -> METI') |> 
@@ -284,8 +310,18 @@ plot_estimate(list('emad' = model_emad_s,
 dataf |> 
     filter(disclosure, !is.na(part_values)) |> 
     ggplot(aes(sci_values, meti_mean)) +
-    geom_violin(draw_quantiles = .5) +
-    geom_beeswarm(dodge.width = 1)
+    # geom_violin(draw_quantiles = .5) +
+    geom_beeswarm(dodge.width = 1, alpha = .25) +
+    geom_ribbon(data = plot_predictions(model_s, 
+                                        focal_vars = 'sci_values', 
+                                        return_plot = FALSE), 
+                aes(y = .fitted, ymin = .lower, ymax = .upper), 
+                alpha = .25, group = 1L, fill = 'blue') +
+    geom_line(data = plot_predictions(model_s, 
+                                        focal_vars = 'sci_values', 
+                                        return_plot = FALSE), 
+                aes(y = .fitted, ymin = .lower, ymax = .upper), 
+                alpha = 1, group = 1L, fill = 'blue')
 
 
 ## E. Variation in effects ----
@@ -358,6 +394,7 @@ dataf |>
     filter(!is.na(part_values)) |> 
     ggplot(aes(disclosure, meti_mean)) +
     geom_boxplot() +
+    # geom_beeswarm(alpha = .25) +
     facet_wrap(vars(part_values))
 
 
@@ -394,8 +431,25 @@ plot_predictions(model_ed,
 dataf |> 
     filter(!is.na(part_values), disclosure) |> 
     ggplot(aes(shared_values, meti_mean)) +
-    geom_boxplot() +
-    facet_wrap(vars(part_values))
+    # geom_boxplot() +
+    geom_beeswarm(alpha = .5, cex = 1.5, size = .5) +
+    facet_wrap(vars(part_values)) +
+    geom_ribbon(data = plot_predictions(model_ed, 
+                                        c('part_values', 'shared_values'), 
+                                        return_plot = FALSE), 
+                aes(y = .fitted, ymin = .lower, ymax = .upper), 
+                group = 1L, alpha = .5, fill = 'blue') +
+    geom_line(data = plot_predictions(model_ed, 
+                                      c('part_values', 'shared_values'), 
+                                      return_plot = FALSE), 
+              aes(y = .fitted, ymin = .lower, ymax = .upper), 
+              group = 1L, alpha = 1, color = 'blue') +
+    labs(x = 'shared values', 
+         y = 'trust')
+
+ggsave(here(out_dir, '04_shared_part.png'), 
+       height = 3, width = 6, scale = 1, 
+       bg = 'white')
 
 #' And political ideology appears to be either entirely upstream or independent to this
 dataf |> 
@@ -416,17 +470,32 @@ dataf |>
     geom_beeswarm()
 
 #' Because the effect is with *scientist* values (we also saw this at the end of D)
+model_es = dataf |> 
+    filter(disclosure) %>% 
+    lm(meti_mean ~ sci_values + part_values, data = .)
+summary(model_es)
+plot_predictions(model_es, 'sci_values')
+
 dataf |> 
     filter(!is.na(part_values), disclosure) |> 
     ggplot(aes(sci_values, meti_mean)) +
-    geom_boxplot() +
-    facet_wrap(vars(part_values))
+    # geom_boxplot() +
+    geom_beeswarm(alpha = .5, cex = 1.5, size = .5) +
+    facet_wrap(vars(part_values)) +
+    geom_ribbon(data = plot_predictions(model_es, 
+                                        c('sci_values', 'part_values'), 
+                                        return_plot = FALSE), 
+                aes(y = .fitted, ymin = .lower, ymax = .upper), 
+                group = 1L, alpha = .5, fill = 'blue') +
+    geom_line(data = plot_predictions(model_es, 
+                                      c('sci_values', 'part_values'), 
+                                      return_plot = FALSE), 
+              aes(y = .fitted, ymin = .lower, ymax = .upper), 
+              group = 1L, alpha = 1, color = 'blue') +
+    labs(x = 'scientist values', 
+         y = 'trust')
 
-model_es = dataf |> 
-    filter(disclosure) %>% 
-    lm(meti_mean ~ sci_values, data = .)
-summary(model_es)
-plot_predictions(model_es, 'sci_values')
+ggsave(here(out_dir, '04_sci_part.png'), height = 3, width = 6, scale = 1, bg = 'white')
 
 
 #' Any interaction with participant values is swamped by uncertainty
@@ -435,8 +504,8 @@ plot_predictions(model_es, 'sci_values')
 dataf %>% 
     filter(disclosure) %>%
     lm(meti_mean ~ sci_values*part_values, data = .) |> 
-    summary()
-plot_predictions(c('sci_values', 'part_values'), 
+    # summary()
+    plot_predictions(c('sci_values', 'part_values'), 
                  interaction_ci = TRUE)
 
 
@@ -506,7 +575,29 @@ dataf |>
          y = 'cynicism')
 
 ggsave(here(out_dir, '04_cynicism_polid.png'), 
-       height = 3, width = 4, scale = 1)
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
+
+dataf |> 
+    # filter(!disclosure) |> 
+    ggplot(aes(political_ideology, fa_scientism)) +
+    geom_point(aes(fill = as.factor(political_ideology)), 
+               position = 'jitter',
+               shape = 21L, 
+               alpha = .5) +
+    stat_summary(geom = 'line', color = 'black', size = 2) +
+    scale_fill_brewer(type = 'div', palette = 'RdBu', 
+                      direction = -1L, 
+                      guide = 'none', 
+                      aesthetics = c('color', 'fill')) +
+    labs(x = ' ← more liberal     more conservative →\npolitical views',
+         y = 'scientism')
+
+ggsave(here(out_dir, '04_scientism_polid.png'), 
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
+
+
 
 #' Categorical demographics
 #+ fig.width = 12, fig.height = 8
@@ -562,6 +653,29 @@ ggsave(here(out_dir, '04_fa_effects.png'),
        height = 4, width = 6, scale = 1.5, bg = 'white')
 
 ggplot() +
+    geom_point(aes(fa_scientism, meti_mean), 
+               data = dataf, 
+               position = 'jitter',
+               alpha = .25) +
+    geom_ribbon(aes(fa_scientism, .fitted, ymin = .lower, ymax = .upper), 
+                data = plot_predictions(model_f, 
+                                        'fa_scientism', 
+                                        return_plot = FALSE), 
+                fill = 'blue', alpha = .5) +
+    geom_line(aes(fa_scientism, .fitted), 
+              data = plot_predictions(model_f, 
+                                      'fa_scientism', 
+                                      return_plot = FALSE), 
+              color = 'blue') +
+    labs(x = 'scientism', 
+         y = 'trustworthiness') +
+    coord_cartesian(ylim = c(3, 7))
+
+ggsave(here(out_dir, '04_scientism_trust.png'), 
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
+
+ggplot() +
     geom_point(aes(fa_cynicism, meti_mean), 
                data = dataf, 
                position = 'jitter',
@@ -581,7 +695,8 @@ ggplot() +
     coord_cartesian(ylim = c(3, 7))
 
 ggsave(here(out_dir, '04_cynicism_trust.png'), 
-       height = 3, width = 4, scale = 1)
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
 
 
 #' ## B (Consumer Risk) and C (Disclosure) ##
@@ -715,7 +830,8 @@ ggplot() +
     coord_cartesian(ylim = c(1, 7))
 
 ggsave(here(out_dir, '04_cynicism_scivalues.png'), 
-       height = 3, width = 5)
+       height = 3, width = 5, 
+       bg = 'white')
 
 ## Associations aren't as strong in the data plot, presum. bc confounding
 # dataf |> 
