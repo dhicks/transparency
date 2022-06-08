@@ -12,7 +12,7 @@ format:
         toc-depth: 1
         slide-number: true
         self-contained: true
-        theme: [default, theming.scss]
+        theme: [black, theming.scss]
 link-citations: true
 bibliography: ../paper/VISS.yaml
 ---
@@ -23,7 +23,8 @@ bibliography: ../paper/VISS.yaml
     - Science, values, and policy
     - Public scientific controversies
 - Emilio is a cognitive psychologist
-    - Conspiracy theories & other "epistemically unwarranted beliefs"
+    - Conspiracy theories & other \
+      "epistemically unwarranted beliefs"
     - Relationship between prejudice and EUBs
 </br>
 - This project was funded out of my faculty startup funds at UC Merced
@@ -218,7 +219,7 @@ Shared values effect
     - Likely will reduce measurement error
 - Other endpoints
     - Dueling expert scenarios
-    - Trust in science-policy institutions (EPA) rather than individual scientists [@BrownTrustExpertiseScientific2022]
+    - Trust in science-policy institutions (EPA) rather than individual scientists [@BrownTrustExpertiseScientific2022\; Biddle yesterday]
     - Policy support
 
 

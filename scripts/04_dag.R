@@ -447,7 +447,9 @@ dataf |>
     labs(x = 'shared values', 
          y = 'trust')
 
-ggsave(here(out_dir, '04_shared_part.png'), height = 3, width = 6, scale = 1)
+ggsave(here(out_dir, '04_shared_part.png'), 
+       height = 3, width = 6, scale = 1, 
+       bg = 'white')
 
 #' And political ideology appears to be either entirely upstream or independent to this
 dataf |> 
@@ -573,7 +575,8 @@ dataf |>
          y = 'cynicism')
 
 ggsave(here(out_dir, '04_cynicism_polid.png'), 
-       height = 3, width = 4, scale = 1)
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
 
 dataf |> 
     # filter(!disclosure) |> 
@@ -591,7 +594,8 @@ dataf |>
          y = 'scientism')
 
 ggsave(here(out_dir, '04_scientism_polid.png'), 
-       height = 3, width = 4, scale = 1)
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
 
 
 
@@ -668,7 +672,8 @@ ggplot() +
     coord_cartesian(ylim = c(3, 7))
 
 ggsave(here(out_dir, '04_scientism_trust.png'), 
-       height = 3, width = 4, scale = 1)
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
 
 ggplot() +
     geom_point(aes(fa_cynicism, meti_mean), 
@@ -690,7 +695,8 @@ ggplot() +
     coord_cartesian(ylim = c(3, 7))
 
 ggsave(here(out_dir, '04_cynicism_trust.png'), 
-       height = 3, width = 4, scale = 1)
+       height = 3, width = 4, scale = 1, 
+       bg = 'white')
 
 
 #' ## B (Consumer Risk) and C (Disclosure) ##
@@ -824,7 +830,8 @@ ggplot() +
     coord_cartesian(ylim = c(1, 7))
 
 ggsave(here(out_dir, '04_cynicism_scivalues.png'), 
-       height = 3, width = 5)
+       height = 3, width = 5, 
+       bg = 'white')
 
 ## Associations aren't as strong in the data plot, presum. bc confounding
 # dataf |> 
