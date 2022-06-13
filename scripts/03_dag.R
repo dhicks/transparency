@@ -7,8 +7,6 @@
 #' ---
 # TODO: 
 #     -[] clean code
-#     -[] double check direction of coding for ideology and tradeoff in Elliott et al.
-#     -[x] estimate plots showing both us + Elliott et al.
 #     -[] predicted value plots for E and F
 
 
@@ -20,6 +18,8 @@ library(ggbeeswarm)
 library(dagitty)
 library(ggdag)
 ## <https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-ggdag.html>
+library(gt)
+library(gtsummary)
 
 library(here)
 source(here('R', 'plot_adjustments.R'))
@@ -39,6 +39,110 @@ emad_df = read_rds(here(data_dir, 'emad.Rds'))
 ## Our data
 dataf = read_rds(here(data_dir, 'data.Rds'))
 
+## Descriptive summary of our data ----
+## - age
+## - gender
+## - race/ethnicity
+##    - <https://www.census.gov/library/visualizations/interactive/race-and-ethnicity-in-the-united-state-2010-and-2020-census.html>
+##    - overrep White (72% vs. 62%)
+##    - underrep Hispanic (3% vs. 19%)
+##    - Black and A/PI represented accurately at 13% and 6%
+## - religious affiliation
+## - religious services
+## - political ideology
+## - political affiliation
+## - education
+##    - <https://www.statista.com/statistics/184260/educational-attainment-in-the-us/>
+##    - underrep non-HS grads (1% vs. 9%)
+##    - overrep college grads (57% vs. 38%)
+## - participant values
+
+re_labels = c('American Indian or Alaskan Native', 
+              'Asian or Pacific Islander', 
+              'Black', 
+              'Hispanic', 
+              'White', 
+              'Other', 
+              'Prefer not to answer')
+relig_labels = c('Buddhist', 
+                 'Catholic', 
+                 'Hindu', 
+                 'Jewish', 
+                 'Muslim', 
+                 'Protestant', 
+                 'No religion', 
+                 'Other', 'Prefer not to answer')
+relig_serv_labels = c('Never', 
+                      'A few times per year', 
+                      'Once every month or two', 
+                      '2-3 times per month', 
+                      'Once per week', 
+                      'More than once per week', 
+                      'Daily')
+poli_id_labels = c('Strongly liberal', 
+                   'Moderately liberal', 
+                   'Mildly liberal', 
+                   'Centrist', 
+                   'Mildly conservative', 
+                   'Moderately conservative', 
+                   'Strongly conservative', 
+                   'Other', 
+                   'Prefer not to answer')
+poli_aff_labels = c('Democratic party', 
+                    'Republican party', 
+                    'Independent/no party', 
+                    'Other', 
+                    'Prefer not to answer')
+edu_labels = c('Less than high school', 
+               'High school, or some college', 
+               'Bachelor’s degree or higher')
+fix_multifac = function(vec, labs, ordered = FALSE) {
+    chr = vec |> 
+        as.character() |> 
+        str_split(',') |> 
+        map(~ labs[as.integer(.x)]) |> 
+        map_chr(str_c, collapse = '/')
+    if (!ordered) {
+        return(chr)
+    } else {
+        fct_relevel(chr, labs)
+    }
+}
+
+
+demo_gt = dataf |> 
+    select(pid, age, gender, race_ethnicity, 
+           religious_affil, religious_serv,
+           political_ideology, political_affiliation, 
+           education, part_values, disclosure) |> 
+    mutate(gender = fct_drop(gender),
+           race_ethnicity = fix_multifac(race_ethnicity, re_labels), 
+           religious_affil = fix_multifac(religious_affil, relig_labels), 
+           religious_serv = fix_multifac(religious_serv, relig_serv_labels, 
+                                         ordered = TRUE), 
+           political_ideology = fix_multifac(political_ideology, poli_id_labels, 
+                                             ordered = TRUE),
+           political_affiliation = fix_multifac(political_affiliation, 
+                                                poli_aff_labels), 
+           education = fix_multifac(education, edu_labels, ordered = TRUE)) |>
+    select(-pid) |> 
+    tbl_summary(label = list(race_ethnicity ~ 'race/ethnicity', 
+                             religious_affil ~ 'religious affiliation', 
+                             religious_serv ~ 'religious service attendance', 
+                             political_ideology ~ 'political ideology', 
+                             political_affiliation ~ 'political affiliation', 
+                             part_values ~ 'participant values'), 
+                sort = list(race_ethnicity ~ 'frequency', 
+                            religious_affil ~ 'frequency')) |> 
+    bold_labels()
+
+demo_gt |> 
+    as_flex_table() |> 
+    flextable::save_as_docx(path = here(out_dir, '03_demo_table.docx'), 
+                            pr_section = officer::prop_section(page_size = officer::page_size(orient = "landscape")))
+
+
+## Trust, overall ----
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 
                 draw_quantiles = .5,
@@ -76,17 +180,26 @@ emad_df |>
 
 last_plot() + aes(y = share)
 
-dataf |> 
+part_values_plot = dataf |> 
     filter(!is.na(pref)) |> 
-    count(political_ideology, pref) |> 
+    count(political_ideology, part_values) |> 
     group_by(political_ideology) |> 
     mutate(share = n / sum(n)) |> 
     ungroup() |> 
-    ggplot(aes(political_ideology, n, fill = pref)) +
-    geom_col() +
-    scale_fill_viridis_d()
+    ggplot(aes(political_ideology, n, fill = part_values)) +
+    geom_col(color = 'black') +
+    scale_x_continuous(labels = NULL, 
+                       name = '← liberal                   conservative →\npolitical ideology') +
+    scale_fill_viridis_d(option = 'E', name = 'participant\nvalues')
+part_values_plot
 
-last_plot() + aes(y = share)
+part_values_share = part_values_plot + aes(y = share) +
+    scale_y_continuous(labels = scales::percent_format())
+part_values_share
+
+part_values_plot + part_values_share +
+    plot_layout(guides = 'collect') +
+    plot_annotation(tag_levels = 'A')
 
 table(dataf$political_ideology, dataf$pref)
 
@@ -151,6 +264,12 @@ plot_estimate(list(emad = model_b_emad,
                    hl = model_b),
               str_detect(term, 'conclusion'))
 
+tbl_regression(model_b, intercept = TRUE) |> 
+    add_glance_source_note()
+
+list(emad = tbl_regression(model_b_emad), 
+     hl = tbl_regression(model_b)) |> 
+    tbl_stack(group_header = c('EMAD', 'HL replication'))
 
 ## C. Transparency penalty ----
 #' # C. Transparency penalty #
@@ -200,6 +319,15 @@ plot_estimate(list(emad = model_c_emad,
                    hl = model_c), 
               str_detect(term, 'disclosure'))
 
+tbl_regression(model_c, intercept = TRUE) |> 
+    add_glance_source_note()
+
+tbl_regression(model_c, intercept = TRUE) |> 
+    add_glance_source_note()
+
+list(emad = tbl_regression(model_c_emad), 
+     hl = tbl_regression(model_c)) |> 
+    tbl_stack(group_header = c('EMAD', 'HL replication'))
 
 
 ## D. Shared values ----
@@ -253,14 +381,13 @@ plot_estimate(list(emad = model_d_emad,
               str_detect(term, 'shared_values'))
 
 #' But we can include demographics to check the accuracy of the graph.  In the Elliott et al. data, this holds true:  adding other demographics doesn't change the estimated effect for shared values of 0.4.  
-#' *[this for our data]*
-dataf |> 
+model_d1 = dataf |> 
     filter(disclosure) %>% 
     lm(meti_mean ~ shared_values + part_values + sci_values +
            age + gender + race_ethnicity + religious_affil + religious_serv + 
            political_ideology + education,
-       data = .) |> 
-    broom::tidy()
+       data = .)
+broom::tidy(model_d1)
 
 #' And actually participant values is independent of shared values: from a participant's perspective (given their values), they have an equal chance of seeing a scientist with same or different values. 
 dataf |> 
@@ -269,16 +396,39 @@ dataf |>
 
 #' So dropping participant values from the regression doesn't change the estimated effect of shared values. 
 
-dataf |> 
+model_d2 = dataf |> 
     filter(disclosure) %>% 
-    lm(meti_mean ~ shared_values + sci_values, data = .) |> 
-    summary()
+    lm(meti_mean ~ shared_values + sci_values, data = .)
+summary(model_d2)
 
 #' But scientist values *does* confound the estimate. 
-dataf |> 
+model_d3 = dataf |> 
     filter(disclosure) %>%
-    lm(meti_mean ~ shared_values, data = .) |> 
-    summary()
+    lm(meti_mean ~ shared_values, data = .)
+summary(model_d3)
+
+
+list(univariate = tbl_regression(model_d3, 
+                                 label = c(shared_values ~ 'shared values')), 
+     sci_values = tbl_regression(model_d2, 
+                                 label = c(shared_values ~ 'shared values', 
+                                           sci_values ~ 'scientist values')),
+     part_values = tbl_regression(model_d, 
+                                  label = c(shared_values ~ 'shared values', 
+                                            sci_values ~ 'scientist values', 
+                                            part_values ~ 'participant values')),
+     demo = tbl_regression(model_d1, 
+                           label = c(shared_values ~ 'shared values', 
+                                     sci_values ~ 'scientist values', 
+                                     part_values ~ 'participant values'), 
+                           include = -c(gender, race_ethnicity, 
+                                        religious_affil))) |> 
+    map(add_glance_table, include = c(r.squared, nobs)) |>
+    tbl_merge(tab_spanner = c('univariate', 
+                              'scientist values',
+                              'participant values',
+                              'demographics'))
+
 
 #' ## Scientist values ##
 #' We didn't specify this possibility in advance, but all this suggests scientist values, not shared values, have an effect. This is randomly assigned, so no adjustments needed. 
