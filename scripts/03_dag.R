@@ -22,6 +22,7 @@ library(gt)
 library(gtsummary)
 
 library(here)
+source(here('R', 'reg_tbl.R'))
 source(here('R', 'plot_adjustments.R'))
 source(here('R', 'reg_plots.R'))
 
@@ -219,12 +220,10 @@ glm(I(part_values == 'economic growth') ~ political_ideology,
 ## DAG ----
 #' # DAG #
 #' We use the following DAG throughout the rest of this analysis
-dag = dagify(METI ~ viss +
-                 shared_values + sci_values +
+dag = dagify(METI ~ shared_values + sci_values +
                  part_values + demographics,
              shared_values ~ part_values + sci_values, 
              part_values ~ demographics,
-             viss ~ demographics + part_values, 
              outcome = 'METI') |> 
     tidy_dagitty(layout = 'kk')
 
@@ -232,6 +231,7 @@ ggplot(dag, aes(x = x, y = y,
                 xend = xend, yend = yend)) +
     geom_label(aes(label = name)) +
     geom_dag_edges() +
+    coord_cartesian(clip = 'off') +
     theme_dag()
 
 
@@ -265,11 +265,11 @@ plot_estimate(list(emad = model_b_emad,
               str_detect(term, 'conclusion'))
 
 tbl_regression(model_b, intercept = TRUE) |> 
-    add_glance_source_note()
+    add_glance_table(include = c(r.squared, nobs, statistic, p.value))
 
-list(emad = tbl_regression(model_b_emad), 
-     hl = tbl_regression(model_b)) |> 
-    tbl_stack(group_header = c('EMAD', 'HL replication'))
+list(emad = model_b_emad, 
+     hl = model_b) |> 
+    reg_tbl()
 
 ## C. Transparency penalty ----
 #' # C. Transparency penalty #
@@ -319,15 +319,9 @@ plot_estimate(list(emad = model_c_emad,
                    hl = model_c), 
               str_detect(term, 'disclosure'))
 
-tbl_regression(model_c, intercept = TRUE) |> 
-    add_glance_source_note()
-
-tbl_regression(model_c, intercept = TRUE) |> 
-    add_glance_source_note()
-
-list(emad = tbl_regression(model_c_emad), 
-     hl = tbl_regression(model_c)) |> 
-    tbl_stack(group_header = c('EMAD', 'HL replication'))
+list(emad = model_c_emad, 
+     hl = model_c) |> 
+    reg_tbl()
 
 
 ## D. Shared values ----
@@ -408,28 +402,6 @@ model_d3 = dataf |>
 summary(model_d3)
 
 
-list(univariate = tbl_regression(model_d3, 
-                                 label = c(shared_values ~ 'shared values')), 
-     sci_values = tbl_regression(model_d2, 
-                                 label = c(shared_values ~ 'shared values', 
-                                           sci_values ~ 'scientist values')),
-     part_values = tbl_regression(model_d, 
-                                  label = c(shared_values ~ 'shared values', 
-                                            sci_values ~ 'scientist values', 
-                                            part_values ~ 'participant values')),
-     demo = tbl_regression(model_d1, 
-                           label = c(shared_values ~ 'shared values', 
-                                     sci_values ~ 'scientist values', 
-                                     part_values ~ 'participant values'), 
-                           include = -c(gender, race_ethnicity, 
-                                        religious_affil))) |> 
-    map(add_glance_table, include = c(r.squared, nobs)) |>
-    tbl_merge(tab_spanner = c('univariate', 
-                              'scientist values',
-                              'participant values',
-                              'demographics'))
-
-
 #' ## Scientist values ##
 #' We didn't specify this possibility in advance, but all this suggests scientist values, not shared values, have an effect. This is randomly assigned, so no adjustments needed. 
 plot_adjustments(dag, 'sci_values') +
@@ -463,6 +435,42 @@ dataf |>
                                         return_plot = FALSE), 
                 aes(y = .fitted, ymin = .lower, ymax = .upper), 
                 alpha = 1, group = 1L, fill = 'blue')
+
+## One big regression table
+shared_values_tbl = list(univariate = tbl_regression(model_d3, 
+                                                     intercept = TRUE,
+                                                     label = c(shared_values ~ 'shared values')), 
+                         sci_values = tbl_regression(model_d2, 
+                                                     intercept = TRUE,
+                                                     label = c(shared_values ~ 'shared values', 
+                                                               sci_values ~ 'scientist values')),
+                         part_values = tbl_regression(model_d, 
+                                                      intercept = TRUE,
+                                                      label = c(shared_values ~ 'shared values', 
+                                                                sci_values ~ 'scientist values', 
+                                                                part_values ~ 'participant values')),
+                         demo = tbl_regression(model_d1, 
+                                               intercept = TRUE,
+                                               label = c(shared_values ~ 'shared values', 
+                                                         sci_values ~ 'scientist values', 
+                                                         part_values ~ 'participant values', 
+                                                         religious_serv ~ 'rel. serv. attendance',
+                                                         political_ideology ~ 'political id.'), 
+                                               include = -c(gender, race_ethnicity, 
+                                                            religious_affil)), 
+                         sci_values_alone = tbl_regression(model_s, 
+                                                           intercept = TRUE,
+                                                           label = c(sci_values ~ 'scientist values'))) |> 
+    map(add_glance_table, include = c(r.squared, nobs, statistic, p.value)) |>
+    tbl_merge(tab_spanner = c('univariate', 
+                              'scientist values',
+                              'participant values',
+                              'demographics', 
+                              'scientist values alone')) |> 
+    modify_table_body(~ arrange(.x, row_type == "glance_statistic"))
+shared_values_tbl
+
+# write_reg_tbl(shared_values_tbl, here(out_dir, '03_shared_values_tbl'))
 
 
 ## E. Variation in effects ----
