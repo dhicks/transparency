@@ -201,6 +201,8 @@ part_values_share
 part_values_plot + part_values_share +
     plot_layout(guides = 'collect') +
     plot_annotation(tag_levels = 'A')
+ggsave(here(out_dir, '03_part_values.png'), 
+       height = 4, width = 8, dpi = 200, scale = 1.5)
 
 table(dataf$political_ideology, dataf$pref)
 
@@ -279,8 +281,8 @@ list(emad = model_b_emad,
     trans_plot_emad = ggplot(emad_df, aes(disclosure, pa_mean)) +
         # geom_violin(draw_quantiles = .5) +
         geom_beeswarm(alpha = .25, size = .3) +
-        stat_summary(fun.data = 'mean_cl_boot', color = 'red', 
-                     size = 1.5, fatten = 1/2) +
+        stat_summary(fun.data = mean_cl_boot, color = 'red', 
+                     size = 1, fatten = 0) +
         stat_summary(geom = 'line', group = 1L, color = 'red') +
         labs(y = 'trust')
     trans_plot_emad
@@ -288,18 +290,18 @@ list(emad = model_b_emad,
     
     trans_plot_us = ggplot(dataf, aes(disclosure, meti_mean)) +
         geom_beeswarm(alpha = .25, size = .3) +
-        stat_summary(fun.data = 'mean_cl_boot', color = 'red', 
-                     size = 1.5, fatten = 1/2) +
+        stat_summary(fun.data = mean_cl_boot, color = 'red', 
+                     size = 1, fatten = 0) +
         stat_summary(geom = 'line', group = 1L, color = 'red') +
         labs(y = 'trust')
     trans_plot_us
     
     trans_plot_emad + 
-        ggtitle('Elliott et al. (2017)') +
+        ggtitle('EMAD') +
         trans_plot_us +
-        ggtitle('Hicks and Lobato')
+        ggtitle('HL replication')
     
-    ggsave(here(out_dir, '04_transparency.png'), 
+    ggsave(here(out_dir, '03_transparency.png'), 
            height = 3, width = 6, scale = 1, 
            bg = 'white')
 }
@@ -323,6 +325,15 @@ list(emad = model_c_emad,
      hl = model_c) |> 
     reg_tbl()
 
+## B + C combined table ----
+model_bc_emad = lm(pa_mean ~ conclusion + disclosure, data = emad_df)
+model_bc = lm(meti_mean ~ conclusion + disclosure, data = dataf)
+
+bc_tbl = list(emad = model_bc_emad, 
+              hl = model_bc) |> 
+    reg_tbl()
+bc_tbl
+write_reg_tbl(bc_tbl, here(out_dir, '03_bc_tbl'))
 
 ## D. Shared values ----
 #' # D. Shared values #
@@ -343,7 +354,11 @@ dataf |>
 
 #' In our actual situation, we only need to adjust for `participant values` and `scientist values`; `participant values` is on every back-door path running through demographics or VISS variables.  
 
-plot_adjustments(dag, 'shared_values')
+plot_adjustments(dag, 'shared_values') +
+    coord_cartesian(clip = 'off')
+
+ggsave(here(out_dir, '03_shared_values_dag.png'), 
+       height = 3, width = 6, dpi = 200, scale = 1.5)
 
 #' However, if `participant values` and `shared values` had some common cause `problem_var`, then `participant values` is a collider between `problem_var` and `demographics`; either we control for `problem_var` or we control all the demographics (and possibly worry about the exact structure of the demographics subgraph). Big problem if we didn't observe `problem_var`!  Fortunately we know by construction of `shared values` that there is no such common cause.  
 #+ fig.width = 10, out.width = "100%"
@@ -431,10 +446,10 @@ dataf |>
                 aes(y = .fitted, ymin = .lower, ymax = .upper), 
                 alpha = .25, group = 1L, fill = 'blue') +
     geom_line(data = plot_predictions(model_s, 
-                                        focal_vars = 'sci_values', 
-                                        return_plot = FALSE), 
-                aes(y = .fitted, ymin = .lower, ymax = .upper), 
-                alpha = 1, group = 1L, fill = 'blue')
+                                      focal_vars = 'sci_values', 
+                                      return_plot = FALSE), 
+              aes(y = .fitted, ymin = .lower, ymax = .upper), 
+              alpha = 1, group = 1L, fill = 'blue')
 
 ## One big regression table
 shared_values_tbl = list(univariate = tbl_regression(model_d3, 
@@ -461,16 +476,18 @@ shared_values_tbl = list(univariate = tbl_regression(model_d3,
                          sci_values_alone = tbl_regression(model_s, 
                                                            intercept = TRUE,
                                                            label = c(sci_values ~ 'scientist values'))) |> 
-    map(add_glance_table, include = c(r.squared, nobs, statistic, p.value)) |>
-    tbl_merge(tab_spanner = c('univariate', 
-                              'scientist values',
-                              'participant values',
-                              'demographics', 
-                              'scientist values alone')) |> 
+    map(add_glance_table, include = c(r.squared, nobs, adj.r.squared,
+                                      statistic, p.value)) |>
+    tbl_merge(tab_spanner = c('(1) univariate', 
+                              '(2) scientist values',
+                              '(3) participant values',
+                              '(4) demographics', 
+                              '(5) scientist values alone')) |> 
     modify_table_body(~ arrange(.x, row_type == "glance_statistic"))
+
 shared_values_tbl
 
-# write_reg_tbl(shared_values_tbl, here(out_dir, '03_shared_values_tbl'))
+write_reg_tbl(shared_values_tbl, here(out_dir, '03_shared_values_tbl'))
 
 
 ## E. Variation in effects ----
@@ -495,17 +512,30 @@ plot_residuals(model_eb)
 # plot_estimate(list(emad = model_eb_emad, 
 #                    hl = model_eb), 
 #               str_detect(term, ':'))
-# 
 
 plot_predictions(model_eb, c('conclusion', 'part_values'), 
                  interaction_ci = TRUE)
 
+plot_estimate(list(base = model_b, interaction = model_eb), 
+              str_detect(term, 'conclusion'))
 
-#' *[Again, include demographics as a check.]*
-lm(pa_mean ~ conclusion*part_values+ 
-       sex + ideology + educatio + age, 
-   data = emad_df) |> 
-    summary()
+list(base = model_b, interaction = model_eb) |> 
+    reg_tbl(labs = c('base', 'interaction'))
+
+
+#' Again, include demographics as a check
+model_eb1 = lm(meti_mean ~ conclusion*part_values + 
+                   age + gender + race_ethnicity + religious_affil + 
+                   religious_serv + political_ideology + education,
+               data = dataf)
+summary(model_eb1)
+
+eb_tbl = list(base = model_b, interaction = model_eb, demo = model_eb1) |> 
+    reg_tbl(labs = c('base', 'interaction', 'demographics'))
+eb_tbl
+write_reg_tbl(eb_tbl, here(out_dir, '03_eb_tbl'))
+
+
 
 emad_df |> 
     filter(!is.na(part_values)) |> 
@@ -531,13 +561,21 @@ model_ec = lm(meti_mean ~ disclosure*part_values, data = dataf)
 summary(model_ec)
 plot_residuals(model_ec)
 # plot_estimate(model_ec, ':')
-# plot_estimate(list(emad = model_ec_emad, 
-#                    hl = model_ec), 
-#               str_detect(term, ':'))
+plot_estimate(list(base = model_c, interaction = model_ec),
+              str_detect(term, 'disclosure'))
 
 plot_predictions(model_ec, c('disclosure', 'part_values'), 
                  interaction_ci = TRUE)
 
+model_ec1 = lm(meti_mean ~ disclosure * part_values + 
+                   age + gender + race_ethnicity + religious_affil + 
+                   religious_serv + political_ideology + education, 
+               data = dataf)
+
+ec_tbl = list(base = model_c, interaction = model_ec, demographics = model_ec1) |> 
+    reg_tbl(labs = c('base', 'interaction', 'demographics'))
+ec_tbl
+write_reg_tbl(ec_tbl, here(out_dir, '03_ec_tbl'))
 
 dataf |> 
     filter(!is.na(part_values)) |> 
@@ -567,10 +605,24 @@ model_ed = dataf |>
     filter(disclosure) %>%
     lm(meti_mean ~ shared_values*part_values, data = .)
 summary(model_ed)
+## Including scientist values creates perfect collinearity
+dataf |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ shared_values*part_values + sci_values, data = .) |> 
+    summary()
 
-# plot_estimate(list(emad = model_ed_emad, 
-#                    hl = model_ed), 
-#               str_detect(term, ':'))
+plot_estimate(list(base = model_d,
+                   interaction = model_ed),
+              str_detect(term, 'shared_values'))
+
+model_ed1 = dataf |> 
+    filter(disclosure) %>%
+    lm(meti_mean ~ shared_values*part_values+ 
+           age + gender + race_ethnicity + religious_affil + 
+           religious_serv + political_ideology + education, 
+       data = .)
+list(model_d, model_ed, model_ed1) |> 
+    reg_tbl(labs = c('base', 'interaction', 'demographics'))
 
 #' Effect of shared values appears to go in opposite directions, depending on participant values
 plot_predictions(model_ed, 
@@ -583,20 +635,25 @@ dataf |>
     # geom_boxplot() +
     geom_beeswarm(alpha = .5, cex = 1.5, size = .5) +
     facet_wrap(vars(part_values)) +
-    geom_ribbon(data = plot_predictions(model_ed, 
-                                        c('part_values', 'shared_values'), 
-                                        return_plot = FALSE), 
-                aes(y = .fitted, ymin = .lower, ymax = .upper), 
-                group = 1L, alpha = .5, fill = 'blue') +
-    geom_line(data = plot_predictions(model_ed, 
-                                      c('part_values', 'shared_values'), 
-                                      return_plot = FALSE), 
-              aes(y = .fitted, ymin = .lower, ymax = .upper), 
-              group = 1L, alpha = 1, color = 'blue') +
+    ## model_ed is a confounded mess;
+    # geom_ribbon(data = plot_predictions(model_ed, 
+    #                                     c('part_values', 'shared_values'), 
+    #                                     return_plot = FALSE), 
+    #             aes(y = .fitted, ymin = .lower, ymax = .upper), 
+    #             group = 1L, alpha = .5, fill = 'blue') +
+    # geom_line(data = plot_predictions(model_ed, 
+    #                                   c('part_values', 'shared_values'), 
+    #                                   return_plot = FALSE), 
+    #           aes(y = .fitted, ymin = .lower, ymax = .upper), 
+    #           group = 1L, alpha = 1, color = 'blue') +
+    ## just do mean + CI
+    stat_summary(fun.data = mean_cl_boot, color = 'red', 
+             size = 1, fatten = 0) +
+    stat_summary(fun.data = mean_cl_boot, geom = 'line', group = 1L, color = 'red') +
     labs(x = 'shared values', 
-         y = 'trust')
+         y = 'perceived trustworthiness')
 
-ggsave(here(out_dir, '04_shared_part.png'), 
+ggsave(here(out_dir, '03_shared_part.png'), 
        height = 3, width = 6, scale = 1, 
        bg = 'white')
 
@@ -631,20 +688,23 @@ dataf |>
     # geom_boxplot() +
     geom_beeswarm(alpha = .5, cex = 1.5, size = .5) +
     facet_wrap(vars(part_values)) +
-    geom_ribbon(data = plot_predictions(model_es, 
-                                        c('sci_values', 'part_values'), 
-                                        return_plot = FALSE), 
-                aes(y = .fitted, ymin = .lower, ymax = .upper), 
-                group = 1L, alpha = .5, fill = 'blue') +
-    geom_line(data = plot_predictions(model_es, 
-                                      c('sci_values', 'part_values'), 
-                                      return_plot = FALSE), 
-              aes(y = .fitted, ymin = .lower, ymax = .upper), 
-              group = 1L, alpha = 1, color = 'blue') +
+    # geom_ribbon(data = plot_predictions(model_es, 
+    #                                     c('sci_values', 'part_values'), 
+    #                                     return_plot = FALSE), 
+    #             aes(y = .fitted, ymin = .lower, ymax = .upper), 
+    #             group = 1L, alpha = .5, fill = 'blue') +
+    # geom_line(data = plot_predictions(model_es, 
+    #                                   c('sci_values', 'part_values'), 
+    #                                   return_plot = FALSE), 
+    #           aes(y = .fitted, ymin = .lower, ymax = .upper), 
+    #           group = 1L, alpha = 1, color = 'blue') +
+    stat_summary(fun.data = mean_cl_boot, color = 'red', 
+                 size = 1, fatten = 0) +
+    stat_summary(fun.data = mean_cl_boot, geom = 'line', group = 1L, color = 'red') +
     labs(x = 'scientist values', 
-         y = 'trust')
+         y = 'perceived trustworthiness')
 
-ggsave(here(out_dir, '04_sci_part.png'), height = 3, width = 6, scale = 1, bg = 'white')
+ggsave(here(out_dir, '03_sci_part.png'), height = 3, width = 6, scale = 1, bg = 'white')
 
 
 #' Any interaction with participant values is swamped by uncertainty
@@ -655,6 +715,19 @@ dataf %>%
     lm(meti_mean ~ sci_values*part_values, data = .) |> 
     # summary()
     plot_predictions(c('sci_values', 'part_values'), 
-                 interaction_ci = TRUE)
+                     interaction_ci = TRUE)
 
+lm(meti_mean ~ sci_values * part_values, 
+   data = filter(dataf, disclosure)) |> 
+    summary()
 
+sci_part_tbl = list(base = model_s,
+     part_values = model_es,
+     interaction = lm(meti_mean ~ sci_values * part_values, 
+                      data = filter(dataf, disclosure)),
+     demographics = lm(meti_mean ~ sci_values * part_values + 
+                           age + gender + race_ethnicity + religious_affil + 
+                           religious_serv + political_ideology + education, 
+                       data = filter(dataf, disclosure))) |> 
+    reg_tbl(labs = c('base', 'participant values', 'interaction', 'demographics'))
+write_reg_tbl(sci_part_tbl, here(out_dir, '03_sci_part_tbl'))    
