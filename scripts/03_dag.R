@@ -31,6 +31,9 @@ options(contrasts = c('contr.Treatment', 'contr.poly'))
 options(decorate.contr.Treatment = '')
 
 out_dir = here('out')
+if (!dir.exists(out_dir)) {
+    dir.create(out_dir)
+}
 data_dir = here('data')
 
 ## Load data ----
