@@ -5,6 +5,8 @@ abstract: |
   abstract
 ---
 
+*[merge branch here_paths and fix main/master]*
+
 # Introduction #
 
 Over the past 15 years, many philosophers of science have rejected the ideal of value-free science and related, traditional understandings of objectivity and political neutrality of science. *[Douglas and Elliott]*  According to the value-free ideal, social and political values — such as feminism, environmentalism, or the protection of human health — have no legitimate role to play in the evaluation of scientific hypotheses.  The value-free ideal is compatible with allowing social and political values to play important roles earlier and later in inquiry.  Specifically, these values may legitimately shape the content and framing of research questions — researchers might decide to investigate whether chemical X causes cancer out of a concern to protect human health — and will be essential when scientific findings are used to inform public policy — say, banning the use of chemical X.  But, according to the value-free ideal, these values must not influence the collection and analysis of data and the process of reaching an overall conclusion about whether or not chemical X causes cancer.  
