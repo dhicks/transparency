@@ -5,10 +5,13 @@
 
 data
 paper/paper.pdf
+paper/paper.html
+paper/paper_files/
 talk/talk.pdf
 .DS_Store
 */.DS_Store
 secrets/
+out/
 full_replication_scientists_values.csv
 replication_preference.csv
 
