@@ -227,7 +227,20 @@ emad_xwalk = tribble(
 )
 
 ## Elliott, McCright, Allen, and Dietz
-emad = read_csv(here('data', 'elliot_et_al', 'Values and Science Experiment 1.csv'))
+## <https://figshare.com/articles/dataset/Elliott_McCright_Allen_and_Dietz_Data_SPSS_Stata_/4695793>
+emad_dir = here('data', 'elliot_et_al')
+if (!dir.exists('data')) {
+    dir.create('data')
+}
+if (!dir.exists(emad_dir)) {
+    dir.create(emad_dir)
+}
+emad_file = here(emad_dir, 'Values and Science Experiment 1.csv')
+if (!file.exists(emad_dir)) {
+    download.file('https://figshare.com/ndownloader/files/8371322', 
+                  emad_file)
+}
+emad = read_csv(emad_file)
 
 emad_clean = emad |> 
     ## Condition should be 1 variable, not 6
