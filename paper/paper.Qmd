@@ -102,11 +102,7 @@ Next, we tested the hypotheses that (H2) scientists who find a chemical harms hu
 ```{r}
 #| label: tbl-bc
 #| tbl-cap: "Regression analysis for hypotheses H2 (consumer risk sensitivity) and H3 (disclosure effect)"
-<<<<<<< HEAD
-bc_tbl = readRDS('out/03_bc_tbl.Rds')
-=======
 bc_tbl = readRDS(here(out_dir, '03_bc_tbl.Rds'))
->>>>>>> main
 bc_tbl
 ```
 
