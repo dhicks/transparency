@@ -541,11 +541,25 @@ write_reg_tbl(eb_tbl, here(out_dir, '03_eb_tbl'))
 
 
 emad_df |> 
-    filter(!is.na(part_values)) |> 
+    filter(!is.na(part_values), disclosure) |> 
     ggplot(aes(conclusion, pa_mean)) +
     geom_boxplot() +
     facet_wrap(vars(part_values))
 
+dataf |> 
+    filter(!is.na(part_values), disclosure) |> 
+    ggplot(aes(conclusion, meti_mean)) +
+    geom_beeswarm(alpha = .5, cex = 1.5, size = .5) +
+    stat_summary(fun.data = mean_cl_boot, color = 'red', 
+                 size = 1, fatten = 0) +
+    stat_summary(fun.data = mean_cl_boot, geom = 'line', group = 1L, color = 'red') +
+    facet_wrap(vars(part_values)) +
+    labs(x = 'scientist conclusion: BPA ...', 
+         y = 'perceived trustworthiness')
+
+ggsave(here(out_dir, '03_conclusion_part.png'), 
+       height = 3, width = 6, scale = 1, 
+       bg = 'white')
 
 #' ## C: Disclosure ##
 dag |> 

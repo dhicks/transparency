@@ -3,6 +3,7 @@ title: "Something something values disclosure replication"
 author: "Daniel J. Hicks and Emilio Lobato"
 abstract: |
   abstract
+toc: true
 execute:
     echo: false
 ---
@@ -52,20 +53,24 @@ After filling in the METI, participants provided demographic information and oth
 
 We identified 5 major findings from @ElliottValuesEnvironmentalResearch2017 for our replication attempt:  
 
-*[consistent labeling of hypotheses]*
+H1. Modest correlation between values and ideology
+ ~ \(a\) Political liberals are more likely to prioritize public health over economic growth, compared to political conservatives; but (b) a majority of political conservatives prioritize public health.  
 
-a. Modest correlation between values and ideology:  
-	(i) Political liberals are more likely to prioritize public health over economic growth, compared to political conservatives; but (ii) a majority of political conservatives prioritize public health.  
-b. Consumer risk sensitivity:  Scientists who find that a chemical harms human health are perceived as more trustworthy than scientists who find that a chemical does not cause harm. 
-c. Transparency penalty: Scientists who disclose values are perceived as less trustworthy than scientists who do not.  
-d. Shared values:  Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.  
-e. Variation in effects:  The magnitude of the effects above vary depending on whether the participant prioritizes public health or economic growth.  
+H2. Consumer risk sensitivity
+ ~ Scientists who find that a chemical harms human health are perceived as more trustworthy than scientists who find that a chemical does not cause harm. 
 
-Hypothesis c, the transparency penalty, corresponds to the objection to transparency:  disclosing values undermines trust in science.  However, the shared values effect works in the opposite direction, counteracting the transparency penalty.  
+H3. Transparency penalty
+ ~ Scientists who disclose values are perceived as less trustworthy than scientists who do not.  
 
-*[hypothesis a]*
+H4. Shared values
+ ~ Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.  
 
-Hypotheses b-e were analyzed using linear regression models as a common framework, with a direct acyclic graph (DAG) constructed a priori to identify appropriate adjustments (covariates) for hypotheses d and e.  
+H5. Variation in effects
+ ~ The magnitude of the effects 2-4 vary depending on whether the participant prioritizes public health or economic growth.  
+
+Hypothesis H3, the transparency penalty, corresponds to the objection to transparency:  disclosing values undermines trust in science.  However, the shared values effect works in the opposite direction, counteracting the transparency penalty.  
+
+Hypothesis 1 was analyzed using Spearman rank order correlation and visually.  Hypotheses 2-5 were analyzed using linear regression models as a common framework, with a direct acyclic graph (DAG) constructed a priori to identify appropriate adjustments (covariates) for H4 and 5.  Because @ElliottValuesEnvironmentalResearch2017 made their data publicly available, and our analytical approaches differ somewhat from theirs, we conducted parallel analyses of their data, and report these parallel results for H2 and 3.  Exploratory data analysis was used throughout to support data validation and aid interpretation.  
 
 
 ## Participants ##
@@ -75,6 +80,11 @@ Participants were recruited using the online survey platform Prolific, and the s
 The study was approved by the UC Merced IRB on August 17, 2021, and data collection ran October 18-20, 2021.  As mentioned above, due to researcher error a question about participants' values was not included in the original survey.  A followup survey asking this question of the same group of participants was conducted December 8, 2021 through March 5, 2022.  
 
 
+## Software and reproducibility ##
+
+Data cleaning and analysis was conducted in R *[version, cite]*, with extensive use of the `tidyverse` suite of packages *[cite]*.  Regression tables were generated using the `gt` and `gtsummary` packages *[cites]*.  
+
+*[All original data and reproducible code is available at <https://github.com/dhicks/transparency>.  Instructions in that repository explain how to automatically reproduce our analysis.]*
 
 
 
@@ -83,7 +93,7 @@ The study was approved by the UC Merced IRB on August 17, 2021, and data collect
 
 # Results #
 
-After excluding participants who declined consent after opening the survey or did not complete the survey, we had 988 participants in the full analysis sample.  660 participants (67%) were randomly assigned to a values disclosure condition (scientist prioritizes either economic growth or public health); 844 participants (85%) responded to the followup question about their own values (participant prioritizes economic growth or public health).  Consequently, subsamples for hypotheses d and e were substantially smaller than the full analysis sample.  
+After excluding participants who declined consent after opening the survey or did not complete the survey, we had 988 participants in the full analysis sample.  660 participants (67%) were randomly assigned to a values disclosure condition (scientist prioritizes either economic growth or public health); 844 participants (85%) responded to the followup question about their own values (participant prioritizes economic growth or public health).  Consequently, subsamples for hypotheses 4 and 5 were substantially smaller than the full analysis sample.  
 
 *[participant demographics]*  
 
@@ -91,13 +101,15 @@ Critically, our data are unlikely to be representative by education level and po
 
 
 
-
+## H1: Correlation between values and ideology
 
 We tested the hypothesis of a modest correlation between values and ideology in two ways. First, to test (H1a) whether political liberals are more likely to prioritize public health over economic growth compared to conservatives, we conducted a Spearman's rank order correlation. Results revealed a significant correlation in line with the hypothesis, Spearman's rho = -.47, p < .001. Political liberals were more likely than conservatives to value public health over economic growth. To test (H1b) that a majority of political conservatives priortize public health over economic growth we cross-tabulated the data. Results revealed that, contrary to the hypothesis, slightly more than half of the self-reported political conservatives in our sample reported valuing economic growth (51.7%) over public health (48.3%). See @fig-part-values. 
 
 ![Participant values by political ideology. (A) Absolute counts, (B) shares within political ideology categories.  Panel (A) shows that our sample substantially over-represents political liberals.](`r here(out_dir, '03_part_values.png')`){#fig-part-values} 
 
-Next, we tested the hypotheses that (H2) scientists who find a chemical harms human health are perceived as more trustworthy than scientist who find that a chemical does not cause harm and (H3) a scientist who discloses values are perceived as less trustworthy than a scientist who does not. For this analysis, we regressed participants' METI ratings onto both the Conclusions and Disclosure experimental conditions. The full model was significant, adj. R^2 = .148, F(2, 985) = 86.59, p < .001 (see @tbl-bc). Specifically, results revealed that the conclusions reported by the scientist predicted participants' perceived trustworthiness in line with our hypothesis. Participants rated the scientist who reported that BPA does not cause harm as less trustworthy ($M_{sd} = 4.48_{1.26}$) than the scientist who reported that BPA causes harm ($M_{sd} = 5.47_{1.12}$), $\beta$ = -0.99, t(985) = -13.09, p < .001. By contrast, the results do not provide evidence in favor of our hypothesis that a scientist disclosing their values ($M_{sd} = 4.94_{1.33}$) are perceived as less trustworthy than a scientist who does not disclose values  ($M_{sd} = 5.05_{1.21}$), $\beta$ = -0.12, t(985) = -1.46, p = .143. 
+## H2 and H3: Consumer risk sensitivity and transparency penalty
+
+Next, we tested the hypotheses that (H2) scientists who find a chemical harms human health are perceived as more trustworthy than scientist who find that a chemical does not cause harm and (H3) a scientist who discloses values are perceived as less trustworthy than a scientist who does not. For this analysis, we regressed participants' METI ratings onto both the Conclusions and Disclosure experimental conditions. The full model was significant, adj. $R^2$= .148, F(2, 985) = 86.59, p < .001 (see @tbl-bc). Specifically, results revealed that the conclusions reported by the scientist predicted participants' perceived trustworthiness in line with our hypothesis. Participants rated the scientist who reported that BPA does not cause harm as less trustworthy ($M_{sd} = 4.48_{1.26}$) than the scientist who reported that BPA causes harm ($M_{sd} = 5.47_{1.12}$), $\beta$ = -0.99, t(985) = -13.09, p < .001. By contrast, the results do not provide evidence in favor of our hypothesis that a scientist disclosing their values ($M_{sd} = 4.94_{1.33}$) are perceived as less trustworthy than a scientist who does not disclose values  ($M_{sd} = 5.05_{1.21}$), $\beta$ = -0.12, t(985) = -1.46, p = .143. 
 
 ```{r}
 #| label: tbl-bc
@@ -106,7 +118,9 @@ bc_tbl = readRDS(here(out_dir, '03_bc_tbl.Rds'))
 bc_tbl
 ```
 
-Next, we tested the hypothesis that (H4) if the participant and scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist do not share the same values. For this and related analyses, we only included data from participants who were assigned to either of the Disclosure conditions and self-reported their own values, reducing the sample to 567. Following this, we created a new Shared Values variable as a composite of the participants' reported values and the scientist's values. For this analysis, an a priori directed acyclic graphic (DAG) indicated that a univariate regression of participants' METI rating onto Shared Values would produce a biased estimate, that adjustments were required for both the participant's and scientist's values, and that including demographic variables would not effect this estimate [@fig-shared-dag].  While the univariate model was significant, adj. R^2 = .029, F(1, 565) = 18.0, p < .001 [@tbl-shared model 1], after adjusting for scientist values Shared Values did not emerge as a significant predictor of participants' perceptions of the trustworthiness of the scientist [@tbl-shared models 2-4], indicating that the univariate estimate was indeed biased.  Rather, only the scientist's disclosed values significantly predicted how trustworthy participants rated the scientist, such that a scientist who disclosed valuing public health was rated as more trustworthy than a scientist who disclosed valuing economic growth.  This scientist values effect was robust across alternative model specifications, with an estimated effect of 0.6 (95% CI 0.4-0.8) [@tbl-shared models 2-5], again consistent with the DAG.  
+## H4: Shared values
+
+Next, we tested the hypothesis that (H4) if the participant and scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist do not share the same values. For this and related analyses, we only included data from participants who were assigned to either of the Disclosure conditions and self-reported their own values, reducing the sample to 567. Following this, we created a new Shared Values variable as a composite of the participants' reported values and the scientist's values. For this analysis, an a priori directed acyclic graphic (DAG) indicated that a univariate regression of participants' METI rating onto Shared Values would produce a biased estimate, that adjustments were required for both the participant's and scientist's values, and that including demographic variables would not effect this estimate [@fig-shared-dag].  While the univariate model was significant, adj. $R^2$= .029, F(1, 565) = 18.0, p < .001 [@tbl-shared model 1], after adjusting for scientist values Shared Values did not emerge as a significant predictor of participants' perceptions of the trustworthiness of the scientist [@tbl-shared models 2-4], indicating that the univariate estimate was indeed biased.  Rather, only the scientist's disclosed values significantly predicted how trustworthy participants rated the scientist, such that a scientist who disclosed valuing public health was rated as more trustworthy than a scientist who disclosed valuing economic growth.  This scientist values effect was robust across alternative model specifications, with an estimated effect of 0.6 (95% CI 0.4-0.8) [@tbl-shared models 2-5], again consistent with the DAG.  
 
 ![Directed acyclic graph (DAG) for analysis of the shared values effect.  If the DAG is faithful, adjusting for scientist values (`sci_values`) and participant values (`part_values`) is sufficient for estimating the effect of shared values on perceived trustworthiness (`METI`).  In particular, adjusting for demographics should not change the regression coefficient on shared values.](`r here(out_dir, '03_shared_values_dag.png')`){#fig-shared-dag}
 
@@ -117,37 +131,42 @@ shared_values_tbl = readRDS(here(out_dir, '03_shared_values_tbl.Rds'))
 shared_values_tbl
 ```
 
-## Variation in Effect Sizes ## 
+## H5: Variation in effects
 
 We ran the following analyses to test our hypothesis that (H5) the magnitude of the effects found for the tests of H2-H4 vary depending on whether the participant prioritizes public health or economic growth. Results are presented in Table #.
 
-H5b - consumer risk sensitivity
-To test whether the findings regarding consumer risk sensitivity vary as a function of participants' values, we regressed participants' METI ratings of the scientist in the stimuli onto the Conclusions condition, Participants' Values variable, and the Conclusions by Participants' values interaction term. The full model was significant, adj. R^2 = .173, F(3, 840) = 59.95, p < .001 [@tbl-eb model 2]. As with the earlier analysis, results showed a main effect of the Conclusions condition, such that participants rated the scientist who reported that BPA does not cause harm as less trustworthy than the scientist who reported that BPA causes harm, $\beta$ = -0.75, t(840) = -4.51, p < .001. However, this effect was qualified by a significant interaction with participants' values, $\beta$ = -0.41, t(840) = -2.16, p = .031. *[is this right? Participants who prioritized public health over economic growth and read about a scientist who concluded that BPA causes harm rated the scientist as more trustworthy ($M_{sd} = 5.56_{1.09}$) than participants who read about a scientist who concluded that BPA does not cause harm, regardless of those participants' values ($M_{sd} = 4.63_{1.22}$) for participants who prioritized economic growth and ($M_{sd} = 4.40_{1.24}$) for participants who prioritized public health].]* Further, participants who prioritized public health over economic growth reading and read about a scientist who concluded that BPA does not cause harm rated the scientist as less trustworthy ($M_{sd} = 4.40_{1.24}$) than participants who read about a scientist who concluded that BPA does cause harm, regardless of those participants' values ($M_{sd} = 5.39_{1.15}$) for participants who prioritized economic growth; $M_{sd} = 5.56_{1.09}$ for participants who prioritized public health).
+### Consumer risk sensitivity
+
+To test whether the findings regarding consumer risk sensitivity vary as a function of participants' values, we regressed participants' METI ratings of the scientist in the stimuli onto the Conclusions condition, Participants' Values variable, and the Conclusions by Participants' values interaction term. The full model was significant, adj. $R^2$ = .173, F(3, 840) = 59.95, p < .001 ([@tbl-eb model 2]). As with the earlier analysis, results showed a main effect of the Conclusions condition, such that participants rated the scientist who reported that BPA does not cause harm as less trustworthy than the scientist who reported that BPA causes harm, $\beta$ = -0.75, t(840) = -4.51, p < .001. However, this effect was qualified by a significant interaction with participants' values, $\beta$ = -0.41, t(840) = -2.16, p = .031. Participants who prioritized public health and read about a scientist who concluded that BPA causes harm rated the scientist as more trustworthy ($M_{sd} = 5.56_{1.09}$) than participants with the same values who read about a scientist who concluded that BPA does not cause harm ($M_{sd} = 4.40_{1.24}$) ([@fig-conclusion-part]). 
 
 ```{r}
 #| label: tbl-eb
-#| tbl-cap: "Regression analysis of H5b, interaction between participant values and consumer risk sensitivity"
+#| tbl-cap: "Regression analysis of H5-consumer, interaction between participant values and consumer risk sensitivity"
 readRDS(here(out_dir, '03_eb_tbl.Rds'))
 ```
 
+![Data, group means, and 95% confidence intervals for H5-consumer, interaction of consumer risk sensitivity and participant values. Panels correspond to participant values.](`r here(out_dir, '03_conclusion_part.png')`){#fig-conclusion-part}
 
-H5c - transparency penalty
-To test whether the findings above about a hypothesized transparency penalty may vary based on participants' values, we regressed participants' METI ratings of the scientist onto the Disclosure condition variable, Participants' Values variable, and the Disclosure by Participants' Values interaction term. The full model was not significant, adj. R^2 < .001, F(3, 840) = 1.19, p = .31 [@tbl-ec model 2]. As with the earlier analysis, our results do not provide evidence for a transparency penalty to the perceived trustworthiness of a scientist, either in general or interacting with participants' own reported values, $\beta$ = -0.23, t(840) = -1.07, p = 0.286. 
+
+### Transparency penalty
+
+To test whether the findings above about a hypothesized transparency penalty may vary based on participants' values, we regressed participants' METI ratings of the scientist onto the Disclosure condition variable, Participants' Values variable, and the Disclosure by Participants' Values interaction term. The full model was not significant, adj. $R^2$< .001, F(3, 840) = 1.19, p = .31 [@tbl-ec model 2]. As with the earlier analysis, our results do not provide evidence for a transparency penalty to the perceived trustworthiness of a scientist, either in general or interacting with participants' own reported values, $\beta$ = -0.23, t(840) = -1.07, p = 0.286. 
 
 ```{r}
 #| label: tbl-ec
-#| tbl-cap: "Regression analysis of H5c, interaction between participant values and disclosure effect"
+#| tbl-cap: "Regression analysis of H5-transparency, interaction between participant values and transparency penalty"
 readRDS(here(out_dir, '03_ec_tbl.Rds'))
 ```
 
 
 
-H5d - shared values
-Without adjustments, Shared Values appears to have a substantial interaction with Participant Values:  Shared Values appears to increase perceived trustworthiness for participants who value public health, while decreasing perceived trustworthiness for participants who value economic growth [@fig-shared-part].  However, as indicated by our analysis for a potential shared values effect, the estimated effects for both shared values and participant values are biased if the model is not adjusted for scientist values.  (@tbl-shared shows that the Shared Values estimate is biased.  Shared Values is a collider between Participant Values and Scientist Values; hence, if a model specification includes Participant Values and Shared values but not Scientist Values, there is an open path between Participant Values and METI, resulting in a biased estimate for Participant Values.)  Because Shared Values is the logical biconditional of Participant Values and Scientist Values, and the Shared Values $\times$ Participant Values is the logical conjunction, including all four variables (Participant, Scientist, and Shared Values, along with the interaction term) in a regression model creates perfect collinearity.  
+### Shared values and scientist values
+
+Without adjustments, Shared Values appears to have a substantial interaction with Participant Values:  Shared Values appears to increase perceived trustworthiness for participants who value public health, while decreasing perceived trustworthiness for participants who value economic growth [@fig-shared-part].  However, as indicated by our analysis for a potential shared values effect, the estimated effects for both shared values and participant values are biased if the model is not adjusted for scientist values.  (@fig-shared-dag and @tbl-shared show how this bias occurs.  Shared Values is a collider between Participant Values and Scientist Values; hence, if a model specification includes Participant Values and Shared values but not Scientist Values, there is an open path between Participant Values and METI, resulting in a biased estimate for Participant Values.)  Because Shared Values is the logical biconditional of Participant Values and Scientist Values, and the Shared Values $\times$ Participant Values interaction term is their logical conjunction, including all four variables (Participant, Scientist, and Shared Values, along with the interaction term) in a regression model creates perfect collinearity.  
 
 ![Data, group means, and 95% confidence intervals for H5d, interaction of shared values and participant values.  Panels correspond to participant values.](`r here(out_dir, '03_shared_part.png')`){#fig-shared-part}
 
-As we found above, rather than a shared values effect there appears to be an effect of scientist values.  Reploting the same data as @fig-shared-part based on scientist values, rather than shared values, suggests a more consistent effect across participant values [@fig-sci-part]. Therefore, to test whether an effect of scientist values might vary as a function of participants values, we regressed participants' METI of the scientist in the stimulus onto the Scientist Values variable, Participants' Values variable, and their interaction [@tbl-sci-part]. This model was significant, adj. R^2 .065, F(3, 563) = 14.15, p < .001. But estimates for both the scientist values term _[EL: shouldn't this be participants values term?]_ and interaction term were highly uncertain and not significant.  *[finish combining with older text below]*
+As we found above, rather than a shared values effect there appears to be an effect of scientist values.  Replotting the same data as @fig-shared-part based on scientist values, rather than shared values, suggests a more consistent effect across participant values (@fig-sci-part). Therefore, we conducted an unplanned post hoc analysis to test whether an effect of scientist values might vary as a function of participants values.  We regressed participants' METI of the scientist in the stimulus onto the Scientist Values variable, Participants' Values variable, and their interaction (@tbl-sci-part). This model was significant, adj. $R^2$ = 0.065, F(3, 563) = 14.15, p < .001. The estimate for the scientist values term was significant, $\beta$ = 0.53, t(563) = 2.26, p = 0.02, while the estimate for the interaction term was not, $\beta$ = 0.20, t(563) = 0.75, p = 0.45.  Estimates for both variables had large uncertainties, with confidence intervals of about 1 (95% confidence intervals, scientist values: 0.07, 1.0; interaction term: -0.32, 0.72).  
 
 ![Data, group means, and 95% confidence intervals for a potential interaction of scientist values and participant values. Panels correspond to participant values. This figure is identical to @fig-shared-part, except the columns in the economic growth panel have been switched.](`r here(out_dir, '03_sci_part.png')`){#fig-sci-part}
 
@@ -157,14 +176,8 @@ As we found above, rather than a shared values effect there appears to be an eff
 readRDS(here(out_dir, '03_sci_part_tbl.Rds'))
 ```
 
-
-To test whether a potential shared values effect might vary as a function of participants' values, we regressed participants' METI ratings of the scientist in the stimuli onto the Shared Values variable, Participants' Values variable, and the Shared Values by Participants' values interaction term. The full model was significant, adj. R^2 = .065, F(3, 563) = 14.15, p < .001 *[tbl]*.  The model revealed a significant interaction between Shared Values and Participants' Values, such that overall Shared Values had a positive effect when the participant valued public health, but a negative effect when the participant valued economic growth *[@fig-shared-part and tbl]*.  
-
-
-
-such that the highest perceived trustworthiness ratings were from participants who prioritized public health reading about a scientist who disclosed valuing public health. However, as revealed in our analysis for H4, the evidence that shared values between the participant and scientist are what predicts the perceived trustworthiness of a scientist should be interpreted with caution. Because of the inclusion of Participants' values and the Scientist's values in the analysis for H4, the set of predictor variables for that model and the set of predictor variables for this model are different linear combinations of each other. Hence why the resulting full model parameters are identical between the two models. In spite of this, we report the results of this analysis for the sake of completeness, as this was an a priori planned statistical analysis.
-
-Because of the findings from the analysis run to test H4, we conducted an unplanned post hoc analysis to further test the hypothesis that the effects found in the earlier analysis vary as a function of participants' values. For this test, we regression METI scores onto the Scientist's Values experimental condition, the Shared Values composite variable, and their interaction term. This is, as with the previous model and the model reported to test H4, a different linear combination of the same predictor variables and therefore the full model parameters are identical. However, presentation of the model this way renders a clearer picture of what variables we tested seem to be driving perceptions of the trustworthiness of a scientist. The evidence here suggests that if a scientist chooses to disclose their values alongside their presentation of scientific research, what values they share predicts their perceived trustworthiness, and that the scientist in our study who disclosed valuing public health was perceived a significantly more trustworthy than the scientist who disclosed valuing economic growth.
+*[maybe move to conclusion]*
+The evidence here suggests that if a scientist discloses their values alongside their presentation of scientific research, what values they share predicts their perceived trustworthiness, and that a scientist who discloses valuing public health will tend to be perceived as more trustworthy than the scientist who discloses valuing economic growth. 
 
 
 # Conclusion #
