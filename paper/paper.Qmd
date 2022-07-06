@@ -84,7 +84,7 @@ The study was approved by the UC Merced IRB on August 17, 2021, and data collect
 
 Data cleaning and analysis was conducted in R *[version, cite]*, with extensive use of the `tidyverse` suite of packages *[cite]*.  Regression tables were generated using the `gt` and `gtsummary` packages *[cites]*.  
 
-*[All original data and reproducible code is available at <https://github.com/dhicks/transparency>.  Instructions in that repository explain how to automatically reproduce our analysis.]*
+*[Anonymized original data and reproducible code are available at <https://github.com/dhicks/transparency>.  Instructions in that repository explain how to automatically reproduce our analysis.]*
 
 
 

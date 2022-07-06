@@ -1,0 +1,499 @@
+ourid,sci_values,conclusion,disclosure,pa_1,pa_2,pa_3,pa_4,pa_5,pa_6,pa_7,pa_mean,tradeoff,age,sex,ideology,educatio,part_values,shared_values
+1,public health,does not cause harm,TRUE,2,3,6,1,2,1,1,2.28571428571427,2,7,0,2,3,economic growth,FALSE
+2,public health,causes harm,TRUE,5,5,5,6,6,6,4.91,5.41571428571427,2,1,0,5,1,economic growth,FALSE
+3,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,2,5,0,7,1,economic growth,TRUE
+4,economic growth,causes harm,TRUE,4,4,4,4,4,4,4,4,2,6,1,7,1,economic growth,TRUE
+5,economic growth,does not cause harm,TRUE,4,4,5,4,4,4,4,4.14285714285714,3,3,1,4,2,public health,FALSE
+7,economic growth,causes harm,TRUE,5,5,5,5,4,4,4,4.57142857142859,2,3,1,2,2,economic growth,TRUE
+8,public health,causes harm,TRUE,7,7,6,5,7,7,6,6.42857142857141,1,9,0,2,1,economic growth,FALSE
+9,economic growth,does not cause harm,TRUE,5,5,6,3,3,4,3,4.14285714285714,4,6,0,6,2,public health,FALSE
+10,public health,does not cause harm,FALSE,4,5,5,4,5,3,4,4.28571428571427,3,2,1,5,1,public health,TRUE
+11,economic growth,does not cause harm,FALSE,4,4,5,4,4,5,4,4.28571428571427,4,5,1,6,3,public health,FALSE
+12,public health,does not cause harm,TRUE,2,2,4,2,2,5,2,2.71428571428573,3,10,1,3,4,public health,TRUE
+13,economic growth,does not cause harm,TRUE,4,5,5,3,4,3,4,4,2,2,0,3,1,economic growth,TRUE
+15,economic growth,causes harm,TRUE,7,5,5,7,7,6,6,6.14285714285714,4,5,0,4,2,public health,FALSE
+16,economic growth,causes harm,TRUE,5,4,4,4,4,3,4,4,4,3,1,6,3,public health,FALSE
+17,economic growth,does not cause harm,TRUE,3,3,2,1,1,1,2,1.85714285714286,4,4,0,5,3,public health,FALSE
+18,public health,does not cause harm,TRUE,6,6,6,5,5,6,6,5.71428571428573,4,2,0,6,3,public health,TRUE
+19,economic growth,does not cause harm,TRUE,5,6,7,6,7,6,4,5.85714285714286,1,2,1,3,3,economic growth,TRUE
+20,economic growth,does not cause harm,FALSE,7,7,7,7,7,7,7,7,2,5,0,2,4,economic growth,TRUE
+21,public health,does not cause harm,FALSE,3,4,5,2,2,2,2,2.85714285714286,4,6,0,4,3,public health,TRUE
+22,public health,causes harm,FALSE,6,6,6,6,6,6,6,6,1,4,1,6,2,economic growth,FALSE
+23,economic growth,does not cause harm,TRUE,6,5,6,4,4,3,4,4.57142857142859,3,3,1,4,3,public health,FALSE
+24,public health,does not cause harm,FALSE,5,5,5,3,3,5,5,4.42857142857141,2,3,0,6,3,economic growth,FALSE
+25,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,3,4,1,2,1,public health,TRUE
+26,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,3,9,1,2,3,public health,TRUE
+27,economic growth,causes harm,TRUE,6,6,5,6,7,1,7,5.42857142857141,2,3,0,4,3,economic growth,TRUE
+28,public health,causes harm,TRUE,6,4,5,6,6,6,5,5.42857142857141,2,3,1,4,3,economic growth,FALSE
+29,public health,causes harm,FALSE,4,3,4,5,3,5,3,3.85714285714286,2,2,0,3,3,economic growth,FALSE
+31,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,3,5,NA,4,3,public health,FALSE
+32,public health,does not cause harm,TRUE,4,3,4,4,3,6,4,4,2,1,0,4,3,economic growth,FALSE
+33,public health,causes harm,FALSE,6,5,6,5,5,5,5,5.28571428571427,2,5,1,4,1,economic growth,FALSE
+34,economic growth,causes harm,FALSE,6,6,6,6,6,7,4,5.85714285714286,2,3,1,6,2,economic growth,TRUE
+35,economic growth,causes harm,FALSE,7,6,7,7,7,7,7,6.85714285714286,2,2,1,6,1,economic growth,TRUE
+36,economic growth,causes harm,TRUE,3,3,4,4,4,5,3,3.71428571428573,2,2,1,4,2,economic growth,TRUE
+37,economic growth,does not cause harm,FALSE,4,4,4,2,2,2,2,2.85714285714286,3,4,1,7,3,public health,FALSE
+38,economic growth,causes harm,FALSE,6,4,5,4,5,6,5,5,2,2,1,3,3,economic growth,TRUE
+39,public health,does not cause harm,FALSE,5,5,6,3,3,5,2,4.14285714285714,3,7,0,6,2,public health,TRUE
+40,economic growth,causes harm,TRUE,7,7,7,7,6,7,6,6.71428571428573,4,6,0,6,3,public health,FALSE
+41,public health,does not cause harm,TRUE,6,6,6,6,6,6,6,6,2,5,1,3,3,economic growth,FALSE
+42,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,2,3,0,6,3,economic growth,TRUE
+43,economic growth,does not cause harm,TRUE,7,7,7,7,7,7,7,7,3,2,1,7,1,public health,FALSE
+44,economic growth,does not cause harm,TRUE,6,5,6,6,4,4,5,5.14285714285714,4,4,1,4,1,public health,FALSE
+45,economic growth,causes harm,TRUE,7,6,6,5,6,6,6,6,4,4,0,3,4,public health,FALSE
+46,public health,does not cause harm,FALSE,5,5,5,5,5,5,4,4.85714285714286,3,5,1,5,3,public health,TRUE
+47,economic growth,does not cause harm,TRUE,6,6,7,6,6,6,6,6.14285714285714,2,9,0,2,1,economic growth,TRUE
+48,public health,causes harm,TRUE,4,5,5,5,5,6,4,4.85714285714286,2,4,1,4,1,economic growth,FALSE
+49,public health,causes harm,TRUE,6,7,7,6,6,7,7,6.57142857142859,4,7,1,6,1,public health,TRUE
+50,public health,does not cause harm,TRUE,3,2,3,1,1,1,3,2,2,3,1,6,1,economic growth,FALSE
+51,public health,does not cause harm,FALSE,6,6,6,6,6,4,7,5.85714285714286,2,6,0,3,3,economic growth,FALSE
+52,public health,does not cause harm,FALSE,7,7,7,7,7,7,7,7,3,7,1,7,1,public health,TRUE
+53,economic growth,does not cause harm,FALSE,4,3,6,3,3,3,3,3.57142857142859,2,5,1,5,1,economic growth,TRUE
+54,public health,does not cause harm,TRUE,5,5,6,5,5,5,4,5,4,3,1,5,2,public health,TRUE
+55,public health,causes harm,TRUE,3,3,3,2,3,3,4,3,1,4,0,4,3,economic growth,FALSE
+56,public health,causes harm,TRUE,6,6,4,6,6,6,6,5.71428571428573,4,10,0,4,3,public health,TRUE
+57,public health,does not cause harm,TRUE,6,6,7,7,7,6,6,6.42857142857141,3,3,0,6,3,public health,TRUE
+58,economic growth,does not cause harm,FALSE,5,6,6,5,5,6,6,5.57142857142859,2,3,0,2,4,economic growth,TRUE
+59,public health,causes harm,TRUE,5,5,5,5,5,5,5,5,2,5,0,3,4,economic growth,FALSE
+60,public health,causes harm,TRUE,5.24,5,5,5,5,5,5,5.03428571428573,2,4,0,4,3,economic growth,FALSE
+61,economic growth,does not cause harm,TRUE,6,6,5,6,6,6,6,5.85714285714286,2,5,0,3,4,economic growth,TRUE
+62,economic growth,does not cause harm,TRUE,6,7,7,3,3,5,4,5,4,10,1,7,1,public health,FALSE
+63,economic growth,causes harm,FALSE,7,7,7,5,5,6,6,6.14285714285714,4,3,1,6,4,public health,FALSE
+64,public health,does not cause harm,TRUE,6,6,6,6,6,6,6,6,2,4,0,4,1,economic growth,FALSE
+65,economic growth,causes harm,FALSE,5,5,5,5,5,4,5,4.85714285714286,2,2,0,5,3,economic growth,TRUE
+66,economic growth,does not cause harm,TRUE,3,4,3,1,2,5.04,2,2.86285714285714,4,4,0,7,3,public health,FALSE
+67,public health,does not cause harm,TRUE,4,4,4,4,4,4,4,4,2,4,0,6,3,economic growth,FALSE
+68,economic growth,does not cause harm,TRUE,4,4,4,4,4,4,4,4,2,2,0,6,2,economic growth,TRUE
+69,economic growth,causes harm,TRUE,4,4,4,3,4,5,4,4,4,5,0,6,3,public health,FALSE
+70,economic growth,causes harm,FALSE,7,7,7,5,5,5,7,6.14285714285714,2,6,1,2,3,economic growth,TRUE
+71,economic growth,does not cause harm,TRUE,5,5,5,4,4,4,4,4.42857142857141,3,7,1,5,4,public health,FALSE
+72,public health,does not cause harm,FALSE,6,6,6,6,6,6,6,6,4,3,1,6,3,public health,TRUE
+73,economic growth,causes harm,TRUE,5,5,6,6,7,5,5,5.57142857142859,3,2,1,7,2,public health,FALSE
+74,public health,does not cause harm,FALSE,6,7,7,4,4,4,6,5.42857142857141,2,6,1,4,3,economic growth,FALSE
+75,economic growth,does not cause harm,TRUE,7,7,7,5,5,6,6,6.14285714285714,2,3,1,4,3,economic growth,TRUE
+76,public health,does not cause harm,TRUE,6,6,6,5,6,5,5,5.57142857142859,2,3,0,4,3,economic growth,FALSE
+77,economic growth,causes harm,TRUE,5,5,6,6,6,5,6,5.57142857142859,3,6,1,6,4,public health,FALSE
+78,economic growth,causes harm,TRUE,5,5,4,4,4,4,4,4.28571428571427,4,3,1,6,4,public health,FALSE
+79,economic growth,causes harm,TRUE,7,7,7,6,6,7,7,6.71428571428573,2,3,0,5,1,economic growth,TRUE
+80,public health,causes harm,FALSE,4,4,3,5,4,6,4,4.28571428571427,2,2,0,4,2,economic growth,FALSE
+81,public health,causes harm,TRUE,7,5.23,7,7,7,7,7,6.74714285714286,4,4,0,4,3,public health,TRUE
+82,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,3,7,1,6,1,public health,TRUE
+83,public health,does not cause harm,FALSE,4,3,5,6,3,3,6,4.28571428571427,1,2,0,6,4,economic growth,FALSE
+84,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,3,10,0,3,3,public health,TRUE
+85,public health,causes harm,TRUE,7,4,6,4,4,7,4,5.14285714285714,4,3,1,4,1,public health,TRUE
+86,public health,does not cause harm,TRUE,4,4,4,2,2,4,2,3.14285714285714,4,8,1,5,4,public health,TRUE
+87,economic growth,does not cause harm,TRUE,7,6,7,4,4,5,4,5.28571428571427,4,3,0,6,2,public health,FALSE
+89,economic growth,does not cause harm,FALSE,1,1,1,1,1,1,1,1,4,3,0,7,3,public health,FALSE
+90,public health,does not cause harm,TRUE,5,6,7,4,4,4,5,5,2,5,0,5,3,economic growth,FALSE
+91,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,3,2,0,5,1,public health,TRUE
+92,economic growth,does not cause harm,TRUE,5,5,6,4,4,5,6,5,2,1,0,1,1,economic growth,TRUE
+93,economic growth,causes harm,TRUE,7,7,7,5,6,7,6,6.42857142857141,4,7,0,2,1,public health,FALSE
+94,economic growth,causes harm,TRUE,6,6,6,7,6,5,6,6,2,5,1,2,2,economic growth,TRUE
+95,public health,causes harm,FALSE,6,6,5,5,5,6,5,5.42857142857141,3,3,0,5,2,public health,TRUE
+96,public health,does not cause harm,TRUE,4,4,4,4,4,5,5,4.28571428571427,4,5,0,3,3,public health,TRUE
+97,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,2,4,1,4,3,economic growth,TRUE
+98,economic growth,causes harm,TRUE,4,5,4,4,4,4,5,4.28571428571427,3,4,0,6,1,public health,FALSE
+100,public health,does not cause harm,TRUE,5,6,6,5,6,6,6,5.71428571428573,2,4,0,2,3,economic growth,FALSE
+101,economic growth,does not cause harm,TRUE,5,4,5,5,4,5,5,4.71428571428573,2,3,0,6,3,economic growth,TRUE
+102,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,2,3,0,2,3,economic growth,TRUE
+103,public health,causes harm,TRUE,7,5.23,7,6,6,6,7,6.31857142857141,2,5,1,3,4,economic growth,FALSE
+104,economic growth,does not cause harm,TRUE,4,4,4,3,3,2,3,3.28571428571427,3,3,0,7,1,public health,FALSE
+105,public health,does not cause harm,FALSE,6,6,6,6,6,6,6,6,2,5,0,2,1,economic growth,FALSE
+106,economic growth,causes harm,TRUE,4,5,5,4,4,3,3,4,3,3,1,6,3,public health,FALSE
+107,economic growth,does not cause harm,TRUE,4,4,4,4,4,4,3,3.85714285714286,4,4,0,5,2,public health,FALSE
+108,public health,causes harm,FALSE,6,7,6,6,6,5,7,6.14285714285714,3,4,0,4,3,public health,TRUE
+109,economic growth,does not cause harm,TRUE,4,3,5,1,1,1,1,2.28571428571427,4,4,0,6,1,public health,FALSE
+111,economic growth,does not cause harm,TRUE,5,5,5,4,4,4,5,4.57142857142859,4,3,1,6,1,public health,FALSE
+112,economic growth,does not cause harm,FALSE,4,4,4,4,4,3,3,3.71428571428573,4,2,1,4,2,public health,FALSE
+113,economic growth,causes harm,TRUE,6,4,6,7,7,7,6,6.14285714285714,3,8,0,2,3,public health,FALSE
+114,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,4,3,1,7,4,public health,TRUE
+115,economic growth,does not cause harm,TRUE,2,4,4,2,2,4,2,2.85714285714286,4,8,1,6,2,public health,FALSE
+116,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,4,3,0,7,1,public health,TRUE
+117,economic growth,does not cause harm,TRUE,4,4,3,2,2,2,1,2.57142857142859,2,3,1,6,1,economic growth,TRUE
+118,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,1,10,0,4,2,economic growth,FALSE
+119,public health,does not cause harm,TRUE,7,7,7,6,6,6,7,6.57142857142859,3,3,0,6,3,public health,TRUE
+120,economic growth,causes harm,FALSE,7,6,7,7,7,7,7,6.85714285714286,4,4,1,7,1,public health,FALSE
+121,public health,does not cause harm,TRUE,5,5,5,5,5,5,5,5,3,5,1,4,3,public health,TRUE
+122,economic growth,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,3,1,6,1,public health,FALSE
+123,economic growth,causes harm,TRUE,5,5,5,5,6,6,6,5.42857142857141,4,4,1,5,3,public health,FALSE
+124,public health,does not cause harm,TRUE,6,6,7,6,6,6,6,6.14285714285714,4,6,0,4,3,public health,TRUE
+125,public health,does not cause harm,FALSE,4,4,4,4,4,4,4,4,4,6,1,7,3,public health,TRUE
+126,economic growth,causes harm,FALSE,6,6,6,6,6,6,6,6,3,5,1,7,1,public health,FALSE
+127,economic growth,does not cause harm,FALSE,7,7,7,7,7,7,7,7,1,4,0,1,3,economic growth,TRUE
+128,economic growth,does not cause harm,FALSE,6,7,7,5,5,5,7,6,3,3,0,5,3,public health,FALSE
+129,economic growth,causes harm,FALSE,4,4,4,4,4,4,4,4,3,2,0,6,1,public health,FALSE
+130,economic growth,does not cause harm,TRUE,4,5,5,4,4,4,4,4.28571428571427,1,3,0,4,3,economic growth,TRUE
+131,economic growth,causes harm,TRUE,7,7,7,6,6,6,6,6.42857142857141,4,4,0,2,1,public health,FALSE
+132,economic growth,causes harm,TRUE,7,6,6,6,6,6,7,6.28571428571427,4,4,1,7,4,public health,FALSE
+133,economic growth,causes harm,FALSE,6,6,6,6,6,6,6,6,2,5,1,4,2,economic growth,TRUE
+134,public health,does not cause harm,FALSE,5,5,6,5,4,5,5,5,2,4,1,7,3,economic growth,FALSE
+135,public health,does not cause harm,TRUE,5,5,5,4,4,4,4,4.42857142857141,4,6,0,4,2,public health,TRUE
+136,economic growth,does not cause harm,FALSE,5,5,7,5,5,6,6,5.57142857142859,1,6,0,3,2,economic growth,TRUE
+137,public health,causes harm,TRUE,7,7,7,6,6,6,7,6.57142857142859,3,6,1,2,1,public health,TRUE
+138,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,4,3,0,6,2,public health,TRUE
+140,economic growth,does not cause harm,TRUE,4,3,2,1,2,3,2,2.42857142857141,2,4,0,5,1,economic growth,TRUE
+141,economic growth,does not cause harm,TRUE,2,2,2,1,1,2,2,1.71428571428573,3,10,0,4,4,public health,FALSE
+142,public health,does not cause harm,TRUE,5,4,5,4,4,4,5,4.42857142857141,4,9,0,3,3,public health,TRUE
+143,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,1,4,1,6,3,economic growth,FALSE
+144,public health,causes harm,TRUE,6,6,7,6,6,7,7,6.42857142857141,4,10,1,3,3,public health,TRUE
+145,economic growth,does not cause harm,TRUE,4,4,6,4,4,4,4,4.28571428571427,4,3,0,6,3,public health,FALSE
+146,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,3,4,1,4,1,public health,TRUE
+147,public health,does not cause harm,TRUE,6,6,7,7,7,7,7,6.71428571428573,4,6,0,6,1,public health,TRUE
+148,economic growth,does not cause harm,TRUE,5,4,6,5,5,4,3,4.57142857142859,4,4,0,6,3,public health,FALSE
+149,economic growth,causes harm,TRUE,6,7,6,5,7,6,6,6.14285714285714,3,3,1,7,3,public health,FALSE
+150,public health,does not cause harm,TRUE,4,3,4,4,5,6,3,4.14285714285714,4,4,1,4,3,public health,TRUE
+151,public health,causes harm,TRUE,7,4,5,5,7,7,7,6,2,4,1,3,1,economic growth,FALSE
+152,economic growth,does not cause harm,TRUE,4,5.23,4,4,5,6,6,4.89,3,3,1,4,4,public health,FALSE
+153,public health,causes harm,TRUE,5,5,3,1,1,3,2,2.85714285714286,1,4,0,2,1,economic growth,FALSE
+154,economic growth,causes harm,TRUE,5,6,6,7,5,6,7,6,2,4,1,1,2,economic growth,TRUE
+155,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,2,4,0,7,3,economic growth,FALSE
+156,economic growth,does not cause harm,TRUE,5,5,5,3,3,3,4,4,2,2,0,6,1,economic growth,TRUE
+157,public health,causes harm,FALSE,5,5,5,4,4,5,5,4.71428571428573,2,8,1,2,1,economic growth,FALSE
+159,economic growth,does not cause harm,TRUE,3,2,7,1,1,6,1,3,4,7,1,6,3,public health,FALSE
+160,economic growth,causes harm,TRUE,5,4,4,3,4,3,3,3.71428571428573,3,3,0,5,4,public health,FALSE
+161,economic growth,does not cause harm,TRUE,4,4,4,4,4,4,4,4,2,3,0,4,3,economic growth,TRUE
+162,economic growth,does not cause harm,FALSE,6,6,6,6,6,6,6,6,4,9,1,4,2,public health,FALSE
+163,economic growth,causes harm,TRUE,5,5,5,5,5,4,5,4.85714285714286,3,8,1,6,3,public health,FALSE
+164,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,2,5,0,3,3,economic growth,FALSE
+165,public health,causes harm,TRUE,5,5,6,4,5,4,6,5,3,5,0,5,1,public health,TRUE
+166,public health,does not cause harm,TRUE,5,5,6,4,5,5,5,5,3,4,0,4,2,public health,TRUE
+167,public health,does not cause harm,TRUE,5,5,7,4,5,4,5,5,4,3,1,7,2,public health,TRUE
+168,public health,does not cause harm,TRUE,6,6,6,5,5,5,6,5.57142857142859,1,3,0,2,4,economic growth,FALSE
+169,public health,causes harm,FALSE,7,7,6,7,7,7,7,6.85714285714286,4,7,0,3,3,public health,TRUE
+170,economic growth,does not cause harm,FALSE,6,6,6,6,6,6,6,6,3,3,0,6,3,public health,FALSE
+171,economic growth,causes harm,TRUE,6,6,6,6,6,6,6,6,3,3,0,7,3,public health,FALSE
+172,public health,does not cause harm,FALSE,4,5,5,4,4,4,5,4.42857142857141,3,4,0,5,3,public health,TRUE
+173,public health,does not cause harm,FALSE,7,7,7,7,7,7,7,7,3,2,0,6,1,public health,TRUE
+174,economic growth,causes harm,TRUE,6,6,6,5,6,6,5,5.71428571428573,4,4,0,4,3,public health,FALSE
+175,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,2,4,1,7,3,economic growth,FALSE
+176,economic growth,does not cause harm,TRUE,4,1,5,1,2,5.04,4,3.14857142857141,3,10,1,2,3,public health,FALSE
+177,public health,causes harm,TRUE,5,6,6,5,5,5,4,5.14285714285714,1,3,0,4,3,economic growth,FALSE
+178,public health,causes harm,TRUE,3,2,4,1,1,5,3,2.71428571428573,3,4,0,2,1,public health,TRUE
+179,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,2,9,1,6,4,economic growth,TRUE
+180,economic growth,does not cause harm,FALSE,3,3,3,3,3,4,3,3.14285714285714,4,10,0,7,4,public health,FALSE
+181,economic growth,does not cause harm,FALSE,6,6,6,6,6,6,6,6,2,5,1,6,3,economic growth,TRUE
+182,public health,does not cause harm,FALSE,5,5,5,4.7,4,4,4,4.52857142857141,3,2,0,6,3,public health,TRUE
+183,economic growth,does not cause harm,FALSE,6,6,6,6,6,7,6,6.14285714285714,3,2,1,4,1,public health,FALSE
+184,economic growth,causes harm,TRUE,4,4,4,4,4,4,4,4,3,7,1,6,4,public health,FALSE
+185,economic growth,causes harm,TRUE,6,4,6,6,7,5,6,5.71428571428573,2,4,0,6,2,economic growth,TRUE
+186,public health,does not cause harm,TRUE,4,4,6,4,5,4,4,4.42857142857141,3,6,1,5,3,public health,TRUE
+187,economic growth,causes harm,TRUE,3,4,4,4,5,4,4,4,2,3,1,6,3,economic growth,TRUE
+188,economic growth,does not cause harm,TRUE,5,5,6,3,3,3,2,3.85714285714286,3,6,1,6,1,public health,FALSE
+189,economic growth,does not cause harm,TRUE,4,4,4,4,4,5,4,4.14285714285714,4,7,1,6,3,public health,FALSE
+190,economic growth,does not cause harm,TRUE,5,4,6,1,1,2,3,3.14285714285714,2,3,1,3,2,economic growth,TRUE
+191,economic growth,does not cause harm,TRUE,7,7,7,4,4,4,4,5.28571428571427,3,9,1,7,1,public health,FALSE
+192,public health,does not cause harm,TRUE,5,6,5,4,6,5,5,5.14285714285714,2,4,0,6,2,economic growth,FALSE
+193,economic growth,does not cause harm,TRUE,4,4,6,3,3,4,3,3.85714285714286,4,4,0,7,3,public health,FALSE
+194,public health,causes harm,FALSE,7,6,6,7,7,7,7,6.71428571428573,4,3,1,6,1,public health,TRUE
+195,economic growth,causes harm,TRUE,5,5,6,5,6,7,5,5.57142857142859,1,4,0,1,3,economic growth,TRUE
+196,public health,does not cause harm,TRUE,6,6,6,4.7,1,1,3,3.95714285714286,2,6,0,4,3,economic growth,FALSE
+197,economic growth,causes harm,TRUE,7,6,7,7,7,7,7,6.85714285714286,4,4,0,6,3,public health,FALSE
+198,public health,causes harm,TRUE,4,5,5,3,3,4,3,3.85714285714286,2,2,0,4,1,economic growth,FALSE
+199,economic growth,does not cause harm,TRUE,6,7,7,5,5,4,5,5.57142857142859,3,9,1,2,1,public health,FALSE
+200,public health,causes harm,TRUE,7,6,6,6,6,6,6,6.14285714285714,4,3,0,7,3,public health,TRUE
+201,public health,does not cause harm,TRUE,5,5,5,5,5,7,4,5.14285714285714,2,2,0,4,3,economic growth,FALSE
+202,public health,causes harm,TRUE,5,6,6,4,4,4,4,4.71428571428573,4,4,1,6,1,public health,TRUE
+203,economic growth,does not cause harm,FALSE,3,3,3,3,3,3,3,3,4,6,1,4,1,public health,FALSE
+204,economic growth,causes harm,FALSE,6,6,6,5,5,5,5,5.42857142857141,2,5,0,5,3,economic growth,TRUE
+205,economic growth,does not cause harm,TRUE,1,1,1,1,1,1,1,1,2,2,1,6,3,economic growth,TRUE
+206,economic growth,does not cause harm,FALSE,6,5,7,5,6,6,5,5.71428571428573,2,2,0,5,3,economic growth,TRUE
+207,public health,does not cause harm,TRUE,5,6,6,3,3,4,4,4.42857142857141,2,5,1,4,2,economic growth,FALSE
+208,public health,causes harm,TRUE,5,4,6,4,4,6,4,4.71428571428573,3,5,1,4,2,public health,TRUE
+209,public health,does not cause harm,TRUE,6,6,6,5,5,5,5,5.42857142857141,2,5,0,4,4,economic growth,FALSE
+210,public health,causes harm,FALSE,5,4,4,6,5,7,5,5.14285714285714,3,4,0,5,4,public health,TRUE
+211,public health,causes harm,TRUE,5,5,5,5,5,5,5,5,2,3,1,4,1,economic growth,FALSE
+212,economic growth,causes harm,FALSE,5,5,5,6,5,5,5,5.14285714285714,2,3,0,4,2,economic growth,TRUE
+213,economic growth,does not cause harm,TRUE,5,6,6,1,1,1,1,3,4,10,1,1,3,public health,FALSE
+214,public health,causes harm,TRUE,5,5,5,4,4,4,5,4.57142857142859,1,4,1,5,2,economic growth,FALSE
+215,public health,does not cause harm,FALSE,7,7,6,7,7,7,6,6.71428571428573,2,7,1,3,3,economic growth,FALSE
+216,economic growth,causes harm,TRUE,5,5,6,5,5,4,5,5,4,4,1,4,1,public health,FALSE
+217,economic growth,does not cause harm,FALSE,4,4,4,4,4,4,4,4,4,2,0,4,3,public health,FALSE
+219,public health,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,4,0,7,1,public health,TRUE
+220,public health,does not cause harm,FALSE,4,4,4,6,6,6,6,5.14285714285714,3,4,1,6,2,public health,TRUE
+221,public health,does not cause harm,TRUE,4,4,4,4,4,4,4,4,3,4,0,3,3,public health,TRUE
+222,economic growth,does not cause harm,FALSE,4,3,3,2,3,2,3,2.85714285714286,2,3,1,5,2,economic growth,TRUE
+223,economic growth,does not cause harm,FALSE,5.24,7,7,7,7,7,7,6.74857142857141,4,3,0,3,2,public health,FALSE
+224,public health,does not cause harm,TRUE,6,5,5,6,6,6,5,5.57142857142859,3,3,0,4,3,public health,TRUE
+225,economic growth,does not cause harm,TRUE,1,2,2,1,1,1,1,1.28571428571427,4,6,0,6,1,public health,FALSE
+226,public health,causes harm,TRUE,4,4,5,5,5,7,6,5.14285714285714,4,10,1,7,1,public health,TRUE
+227,public health,does not cause harm,TRUE,5,6,6,5,5,5,6,5.42857142857141,3,4,0,5,4,public health,TRUE
+228,economic growth,does not cause harm,TRUE,6,5,5,6,7,6,6,5.85714285714286,1,2,0,6,2,economic growth,TRUE
+229,economic growth,causes harm,FALSE,4,4,4,3,3,4,3,3.57142857142859,2,3,0,4,2,economic growth,TRUE
+230,public health,does not cause harm,TRUE,5,6,6,4,4,4,5,4.85714285714286,3,4,1,5,4,public health,TRUE
+231,public health,does not cause harm,TRUE,5.24,4,3,1,2,2,2,2.74857142857141,1,3,0,4,1,economic growth,FALSE
+232,economic growth,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,6,1,1,1,public health,FALSE
+233,economic growth,does not cause harm,FALSE,6,6,6,4,4,7,6,5.57142857142859,3,8,1,4,4,public health,FALSE
+234,public health,does not cause harm,TRUE,1,1,2,1,1,1,1,1.14285714285714,2,4,0,6,1,economic growth,FALSE
+235,economic growth,does not cause harm,TRUE,4,4,4,3,3,4,4,3.71428571428573,4,6,1,6,2,public health,FALSE
+236,economic growth,does not cause harm,FALSE,4,4,4,4,4,4,4,4,2,3,0,4,4,economic growth,TRUE
+237,public health,does not cause harm,FALSE,5,5,6,3,4,3,3,4.14285714285714,3,6,1,6,1,public health,TRUE
+238,economic growth,causes harm,TRUE,2,5,4,2,7,3,4,3.85714285714286,4,3,1,7,3,public health,FALSE
+239,economic growth,does not cause harm,TRUE,5,4,5,1,2,3,1,3,2,5,0,1,3,economic growth,TRUE
+240,public health,does not cause harm,FALSE,4,4,4,4,4,4,4,4,4,4,0,7,3,public health,TRUE
+241,public health,does not cause harm,TRUE,5,6,6,4,4,4,5,4.85714285714286,3,6,1,2,3,public health,TRUE
+242,economic growth,causes harm,TRUE,6,6,7,6,6,7,6,6.28571428571427,3,6,0,3,2,public health,FALSE
+243,economic growth,causes harm,FALSE,6,6,7,4,4,6,5,5.42857142857141,4,6,0,6,3,public health,FALSE
+244,economic growth,does not cause harm,TRUE,6,6,7,5,5,6,6,5.85714285714286,2,2,0,6,1,economic growth,TRUE
+245,economic growth,does not cause harm,FALSE,4,6,5.51,5,4.84,5,5,5.05,3,2,0,5,1,public health,FALSE
+246,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,5,1,1,3,public health,FALSE
+247,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,4,3,NA,7,3,public health,TRUE
+249,public health,does not cause harm,TRUE,4,4,5,4,4,4,4,4.14285714285714,4,3,0,7,3,public health,TRUE
+250,economic growth,does not cause harm,FALSE,4,4,4,4,4,4,4,4,2,4,1,6,2,economic growth,TRUE
+251,economic growth,causes harm,TRUE,5,5,5,2,6,6,4,4.71428571428573,3,7,1,5,3,public health,FALSE
+252,public health,does not cause harm,TRUE,4,6,7,5,5,7,4,5.42857142857141,3,3,1,7,3,public health,TRUE
+253,economic growth,causes harm,TRUE,5,5,5,5,5,5,5,5,1,5,1,4,1,economic growth,TRUE
+254,public health,causes harm,TRUE,4,4,5.51,4,4,4,4,4.21571428571427,2,5,0,4,3,economic growth,FALSE
+255,economic growth,does not cause harm,FALSE,4,5,5,4,5,5,5,4.71428571428573,3,2,1,1,2,public health,FALSE
+256,economic growth,causes harm,FALSE,4,4,4,4,4.84,4,4,4.12,3,3,0,4,1,public health,FALSE
+257,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,2,5,0,4,2,economic growth,TRUE
+258,economic growth,causes harm,TRUE,6,7,6,7,6,7,7,6.57142857142859,2,4,0,3,3,economic growth,TRUE
+259,public health,does not cause harm,TRUE,6,6,6,5,5,5,5,5.42857142857141,2,4,1,4,4,economic growth,FALSE
+260,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,4,6,1,6,2,public health,TRUE
+261,economic growth,causes harm,FALSE,2,2,3,1,2,2,1,1.85714285714286,2,4,1,1,3,economic growth,TRUE
+262,public health,does not cause harm,FALSE,6,6,6,6,6,6,6,6,2,5,1,2,3,economic growth,FALSE
+263,public health,does not cause harm,TRUE,6,6,6,6,6,6,6,6,2,6,0,6,3,economic growth,FALSE
+264,public health,does not cause harm,TRUE,1,1,1,1,1,1,1,1,2,3,1,4,3,economic growth,FALSE
+265,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,3,0,5,1,public health,FALSE
+266,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,2,3,1,7,2,economic growth,FALSE
+267,public health,does not cause harm,FALSE,7,7,7,6,6,6,6,6.42857142857141,3,7,1,4,4,public health,TRUE
+268,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,1,5,0,4,1,economic growth,TRUE
+269,public health,does not cause harm,FALSE,4,4,4,1,1,1,1,2.28571428571427,2,4,1,6,3,economic growth,FALSE
+270,public health,does not cause harm,FALSE,5,5,6,5,5,4,5,5,2,6,1,4,1,economic growth,FALSE
+271,economic growth,causes harm,TRUE,7,5,7,5,7,7,5,6.14285714285714,1,4,1,6,1,economic growth,TRUE
+272,economic growth,causes harm,TRUE,2,6,7,1,1,1,1,2.71428571428573,4,10,1,6,3,public health,FALSE
+273,public health,causes harm,TRUE,7,7,7,7,6,7,7,6.85714285714286,2,9,1,7,1,economic growth,FALSE
+274,economic growth,does not cause harm,TRUE,5,6,7,4,4,5,5,5.14285714285714,1,3,0,4,1,economic growth,TRUE
+275,public health,causes harm,TRUE,6,6,7,6,6,6,6,6.14285714285714,4,2,1,7,3,public health,TRUE
+276,public health,causes harm,TRUE,5,5,5,5,6,6,6,5.42857142857141,2,3,1,5,3,economic growth,FALSE
+277,economic growth,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,3,0,7,2,public health,FALSE
+278,economic growth,does not cause harm,TRUE,4,5,6,4,3,4,4,4.28571428571427,3,2,1,7,3,public health,FALSE
+279,economic growth,does not cause harm,FALSE,6,6,6,6,6,5,5,5.71428571428573,2,8,0,2,4,economic growth,TRUE
+280,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,1,4,1,6,4,economic growth,FALSE
+281,public health,causes harm,TRUE,6,6,6,5,5,5,5,5.42857142857141,2,3,0,6,3,economic growth,FALSE
+282,economic growth,does not cause harm,TRUE,3,3,4,1,1,1,3,2.28571428571427,4,1,0,6,3,public health,FALSE
+283,public health,causes harm,FALSE,6,5,6,5,6,5,5,5.42857142857141,2,3,0,3,3,economic growth,FALSE
+284,public health,does not cause harm,TRUE,7,7,7,6,6,6,6,6.42857142857141,1,7,1,3,1,economic growth,FALSE
+285,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,7,1,6,2,public health,FALSE
+286,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,1,5,1,1,3,economic growth,TRUE
+287,public health,does not cause harm,TRUE,6,7,7,5,6,7,5,6.14285714285714,2,2,0,4,1,economic growth,FALSE
+288,public health,causes harm,TRUE,6,6,6,6,6,7,6,6.14285714285714,4,4,0,7,3,public health,TRUE
+289,economic growth,does not cause harm,TRUE,4,4,4,1,1,4,1,2.71428571428573,4,10,1,3,3,public health,FALSE
+290,economic growth,does not cause harm,TRUE,5,5,7,6,6,6,6,5.85714285714286,2,2,0,5,1,economic growth,TRUE
+291,public health,does not cause harm,TRUE,4,3,3,3,4,4,3,3.42857142857141,4,4,1,4,4,public health,TRUE
+292,economic growth,causes harm,TRUE,5,7,7,3,6,4,7,5.57142857142859,1,2,1,1,3,economic growth,TRUE
+293,economic growth,causes harm,TRUE,5,6,6,4,7,7,5,5.71428571428573,4,4,0,3,2,public health,FALSE
+294,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,1,6,0,4,1,economic growth,TRUE
+295,economic growth,does not cause harm,TRUE,6,6,6,6,6,6,6,6,3,2,1,2,3,public health,FALSE
+296,public health,causes harm,TRUE,6,5,6,5,6,5,5,5.42857142857141,3,2,0,6,2,public health,TRUE
+297,public health,does not cause harm,FALSE,6,6,6,4,4,4,5,5,3,10,0,6,4,public health,TRUE
+299,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,3,5,1,7,2,public health,FALSE
+300,public health,does not cause harm,FALSE,7,7,5.51,6,6,6,6,6.21571428571427,NA,10,1,2,2,NA,NA
+301,economic growth,does not cause harm,TRUE,3,4,4,2,4.84,2,2,3.12,3,4,0,6,2,public health,FALSE
+302,public health,does not cause harm,FALSE,4,4,4,4,3,3,3,3.57142857142859,4,7,1,6,2,public health,TRUE
+303,economic growth,does not cause harm,TRUE,5,5,5,4,4,4,5,4.57142857142859,3,4,0,2,1,public health,FALSE
+304,economic growth,causes harm,TRUE,6,6,7,6,6,7,6,6.28571428571427,4,10,1,5,1,public health,FALSE
+305,economic growth,causes harm,TRUE,4,3,4,2,2,3,2,2.85714285714286,4,3,0,3,3,public health,FALSE
+306,economic growth,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,10,0,2,3,public health,FALSE
+307,public health,causes harm,FALSE,6,4,4,5,5,5,5,4.85714285714286,4,6,0,5,1,public health,TRUE
+308,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,8,0,2,1,public health,FALSE
+309,public health,causes harm,TRUE,5,5,5,4,4,4,4,4.42857142857141,3,5,1,4,3,public health,TRUE
+310,public health,causes harm,FALSE,5,5,5,4,4,5,5,4.71428571428573,1,4,0,1,3,economic growth,FALSE
+311,public health,causes harm,TRUE,4,4,4,4,4,4,4,4,2,4,0,4,2,economic growth,FALSE
+312,economic growth,does not cause harm,TRUE,5,5,5,5,5,5,4,4.85714285714286,3,1,0,7,1,public health,FALSE
+313,economic growth,causes harm,TRUE,5,6,6,5,7,6,6,5.85714285714286,3,2,1,2,1,public health,FALSE
+314,economic growth,does not cause harm,TRUE,3,2,3,3,4,4,5,3.42857142857141,3,4,1,3,2,public health,FALSE
+315,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,1,4,1,3,1,economic growth,FALSE
+316,public health,does not cause harm,TRUE,6,6,6,7,6,6,6,6.14285714285714,4,5,1,6,1,public health,TRUE
+317,public health,does not cause harm,TRUE,5,5,6,6,6,5,5,5.42857142857141,1,2,0,6,1,economic growth,FALSE
+318,public health,does not cause harm,FALSE,5,6,6,4,5,5,5,5.14285714285714,1,4,1,4,3,economic growth,FALSE
+319,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,3,3,1,1,1,public health,TRUE
+320,economic growth,does not cause harm,FALSE,5,6,7,4,4,5,6,5.28571428571427,4,3,1,6,1,public health,FALSE
+321,economic growth,causes harm,FALSE,7,7,7,6,7,7,7,6.85714285714286,3,6,1,6,2,public health,FALSE
+322,economic growth,does not cause harm,TRUE,4,4,6,4,4,4,4,4.28571428571427,4,1,1,6,1,public health,FALSE
+323,public health,does not cause harm,TRUE,4,4,4,4,4,4,4,4,4,4,0,4,1,public health,TRUE
+324,economic growth,causes harm,TRUE,5,6,5,5,5,5,5,5.14285714285714,3,4,0,3,1,public health,FALSE
+325,public health,does not cause harm,FALSE,6,7,5,6,7,6,7,6.28571428571427,2,4,1,7,3,economic growth,FALSE
+326,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,5,1,6,4,public health,FALSE
+327,economic growth,does not cause harm,FALSE,6,6,5.51,5,6,6,6,5.78714285714286,2,2,1,6,2,economic growth,TRUE
+328,economic growth,causes harm,TRUE,4,4,5,5,5,5,4,4.57142857142859,4,8,1,4,3,public health,FALSE
+329,economic growth,does not cause harm,TRUE,4,2,4,1,1,1,1,2,4,5,1,4,2,public health,FALSE
+330,economic growth,causes harm,FALSE,7,6,6,5,5,6,6,5.85714285714286,2,3,1,5,3,economic growth,TRUE
+331,economic growth,does not cause harm,TRUE,4,4,4,3,3,3,1,3.14285714285714,4,10,1,7,1,public health,FALSE
+332,economic growth,does not cause harm,FALSE,5,6,6,5,5,4,5,5.14285714285714,4,4,0,6,3,public health,FALSE
+333,economic growth,does not cause harm,TRUE,4,6,5,4,4,4,4,4.42857142857141,1,4,1,4,1,economic growth,TRUE
+334,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,2,4,0,7,1,economic growth,FALSE
+335,economic growth,causes harm,TRUE,1,1,1,1,1,1,1,1,4,2,1,1,1,public health,FALSE
+336,economic growth,does not cause harm,TRUE,5,6,6,5,5,6,5,5.42857142857141,2,4,0,5,1,economic growth,TRUE
+337,economic growth,does not cause harm,TRUE,2,1,1,1,1,1,1,1.14285714285714,3,5,1,1,3,public health,FALSE
+338,economic growth,does not cause harm,FALSE,3,3,3,3,2,3,2,2.71428571428573,4,8,1,2,3,public health,FALSE
+339,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,4,1,6,3,public health,FALSE
+340,public health,does not cause harm,TRUE,6,2,7,2,2,2,1,3.14285714285714,3,3,0,7,3,public health,TRUE
+342,economic growth,does not cause harm,TRUE,1,2,4,2,2,2,4,2.42857142857141,2,4,0,3,3,economic growth,TRUE
+344,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,3,3,0,5,3,public health,FALSE
+345,public health,does not cause harm,TRUE,7,7,5.51,7,7,7,7,6.78714285714286,4,7,1,4,1,public health,TRUE
+346,public health,does not cause harm,TRUE,5,4,4,5,5,5,4,4.57142857142859,3,5,0,2,1,public health,TRUE
+347,public health,does not cause harm,FALSE,5,4,4,4,4,6,6,4.71428571428573,4,7,1,4,1,public health,TRUE
+348,economic growth,does not cause harm,TRUE,4,4,3,2,2,5,3,3.28571428571427,3,9,0,5,3,public health,FALSE
+349,economic growth,does not cause harm,TRUE,3,4,4,1,1,1,1,2.14285714285714,4,5,1,4,3,public health,FALSE
+350,public health,causes harm,FALSE,5,5,6,5,5,5,6,5.28571428571427,1,4,0,2,3,economic growth,FALSE
+351,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,3,4,0,5,3,public health,TRUE
+352,economic growth,causes harm,TRUE,3,4,4,2,2,2,3,2.85714285714286,2,2,1,4,2,economic growth,TRUE
+353,economic growth,does not cause harm,FALSE,7,7,7,7,6,6,7,6.71428571428573,3,2,1,5,3,public health,FALSE
+354,public health,causes harm,FALSE,6,5,6,6,6,7,7,6.14285714285714,3,5,1,6,3,public health,TRUE
+355,economic growth,does not cause harm,FALSE,4,4,4,4,4,4,4,4,2,2,1,5,2,economic growth,TRUE
+356,public health,does not cause harm,TRUE,3,3,3,3,3,3,3,3,3,2,1,6,2,public health,TRUE
+357,public health,causes harm,TRUE,6,7,7,7,7,6,7,6.71428571428573,3,4,1,3,3,public health,TRUE
+358,economic growth,causes harm,TRUE,5,5,5,5,5,5,5,5,4,4,1,3,1,public health,FALSE
+359,economic growth,causes harm,TRUE,6,6,5,5,6,3,5,5.14285714285714,4,6,0,4,1,public health,FALSE
+360,public health,does not cause harm,FALSE,5,4,4,3,3,3,4,3.71428571428573,4,4,0,4,1,public health,TRUE
+361,economic growth,causes harm,TRUE,3,3,4,3,4,3,4,3.42857142857141,2,3,0,4,1,economic growth,TRUE
+362,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,3,5,1,6,1,public health,TRUE
+363,economic growth,causes harm,TRUE,3,4,3,4,3,5.04,3,3.57714285714286,2,2,0,4,3,economic growth,TRUE
+364,public health,does not cause harm,FALSE,6,5,7,6,6,7,6,6.14285714285714,2,3,0,7,1,economic growth,FALSE
+365,public health,causes harm,TRUE,6,6,6,6,4.84,6,6,5.83428571428573,4,8,1,7,3,public health,TRUE
+366,economic growth,causes harm,TRUE,7,6,7,7,7,7,7,6.85714285714286,1,10,1,2,4,economic growth,TRUE
+367,economic growth,does not cause harm,TRUE,5,4,5,4,4,5,5,4.57142857142859,3,5,1,4,3,public health,FALSE
+368,economic growth,causes harm,TRUE,6,6,6,5,5,6,7,5.85714285714286,4,7,0,6,3,public health,FALSE
+369,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,1,9,0,6,3,economic growth,TRUE
+370,economic growth,does not cause harm,FALSE,3,3,3,4,3,3,3,3.14285714285714,4,4,0,4,3,public health,FALSE
+371,economic growth,does not cause harm,TRUE,4,4,6,2,2,2,2,3.14285714285714,3,6,1,7,NA,public health,FALSE
+372,economic growth,does not cause harm,TRUE,5,5,4,5,4,5,4,4.57142857142859,4,9,1,5,1,public health,FALSE
+373,public health,causes harm,TRUE,5,6,6,6,6,7,6,6,4,4,1,5,3,public health,TRUE
+374,economic growth,causes harm,FALSE,6,6,6,7,6,5,6,6,2,8,1,5,3,economic growth,TRUE
+375,public health,causes harm,TRUE,5,5,5,5,5,5,5,5,2,5,1,3,4,economic growth,FALSE
+376,public health,does not cause harm,TRUE,4,4,4,4,4,4,4,4,4,7,1,3,1,public health,TRUE
+377,economic growth,does not cause harm,TRUE,7,7,7,7,7,7,7,7,3,2,0,4,1,public health,FALSE
+378,economic growth,does not cause harm,TRUE,4,3,5,3,4,5,3,3.85714285714286,4,4,1,7,1,public health,FALSE
+379,economic growth,causes harm,TRUE,7,7,7,7,7,7,6,6.85714285714286,4,5,1,6,1,public health,FALSE
+380,public health,causes harm,TRUE,6,6,6,4,6,6,7,5.85714285714286,3,3,1,4,3,public health,TRUE
+381,public health,does not cause harm,TRUE,5,5,6,5,6,4,5,5.14285714285714,2,8,0,2,1,economic growth,FALSE
+382,public health,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,3,0,5,4,public health,TRUE
+383,public health,causes harm,TRUE,6,6,6,4,4,5,5,5.14285714285714,3,5,1,6,3,public health,TRUE
+384,economic growth,does not cause harm,TRUE,2,2,3,2,2,2,2,2.14285714285714,3,3,1,6,3,public health,FALSE
+385,economic growth,does not cause harm,TRUE,4,4,5,4,4,4,4,4.14285714285714,1,3,0,7,4,economic growth,TRUE
+386,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,6,0,6,3,public health,FALSE
+387,public health,causes harm,TRUE,6,6,6,3,3,3,2,4.14285714285714,1,7,0,2,3,economic growth,FALSE
+388,economic growth,causes harm,FALSE,4,6,5,5,6,6,4,5.14285714285714,4,3,1,6,3,public health,FALSE
+389,economic growth,causes harm,TRUE,5,5,5,2,4,2,4,3.85714285714286,2,2,0,4,1,economic growth,TRUE
+390,public health,causes harm,FALSE,5,5,6,4,4,5,5,4.85714285714286,3,3,0,6,3,public health,TRUE
+391,public health,causes harm,TRUE,5,5,5,4,5,5,4,4.71428571428573,3,3,0,5,2,public health,TRUE
+392,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,3,7,1,4,3,public health,TRUE
+393,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,4,3,0,6,2,public health,TRUE
+394,public health,does not cause harm,FALSE,4,4,4,3,3,4,3,3.57142857142859,3,3,0,1,3,public health,TRUE
+395,public health,does not cause harm,TRUE,7,7,7,4.7,6,7,7,6.52857142857141,3,9,0,4,1,public health,TRUE
+396,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,4,10,1,4,4,public health,TRUE
+397,public health,causes harm,TRUE,6,6,7,6,6,6,7,6.28571428571427,1,5,0,3,1,economic growth,FALSE
+398,public health,causes harm,FALSE,6,7,7,5,5,7,7,6.28571428571427,1,6,1,4,3,economic growth,FALSE
+399,public health,causes harm,FALSE,6,6,6,6,7,7,6,6.28571428571427,3,5,1,6,3,public health,TRUE
+400,economic growth,causes harm,FALSE,7,6,6,7,6,6,7,6.42857142857141,2,6,0,4,1,economic growth,TRUE
+401,public health,causes harm,TRUE,5,5,6,4,4,4,4,4.57142857142859,4,3,0,4,3,public health,TRUE
+402,economic growth,causes harm,TRUE,6,6,6,7,7,7,6,6.42857142857141,4,9,0,7,3,public health,FALSE
+403,public health,causes harm,FALSE,4,5,5,3,5,3,6,4.42857142857141,2,3,0,3,1,economic growth,FALSE
+405,public health,causes harm,TRUE,6,7,6,6,6,6,6,6.14285714285714,3,4,0,6,3,public health,TRUE
+406,economic growth,does not cause harm,TRUE,4,5,4,5,5,4,4,4.42857142857141,2,2,0,4,2,economic growth,TRUE
+407,public health,causes harm,TRUE,4,5,6,4,4,6,4,4.71428571428573,4,9,1,1,2,public health,TRUE
+408,economic growth,causes harm,TRUE,6,6,6,7,7,7,7,6.57142857142859,4,2,1,7,3,public health,FALSE
+409,public health,causes harm,FALSE,6,6,6,6,6,7,6,6.14285714285714,3,4,0,5,1,public health,TRUE
+410,public health,does not cause harm,TRUE,4,4,4,4,4,4,4,4,NA,3,0,4,3,NA,NA
+411,economic growth,causes harm,TRUE,6,6,6,5,6,5,6,5.71428571428573,2,5,0,4,1,economic growth,TRUE
+412,public health,causes harm,TRUE,5,5,5,5,5,5,5,5,4,3,1,6,1,public health,TRUE
+413,public health,does not cause harm,TRUE,3,3,2,3,2,3,3,2.71428571428573,3,4,0,5,3,public health,TRUE
+414,public health,does not cause harm,TRUE,6,5,5,6,6,7,5,5.71428571428573,3,3,0,3,1,public health,TRUE
+415,public health,does not cause harm,TRUE,4,4,4,4,4,4,4,4,4,4,1,6,3,public health,TRUE
+416,public health,causes harm,TRUE,1,1,1,1,4,4,1,1.85714285714286,2,3,0,4,1,economic growth,FALSE
+418,public health,does not cause harm,TRUE,5,5,5,4,4,4,4,4.42857142857141,3,10,1,7,4,public health,TRUE
+419,economic growth,does not cause harm,TRUE,3,3,4,1,2,2,3,2.57142857142859,4,5,0,5,1,public health,FALSE
+420,public health,causes harm,TRUE,6,6,6,6,4.84,6,6,5.83428571428573,2,6,1,2,4,economic growth,FALSE
+421,public health,causes harm,TRUE,5,6,4,5,4,6,4,4.85714285714286,1,4,0,6,4,economic growth,FALSE
+423,public health,does not cause harm,TRUE,4,4,4,3,3,3,3,3.42857142857141,3,3,1,7,1,public health,TRUE
+424,public health,does not cause harm,TRUE,5,5,5,1,1,1,1,2.71428571428573,3,6,1,4,2,public health,TRUE
+425,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,4,1,2,2,public health,FALSE
+426,economic growth,does not cause harm,TRUE,7,7,7,6,6,7,6,6.57142857142859,4,7,0,2,1,public health,FALSE
+427,economic growth,does not cause harm,TRUE,2,5,5,2,2,2,2,2.85714285714286,2,4,0,5,4,economic growth,TRUE
+428,economic growth,does not cause harm,FALSE,7,7,7,6,6,6,6,6.42857142857141,2,9,0,3,1,economic growth,TRUE
+429,economic growth,does not cause harm,TRUE,3,4,5,2,2,3,2,3,2,2,0,4,3,economic growth,TRUE
+430,public health,causes harm,TRUE,5,5,5,5,5,6,7,5.42857142857141,4,3,0,4,2,public health,TRUE
+431,public health,does not cause harm,TRUE,4,6,5,3,3,3,3,3.85714285714286,3,4,1,5,1,public health,TRUE
+432,public health,does not cause harm,TRUE,5,5,5,5,5,5,5,5,4,5,0,5,3,public health,TRUE
+433,economic growth,does not cause harm,TRUE,4,4,4,3,3,3,3,3.42857142857141,4,2,0,7,1,public health,FALSE
+434,public health,does not cause harm,FALSE,5,6,6,5,5,6,5,5.42857142857141,1,3,0,3,4,economic growth,FALSE
+435,economic growth,does not cause harm,FALSE,7,7,7,6,6,6,7,6.57142857142859,3,4,1,4,3,public health,FALSE
+436,economic growth,does not cause harm,TRUE,5,3,4,3,3,5,3,3.71428571428573,3,3,0,4,3,public health,FALSE
+437,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,3,6,0,6,1,public health,TRUE
+438,public health,causes harm,FALSE,6,5,6,5,5,4,5,5.14285714285714,1,3,0,3,4,economic growth,FALSE
+439,public health,does not cause harm,FALSE,7,7,7,7,7,7,7,7,2,10,1,3,4,economic growth,FALSE
+440,public health,does not cause harm,TRUE,7,7,6,6,6,6,7,6.42857142857141,4,5,1,6,3,public health,TRUE
+441,economic growth,does not cause harm,FALSE,3,3,5,1,2,2,2,2.57142857142859,4,3,0,4,2,public health,FALSE
+442,economic growth,does not cause harm,TRUE,3,3,3,2,2,3,2,2.57142857142859,4,4,0,6,1,public health,FALSE
+443,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,1,10,0,4,1,economic growth,TRUE
+444,public health,causes harm,FALSE,5,5,5,5,5,5.04,5,5.00571428571427,2,3,1,6,3,economic growth,FALSE
+445,public health,causes harm,TRUE,7,7,7,7,7,7,7,7,4,10,0,5,3,public health,TRUE
+446,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,3,1,6,1,public health,FALSE
+447,public health,causes harm,TRUE,2,2,4,1,1,5,2,2.42857142857141,3,4,0,4,1,public health,TRUE
+448,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,2,0,7,3,public health,FALSE
+449,public health,does not cause harm,FALSE,4,4,4,4,4,4,4,4,3,4,0,5,3,public health,TRUE
+450,economic growth,does not cause harm,TRUE,4,4,5,2,2,4,3,3.42857142857141,3,5,1,4,1,public health,FALSE
+451,public health,does not cause harm,FALSE,1,1,2,1,1,2,1,1.28571428571427,3,4,1,6,3,public health,TRUE
+452,public health,does not cause harm,TRUE,6,6,7,6,6,7,7,6.42857142857141,2,4,1,3,1,economic growth,FALSE
+453,public health,causes harm,TRUE,3,3,5,4,3,3,3,3.42857142857141,3,5,1,4,2,public health,TRUE
+454,public health,does not cause harm,FALSE,5,4,5,4,3,5,5,4.42857142857141,1,5,1,5,1,economic growth,FALSE
+455,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,5,1,7,4,public health,FALSE
+456,public health,causes harm,TRUE,6,6,6,5,5,5,5,5.42857142857141,3,3,1,6,3,public health,TRUE
+458,economic growth,does not cause harm,TRUE,5,6,6,1,1,1,1,3,4,3,0,7,3,public health,FALSE
+459,public health,causes harm,TRUE,6,6,7,6,6,7,6,6.28571428571427,3,3,0,6,2,public health,TRUE
+460,public health,does not cause harm,FALSE,2,1,4,2,2,1,1,1.85714285714286,3,6,1,6,3,public health,TRUE
+461,public health,does not cause harm,FALSE,7,7,7,7,7,7,7,7,4,2,0,4,1,public health,TRUE
+462,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,3,2,0,5,3,public health,FALSE
+463,public health,does not cause harm,TRUE,5,5,5,4,4,4,5,4.57142857142859,3,3,0,4,1,public health,TRUE
+464,public health,causes harm,FALSE,5,5,5,4,5,5,6,5,4,3,0,5,2,public health,TRUE
+465,public health,causes harm,FALSE,7,7,7,6,6,6,7,6.57142857142859,3,6,1,6,3,public health,TRUE
+466,economic growth,causes harm,TRUE,6,6,6,5,5,6,5,5.57142857142859,2,3,0,4,3,economic growth,TRUE
+467,economic growth,does not cause harm,TRUE,6,5,6,4,4,6,5,5.14285714285714,2,4,0,4,1,economic growth,TRUE
+468,public health,causes harm,TRUE,5,5,6,5,5,6,4,5.14285714285714,4,5,1,5,1,public health,TRUE
+469,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,3,8,1,4,2,public health,TRUE
+470,public health,does not cause harm,TRUE,4,4,4,3,3,3,2,3.28571428571427,4,6,0,4,2,public health,TRUE
+471,economic growth,causes harm,TRUE,6,6,5,5,5,6,6,5.57142857142859,3,3,1,6,3,public health,FALSE
+472,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,1,3,0,4,3,economic growth,FALSE
+473,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,3,5,1,6,3,public health,TRUE
+474,economic growth,causes harm,TRUE,5,4,5,4,3,3,3,3.85714285714286,3,5,0,6,2,public health,FALSE
+475,public health,causes harm,FALSE,6,7,6,4,5,6,5,5.57142857142859,3,3,1,7,3,public health,TRUE
+476,economic growth,causes harm,TRUE,4,3,6,2,6,2,4,3.85714285714286,2,2,0,5,3,economic growth,TRUE
+477,public health,causes harm,TRUE,4,4,3,3,3,2,2,3,3,2,0,6,3,public health,TRUE
+478,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,4,3,NA,4,2,public health,TRUE
+480,public health,does not cause harm,FALSE,6,6,6,5,5,5,5,5.42857142857141,4,3,0,6,3,public health,TRUE
+481,economic growth,does not cause harm,TRUE,4,4,7,2,2,2,3,3.42857142857141,4,3,1,6,2,public health,FALSE
+482,public health,does not cause harm,TRUE,6,6,5,6,6,6,6,5.85714285714286,1,4,1,6,2,economic growth,FALSE
+483,economic growth,does not cause harm,FALSE,5,4,5,3,5,6,3,4.42857142857141,2,2,1,1,3,economic growth,TRUE
+484,public health,causes harm,TRUE,6,5.23,6,4.7,6,6,6,5.70428571428573,3,4,0,6,1,public health,TRUE
+485,economic growth,does not cause harm,TRUE,7,7,7,1,4,4,2,4.57142857142859,4,4,1,6,1,public health,FALSE
+486,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,4,3,1,4,3,public health,FALSE
+487,economic growth,does not cause harm,TRUE,6,5,6,6,6,6,6,5.85714285714286,2,5,1,2,1,economic growth,TRUE
+488,public health,causes harm,TRUE,5,5,6,5,5,5,5,5.14285714285714,4,5,0,3,4,public health,TRUE
+490,economic growth,causes harm,TRUE,6,6,7,6,6,7,6,6.28571428571427,4,10,0,4,4,public health,FALSE
+491,economic growth,causes harm,TRUE,5,5,5,2,4,4,2,3.85714285714286,4,10,1,2,2,public health,FALSE
+492,public health,causes harm,TRUE,6,6,7,6,6,6,6,6.14285714285714,4,9,1,5,3,public health,TRUE
+493,economic growth,does not cause harm,TRUE,3,3,3,4,2,4,2,3,3,3,1,5,3,public health,FALSE
+494,public health,causes harm,FALSE,7,7,7,7,7,7,7,7,4,4,1,4,3,public health,TRUE
+495,public health,causes harm,FALSE,3,3,3,4,4,3,3,3.28571428571427,2,4,1,2,3,economic growth,FALSE
+496,economic growth,does not cause harm,TRUE,2,3,5,1,1,1,1,2,3,5,0,4,3,public health,FALSE
+497,public health,causes harm,TRUE,4,4,4,4,4,7,4,4.42857142857141,4,4,0,7,4,public health,TRUE
+498,economic growth,does not cause harm,TRUE,3,2,2,1,2,3,2,2.14285714285714,3,4,0,7,3,public health,FALSE
+499,economic growth,does not cause harm,FALSE,3,4,5,1,1,1,1,2.28571428571427,4,10,0,5,2,public health,FALSE
+500,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,3,2,0,4,1,public health,TRUE
+501,public health,does not cause harm,TRUE,2,2,2,1,1,5,2,2.14285714285714,3,4,0,6,4,public health,TRUE
+502,public health,does not cause harm,TRUE,2,3,4,1,1,1,1,1.85714285714286,3,3,0,6,3,public health,TRUE
+503,public health,does not cause harm,TRUE,6,6,7,3,3,5,4,4.85714285714286,2,2,0,2,3,economic growth,FALSE
+504,economic growth,causes harm,FALSE,7,7,7,7,7,7,7,7,3,3,0,6,3,public health,FALSE
+505,economic growth,causes harm,FALSE,6,7,7,6,6,6,7,6.42857142857141,2,3,1,4,1,economic growth,TRUE
+506,public health,causes harm,TRUE,6,6,6,6,6,6,6,6,2,3,0,2,4,economic growth,FALSE
+507,public health,does not cause harm,TRUE,7,6,7,7,7,7,7,6.85714285714286,4,2,0,6,1,public health,TRUE
+508,public health,causes harm,FALSE,6,5,6,6,5,6,6,5.71428571428573,3,6,1,4,2,public health,TRUE
+509,economic growth,causes harm,TRUE,5,5,5,5,5,5,6,5.14285714285714,4,5,0,7,3,public health,FALSE
+510,public health,causes harm,FALSE,6,6,6,5,5,6,6,5.71428571428573,4,5,1,6,1,public health,TRUE
+511,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,3,0,3,1,public health,FALSE
+512,economic growth,causes harm,TRUE,7,7,7,7,7,7,7,7,4,7,0,7,2,public health,FALSE
+513,public health,does not cause harm,TRUE,7,7,7,7,7,7,7,7,2,5,1,5,4,economic growth,FALSE
+514,economic growth,causes harm,TRUE,6,7,6,4,6,6,7,6,3,3,0,6,1,public health,FALSE
+515,economic growth,does not cause harm,TRUE,4,4,4,4,4,4,4,4,3,3,0,6,2,public health,FALSE
+516,economic growth,does not cause harm,FALSE,6,7,6,4,4,4,7,5.42857142857141,3,4,0,4,3,public health,FALSE
+517,public health,does not cause harm,FALSE,6,6,6,5,5,6,6,5.71428571428573,3,5,0,3,2,public health,TRUE
