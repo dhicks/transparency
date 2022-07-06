@@ -7,6 +7,7 @@ data
 paper/paper.pdf
 paper/paper.html
 paper/paper_files/
+scripts/scratch/
 talk/talk.pdf
 .DS_Store
 */.DS_Store
