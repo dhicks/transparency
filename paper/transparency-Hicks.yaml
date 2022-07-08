@@ -1,0 +1,711 @@
+---
+references:
+- id: BaierTrustAntitrust1986
+  author:
+    - family: Baier
+      given: Annette
+  citation-key: BaierTrustAntitrust1986
+  container-title: Ethics
+  container-title-short: Ethics
+  issue: '2'
+  issued:
+    - year: 1986
+  page: 231-260
+  title: Trust and Antitrust
+  type: article-journal
+  URL: http://www.jstor.org/stable/2381376
+  volume: '96'
+
+- id: CranorSocialBenefitsExpedited1995
+  abstract: >-
+    The present regulation of carcinogens is quite slow; hundreds of substances
+    that have tested positive for carcinogenicity in animal bioassays have not
+    been addressed by the U.S. regulatory system. This carries with it
+    unappreciated social, economic, and public health costs. However, there are
+    readily available expedited approximation procedures for assessing the
+    potency of carcinogens whose use has substantial benefits that outweigh any
+    costs from less science-intensive and less extensively documented
+    assessments. These benefits can be seen by using a model to suggest the
+    magnitude of social costs in regulating carcinogens by current conventional
+    methods compared with expedited procedures for assessing the potency of
+    known carcinogens. Two scenarios, one in accordance with current agency
+    presumptions and one which assumes extreme unreliability in animal data and
+    in the accuracy of potency assessments, compare conventional
+    science-intensive and expedited procedures. On both, the total social costs
+    of expedited procedures are lower than conventional procedures across a wide
+    range of values assigned for individual mistakes of under regulation and
+    over regulation. It appears better to evaluate a larger universe of known
+    carcinogens somewhat less intensively for each substance than to evaluate a
+    small proportion of that same universe very carefully and delay considering
+    the rest.
+  accessed:
+    - year: 2015
+      month: 10
+      day: 29
+  author:
+    - family: Cranor
+      given: Carl F.
+  citation-key: CranorSocialBenefitsExpedited1995
+  container-title: Risk Analysis
+  DOI: 10.1111/j.1539-6924.1995.tb00328.x
+  ISSN: 1539-6924
+  issue: '3'
+  issued:
+    - year: 1995
+      month: 6
+      day: 1
+  language: en
+  page: 353-358
+  source: Wiley Online Library
+  title: The Social Benefits of Expedited Risk Assessments
+  type: article-journal
+  URL: >-
+    http://onlinelibrary.wiley.com/doi/10.1111/j.1539-6924.1995.tb00328.x/abstract
+  volume: '15'
+
+- id: DouglasSciencePolicyValuefree2009
+  author:
+    - family: Douglas
+      given: Heather E.
+  call-number: Q175.5 .D68 2009
+  citation-key: DouglasSciencePolicyValuefree2009
+  event-place: Pittsburgh, Pa
+  ISBN: 978-0-8229-6026-3
+  issued:
+    - year: 2009
+  number-of-pages: '210'
+  publisher: University of Pittsburgh Press
+  publisher-place: Pittsburgh, Pa
+  source: Library of Congress ISBN
+  title: Science, policy, and the value-free ideal
+  type: book
+
+- id: ElliottNonepistemicValuesMultiple2014
+  author:
+    - family: Elliott
+      given: Kevin C.
+    - family: McKaughan
+      given: "Daniel\_J."
+  citation-key: ElliottNonepistemicValuesMultiple2014
+  container-title: Philosophy of Science
+  container-title-short: Phil Sci
+  DOI: 10.1086/674345
+  issue: '1'
+  issued:
+    - year: 2014
+  page: 1-21
+  title: Nonepistemic Values and the Multiple Goals of Science
+  type: article-journal
+  URL: http://www.jstor.org/stable/info/10.1086/674345
+  volume: '81'
+
+- id: ElliottSciencePolicyTransparency2014
+  accessed:
+    - year: 2014
+      month: 12
+      day: 19
+  author:
+    - family: Elliott
+      given: Kevin C.
+    - family: Resnik
+      given: David B.
+  citation-key: ElliottSciencePolicyTransparency2014
+  container-title: Environmental Health Perspectives
+  DOI: 10.1289/ehp.1408107
+  ISSN: 0091-6765
+  issued:
+    - year: 2014
+      month: 3
+      day: 25
+  language: en
+  source: CrossRef
+  title: Science, Policy, and the Transparency of Values
+  type: article-journal
+  URL: http://ehp.niehs.nih.gov/1408107/
+
+- id: ElliottTapestryValuesIntroduction2017
+  abstract: >-
+    The role of values in scientific research has become an important topic of
+    discussion in both scholarly and popular debates. Pundits across the
+    political spectrum worry that research on topics like climate change,
+    evolutionary theory, vaccine safety, and genetically modified foods has
+    become overly politicized. At the same time, it is clear that values play an
+    important role in science by limiting unethical forms of research and by
+    deciding what areas of research have the greatest relevance for society.
+    Deciding how to distinguish legitimate and illegitimate influences of values
+    in scientific research is a matter of vital importance. Recently,
+    philosophers of science have written a great deal on this topic, but most of
+    their work has been directed toward a scholarly audience. This book makes
+    the contemporary philosophical literature on science and values accessible
+    to a wide readership. It examines case studies from a variety of research
+    areas, including climate science, anthropology, chemical risk assessment,
+    ecology, neurobiology, biomedical research, and agriculture. These cases
+    show that values have necessary roles to play in identifying research
+    topics, choosing research questions, determining the aims of inquiry,
+    responding to uncertainty, and deciding how to communicate information.
+    Kevin Elliott focuses not just on describing roles for values but also on
+    determining when their influences are actually appropriate. He emphasizes
+    several conditions for incorporating values in a legitimate fashion, and
+    highlights multiple strategies for fostering engagement between stakeholders
+    so that value influences can be subjected to careful and critical scrutiny.
+  author:
+    - family: Elliott
+      given: Kevin C.
+  citation-key: ElliottTapestryValuesIntroduction2017
+  ISBN: 978-0-19-026081-1
+  issued:
+    - year: 2017
+  language: en
+  number-of-pages: '225'
+  publisher: Oxford University Press
+  source: Google Books
+  title: 'A Tapestry of Values: An Introduction to Values in Science'
+  title-short: A Tapestry of Values
+  type: book
+
+- id: ElliottValuesEnvironmentalResearch2017
+  abstract: >-
+    Scientists who perform environmental research on policy-relevant topics face
+    challenges when communicating about how values may have influenced their
+    research. This study examines how citizens view scientists who publicly
+    acknowledge values. Specifically, we investigate whether it matters: if
+    citizens share or oppose a scientist’s values, if a scientist’s conclusions
+    seem contrary to or consistent with the scientist’s values, and if a
+    scientist is assessing the state of the science or making a policy
+    recommendation. We conducted two 3x2 factorial design online experiments.
+    Experiment 1 featured a hypothetical scientist assessing the state of the
+    science on the public-health effects of exposure to Bisphenol A (BPA), and
+    Experiment 2 featured a scientist making a policy recommendation on use of
+    BPA. We manipulated whether or not the scientist expressed values and
+    whether the scientist’s conclusion appeared contrary to or consistent with
+    the scientist’s values, and we accounted for whether or not subjects’ values
+    aligned with the scientist’s values. We analyzed our data with ordinary
+    least squares (OLS) regression techniques. Our results provide at least
+    preliminary evidence that acknowledging values may reduce the perceived
+    credibility of scientists within the general public, but this effect differs
+    depending on whether scientists and citizens share values, whether
+    scientists draw conclusions that run contrary to their values, and whether
+    scientists make policy recommendations.
+  accessed:
+    - year: 2017
+      month: 10
+      day: 27
+  author:
+    - family: Elliott
+      given: Kevin C.
+    - family: McCright
+      given: Aaron M.
+    - family: Allen
+      given: Summer
+    - family: Dietz
+      given: Thomas
+  citation-key: ElliottValuesEnvironmentalResearch2017
+  container-title: PLOS ONE
+  container-title-short: PLOS ONE
+  DOI: 10.1371/journal.pone.0186049
+  ISSN: 1932-6203
+  issue: '10'
+  issued:
+    - year: 2017
+      month: 10
+      day: 25
+  page: e0186049
+  source: PLoS Journals
+  title: >-
+    Values in environmental research: Citizens’ views of scientists who
+    acknowledge values
+  title-short: Values in environmental research
+  type: article-journal
+  URL: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0186049
+  volume: '12'
+
+- id: FernandezPintoLegitimizingValuesRegulatory2019
+  abstract: >-
+    Background:Over the last several decades, scientists and social groups have
+    frequently raised concerns about politicization or political interference in
+    regulatory science. Public actors (environmentalists and industry advocates,
+    politically aligned public figures, scientists and political commentators,
+    in the United States as well as in other countries) across major
+    political-regulatory controversies have expressed concerns about the
+    inappropriate politicization of science. Although we share concerns about
+    the politicization of science, they are frequently framed in terms of an
+    ideal of value-free science, according to which political and economic
+    values have no legitimate role to play in science. For several decades, work
+    in philosophy of science has identified serious conceptual and practical
+    problems with the value-free ideal.Objectives:Our objectives are to discuss
+    the literature regarding the conceptual and practical problems with the
+    value-free ideal and offer a constructive alternative to the value-free
+    ideal.Discussion:We first discuss the prevalence of the value-free ideal in
+    regulatory science, then argue that this ideal is self-undermining and has
+    been exploited to delay protective regulation. To offer a constructive
+    alternative, we analyze the relationship between the goals of regulatory
+    science and the standards of good scientific activity. This analysis raises
+    questions about the relationship between methodological and practical
+    standards for good science, tensions among various important social goods,
+    and tensions among various social interests. We argue that the aims of
+    regulatory science help to legitimize value-laden choices regarding research
+    methods and study designs. Finally, we discuss how public deliberation,
+    adaptive management, and community-based participatory research can be used
+    to improve the legitimacy of scientists as representatives of the general
+    public on issues of environmental knowledge.Conclusions:Reflecting on the
+    aims of regulatory science—such as protecting human health and the
+    environment, informing democratic deliberation, and promoting the capacities
+    of environmental justice and Indigenous communities—can clarify when values
+    have legitimate roles in regulatory science. 
+    https://doi.org/10.1289/EHP3317
+  accessed:
+    - year: 2019
+      month: 3
+      day: 15
+  author:
+    - family: Fernández Pinto
+      given: Manuela
+    - family: Hicks
+      given: Daniel J.
+  citation-key: FernandezPintoLegitimizingValuesRegulatory2019
+  container-title: Environmental Health Perspectives
+  container-title-short: Environmental Health Perspectives
+  DOI: 10.1289/EHP3317
+  issue: '3'
+  issued:
+    - year: 2019
+      month: 3
+      day: 14
+  page: '035001'
+  source: ehp.niehs.nih.gov (Atypon)
+  title: Legitimizing Values in Regulatory Science
+  type: article-journal
+  URL: https://ehp.niehs.nih.gov/doi/full/10.1289/EHP3317
+  volume: '127'
+
+- id: GauchatPoliticizationSciencePublic2012
+  abstract: >-
+    This study explores time trends in public trust in science in the United
+    States from 1974 to 2010. More precisely, I test Mooney’s (2005) claim that
+    conservatives in the United States have become increasingly distrustful of
+    science. Using data from the 1974 to 2010 General Social Survey, I examine
+    group differences in trust in science and group-specific change in these
+    attitudes over time. Results show that group differences in trust in science
+    are largely stable over the period, except for respondents identifying as
+    conservative. Conservatives began the period with the highest trust in
+    science, relative to liberals and moderates, and ended the period with the
+    lowest. The patterns for science are also unique when compared to public
+    trust in other secular institutions. Results show enduring differences in
+    trust in science by social class, ethnicity, gender, church attendance, and
+    region. I explore the implications of these findings, specifically, the
+    potential for political divisions to emerge over the cultural authority of
+    science and the social role of experts in the formation of public policy.
+  accessed:
+    - year: 2016
+      month: 1
+      day: 13
+  author:
+    - family: Gauchat
+      given: Gordon
+  citation-key: GauchatPoliticizationSciencePublic2012
+  container-title: American Sociological Review
+  container-title-short: American Sociological Review
+  DOI: 10.1177/0003122412438225
+  ISSN: 0003-1224, 1939-8271
+  issue: '2'
+  issued:
+    - year: 2012
+      month: 4
+      day: 1
+  language: en
+  page: 167-187
+  source: asr.sagepub.com.proxy1.lib.uwo.ca
+  title: >-
+    Politicization of Science in the Public Sphere A Study of Public Trust in
+    the United States, 1974 to 2010
+  type: article-journal
+  URL: http://asr.sagepub.com.proxy1.lib.uwo.ca/content/77/2/167
+  volume: '77'
+
+- id: GoldenbergVaccineHesitancyPublic2021
+  abstract: >-
+    The public has voiced concern over the adverse effects of vaccines from the
+    moment Dr. Edward Jenner introduced the first smallpox vaccine in 1796. The
+    controversy over childhood immunization intensified in 1998, when Dr. Andrew
+    Wakefield linked the MMR vaccine to autism. Although Wakefield’s findings
+    were later discredited and retracted, and medical and scientific evidence
+    suggests routine immunizations have significantly reduced life-threatening
+    conditions like measles, whooping cough, and polio, vaccine refusal and
+    vaccine-preventable outbreaks are on the rise. This book explores vaccine
+    hesitancy and refusal among parents in the industrialized North. Although
+    biomedical, public health, and popular science literature has focused on a
+    scientifically ignorant public, the real problem, Maya J. Goldenberg argues,
+    lies not in misunderstanding, but in mistrust. Public confidence in
+    scientific institutions and government bodies has been shaken by fraud,
+    research scandals, and misconduct. Her book reveals how vaccine studies
+    sponsored by the pharmaceutical industry, compelling rhetorics from the
+    anti-vaccine movement, and the spread of populist knowledge on social media
+    have all contributed to a public mistrust of the scientific consensus.
+    Importantly, it also emphasizes how historical and current discrimination in
+    health care against marginalized communities continues to shape public
+    perception of institutional trustworthiness. Goldenberg ultimately reframes
+    vaccine hesitancy as a crisis of public trust rather than a war on science,
+    arguing that having good scientific support of vaccine efficacy and safety
+    is not enough. In a fraught communications landscape, Vaccine Hesitancy
+    advocates for trust-building measures that focus on relationships,
+    transparency, and justice.
+  author:
+    - family: Goldenberg
+      given: Maya J.
+  citation-key: GoldenbergVaccineHesitancyPublic2021
+  ISBN: 978-0-8229-8801-4
+  issued:
+    - year: 2021
+      month: 3
+      day: 30
+  language: en
+  number-of-pages: '324'
+  publisher: University of Pittsburgh Press
+  source: Google Books
+  title: 'Vaccine Hesitancy: Public Trust, Expertise, and the War on Science'
+  title-short: Vaccine Hesitancy
+  type: book
+
+- id: HendriksMeasuringLaypeopleTrust2015
+  abstract: >-
+    Given their lack of background knowledge, laypeople require expert help when
+    dealing with scientific information. To decide whose help is dependable,
+    laypeople must judge an expert’s epistemic trustworthiness in terms of
+    competence, adherence to scientific standards, and good intentions. Online,
+    this may be difficult due to the often limited and sometimes unreliable
+    source information available. To measure laypeople’s evaluations of experts
+    (encountered online), we constructed an inventory to assess epistemic
+    trustworthiness on the dimensions expertise, integrity, and benevolence.
+    Exploratory (n = 237) and confirmatory factor analyses (n = 345) showed that
+    the Muenster Epistemic Trustworthiness Inventory (METI) is composed of these
+    three factors. A subsequent experimental study (n = 137) showed that all
+    three dimensions of the METI are sensitive to variation in source
+    characteristics. We propose using this inventory to measure assignments of
+    epistemic trustworthiness, that is, all judgments laypeople make when
+    deciding whether to place epistemic trust in–and defer to–an expert in order
+    to solve a scientific informational problem that is beyond their
+    understanding.
+  accessed:
+    - year: 2021
+      month: 6
+      day: 14
+  author:
+    - family: Hendriks
+      given: Friederike
+    - family: Kienhues
+      given: Dorothe
+    - family: Bromme
+      given: Rainer
+  citation-key: HendriksMeasuringLaypeopleTrust2015
+  container-title: PLOS ONE
+  container-title-short: PLOS ONE
+  DOI: 10.1371/journal.pone.0139309
+  ISSN: 1932-6203
+  issue: '10'
+  issued:
+    - year: 2015
+      month: 10
+      day: 16
+  language: en
+  page: e0139309
+  publisher: Public Library of Science
+  source: PLoS Journals
+  title: >-
+    Measuring Laypeople’s Trust in Experts in a Digital Age: The Muenster
+    Epistemic Trustworthiness Inventory (METI)
+  title-short: Measuring Laypeople’s Trust in Experts in a Digital Age
+  type: article-journal
+  URL: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0139309
+  volume: '10'
+
+- id: HicksNewDirectionScience2014
+  author:
+    - family: Hicks
+      given: Daniel J.
+  citation-key: HicksNewDirectionScience2014
+  container-title: Synthese
+  container-title-short: Synthese
+  DOI: 10.1007/s11229-014-0447-9
+  issue: '14'
+  issued:
+    - year: 2014
+      month: 9
+  page: 3271-3295
+  title: A new direction for science and values
+  type: article-journal
+  URL: http://link.springer.com/10.1007/s11229-014-0447-9
+  volume: '191'
+
+- id: JohnEpistemicTrustEthics2017
+  accessed:
+    - year: 2018
+      month: 1
+      day: 25
+  author:
+    - family: John
+      given: Stephen
+  citation-key: JohnEpistemicTrustEthics2017
+  container-title: Social Epistemology
+  DOI: 10.1080/02691728.2017.1410864
+  ISSN: 0269-1728
+  issue: '2'
+  issued:
+    - year: 2017
+      month: 12
+      day: 8
+  page: 75-87
+  source: Taylor and Francis+NEJM
+  title: >-
+    Epistemic trust and the ethics of science communication: against
+    transparency, openness, sincerity and honesty
+  title-short: Epistemic trust and the ethics of science communication
+  type: article-journal
+  URL: https://doi.org/10.1080/02691728.2017.1410864
+  volume: '32'
+
+- id: KennedyEvaluation2016Election2018
+  abstract: >-
+    The 2016 presidential election was a jarring event for polling in the United
+    States. Preelection polls fueled high-profile predictions that Hillary
+    Clinton’s likelihood of winning the presidency was about 90 percent, with
+    estimates ranging from 71 to over 99 percent. When Donald Trump was declared
+    the winner of the presidency, there was a widespread perception that the
+    polls failed. But did the polls fail? And if so, why? Those are among the
+    central questions addressed by an American Association for Public Opinion
+    Research (AAPOR) ad hoc committee. This paper presents the committee’s
+    analysis of the performance of preelection polls in 2016, how that
+    performance compares to polling in prior elections, and the extent to which
+    performance varied by poll design. In addition, the committee examined
+    several theories as to why many polls, particularly in the Upper Midwest,
+    underestimated support for Trump. The explanations for which the most
+    evidence exists are a late swing in vote preference toward Trump and a
+    pervasive failure to adjust for overrepresentation of college graduates (who
+    favored Clinton). In addition, there is clear evidence that voter turnout
+    changed from 2012 to 2016 in ways that favored Trump, though there is only
+    mixed evidence that misspecified likely voter models were a major cause of
+    the systematic polling error. Finally, there is little evidence that
+    socially desirable (Shy Trump) responding was an important contributor to
+    poll error.
+  accessed:
+    - year: 2022
+      month: 7
+      day: 8
+  author:
+    - family: Kennedy
+      given: Courtney
+    - family: Blumenthal
+      given: Mark
+    - family: Clement
+      given: Scott
+    - family: Clinton
+      given: Joshua D
+    - family: Durand
+      given: Claire
+    - family: Franklin
+      given: Charles
+    - family: McGeeney
+      given: Kyley
+    - family: Miringoff
+      given: Lee
+    - family: Olson
+      given: Kristen
+    - family: Rivers
+      given: Douglas
+    - family: Saad
+      given: Lydia
+    - family: Witt
+      given: G Evans
+    - family: Wlezien
+      given: Christopher
+  citation-key: KennedyEvaluation2016Election2018
+  container-title: Public Opinion Quarterly
+  container-title-short: Public Opinion Quarterly
+  DOI: 10.1093/poq/nfx047
+  ISSN: 0033-362X
+  issue: '1'
+  issued:
+    - year: 2018
+      month: 3
+      day: 6
+  page: 1-33
+  source: Silverchair
+  title: An Evaluation of the 2016 Election Polls in the United States
+  type: article-journal
+  URL: https://doi.org/10.1093/poq/nfx047
+  volume: '82'
+
+- id: KovakaClimateChangeDenial2021
+  abstract: >-
+    Social scientists have offered a number of explanations for why Americans
+    commonly deny that human-caused climate change is real. In this paper, I
+    argue that these explanations neglect an important group of climate change
+    deniers: those who say they are on the side of science while also rejecting
+    what they know most climate scientists accept. I then develop a “nature of
+    science” hypothesis that does account for this group of deniers. According
+    to this hypothesis, people have serious misconceptions about what scientific
+    inquiry ought to look like. Their misconceptions interact with partisan
+    biases to produce denial of human-caused climate change. After I develop
+    this hypothesis, I propose ways of confirming that it is true. Then I
+    consider its implications for efforts to combat climate change denial and
+    for other cases of public rejection of science.
+  accessed:
+    - year: 2019
+      month: 4
+      day: 23
+  author:
+    - family: Kovaka
+      given: Karen
+  citation-key: KovakaClimateChangeDenial2021
+  container-title: Synthese
+  container-title-short: Synthese
+  DOI: 10.1007/s11229-019-02210-z
+  ISSN: 1573-0964
+  issue: '3'
+  issued:
+    - year: 2021
+      month: 3
+  language: en
+  page: 2355-2374
+  source: Springer Link
+  title: Climate change denial and beliefs about science
+  type: article-journal
+  URL: https://doi.org/10.1007/s11229-019-02210-z
+  volume: '198'
+
+- id: LeePartyPolarizationTrust2021
+  abstract: >-
+    Research has documented the decline of trust in science among Republicans,
+    ideological conservatives, and fundamentalist religious groups. However,
+    less is known about the nature of party polarization in these trends: did
+    polarization only increase because of changes among Republicans? In this
+    study, the author tests a two-sided polarization thesis using data from the
+    General Social Survey (1974–2018). The findings show that a significant
+    share of the growth in party polarization is due to an increase of trust in
+    science among Democrats. In fact, by the 2010s, Democrats became
+    significantly more likely than either Republicans or independents to have
+    high confidence in science. Moreover, the results also show that the
+    aggregate party-level changes are driven largely by trends among
+    conservative Republicans, moderate Democrats, and liberal Democrats.
+    Together, these findings have implications for our understanding of the
+    nature and potential causes of partisan polarization in beliefs about the
+    cultural authority of science.
+  accessed:
+    - year: 2022
+      month: 1
+      day: 13
+  author:
+    - family: Lee
+      given: John J.
+  citation-key: LeePartyPolarizationTrust2021
+  container-title: Socius
+  container-title-short: Socius
+  DOI: 10.1177/23780231211010101
+  ISSN: 2378-0231
+  issued:
+    - year: 2021
+      month: 1
+      day: 1
+  language: en
+  page: '23780231211010101'
+  publisher: SAGE Publications
+  source: SAGE Journals
+  title: 'Party Polarization and Trust in Science: What about Democrats?'
+  title-short: Party Polarization and Trust in Science
+  type: article-journal
+  URL: https://doi.org/10.1177/23780231211010101
+  volume: '7'
+
+- id: McKaughanBacktrackingEthicsFraming2013
+  abstract: >-
+    When communicating scientific information, experts often face difficult
+    choices about how to promote public understanding while also maintaining an
+    appropriate level of objectivity. We argue that one way for scientists and
+    others involved in communicating scientific information to alleviate these
+    tensions is to pay closer attention to the major frames employed in the
+    contexts in which they work. By doing so, they can ideally employ useful
+    frames while also enabling the recipients of information to “backtrack” to
+    relatively uncontroversial facts and recognize how these frames relate to
+    their own values and perspectives. Important strategies for promoting this
+    sort of backtracking include identifying the weaknesses of particular
+    frames, preventing misunderstanding of them, differentiating well-supported
+    findings from more speculative claims, and acknowledging major alternative
+    frames.
+  accessed:
+    - year: 2015
+      month: 2
+      day: 2
+  author:
+    - family: McKaughan
+      given: Daniel J.
+    - family: Elliott
+      given: Kevin C.
+  citation-key: McKaughanBacktrackingEthicsFraming2013
+  container-title: Accountability in Research
+  DOI: 10.1080/08989621.2013.788384
+  ISSN: 0898-9621
+  issue: '3'
+  issued:
+    - year: 2013
+      month: 5
+      day: 4
+  page: 206-226
+  PMID: '23672499'
+  source: Taylor and Francis+NEJM
+  title: 'Backtracking and the Ethics of Framing: Lessons from Voles and Vasopressin'
+  title-short: Backtracking and the Ethics of Framing
+  type: article-journal
+  URL: http://dx.doi.org/10.1080/08989621.2013.788384
+  volume: '20'
+
+- id: PeerDataQualityPlatforms2021
+  abstract: >-
+    We examine key aspects of data quality for online behavioral research
+    between selected platforms (Amazon Mechanical Turk, CloudResearch, and
+    Prolific) and panels (Qualtrics and Dynata). To identify the key aspects of
+    data quality, we first engaged with the behavioral research community to
+    discover which aspects are most critical to researchers and found that these
+    include attention, comprehension, honesty, and reliability. We then explored
+    differences in these data quality aspects in two studies (N ~ 4000), with or
+    without data quality filters (approval ratings). We found considerable
+    differences between the sites, especially in comprehension, attention, and
+    dishonesty. In Study 1 (without filters), we found that only Prolific
+    provided high data quality on all measures. In Study 2 (with filters), we
+    found high data quality among CloudResearch and Prolific. MTurk showed
+    alarmingly low data quality even with data quality filters. We also found
+    that while reputation (approval rating) did not predict data quality,
+    frequency and purpose of usage did, especially on MTurk: the lowest data
+    quality came from MTurk participants who report using the site as their main
+    source of income but spend few hours on it per week. We provide a framework
+    for future investigation into the ever-changing nature of data quality in
+    online research, and how the evolving set of platforms and panels performs
+    on these key aspects.
+  accessed:
+    - year: 2022
+      month: 6
+      day: 15
+  author:
+    - family: Peer
+      given: Eyal
+    - family: Rothschild
+      given: David
+    - family: Gordon
+      given: Andrew
+    - family: Evernden
+      given: Zak
+    - family: Damer
+      given: Ekaterina
+  citation-key: PeerDataQualityPlatforms2021
+  container-title: Behavior Research Methods
+  container-title-short: Behav Res
+  DOI: 10.3758/s13428-021-01694-3
+  ISSN: 1554-3528
+  issued:
+    - year: 2021
+      month: 9
+      day: 29
+  language: en
+  source: DOI.org (Crossref)
+  title: Data quality of platforms and panels for online behavioral research
+  type: article-journal
+  URL: https://link.springer.com/10.3758/s13428-021-01694-3
+...
