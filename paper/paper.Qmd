@@ -8,16 +8,39 @@ execute:
     echo: false
 bibliography: |
   transparency-Hicks.yaml
+header-includes:
+  - \usepackage{pdflscape}
+  - \newcommand{\blandscape}{\landscape}
+  - \newcommand{\elandscape}{\endlandscape}
+  # - \usepackage{endfloat}
 ---
 
 ```{r}
 #| message: false
 #| results: hide
 
+library(gtsummary)
 library(here)
 here()
 out_dir = here('out')
 ```
+
+```{r}
+#| label: tbl-test
+#| tbl-cap: "Testing"
+knitr::include_graphics('../out/03_eb_tbl.pdf')
+```
+
+@tbl-test
+
+<!-- \blandscape -->
+```{r}
+#| tbl-cap: "Sequential regression analysis of hypothesis H4 shared values/scientist values effects"
+readRDS(here(out_dir, '03_shared_values_tbl.Rds')) |> 
+    as_hux_table() |> 
+    huxtable::set_width(1)
+```
+<!-- \elandscape -->
 
 # Introduction #
 
@@ -118,8 +141,8 @@ Next, we tested the hypotheses that (H2) scientists who find a chemical harms hu
 ```{r}
 #| label: tbl-bc
 #| tbl-cap: "Regression analysis for hypotheses H2 (consumer risk sensitivity) and H3 (disclosure effect)"
-bc_tbl = readRDS(here(out_dir, '03_bc_tbl.Rds'))
-bc_tbl
+readRDS(here(out_dir, '03_bc_tbl.Rds')) |> 
+    as_hux_table()
 ```
 
 ## H4: Shared values
@@ -128,12 +151,15 @@ Next, we tested the hypothesis that (H4) if the participant and scientist share 
 
 ![Directed acyclic graph (DAG) for analysis of the shared values effect.  If the DAG is faithful, adjusting for scientist values (`sci_values`) and participant values (`part_values`) is sufficient for estimating the effect of shared values on perceived trustworthiness (`METI`).  In particular, adjusting for demographics should not change the regression coefficient on shared values.](`r here(out_dir, '03_shared_values_dag.png')`){#fig-shared-dag}
 
+<!-- \blandscape -->
+
 ```{r}
 #| label: tbl-shared
 #| tbl-cap: "Sequential regression analysis of hypothesis H4 shared values/scientist values effects"
-shared_values_tbl = readRDS(here(out_dir, '03_shared_values_tbl.Rds'))
-shared_values_tbl
+readRDS(here(out_dir, '03_shared_values_tbl.Rds')) |> 
+    as_hux_table()
 ```
+<!-- \elandscape -->
 
 ## H5: Variation in effects
 
@@ -146,7 +172,8 @@ To test whether the findings regarding consumer risk sensitivity vary as a funct
 ```{r}
 #| label: tbl-eb
 #| tbl-cap: "Regression analysis of H5-consumer, interaction between participant values and consumer risk sensitivity"
-readRDS(here(out_dir, '03_eb_tbl.Rds'))
+readRDS(here(out_dir, '03_eb_tbl.Rds')) |> 
+    as_hux_table()
 ```
 
 ![Data, group means, and 95% confidence intervals for H5-consumer, interaction of consumer risk sensitivity and participant values. Panels correspond to participant values.](`r here(out_dir, '03_conclusion_part.png')`){#fig-conclusion-part}
@@ -159,7 +186,8 @@ To test whether the findings above about a hypothesized transparency penalty may
 ```{r}
 #| label: tbl-ec
 #| tbl-cap: "Regression analysis of H5-transparency, interaction between participant values and transparency penalty"
-readRDS(here(out_dir, '03_ec_tbl.Rds'))
+readRDS(here(out_dir, '03_ec_tbl.Rds')) |> 
+    as_hux_table()
 ```
 
 
@@ -177,7 +205,8 @@ As we found above, rather than a shared values effect there appears to be an eff
 ```{r}
 #| label: tbl-sci-part
 #| tbl-cap: "Regression analysis of interaction between scientist values and participant values"
-readRDS(here(out_dir, '03_sci_part_tbl.Rds'))
+readRDS(here(out_dir, '03_sci_part_tbl.Rds')) |> 
+    as_hux_table()
 ```
 
 *[maybe move to conclusion]*

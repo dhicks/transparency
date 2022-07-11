@@ -35,6 +35,6 @@ write_reg_tbl = function(tbl, path) {
     
     tbl |> 
         tbl_butcher() |> 
-        as_gt() |> 
+        # as_gt() |> 
         write_rds(file = str_c(path, '.Rds'))
 }
