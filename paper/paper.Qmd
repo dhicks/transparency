@@ -8,11 +8,9 @@ execute:
     echo: false
 bibliography: |
   transparency-Hicks.yaml
-header-includes:
-  - \usepackage{pdflscape}
-  - \newcommand{\blandscape}{\landscape}
-  - \newcommand{\elandscape}{\endlandscape}
-  # - \usepackage{endfloat}
+format: 
+    html: default
+    pdf: default
 ---
 
 ```{r}
@@ -69,19 +67,19 @@ After filling in the METI, participants provided demographic information and oth
 We identified 5 major findings from @ElliottValuesEnvironmentalResearch2017 for our replication attempt:  
 
 H1. Modest correlation between values and ideology
- ~ \(a\) Political liberals are more likely to prioritize public health over economic growth, compared to political conservatives; but (b) a majority of political conservatives prioritize public health.  
+~ \(a\) Political liberals are more likely to prioritize public health over economic growth, compared to political conservatives; but (b) a majority of political conservatives prioritize public health.  
 
 H2. Consumer risk sensitivity
- ~ Scientists who find that a chemical harms human health are perceived as more trustworthy than scientists who find that a chemical does not cause harm. 
+~ Scientists who find that a chemical harms human health are perceived as more trustworthy than scientists who find that a chemical does not cause harm. 
 
 H3. Transparency penalty
- ~ Scientists who disclose values are perceived as less trustworthy than scientists who do not.  
+~ Scientists who disclose values are perceived as less trustworthy than scientists who do not.  
 
 H4. Shared values
- ~ Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.  
+~ Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.  
 
 H5. Variation in effects
- ~ The magnitude of the effects 2-4 vary depending on whether the participant prioritizes public health or economic growth.  
+~ The magnitude of the effects 2-4 vary depending on whether the participant prioritizes public health or economic growth.  
 
 Hypothesis H3, the transparency penalty, corresponds to the objection to transparency:  disclosing values undermines trust in science.  However, the shared values effect works in the opposite direction, counteracting the transparency penalty.  
 
@@ -206,41 +204,41 @@ The evidence here suggests that if a scientist discloses their values alongside 
 
 We did not find evidence for a transparency penalty or shared values effect.  And we found evidence of a scientist values effect, which also did not appear in @ElliottValuesEnvironmentalResearch2017.  
 
-+------------------+------------------------------------------+-------------+
-|                  | Hypothesis                               | Replicated? |
-+==================+==========================================+=============+
-|              H1a | Liberals prioritize public health        | yes         |
-|                  | rel. to conservatives                    |             |
-+------------------+------------------------------------------+-------------+
-|              H1b | Majority of conservatives prioritize     | no          |
-|                  | public health                            |             |
-+------------------+------------------------------------------+-------------+
-|               H2 | Sci. who find chemical is harmful        | yes         |
-|                  | perceived as more trustworthy            |             |
-+------------------+------------------------------------------+-------------+
-|               H3 | Sci. who disclose values perceived as    | no          |
-|                  | less trustworthy                         |             |
-+------------------+------------------------------------------+-------------+
-|               H4 | Given sci. discloses values,             | no          |
-|                  | sci. who shared values with participant  |             |
-|                  | perceived as more trustworthy            |             |
-+------------------+------------------------------------------+-------------+
-|        Unplanned | Given sci. discloses values,             |yes$^\dagger$|
-|                  | sci. who values public health            |             |
-|                  | perceived as more trustworthy            |             |
-+------------------+------------------------------------------+-------------+
-|      H5-consumer | Interaction btwn. sci. conclusion (H2)   | yes         |
-|                  | and participant values                   |             |
-+------------------+------------------------------------------+-------------+
-|  H5-transparency | Interaction btwn. values disclosure (H3) | no          |
-|                  | and participant values                   |             |
-+------------------+------------------------------------------+-------------+
-|        H5-shared | Interaction btwn. shared values (H4)     | $^\star$    |
-|                  | and participant values                   |             |
-+------------------+------------------------------------------+-------------+
-|   H5-sci. values | Interaction btwn. scientist values       | no$^\dagger$|
-|                  | and participant values                   |             |
-+------------------+------------------------------------------+-------------+
++-------------------+------------------------------------------+-------------+
+|                   | Hypothesis                               | Replicated? |
++===================+==========================================+=============+
+|               H1a | Liberals prioritize public health        | yes         |
+|                   | rel. to conservatives                    |             |
++-------------------+------------------------------------------+-------------+
+|               H1b | Majority of conservatives prioritize     | no          |
+|                   | public health                            |             |
++-------------------+------------------------------------------+-------------+
+|                H2 | Sci. who find chemical is harmful        | yes         |
+|                   | perceived as more trustworthy            |             |
++-------------------+------------------------------------------+-------------+
+|                H3 | Sci. who disclose values perceived as    | no          |
+|                   | less trustworthy                         |             |
++-------------------+------------------------------------------+-------------+
+|                H4 | Given sci. discloses values,             | no          |
+|                   | sci. who shared values with participant  |             |
+|                   | perceived as more trustworthy            |             |
++-------------------+------------------------------------------+-------------+
+|         Unplanned | Given sci. discloses values,             |yes$^\dagger$|
+|                   | sci. who values public health            |             |
+|                   | perceived as more trustworthy            |             |
++-------------------+------------------------------------------+-------------+
+|       H5-consumer | Interaction btwn. sci. conclusion (H2)   | yes         |
+|                   | and participant values                   |             |
++-------------------+------------------------------------------+-------------+
+|   H5-transparency | Interaction btwn. values disclosure (H3) | no          |
+|                   | and participant values                   |             |
++-------------------+------------------------------------------+-------------+
+|         H5-shared | Interaction btwn. shared values (H4)     | $^\star$    |
+|                   | and participant values                   |             |
++-------------------+------------------------------------------+-------------+
+|    H5-sci. values | Interaction btwn. scientist values       | no$^\dagger$|
+|                   | and participant values                   |             |
++-------------------+------------------------------------------+-------------+
 
 : Summary of replication results.  $^\star$: The shared values $\times$ participant values interaction specification had perfect multicollinearity and could not be fit.  $^\dagger$: For these unplanned analyses, "yes" indicates that we found evidence supporting the stated hypothesis, and "no" indicates that we did not find such evidence. {#tbl-summary}
 
