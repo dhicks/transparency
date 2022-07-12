@@ -14,8 +14,7 @@ format:
 ---
 
 ```{r}
-#| message: false
-#| results: hide
+#| include: false
 
 library(gtsummary)
 library(kableExtra)
