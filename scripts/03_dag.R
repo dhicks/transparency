@@ -21,6 +21,9 @@ library(ggdag)
 library(gt)
 library(gtsummary)
 
+## Need Hmisc for bootstrap CIs in some plots, but don't want to load it
+find.package('Hmisc')
+
 library(here)
 source(here('R', 'reg_tbl.R'))
 source(here('R', 'plot_adjustments.R'))
@@ -208,6 +211,14 @@ ggsave(here(out_dir, '03_part_values.png'),
        height = 4, width = 8, dpi = 200, scale = 1.5)
 
 table(dataf$political_ideology, dataf$pref)
+
+dataf |> 
+    mutate(political_ideology = case_when(
+        political_ideology < 4 ~ 'liberal', 
+        political_ideology == 4 ~ 'moderate', 
+        political_ideology > 4 ~ 'conservative'
+    )) |> 
+    count(political_ideology)
 
 cor(emad_df$ideology, emad_df$tradeoff, 
     use = 'complete.obs',

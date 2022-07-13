@@ -1,8 +1,8 @@
 ---
-title: "Something something values disclosure replication"
+title: "Values disclosures and trust in science: A replication study"
 author: "Daniel J. Hicks and Emilio Lobato"
 abstract: |
-  abstract
+  While philosophers of science generally agree that social, political, and ethical values can play legitimate roles in science, there is active debate over whether scientists should disclosure such values in their public communications.  This debate depends, in part, on empirical claims about whether values disclosures might undermine public trust in science.  In a previous study, Elliott et al. used an online experiment to test this empirical claim.  The current paper reports a replication attempt of their experiment. Comparing results of the two replications, we do not find evidence for a transparency penalty or "shared values" effect, but do find evidence that the content of scientific conclusions (whether or not a chemical is found to cause harm) might effect perceived trustworthiness and that scientists who value public health and disclose this value might be perceived as more trustworthy.  
 toc: true
 execute:
     echo: false
@@ -87,14 +87,14 @@ Hypothesis 1 was analyzed using Spearman rank order correlation and visually.  H
 
 ## Participants ##
 
-Participants were recruited using the online survey platform Prolific, and the survey was administered in a web browser using Qualtrics.  Prolific has an option to draw samples that are balanced to be representative by age, binary gender, and a 5-category race variable (taking values Asian, Black, Mixed, Other, and White) for US adults *[https://researcher-help.prolific.co/hc/en-gb/articles/360019238413-Representative-samples-FAQ]*.  A recent analysis finds that Prolific produces substantially higher quality data than Amazon Mechanical Turk for online survey studies, though three of the five authors are affiliated with Prolific [@PeerDataQualityPlatforms2021].  Preliminary power analysis recommended a sample of approximately 1,000 participants to reliably detect non-interaction effects (H1-4).  
+Participants were recruited using the online survey platform Prolific, and the survey was administered in a web browser using Qualtrics.  Prolific has an option to draw samples that are balanced to be representative by age, binary gender, and a 5-category race variable (taking values Asian, Black, Mixed, Other, and White) for US adults [@RepresentativeSamplesFAQ2022].  A recent analysis finds that Prolific produces substantially higher quality data than Amazon Mechanical Turk for online survey studies, though three of the five authors are affiliated with Prolific [@PeerDataQualityPlatforms2021].  Preliminary power analysis recommended a sample of approximately 1,000 participants to reliably detect non-interaction effects (H1-4).  
 
 The study was approved by the UC Merced IRB on August 17, 2021, and data collection ran October 18-20, 2021.  As mentioned above, due to researcher error a question about participants' values was not included in the original survey.  A followup survey asking this question of the same group of participants was conducted December 8, 2021 through March 5, 2022.  
 
 
 ## Software and reproducibility ##
 
-Data cleaning and analysis was conducted in R *[version, cite]*, with extensive use of the `tidyverse` suite of packages *[cite]*.  Regression tables were generated using the `gt` and `gtsummary` packages *[cites]*.  
+Data cleaning and analysis was conducted in R version 4.1.2 [@RCoreTeamLanguageEnvironmentStatistical2021], with extensive use of the `tidyverse` suite of packages version 1.3.1 [@WickhamWelcomeTidyverse2019].  Regression tables were generated using the packages `gt` version 0.5.0 [@IannoneGtEasilyCreate2022] and `gtsummary` version 1.6.0 [@SjobergReproducibleSummaryTables2021]. 
 
 *[Anonymized original data and reproducible code are available at <https://github.com/dhicks/transparency>.  Instructions in that repository explain how to automatically reproduce our analysis.]*
 
@@ -109,7 +109,7 @@ After excluding participants who declined consent after opening the survey or di
 
 *[participant demographics]*  
 
-Critically, our data are unlikely to be representative by education level and political ideology.  In 2021, about 9% of US adults 25 or over had a less than high school education, and 38% had a Bachelor's degree or higher.  Only 1% of our participants reported a less than high school education, and 57% reported a Bachelor's degree or higher.  *[<https://www.census.gov/library/visualizations/time-series/demo/cps-historical-time-series.html> fig. 2]*  For political ideology, the General Social Survey has consistently found over several decades that about 30% of US adults identify as liberal, about 30% identify as conservative, and about 40% as moderate *[https://gssdataexplorer.norc.org/variables/178/vshow]*.  Among our participants, liberals outnumber conservatives *[by over 2:1]* (@fig-part-values).  Both overrepresentation of college graduates and underrepresentation of conservatives (especially conservatives with strong anti-institutional views) are known issues in public opinion polling [@KennedyEvaluation2016Election2018].  In exploratory data analysis, we noted that there was essentially no correlation between political ideology and perceived trustworthiness *[supplement]*.  This was surprising, since general trust/distrust in science has become a partisan phenomenon over the last few decades:  data from the General Social Survey shows increasing trust in science from liberals and decreasing trust from conservatives [@GauchatPoliticizationSciencePublic2012; @LeePartyPolarizationTrust2021], and many (though not all) prominent public controversies align with liberal-conservative partisanship *[cite]*.  
+Critically, our data are unlikely to be representative by education level and political ideology.  In 2021, about 9% of US adults 25 or over had a less than high school education, and 38% had a Bachelor's degree or higher [@CPSHistoricalTime2022 fig. 2].  Only 1% of our participants reported a less than high school education, and 57% reported a Bachelor's degree or higher.  For political ideology, the General Social Survey has consistently found over several decades that about 30% of US adults identify as liberal, about 30% identify as conservative, and about 40% as moderate [@GSSDataExplorer2022].  Among our participants, liberals (574) heavily outnumber conservatives (248; @fig-part-values).  Both overrepresentation of college graduates and underrepresentation of conservatives (especially conservatives with strong anti-institutional views) are known issues in public opinion polling [@KennedyEvaluation2016Election2018].  In exploratory data analysis, we noted that there was essentially no correlation between political ideology and perceived trustworthiness *[supplement]*.  This was surprising, since general trust/distrust in science has become a partisan phenomenon over the last few decades:  data from the General Social Survey shows increasing trust in science from liberals and decreasing trust from conservatives [@GauchatPoliticizationSciencePublic2012; @LeePartyPolarizationTrust2021], and many (though not all) prominent public scientific controversies align with liberal-conservative partisanship [@FunkAmericansPoliticsScience2015].  
 
 Because of these representation issues, insofar as some political conservatives are both less likely to participate in studies on Prolific (or at least in our particular study) and likely to perceive Spence as less trustworthy, this will produce omitted variable bias for analyses that require adjustment by political ideology.  Analysis of our a priori DAG indicated that, for the hypotheses examined here, this adjustment was not necessary in any case.  When some adjustment was necessary (H4-5), we included political ideology along with other demographic variables in an alternative model specification as a robustness check.  In line with the DAG, in no case did these robustness checks produce indications of omitted variable bias.  
 
@@ -203,43 +203,7 @@ The evidence here suggests that if a scientist discloses their values alongside 
 
 We did not find evidence for a transparency penalty or shared values effect.  And we found evidence of a scientist values effect, which also did not appear in @ElliottValuesEnvironmentalResearch2017.  
 
-+-------------------+------------------------------------------+-------------+
-|                   | Hypothesis                               | Replicated? |
-+===================+==========================================+=============+
-|               H1a | Liberals prioritize public health        | yes         |
-|                   | rel. to conservatives                    |             |
-+-------------------+------------------------------------------+-------------+
-|               H1b | Majority of conservatives prioritize     | no          |
-|                   | public health                            |             |
-+-------------------+------------------------------------------+-------------+
-|                H2 | Sci. who find chemical is harmful        | yes         |
-|                   | perceived as more trustworthy            |             |
-+-------------------+------------------------------------------+-------------+
-|                H3 | Sci. who disclose values perceived as    | no          |
-|                   | less trustworthy                         |             |
-+-------------------+------------------------------------------+-------------+
-|                H4 | Given sci. discloses values,             | no          |
-|                   | sci. who shared values with participant  |             |
-|                   | perceived as more trustworthy            |             |
-+-------------------+------------------------------------------+-------------+
-|         Unplanned | Given sci. discloses values,             |yes$^\dagger$|
-|                   | sci. who values public health            |             |
-|                   | perceived as more trustworthy            |             |
-+-------------------+------------------------------------------+-------------+
-|       H5-consumer | Interaction btwn. sci. conclusion (H2)   | yes         |
-|                   | and participant values                   |             |
-+-------------------+------------------------------------------+-------------+
-|   H5-transparency | Interaction btwn. values disclosure (H3) | no          |
-|                   | and participant values                   |             |
-+-------------------+------------------------------------------+-------------+
-|         H5-shared | Interaction btwn. shared values (H4)     | $^\star$    |
-|                   | and participant values                   |             |
-+-------------------+------------------------------------------+-------------+
-|    H5-sci. values | Interaction btwn. scientist values       | no$^\dagger$|
-|                   | and participant values                   |             |
-+-------------------+------------------------------------------+-------------+
-
-: Summary of replication results.  $^\star$: The shared values $\times$ participant values interaction specification had perfect multicollinearity and could not be fit.  $^\dagger$: For these unplanned analyses, "yes" indicates that we found evidence supporting the stated hypothesis, and "no" indicates that we did not find such evidence. {#tbl-summary}
+{{< include summary_table.md >}}
 
 
 @ElliottValuesEnvironmentalResearch2017 claim evidence for a shared values effect by comparing values disclosure vs. no disclosure (that is, estimating a transparency effect) in quasi-independent subsamples across 8 cells (participant values $\times$ scientist conclusion $\times$ scientist values; @ElliottValuesEnvironmentalResearch2017 fig. 1).  This approach is difficult to interpret; their reasoning seems to be that this estimate is statistically significant in 4/8 cells, and in 3/4 of these cells (1 where respondent values economic growth) the participant and scientist share values.  But these analyses are underpowered (for example, sample sizes are well below 100 for some of the cells in which participants value economic growth) and the overall approach cannot distinguish a shared values effect from other potential effects (scientist values, participant values).  Applying our regression analysis approach to the data published by @ElliottValuesEnvironmentalResearch2017, the estimate for shared values was not statistically significant, $\beta$=0.29, t(335)=1.75, p=0.08; while the estimate for scientist values was statistically significant, $\beta$=0.41, t(335)=2.48, p=0.014.  It seems likely that claims of a shared values effect were the result of misinterpreting a confusing statistical approach.  *[trying to put this as nice as possible]*

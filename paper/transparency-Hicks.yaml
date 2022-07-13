@@ -16,6 +16,22 @@ references:
   URL: http://www.jstor.org/stable/2381376
   volume: '96'
 
+- id: CPSHistoricalTime2022
+  accessed:
+    - year: 2022
+      month: 7
+      day: 13
+  citation-key: CPSHistoricalTime2022
+  container-title: United States Census Bureau
+  issued:
+    - year: 2022
+      month: 3
+      day: 12
+  title: CPS Historical Time Series Visualizations
+  type: webpage
+  URL: >-
+    https://web.archive.org/web/20220312234236/https://www.census.gov/library/visualizations/time-series/demo/cps-historical-time-series.html
+
 - id: CranorSocialBenefitsExpedited1995
   abstract: >-
     The present regulation of carcinogens is quite slow; hundreds of substances
@@ -278,6 +294,30 @@ references:
   URL: https://ehp.niehs.nih.gov/doi/full/10.1289/EHP3317
   volume: '127'
 
+- id: FunkAmericansPoliticsScience2015
+  abstract: >-
+    The public’s political views are strongly linked to attitudes on climate and
+    energy issues but are less important on biomedical, food safety, and space
+    issues.
+  accessed:
+    - year: 2015
+      month: 7
+      day: 2
+  author:
+    - family: Funk
+      given: Cary
+    - family: Rainie
+      given: Lee
+  citation-key: FunkAmericansPoliticsScience2015
+  issued:
+    - year: 2015
+      month: 7
+      day: 1
+  publisher: Pew Research Center
+  title: Americans, Politics and Science Issues
+  type: report
+  URL: http://www.pewinternet.org/2015/07/01/americans-politics-and-science-issues/
+
 - id: GauchatPoliticizationSciencePublic2012
   abstract: >-
     This study explores time trends in public trust in science in the United
@@ -366,6 +406,22 @@ references:
   title-short: Vaccine Hesitancy
   type: book
 
+- id: GSSDataExplorer2022
+  accessed:
+    - year: 2022
+      month: 7
+      day: 13
+  citation-key: GSSDataExplorer2022
+  container-title: NORC at the University of Chicago
+  issued:
+    - year: 2022
+      month: 6
+      day: 29
+  title: GSS Data Explorer
+  type: webpage
+  URL: >-
+    https://web.archive.org/web/20220629231111/https://gssdataexplorer.norc.org/variables/178/vshow
+
 - id: HendriksMeasuringLaypeopleTrust2015
   abstract: >-
     Given their lack of background knowledge, laypeople require expert help when
@@ -435,6 +491,36 @@ references:
   type: article-journal
   URL: http://link.springer.com/10.1007/s11229-014-0447-9
   volume: '191'
+
+- id: IannoneGtEasilyCreate2022
+  abstract: >-
+    Build display tables from tabular data with an easy-to-use set of functions.
+    With its progressive approach, we can construct display tables with a
+    cohesive set of table parts. Table values can be formatted using any of the
+    included formatting functions. Footnotes and cell styles can be precisely
+    added through a location targeting system. The way in which 'gt' handles
+    things for you means that you don't often have to worry about the fine
+    details.
+  accessed:
+    - year: 2022
+      month: 7
+      day: 13
+  author:
+    - family: Iannone
+      given: Richard
+    - family: Cheng
+      given: Joe
+    - family: Schloerke
+      given: Barret
+  citation-key: IannoneGtEasilyCreate2022
+  issued:
+    - year: 2022
+  source: R-Packages
+  title: 'gt: Easily Create Presentation-Ready Display Tables'
+  title-short: gt
+  type: book
+  URL: https://CRAN.R-project.org/package=gt
+  version: 0.5.0
 
 - id: JohnEpistemicTrustEthics2017
   accessed:
@@ -708,4 +794,139 @@ references:
   title: Data quality of platforms and panels for online behavioral research
   type: article-journal
   URL: https://link.springer.com/10.3758/s13428-021-01694-3
+
+- id: RCoreTeamLanguageEnvironmentStatistical2021
+  accessed:
+    - year: 2018
+      month: 8
+      day: 27
+  author:
+    - literal: R Core Team
+  citation-key: RCoreTeamLanguageEnvironmentStatistical2021
+  issued:
+    - year: 2021
+  publisher: R Foundation for Statistical Computing
+  title: 'R: A Language and Environment for Statistical                   Computing'
+  type: document
+  URL: https://www.r-project.org/
+
+- id: RepresentativeSamplesFAQ2022
+  accessed:
+    - year: 2022
+      month: 7
+      day: 13
+  citation-key: RepresentativeSamplesFAQ2022
+  container-title: Prolific
+  issued:
+    - year: 2022
+      month: 3
+      day: 13
+  title: Representative samples FAQ
+  type: webpage
+  URL: >-
+    https://web.archive.org/web/20220313050153/https://researcher-help.prolific.co/hc/en-gb/articles/360019238413-Representative-samples-FAQ
+
+- id: SjobergReproducibleSummaryTables2021
+  accessed:
+    - year: 2022
+      month: 7
+      day: 13
+  author:
+    - family: Sjoberg
+      given: Daniel D.
+    - family: Whiting
+      given: Karissa
+    - family: Curry
+      given: Michael
+    - family: Lavery
+      given: Jessica A.
+    - family: Larmarange
+      given: Joseph
+  citation-key: SjobergReproducibleSummaryTables2021
+  container-title: The R Journal
+  ISSN: 2073-4859
+  issue: '1'
+  issued:
+    - year: 2021
+  language: en
+  page: 570-580
+  source: journal.r-project.org
+  title: Reproducible Summary Tables with the gtsummary Package
+  type: article-journal
+  URL: https://journal.r-project.org/archive/2021/RJ-2021-053/index.html
+  volume: '13'
+
+- id: WickhamWelcomeTidyverse2019
+  abstract: >-
+    Wickham et al., (2019). Welcome to the Tidyverse. Journal of Open Source
+    Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+  accessed:
+    - year: 2022
+      month: 1
+      day: 30
+  author:
+    - family: Wickham
+      given: Hadley
+    - family: Averick
+      given: Mara
+    - family: Bryan
+      given: Jennifer
+    - family: Chang
+      given: Winston
+    - family: McGowan
+      given: Lucy D'Agostino
+    - family: François
+      given: Romain
+    - family: Grolemund
+      given: Garrett
+    - family: Hayes
+      given: Alex
+    - family: Henry
+      given: Lionel
+    - family: Hester
+      given: Jim
+    - family: Kuhn
+      given: Max
+    - family: Pedersen
+      given: Thomas Lin
+    - family: Miller
+      given: Evan
+    - family: Bache
+      given: Stephan Milton
+    - family: Müller
+      given: Kirill
+    - family: Ooms
+      given: Jeroen
+    - family: Robinson
+      given: David
+    - family: Seidel
+      given: Dana Paige
+    - family: Spinu
+      given: Vitalie
+    - family: Takahashi
+      given: Kohske
+    - family: Vaughan
+      given: Davis
+    - family: Wilke
+      given: Claus
+    - family: Woo
+      given: Kara
+    - family: Yutani
+      given: Hiroaki
+  citation-key: WickhamWelcomeTidyverse2019
+  container-title: Journal of Open Source Software
+  DOI: 10.21105/joss.01686
+  ISSN: 2475-9066
+  issue: '43'
+  issued:
+    - year: 2019
+      month: 11
+      day: 21
+  language: en
+  page: '1686'
+  source: joss.theoj.org
+  title: Welcome to the Tidyverse
+  type: article-journal
+  URL: https://joss.theoj.org/papers/10.21105/joss.01686
+  volume: '4'
 ...

@@ -1,0 +1,55 @@
+---
+title: "Data and code for \"Values disclosures and trust in science: A replication study\""
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+This repository contains anonymized data and code for the paper "Values disclosures and trust in science: A replication study" by Daniel J. Hicks and Emilio Lobato.  
+
+# Data files
+
+Data files are contained in the folder `data`.  
+
+The files `data/data.csv` and `data/data.Rds` contain anonymized versions of the original data collected for this replication study.  An overview is included at the bottom of this readme.  
+
+The files `data/emad.csv` and `data/emad.Rds` contain versions of the data from Elliot et al. experiment 1, downloaded from <https://figshare.com/articles/dataset/Elliott_McCright_Allen_and_Dietz_Data_SPSS_Stata_/4695793> on 2021-06-09. This dataset was reshaped and variables recoded to facilitate parallel analysis with our original data using the code in script `01_clean.R`. This dataset is made available under a Creative Commons Attribution 4.0 International license.
+
+
+# Reproducibility
+
+To preserve participant anonymity, raw data (as downloaded from Qualtrics and cleaned by script `01_clean.R`) is not publicly available. Only analysis scripts `02_analysis.R` and `03_dag.R` are reproduced, along with assembling the manuscript PDF.  
+
+Either method below will require prior installation of R, the `renv` package, and [Quarto](https://quarto.org/). 
+
+## Using make
+
+After cloning and downloading, in Bash or a similar shell run
+```
+make install
+make
+```
+
+## Manually
+
+In R, run
+```
+renv::restore()
+```
+to create a local (within-project) package library, with the specific versions used in this project.  Then run the scripts `02_analysis.R` and `03_dag.R`, in that order, to run the analyses.  These scripts will write plots and tables to the `out` folder, creating it if necessary.  Optionally, use `rmarkdown::render()` or the "Knit" button in RStudio to generate HTML documents from these scripts, for comparison with the ones included in the repository.  (Be sure to rename the included HTML files first.) 
+
+Finally, in the `paper` folder, from Bash or a similar shell run
+```
+quarto render paper.Qmd --to pdf
+```
+to generate the PDF version of the manuscript. 
+
+
+# Data overview
+
+```{r}
+library(skimr)
+
+dataf = readRDS(file.path('data', 'data.Rds'))
+skim(dataf)
+```

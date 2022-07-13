@@ -2,7 +2,11 @@ PAPER_DIR = paper
 TALK_DIR = talk
 SCRIPTS_WD = scripts
 
-all: pipe talk paper
+all: pipe paper
+
+install:
+	Rscript -e "renv::restore()"
+
 
 paper: 
 	@echo "paper"

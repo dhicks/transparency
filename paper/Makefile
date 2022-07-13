@@ -1,6 +1,6 @@
 all: pdf
 
-pdf: paper.odf
+pdf: paper.pdf
 paper.pdf: paper.md
 	pandoc header.yaml paper.md \
                      -o paper.pdf \
