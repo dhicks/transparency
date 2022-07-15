@@ -1,5 +1,26 @@
 ---
 references:
+- id: Adler-BellPandemicInterpreter2022
+  abstract: Why are so many liberals mad at David Leonhardt?
+  accessed:
+    - year: 2022
+      month: 5
+      day: 17
+  author:
+    - family: Adler-Bell
+      given: Sam
+  citation-key: Adler-BellPandemicInterpreter2022
+  container-title: Intelligencer
+  issued:
+    - year: 2022
+      month: 2
+      day: 24
+  language: en-us
+  title: The Pandemic Interpreter
+  type: webpage
+  URL: >-
+    https://nymag.com/intelligencer/2022/02/david-leonhardt-the-pandemic-interpreter.html
+
 - id: BaierTrustAntitrust1986
   author:
     - family: Baier
@@ -15,6 +36,28 @@ references:
   type: article-journal
   URL: http://www.jstor.org/stable/2381376
   volume: '96'
+
+- id: BrownTrustExpertiseScientific2022
+  abstract: >-
+    Matthew Brown (UT Dallas) discusses "Trust, Expertise and Scientific
+    Authority in Democracy" and then answers questions about his work.
+  accessed:
+    - year: 2022
+      month: 5
+      day: 9
+  author:
+    - family: Brown
+      given: Matthew
+  citation-key: BrownTrustExpertiseScientific2022
+  event-place: Michigan State University
+  issued:
+    - year: 2022
+      month: 2
+      day: 20
+  publisher-place: Michigan State University
+  title: Trust, Expertise and Scientific Authority in Democracy
+  type: speech
+  URL: https://www.youtube.com/watch?v=y3XeP6e646g
 
 - id: CPSHistoricalTime2022
   accessed:
@@ -492,6 +535,54 @@ references:
   URL: http://link.springer.com/10.1007/s11229-014-0447-9
   volume: '191'
 
+- id: HicksWhenVirtuesAre2022
+  abstract: >-
+    <p>Since at least the mid-2000s, political commentators, environmental
+    advocates, and scientists have raised concerns about an “anti-science”
+    approach to environmental policymaking in conservative governments in the US
+    and Canada. This paper explores and resolves a paradox surrounding at least
+    some uses of the “anti-science” epithet. I examine two cases of such
+    “anti-science” environmental policy, both of which involve appeals to
+    epistemic values that are widely endorsed by both scientists and
+    philosophers of science. It seems paradoxical to call an appeal to epistemic
+    values “anti-science.” I develop an analysis that, I argue, can resolve this
+    paradox. This analysis is a version of the “aims approach” to science and
+    values, drawing on ideas from axiology and virtue ethics. I characterize the
+    paradox in terms of conflicts or tensions between epistemic and pragmatic
+    aims, and argue that there is a key asymmetry between them: epistemic aims
+    are valuable, in part, because they are useful for pursuing pragmatic aims.
+    Thus, when epistemic and pragmatic aims conflict, epistemic aims need to be
+    reconceptualized in order to reconcile them to pragmatic aims. When this is
+    done, in the “anti-science” cases, the epistemic values are scientific vices
+    rather than virtues. Thus the “anti-science” epithet is apt.</p>
+  accessed:
+    - year: 2022
+      month: 4
+      day: 28
+  author:
+    - family: Hicks
+      given: Daniel J.
+  citation-key: HicksWhenVirtuesAre2022
+  container-title: Philosophy, Theory, and Practice in Biology
+  DOI: 10.3998/.2629
+  ISSN: 2475-3025
+  issue: '0'
+  issued:
+    - year: 2022
+      month: 4
+      day: 28
+  language: eng
+  number: '0'
+  publisher: Michigan Publishing
+  source: journals.publishing.umich.edu
+  title: >-
+    When Virtues are Vices: 'Anti-Science' Epistemic Values in Environmental
+    Politics
+  title-short: When Virtues are Vices
+  type: article-journal
+  URL: https://journals.publishing.umich.edu/ptpbio/article/id/2629/
+  volume: '14'
+
 - id: IannoneGtEasilyCreate2022
   abstract: >-
     Build display tables from tabular data with an easy-to-use set of functions.
@@ -521,6 +612,52 @@ references:
   type: book
   URL: https://CRAN.R-project.org/package=gt
   version: 0.5.0
+
+- id: IntemannDistinguishingLegitimateIllegitimate2015
+  abstract: >-
+    While it is widely acknowledged that science is not “free” of non-epistemic
+    values, there is disagreement about the roles that values can appropriately
+    play. Several have argued that non-epistemic values can play important roles
+    in modeling decisions, particularly in addressing uncertainties (Moss and
+    Schneider 2000; Kandlikar et al. (C.R. Geoscience 337:443-455, 2005); Risbey
+    2007; Biddle and Winsberg 2010; Winsberg (Kennedy Institute of Ethics
+    Journal 22(2): 111-137, 2012); van der Sluijs (Climatic Change 75 (3)
+    359-389, 2012). On the other hand, such values can (even unconsciously) lead
+    to bias (Pielke 2007; Oppenhiemer et al. (Science 317:1505-1506, 2007); Bray
+    (Environmental Science & Policy 13:340-350, 2010); Oreskes and Conway 2010).
+    Thus, it is important to identify when it is legitimate to appeal to
+    non-epistemic values in modeling decisions. An approach is defended here
+    whereby such value judgments are legitimate when they promote democratically
+    endorsed epistemological and social aims of research. This framework
+    accounts for why it is legitimate to appeal to non-epistemic values in a
+    range of modeling decisions, while addressing concerns that the presence of
+    such values will lead to bias or give scientists disproportionate power in
+    deciding what values ought to be endorsed.
+  accessed:
+    - year: 2015
+      month: 1
+      day: 31
+  author:
+    - family: Intemann
+      given: Kristen
+  citation-key: IntemannDistinguishingLegitimateIllegitimate2015
+  container-title: European Journal for Philosophy of Science
+  container-title-short: Euro Jnl Phil Sci
+  DOI: 10.1007/s13194-014-0105-6
+  ISSN: 1879-4912, 1879-4920
+  issue: '2'
+  issued:
+    - year: 2015
+      month: 5
+  language: en
+  page: 217-32
+  source: link.springer.com
+  title: >-
+    Distinguishing between legitimate and illegitimate values in climate
+    modeling
+  type: article-journal
+  URL: http://link.springer.com/article/10.1007/s13194-014-0105-6
+  volume: '5'
 
 - id: JohnEpistemicTrustEthics2017
   accessed:
@@ -620,6 +757,32 @@ references:
   URL: https://doi.org/10.1093/poq/nfx047
   volume: '82'
 
+- id: KhullarWillCoronavirusPandemic2022
+  abstract: >-
+    If Americans decide too soon that it is over, it could paradoxically drag on
+    even longer.
+  accessed:
+    - year: 2022
+      month: 7
+      day: 15
+  author:
+    - family: Khullar
+      given: Dhruv
+  citation-key: KhullarWillCoronavirusPandemic2022
+  container-title: The New Yorker
+  ISSN: 0028-792X
+  issued:
+    - year: 2022
+      month: 5
+      day: 23
+  language: en-US
+  section: daily comment
+  source: www.newyorker.com
+  title: Will the Coronavirus Pandemic Ever End?
+  type: article-magazine
+  URL: >-
+    https://www.newyorker.com/news/daily-comment/will-the-coronavirus-pandemic-ever-end
+
 - id: KovakaClimateChangeDenial2021
   abstract: >-
     Social scientists have offered a number of explanations for why Americans
@@ -700,6 +863,34 @@ references:
   type: article-journal
   URL: https://doi.org/10.1177/23780231211010101
   volume: '7'
+
+- id: LeiserowitzPoliticsGlobalWarming2022
+  abstract: >-
+    Our latest report finds strong political support for candidates who support
+    climate action.
+  accessed:
+    - year: 2022
+      month: 7
+      day: 15
+  author:
+    - family: Leiserowitz
+      given: Anthony
+    - family: Maibach
+      given: Edward
+    - family: Rosenthal
+      given: Seth
+    - family: Kotcher
+      given: John
+  citation-key: LeiserowitzPoliticsGlobalWarming2022
+  issued:
+    - year: 2022
+      month: 4
+  language: en-US
+  publisher: Yale Program on Climate Change Communication
+  title: Politics & Global Warming, April 2022
+  type: report
+  URL: >-
+    https://climatecommunication.yale.edu/publications/politics-global-warming-april-2022/
 
 - id: McKaughanBacktrackingEthicsFraming2013
   abstract: >-
@@ -794,6 +985,41 @@ references:
   title: Data quality of platforms and panels for online behavioral research
   type: article-journal
   URL: https://link.springer.com/10.3758/s13428-021-01694-3
+
+- id: PotochnikIdealizationAimsScience2017
+  abstract: >-
+    Science is the study of our world, as it is in its messy reality.
+    Nonetheless, science requires idealization to function—if we are to attempt
+    to understand the world, we have to find ways to reduce its complexity. 
+    Idealization and the Aims of Science shows just how crucial idealization is
+    to science and why it matters. Beginning with the acknowledgment of our
+    status as limited human agents trying to make sense of an exceedingly
+    complex world, Angela Potochnik moves on to explain how science aims to
+    depict and make use of causal patterns—a project that makes essential use of
+    idealization. She offers case studies from a number of branches of science
+    to demonstrate the ubiquity of idealization, shows how causal patterns are
+    used to develop scientific explanations, and describes how the necessarily
+    imperfect connection between science and truth leads to researchers’ values
+    influencing their findings. The resulting book is a tour de force, a
+    synthesis of the study of idealization that also offers countless new
+    insights and avenues for future exploration.
+  author:
+    - family: Potochnik
+      given: Angela
+  citation-key: PotochnikIdealizationAimsScience2017
+  event-place: Chicago and London
+  ISBN: 978-0-226-50719-4
+  issued:
+    - year: 2017
+      month: 11
+      day: 17
+  language: en
+  number-of-pages: '263'
+  publisher: University of Chicago Press
+  publisher-place: Chicago and London
+  source: Google Books
+  title: Idealization and the Aims of Science
+  type: book
 
 - id: RCoreTeamLanguageEnvironmentStatistical2021
   accessed:
@@ -929,4 +1155,28 @@ references:
   type: article-journal
   URL: https://joss.theoj.org/papers/10.21105/joss.01686
   volume: '4'
+
+- id: YongHowDidThis2022
+  abstract: >-
+    The U.S. is nearing 1 million recorded COVID-19 deaths without the social
+    reckoning that such a tragedy should provoke. Why?
+  accessed:
+    - year: 2022
+      month: 3
+      day: 8
+  author:
+    - family: Yong
+      given: Ed
+  citation-key: YongHowDidThis2022
+  container-title: The Atlantic
+  issued:
+    - year: 2022
+      month: 3
+      day: 8
+  language: en
+  section: Health
+  title: How Did This Many Deaths Become Normal?
+  type: webpage
+  URL: >-
+    https://www.theatlantic.com/health/archive/2022/03/covid-us-death-rate/626972/
 ...
