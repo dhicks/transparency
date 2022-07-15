@@ -8,7 +8,6 @@
 # TODO: 
 #     -[] clean code
 #     -[] predicted value plots for E and F
-#     -[] webshot::install_phantomjs() in make install
 
 library(tidyverse)
 theme_set(theme_minimal())

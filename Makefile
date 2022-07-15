@@ -4,8 +4,11 @@ SCRIPTS_WD = scripts
 
 all: pipe paper
 
+.PHONY: install
 install:
+	@echo "Setting up reproducible environment"
 	Rscript -e "renv::restore()"
+	Rscript -e "webshot::install_phantomjs()"
 
 
 paper: 
