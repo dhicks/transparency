@@ -21,4 +21,4 @@ $(data)/data.Rds: 01_clean.html
 01_clean.html: 01_clean.R \
                $(data)/full_replication_scientists_values.csv \
                $(data)/replication_preference.csv
-	Rscript 01_clean.R
+	Rscript -e "rmarkdown::render('01_clean.R')"

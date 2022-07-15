@@ -11,7 +11,7 @@
 
 <meta name="author" content="danhicks" />
 
-<meta name="date" content="2022-03-17" />
+<meta name="date" content="2022-07-15" />
 
 <title>01_clean.R</title>
 
@@ -1508,18 +1508,18 @@ div.tocify {
 
 <h1 class="title toc-ignore">01_clean.R</h1>
 <h4 class="author">danhicks</h4>
-<h4 class="date">2022-03-17</h4>
+<h4 class="date">2022-07-15</h4>
 
 </div>
 
 
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
 ## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
 ## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
 ## ✓ readr   2.1.2     ✓ forcats 0.5.1</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(tidylog)</code></pre>
@@ -1599,7 +1599,7 @@ convert_gender = function(resp) {
 <pre class="r"><code># full survey + pre_clean
 dataf_raw_survey &lt;- read_csv(here(&#39;data&#39;, &quot;full_replication_scientists_values.csv&quot;))</code></pre>
 <pre><code>## Rows: 1050 Columns: 169
-## ── Column specification ────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (169): StartDate, EndDate, Status, IPAddress, Progress, Duration (in sec...
 ## 
@@ -1840,7 +1840,7 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 <h1>Preference question</h1>
 <pre class="r"><code>dataf_raw_preference &lt;- read_csv(here(&#39;data&#39;, &quot;replication_preference.csv&quot;)) </code></pre>
 <pre><code>## Rows: 879 Columns: 21
-## ── Column specification ────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (21): StartDate, EndDate, Status, IPAddress, Progress, Duration (in seco...
 ## 
@@ -1946,7 +1946,8 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 </div>
 <div id="non-missing-values-for-education" class="section level2">
 <h2>Non-missing values for education</h2>
-<p>This was the final demographic question; non-missing value indicates completion</p>
+<p>This was the final demographic question; non-missing value indicates
+completion</p>
 <pre class="r"><code>dataf |&gt;
     pull(education) |&gt;
     is.na() |&gt;
@@ -2020,6 +2021,16 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 </table>
 <p><strong>Variable type: character</strong></p>
 <table>
+<colgroup>
+<col width="25%" />
+<col width="12%" />
+<col width="17%" />
+<col width="5%" />
+<col width="5%" />
+<col width="7%" />
+<col width="11%" />
+<col width="14%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">skim_variable</th>
@@ -2147,6 +2158,14 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 </table>
 <p><strong>Variable type: factor</strong></p>
 <table>
+<colgroup>
+<col width="17%" />
+<col width="10%" />
+<col width="15%" />
+<col width="8%" />
+<col width="9%" />
+<col width="38%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">skim_variable</th>
@@ -2213,7 +2232,20 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="24%" />
+<col width="11%" />
+<col width="15%" />
+<col width="6%" />
+<col width="6%" />
+<col width="3%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="5%" />
+<col width="6%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">skim_variable</th>
@@ -3155,7 +3187,8 @@ d_depersonalized_survey &lt;- dataf_raw_survey |&gt;
 </tr>
 </tbody>
 </table>
-<p>Note that <code>skim()</code> only shows the 4 most common values for factors, in descending order</p>
+<p>Note that <code>skim()</code> only shows the 4 most common values for
+factors, in descending order</p>
 <pre class="r"><code>count(dataf, ViS36)</code></pre>
 <pre><code>## count: now 6 rows and 2 columns, ungrouped</code></pre>
 <pre><code>## # A tibble: 6 × 2
@@ -3175,9 +3208,11 @@ write_rds(dataf, here(&#39;data&#39;, &#39;data.Rds&#39;))</code></pre>
 </div>
 <div id="elliott-et-al.-data" class="section level1">
 <h1>Elliott et al. data</h1>
-<p>The data collected by Elliott et al. is similar to ours. Two important differences:</p>
+<p>The data collected by Elliott et al. is similar to ours. Two
+important differences:</p>
 <ol style="list-style-type: decimal">
-<li>For their DV, they use a 7-point semantic difference scale that partially overlaps with METI. *: item also in METI.
+<li>For their DV, they use a 7-point semantic difference scale that
+partially overlaps with METI. *: item also in METI.
 <ul>
 <li>competent*</li>
 <li>credible</li>
@@ -3187,13 +3222,16 @@ write_rds(dataf, here(&#39;data&#39;, &#39;data.Rds&#39;))</code></pre>
 <li>sincere*</li>
 <li>trustworthy</li>
 </ul>
-They don’t include a codebook, but I think the <code>sd</code> items correspond to these, and <code>sdind</code> to their mean.</li>
-<li>They collect fewer demographic variables, and generally structure them differently.
+They don’t include a codebook, but I think the <code>sd</code> items
+correspond to these, and <code>sdind</code> to their mean.</li>
+<li>They collect fewer demographic variables, and generally structure
+them differently.
 <ul>
 <li>age: Binned, values 1-10</li>
 <li>sex: Dichotomous</li>
 <li>ideology: 1 = “very conservative” to 7 = “very liberal”</li>
-<li>education: 1 = “up to high school diploma or equivalent” to 4 = “graduate/professional degree”</li>
+<li>education: 1 = “up to high school diploma or equivalent” to 4 =
+“graduate/professional degree”</li>
 </ul></li>
 </ol>
 <pre class="r"><code>emad_xwalk = tribble(
@@ -3207,9 +3245,22 @@ They don’t include a codebook, but I think the <code>sd</code> items correspon
 )
 
 ## Elliott, McCright, Allen, and Dietz
-emad = read_csv(here(&#39;data&#39;, &#39;elliot_et_al&#39;, &#39;Values and Science Experiment 1.csv&#39;))</code></pre>
+## &lt;https://figshare.com/articles/dataset/Elliott_McCright_Allen_and_Dietz_Data_SPSS_Stata_/4695793&gt;
+emad_dir = here(&#39;data&#39;, &#39;elliot_et_al&#39;)
+if (!dir.exists(&#39;data&#39;)) {
+    dir.create(&#39;data&#39;)
+}
+if (!dir.exists(emad_dir)) {
+    dir.create(emad_dir)
+}
+emad_file = here(emad_dir, &#39;Values and Science Experiment 1.csv&#39;)
+if (!file.exists(emad_dir)) {
+    download.file(&#39;https://figshare.com/ndownloader/files/8371322&#39;, 
+                  emad_file)
+}
+emad = read_csv(emad_file)</code></pre>
 <pre><code>## Rows: 498 Columns: 51
-## ── Column specification ────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (51): ourid, conditio, conditi0, conditi1, conditi2, conditi3, conditi4,...
 ## 
