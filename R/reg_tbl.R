@@ -21,20 +21,22 @@ reg_tbl = function(models,
 write_reg_tbl = function(tbl, path) {
     tbl |> 
         as_flex_table() |> 
-        flextable::save_as_docx(path = str_c(path, '.docx'),
-                                pr_section = officer::prop_section(
-                                    page_size = officer::page_size(width = 11, 
-                                                                   orient = 'landscape')
+        set_table_properties(layout = 'autofit') |> 
+        save_as_docx(path = str_c(path, '.docx'),
+                                pr_section = prop_section(
+                                    page_size = page_size(orient = 'landscape', 
+                                                          height = 11, 
+                                                          width = 8.5)
                                 )
         )
     ## Problems exporting gt to PDF are a known issue
     ## <https://github.com/rstudio/gt/issues/721>
-    tbl |> 
-        as_gt() |> 
-        gtsave(filename = str_c(path, '.pdf'), zoom = 1)
+    # tbl |> 
+    #     as_gt() |> 
+    #     gtsave(filename = str_c(path, '.pdf'), zoom = 1)
     
-    tbl |> 
-        tbl_butcher() |> 
-        # as_gt() |> 
+    tbl |>
+        tbl_butcher() |>
+        # as_gt() |>
         write_rds(file = str_c(path, '.Rds'))
 }
