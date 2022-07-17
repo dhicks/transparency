@@ -24,7 +24,7 @@ plot_estimate = function(models, ...) {
                ymin = conf.low, ymax = conf.high, 
                color = study)) +
         geom_pointrange(position = position_dodge(width = .25)) +
-        geom_hline(yintercept = c(meaningful, -meaningful), linetype = 'dashed') +
+        geom_hline(yintercept = c(1, -1), linetype = 'dashed') +
         coord_flip()
 }
 
