@@ -2,9 +2,9 @@ PAPER_DIR = paper
 TALK_DIR = talk
 SCRIPTS_DIR = scripts
 
-all: scripts paper
+all: scripts paper readme
 
-.PHONY: talk scripts paper install
+.PHONY: talk scripts paper install readme
 
 talk: 
 	@echo "build talk/slides"
@@ -17,6 +17,10 @@ scripts:
 paper: 
 	@echo "paper"
 	cd $(PAPER_DIR); $(MAKE)
+	
+readme: readme.md
+readme.md: readme.Rmd
+	Rscript -e "rmarkdown::render('readme.Rmd')"
 
 install:
 	@echo "Setting up reproducible environment"
