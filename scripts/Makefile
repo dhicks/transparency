@@ -18,7 +18,5 @@ all: 03_dag.html
 	
 $(data)/emad.Rds: 01_clean.html
 $(data)/data.Rds: 01_clean.html
-01_clean.html: 01_clean.R \
-               $(data)/full_replication_scientists_values.csv \
-               $(data)/replication_preference.csv
+01_clean.html: 01_clean.R
 	Rscript -e "rmarkdown::render('01_clean.R')"
