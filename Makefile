@@ -25,4 +25,5 @@ readme.md: readme.Rmd
 install:
 	@echo "Setting up reproducible environment"
 	Rscript -e "renv::restore()"
+	Rscript -e "install.packages('Hmisc')"
 	Rscript -e "webshot::install_phantomjs()"
