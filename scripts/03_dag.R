@@ -5,9 +5,6 @@
 #'     toc: true
 #'     toc_float: true
 #' ---
-# TODO: 
-#     -[] clean code
-#     -[] predicted value plots for E and F
 
 library(tidyverse)
 theme_set(theme_minimal())
@@ -18,16 +15,20 @@ library(dagitty)
 library(ggdag)
 ## <https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-ggdag.html>
 library(gt)
+library(flextable)
+library(officer)
 library(gtsummary)
 
 ## Need Hmisc for bootstrap CIs in some plots, but don't want to load it
 find.package('Hmisc')
 
 library(here)
+## Helper functions for regression tables, DAG visualization, and effects and prediction plots for regression models
 source(here('R', 'reg_tbl.R'))
 source(here('R', 'plot_adjustments.R'))
 source(here('R', 'reg_plots.R'))
 
+## More readable contrasts in regression models
 library(car)
 options(contrasts = c('contr.Treatment', 'contr.poly'))
 options(decorate.contr.Treatment = '')
@@ -38,6 +39,7 @@ if (!dir.exists(out_dir)) {
 }
 data_dir = here('data')
 
+#' # Load data
 ## Load data ----
 ## Elliott et al. data
 emad_df = read_rds(here(data_dir, 'emad.Rds'))
@@ -45,23 +47,27 @@ emad_df = read_rds(here(data_dir, 'emad.Rds'))
 ## Our data
 dataf = read_rds(here(data_dir, 'data.Rds'))
 
+#' # Descriptive summary of our data
 ## Descriptive summary of our data ----
-## - age
-## - gender
-## - race/ethnicity
-##    - <https://www.census.gov/library/visualizations/interactive/race-and-ethnicity-in-the-united-state-2010-and-2020-census.html>
-##    - overrep White (72% vs. 62%)
-##    - underrep Hispanic (3% vs. 19%)
-##    - Black and A/PI represented accurately at 13% and 6%
-## - religious affiliation
-## - religious services
-## - political ideology
-## - political affiliation
-## - education
-##    - <https://www.statista.com/statistics/184260/educational-attainment-in-the-us/>
-##    - underrep non-HS grads (1% vs. 9%)
-##    - overrep college grads (57% vs. 38%)
-## - participant values
+#' - age
+#' - gender
+#' - race/ethnicity
+#'    - <https://www.census.gov/library/visualizations/interactive/race-and-ethnicity-in-the-united-state-2010-and-2020-census.html>
+#'    - overrep White (72% vs. 62%)
+#'    - underrep Hispanic (3% vs. 19%)
+#'    - Black and A/PI represented accurately at 13% and 6%
+#' - religious affiliation
+#' - religious services
+#' - political ideology
+#' - political affiliation
+#' - education
+#'    - <https://www.statista.com/statistics/184260/educational-attainment-in-the-us/>
+#'    - underrep non-HS grads (1% vs. 9%)
+#'    - overrep college grads (57% vs. 38%)
+#' - participant values
+#' 
+
+#' Several of our variables allow respondents to select multiple values, eg, race-ethnicity. These are downloaded as factors, with levels such as `5` or `2,4,5`.  We recode these as characters for the demographic summary table.  Because these are just used as adjustment variables in the analysis, we don't recode them for use below. 
 
 re_labels = c('American Indian or Alaskan Native', 
               'Asian or Pacific Islander', 
@@ -115,7 +121,6 @@ fix_multifac = function(vec, labs, ordered = FALSE) {
     }
 }
 
-
 demo_gt = dataf |> 
     select(pid, age, gender, race_ethnicity, 
            religious_affil, religious_serv,
@@ -124,9 +129,11 @@ demo_gt = dataf |>
     mutate(gender = fct_drop(gender),
            race_ethnicity = fix_multifac(race_ethnicity, re_labels), 
            religious_affil = fix_multifac(religious_affil, relig_labels), 
-           religious_serv = fix_multifac(religious_serv, relig_serv_labels, 
+           religious_serv = fix_multifac(religious_serv, 
+                                         relig_serv_labels, 
                                          ordered = TRUE), 
-           political_ideology = fix_multifac(political_ideology, poli_id_labels, 
+           political_ideology = fix_multifac(political_ideology, 
+                                             poli_id_labels, 
                                              ordered = TRUE),
            political_affiliation = fix_multifac(political_affiliation, 
                                                 poli_aff_labels), 
@@ -144,10 +151,14 @@ demo_gt = dataf |>
 
 demo_gt |> 
     as_flex_table() |> 
-    flextable::save_as_docx(path = here(out_dir, '03_demo_table.docx'), 
-                            pr_section = officer::prop_section(page_size = officer::page_size(orient = "landscape")))
+    save_as_docx(path = here(out_dir, '03_demo_table.docx'), 
+                 pr_section = prop_section(
+                     page_size = page_size(orient = "landscape")
+                 )
+    )
 
 
+#' # Trust, overall
 ## Trust, overall ----
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 
@@ -162,13 +173,11 @@ ggplot() +
                   data = dataf) +
     ylab('mean trust')
 
-#' Across our dataset, standard deviation of mean trust.  Use one-third of this as meaningful. 
+#' Across our dataset, standard deviation of mean trust is 1.3 on the 1-7 scale
 sd(dataf$meti_mean)
-meaningful = sd(dataf$meti_mean)/3
-meaningful
 
-## A. Modest correlation between values and ideology ----
-#' # A. Modest correlation between values and ideology #
+#' # H1. Modest correlation between values and ideology #
+## H1. Modest correlation between values and ideology ----
 #' \(i) Political liberals are more likely to prioritize public health over economic growth, compared to political conservatives; but (ii) a majority of political conservatives prioritize public health.
 #' 
 #' NB 1. No DAG here because this isn't a causal claim.  2. Direction of ideology coding is reversed between the two studies. 
@@ -232,8 +241,8 @@ glm(I(part_values == 'economic growth') ~ political_ideology,
     data = dataf) |> 
     summary()
 
-## DAG ----
 #' # DAG #
+## DAG ----
 #' We use the following DAG throughout the rest of this analysis
 dag = dagify(METI ~ shared_values + sci_values +
                  part_values + demographics,
@@ -250,8 +259,8 @@ ggplot(dag, aes(x = x, y = y,
     theme_dag()
 
 
-## B. Consumer risk sensitivity ----
-#' # B. Consumer risk sensitivity #
+#' # H2. Consumer risk sensitivity #
+## H2. Consumer risk sensitivity ----
 #' *Scientists who find that a chemical harms human health are perceived as more trustworthy than scientists who find that a chemical does not cause harm.*
 
 ggplot(emad_df, aes(conclusion, pa_mean)) +
@@ -286,38 +295,37 @@ list(emad = model_b_emad,
      hl = model_b) |> 
     reg_tbl()
 
-## C. Transparency penalty ----
-#' # C. Transparency penalty #
+#' # H3. Transparency penalty #
+## H3. Transparency penalty ----
 #' *Scientists who disclose values are perceived as less trustworthy than scientists who do not.* 
 
-{
-    trans_plot_emad = ggplot(emad_df, aes(disclosure, pa_mean)) +
-        # geom_violin(draw_quantiles = .5) +
-        geom_beeswarm(alpha = .25, size = .3) +
-        stat_summary(fun.data = mean_cl_boot, color = 'red', 
-                     size = 1, fatten = 0) +
-        stat_summary(geom = 'line', group = 1L, color = 'red') +
-        labs(y = 'trust')
-    trans_plot_emad
-    
-    
-    trans_plot_us = ggplot(dataf, aes(disclosure, meti_mean)) +
-        geom_beeswarm(alpha = .25, size = .3) +
-        stat_summary(fun.data = mean_cl_boot, color = 'red', 
-                     size = 1, fatten = 0) +
-        stat_summary(geom = 'line', group = 1L, color = 'red') +
-        labs(y = 'trust')
-    trans_plot_us
-    
-    trans_plot_emad + 
-        ggtitle('EMAD') +
-        trans_plot_us +
-        ggtitle('HL replication')
-    
-    ggsave(here(out_dir, '03_transparency.png'), 
-           height = 3, width = 6, scale = 1, 
-           bg = 'white')
-}
+trans_plot_emad = ggplot(emad_df, aes(disclosure, pa_mean)) +
+    # geom_violin(draw_quantiles = .5) +
+    geom_beeswarm(alpha = .25, size = .3) +
+    stat_summary(fun.data = mean_cl_boot, color = 'red', 
+                 size = 1, fatten = 0) +
+    stat_summary(geom = 'line', group = 1L, color = 'red') +
+    labs(y = 'trust')
+trans_plot_emad
+
+
+trans_plot_us = ggplot(dataf, aes(disclosure, meti_mean)) +
+    geom_beeswarm(alpha = .25, size = .3) +
+    stat_summary(fun.data = mean_cl_boot, color = 'red', 
+                 size = 1, fatten = 0) +
+    stat_summary(geom = 'line', group = 1L, color = 'red') +
+    labs(y = 'trust')
+trans_plot_us
+
+trans_plot_emad + 
+    ggtitle('EMAD') +
+    trans_plot_us +
+    ggtitle('HL replication')
+
+ggsave(here(out_dir, '03_transparency.png'), 
+       height = 3, width = 6, scale = 1, 
+       bg = 'white')
+
 #' Again, disclosure/transparency is experimentally controlled, so no adjustment is required. 
 dag |> 
     add_arrows('disclose -> METI') |> 
@@ -338,7 +346,8 @@ list(emad = model_c_emad,
      hl = model_c) |> 
     reg_tbl()
 
-## B + C combined table ----
+#' ## H2 + H3 combined table
+## H2 + H3 combined table ----
 model_bc_emad = lm(pa_mean ~ conclusion + disclosure, data = emad_df)
 model_bc = lm(meti_mean ~ conclusion + disclosure, data = dataf)
 
@@ -348,9 +357,12 @@ bc_tbl = list(emad = model_bc_emad,
 bc_tbl
 write_reg_tbl(bc_tbl, here(out_dir, '03_bc_tbl'))
 
-## D. Shared values ----
-#' # D. Shared values #
-#' *Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.*
+
+#' # H4. Shared values #
+## H4. Shared values ----
+#' *Given that the scientist discloses values, if the participant and the scientist share the same values, the scientist is perceived as more trustworthy than if the participant and scientist have discordant values.* 
+#' 
+#' Quick descriptive plots suggest support for this hypothesis.  But we need to consider possible confounding. 
 
 emad_df |> 
     filter(disclosure, !is.na(part_values)) |> 
@@ -364,8 +376,9 @@ dataf |>
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
-
-#' In our actual situation, we only need to adjust for `participant values` and `scientist values`; `participant values` is on every back-door path running through demographics or VISS variables.  
+#' ## H4 DAG discussion
+## H4 DAG discussion ----
+#' In our actual situation, we only need to adjust for `participant values` and `scientist values`; `participant values` is on every back-door path running through demographics.  
 
 plot_adjustments(dag, 'shared_values') +
     coord_cartesian(clip = 'off')
@@ -402,7 +415,9 @@ plot_estimate(list(emad = model_d_emad,
                    hl = model_d), 
               str_detect(term, 'shared_values'))
 
-#' But we can include demographics to check the accuracy of the graph.  In the Elliott et al. data, this holds true:  adding other demographics doesn't change the estimated effect for shared values of 0.4.  
+#' ## H4 demographics robustness check
+## H4 demographics robustness check ----
+#' But we can include demographics to check the accuracy of the DAG and robustness of the estimates.  This works as expected: adding other demographics basically doesn't change the estimated effect for shared values (.10 (SE .13) vs. .07 (SE .14)). 
 model_d1 = dataf |> 
     filter(disclosure) %>% 
     lm(meti_mean ~ shared_values + part_values + sci_values +
@@ -411,7 +426,7 @@ model_d1 = dataf |>
        data = .)
 broom::tidy(model_d1)
 
-#' And actually participant values is independent of shared values: from a participant's perspective (given their values), they have an equal chance of seeing a scientist with same or different values. 
+#' In addition, participant values is independent of shared values: from a participant's perspective (given their values), they have an equal chance of seeing a scientist with same or different values. 
 dataf |> 
     filter(disclosure) |> 
     count(part_values, sci_values, shared_values)
@@ -430,8 +445,9 @@ model_d3 = dataf |>
 summary(model_d3)
 
 
-#' ## Scientist values ##
-#' We didn't specify this possibility in advance, but all this suggests scientist values, not shared values, have an effect. This is randomly assigned, so no adjustments needed. 
+#' # Scientist values #
+## Scientist values ----
+#' We didn't specify this possibility in advance, but the analysis for H4 suggests scientist values, not shared values, have an effect. This is randomly assigned, so no adjustments needed. 
 plot_adjustments(dag, 'sci_values') +
     scale_color_manual(values = 'black')
 
@@ -464,7 +480,7 @@ dataf |>
               aes(y = .fitted, ymin = .lower, ymax = .upper), 
               alpha = 1, group = 1L, fill = 'blue')
 
-## One big regression table
+#' For the paper, we'll combine all of these models into one big table
 shared_values_tbl = list(univariate = tbl_regression(model_d3, 
                                                      intercept = TRUE,
                                                      label = c(shared_values ~ 'shared values')), 
@@ -503,13 +519,14 @@ shared_values_tbl
 write_reg_tbl(shared_values_tbl, here(out_dir, '03_shared_values_tbl'))
 
 
-## E. Variation in effects ----
-#' # E. Variation in effects # 
+#' # H5. Variation in effects # 
+## H5. Variation in effects ----
 #' The magnitude of the effects above vary depending on whether the participant prioritizes public health or economic growth.
 #' 
 
-#' ## B: Consumer risk sensitivity ##  
-#' For B and C, bringing in participant values introduces a potential back-door path through demographics.  This is very similar to D.  Fortunately, as also with D, we just need to control `part_values` (and `conclusion`).  
+#' ## H5-consumer: Consumer risk sensitivity ##  
+## H5-consumer ----
+#' For consumer risk and transparency penalty, bringing in participant values introduces a potential back-door path through demographics.  This is very similar to shared values.  Fortunately, as also with shared values, we just need to adjust for `part_values` (and `conclusion`).  
 
 dag |> 
     add_arrows(c('part_values -> conclusion_x_part_values <- conclusion', 
@@ -521,10 +538,6 @@ summary(model_eb_emad)
 model_eb = lm(meti_mean ~ conclusion*part_values, data = dataf)
 summary(model_eb)
 plot_residuals(model_eb)
-# plot_estimate(model_eb, ':')
-# plot_estimate(list(emad = model_eb_emad, 
-#                    hl = model_eb), 
-#               str_detect(term, ':'))
 
 plot_predictions(model_eb, c('conclusion', 'part_values'), 
                  interaction_ci = TRUE)
@@ -571,7 +584,8 @@ ggsave(here(out_dir, '03_conclusion_part.png'),
        height = 3, width = 6, scale = 1, 
        bg = 'white')
 
-#' ## C: Disclosure ##
+#' ## H5-transparency
+## H5-transparency ----
 dag |> 
     add_arrows(c('part_values -> disclosure_x_part_values <- disclosure', 
                  'disclosure_x_part_values -> METI', 
@@ -587,7 +601,7 @@ lm(pa_mean ~ disclosure*part_values+
 model_ec = lm(meti_mean ~ disclosure*part_values, data = dataf)
 summary(model_ec)
 plot_residuals(model_ec)
-# plot_estimate(model_ec, ':')
+
 plot_estimate(list(base = model_c, interaction = model_ec),
               str_detect(term, 'disclosure'))
 
@@ -599,7 +613,9 @@ model_ec1 = lm(meti_mean ~ disclosure * part_values +
                    religious_serv + political_ideology + education, 
                data = dataf)
 
-ec_tbl = list(base = model_c, interaction = model_ec, demographics = model_ec1) |> 
+ec_tbl = list(base = model_c, 
+              interaction = model_ec, 
+              demographics = model_ec1) |> 
     reg_tbl(labs = c('base', 'interaction', 'demographics'))
 ec_tbl
 write_reg_tbl(ec_tbl, here(out_dir, '03_ec_tbl'))
@@ -612,36 +628,36 @@ dataf |>
     facet_wrap(vars(part_values))
 
 
-#' ## D: Shared values ##
+#' ## H5-shared
+## H5-shared ----
+#' Initially it seems like we can proceed as we did with the other interactions: we need to adjust for participant values and shared values, but that's all. In particular, no need to adjust for scientist values. 
 dag |> 
     add_arrows(c('part_values -> shared_values_x_part_values <- shared_values', 
                  'shared_values_x_part_values -> METI')) |> 
     plot_adjustments('shared_values_x_part_values')
 
-model_ed_emad = emad_df |> 
-    filter(disclosure) %>%
-    lm(pa_mean ~ shared_values*part_values, data = .)
-summary(model_ed_emad)
-emad_df |> 
-    filter(disclosure) %>%
-    lm(pa_mean ~ shared_values*part_values+ 
-           sex + ideology + educatio + age, data = .) |> 
-    summary()
+# model_ed_emad = emad_df |> 
+#     filter(disclosure) %>%
+#     lm(pa_mean ~ shared_values*part_values, data = .)
+# summary(model_ed_emad)
+# emad_df |> 
+#     filter(disclosure) %>%
+#     lm(pa_mean ~ shared_values*part_values+ 
+#            sex + ideology + educatio + age, data = .) |> 
+#     summary()
 
 model_ed = dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ shared_values*part_values, data = .)
 summary(model_ed)
-## Including scientist values creates perfect collinearity
+
+#' But that finds that shared values as a statistically significant *negative* primary effect for shared values?  That's weird. We saw above that the estimate for shared values was biased unless we included scientist values.  So let's try to include it in the model.  This results in perfect collinearity. 
 dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ shared_values*part_values + sci_values, data = .) |> 
     summary()
 
-plot_estimate(list(base = model_d,
-                   interaction = model_ed),
-              str_detect(term, 'shared_values'))
-
+#' Comparing to our model for H4 makes it clear that this interaction model is misspecified
 model_ed1 = dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ shared_values*part_values+ 
@@ -651,29 +667,13 @@ model_ed1 = dataf |>
 list(model_d, model_ed, model_ed1) |> 
     reg_tbl(labs = c('base', 'interaction', 'demographics'))
 
-#' Effect of shared values appears to go in opposite directions, depending on participant values
-plot_predictions(model_ed, 
-                 c('part_values', 'shared_values'), 
-                 interaction_ci = TRUE)
-
+#' Plot mean + CI by participant and shared values.  It looks like there's an interaction here:  shared values might be positive or negative, depending on the participants' values.  
 dataf |> 
     filter(!is.na(part_values), disclosure) |> 
     ggplot(aes(shared_values, meti_mean)) +
     # geom_boxplot() +
     geom_beeswarm(alpha = .5, cex = 1.5, size = .5) +
     facet_wrap(vars(part_values)) +
-    ## model_ed is a confounded mess;
-    # geom_ribbon(data = plot_predictions(model_ed, 
-    #                                     c('part_values', 'shared_values'), 
-    #                                     return_plot = FALSE), 
-    #             aes(y = .fitted, ymin = .lower, ymax = .upper), 
-    #             group = 1L, alpha = .5, fill = 'blue') +
-    # geom_line(data = plot_predictions(model_ed, 
-    #                                   c('part_values', 'shared_values'), 
-    #                                   return_plot = FALSE), 
-    #           aes(y = .fitted, ymin = .lower, ymax = .upper), 
-    #           group = 1L, alpha = 1, color = 'blue') +
-    ## just do mean + CI
     stat_summary(fun.data = mean_cl_boot, color = 'red', 
              size = 1, fatten = 0) +
     stat_summary(fun.data = mean_cl_boot, geom = 'line', group = 1L, color = 'red') +
@@ -684,13 +684,13 @@ ggsave(here(out_dir, '03_shared_part.png'),
        height = 3, width = 6, scale = 1, 
        bg = 'white')
 
-#' And political ideology appears to be either entirely upstream or independent to this
+#' Could this be due to political ideology?  No: it appears to be either entirely upstream or independent to this
 dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ shared_values*part_values + political_ideology, data = .) |> 
     summary()
 
-#' Apparently independent
+#' Apparently independent.  Interesting:  No correlation between political ideology and trust?  Very unexpected, given the narrative that trust in science is politically polarized! 
 dataf |> 
     filter(disclosure) %>%
     lm(meti_mean ~ political_ideology, data = .) |> 
@@ -702,7 +702,9 @@ dataf |>
     geom_violin(draw_quantiles = .5) +
     geom_beeswarm()
 
-#' Because the effect is with *scientist* values (we also saw this at the end of D)
+#' # Scientist values
+## Scientist values ---
+#' The confusing "shared values interaction" effect is just the effect of scientist values, from H4
 model_es = dataf |> 
     filter(disclosure) %>% 
     lm(meti_mean ~ sci_values + part_values, data = .)
@@ -734,8 +736,8 @@ dataf |>
 ggsave(here(out_dir, '03_sci_part.png'), height = 3, width = 6, scale = 1, bg = 'white')
 
 
-#' Any interaction with participant values is swamped by uncertainty
-#' Though Emilio thinks this might be worth reporting bc of difference in variation btwn participant values groups
+#' Any interaction with participant values is swamped by uncertainty.  
+#' Though Emilio thinks this might be worth reporting because of difference in variation — wider for economic growth participants.  OTOH there are just a lot fewer of these participants, so SEs are larger.  
 #' How are participants thinking of economic growth?  Might be thinking of indirect effects, eg, good economy -> better hospitals and public health system 
 dataf %>% 
     filter(disclosure) %>%
@@ -749,12 +751,13 @@ lm(meti_mean ~ sci_values * part_values,
     summary()
 
 sci_part_tbl = list(base = model_s,
-     part_values = model_es,
-     interaction = lm(meti_mean ~ sci_values * part_values, 
-                      data = filter(dataf, disclosure)),
-     demographics = lm(meti_mean ~ sci_values * part_values + 
-                           age + gender + race_ethnicity + religious_affil + 
-                           religious_serv + political_ideology + education, 
-                       data = filter(dataf, disclosure))) |> 
-    reg_tbl(labs = c('base', 'participant values', 'interaction', 'demographics'))
+                    part_values = model_es,
+                    interaction = lm(meti_mean ~ sci_values * part_values, 
+                                     data = filter(dataf, disclosure)),
+                    demographics = lm(meti_mean ~ sci_values * part_values + 
+                                          age + gender + race_ethnicity + religious_affil + 
+                                          religious_serv + political_ideology + education, 
+                                      data = filter(dataf, disclosure))) |> 
+    reg_tbl(labs = c('base', 'participant values', 
+                     'interaction', 'demographics'))
 write_reg_tbl(sci_part_tbl, here(out_dir, '03_sci_part_tbl'))    

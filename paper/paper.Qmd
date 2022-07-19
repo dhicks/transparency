@@ -11,6 +11,7 @@ bibliography: |
 format: 
     html: default
     pdf: default
+always_allow_html: true
 ---
 
 ```{r}

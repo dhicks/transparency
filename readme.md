@@ -36,10 +36,13 @@ package, and [Quarto](https://quarto.org/).
 
 ## Using make
 
-After cloning and downloading, in Bash or a similar shell run
+After cloning and downloading, in bash or a similar shell run
 
     make install
     make
+
+The installation step primarily installs R packages. This can take a
+long time if many packages need to be downloaded.
 
 ## Manually
 
@@ -51,12 +54,13 @@ to create a local (within-project) package library, with the specific
 versions used in this project. Then run the scripts `02_analysis.R` and
 `03_dag.R`, in that order, to run the analyses. These scripts will write
 plots and tables to the `out` folder, creating it if necessary.
+
 Optionally, use `rmarkdown::render()` or the “Knit” button in RStudio to
 generate HTML documents from these scripts, for comparison with the ones
 included in the repository. (Be sure to rename the included HTML files
 first.)
 
-Finally, in the `paper` folder, from Bash or a similar shell run
+Finally, in the `paper` folder, from bash or a similar shell run
 
     quarto render paper.Qmd --to pdf
 
