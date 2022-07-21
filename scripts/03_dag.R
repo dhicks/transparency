@@ -49,6 +49,7 @@ dataf = read_rds(here(data_dir, 'data.Rds'))
 
 #' # Descriptive summary of our data
 ## Descriptive summary of our data ----
+#' ## Demographics
 #' - age
 #' - gender
 #' - race/ethnicity
@@ -157,8 +158,23 @@ demo_gt |>
                  )
     )
 
+#' ## Condition assignment
+condition_tbl = dataf |> 
+    mutate(disclose_values = case_when(
+        !disclosure ~ 'no disclosure', 
+        disclosure ~ sci_values), 
+        disclose_values = fct_relevel(disclose_values, 
+                                      'no disclosure',
+                                      'public health', 
+                                      'economic growth')) |> 
+    select(disclose_values, conclusion) |> 
+    tbl_summary(by = conclusion,
+                label = list(disclose_values ~ 'disclosure/values'))
+condition_tbl
+write_reg_tbl(condition_tbl, here(out_dir, '03_condition_tbl'))
 
-#' # Trust, overall
+
+#' ## Trust, overall
 ## Trust, overall ----
 ggplot() +
     geom_violin(aes(x = 'EMAD', pa_mean), 

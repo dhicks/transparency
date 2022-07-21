@@ -337,6 +337,59 @@ references:
   URL: https://ehp.niehs.nih.gov/doi/full/10.1289/EHP3317
   volume: '127'
 
+- id: FrewerPublicPerceptionsAgrifood2013
+  abstract: >-
+    A systematic review and meta-analysis were conducted to assess research
+    relevant to understanding consumer and societal attitudes to genetic
+    modification applied to agri-food production. The objective was to compare
+    attitudes in different global regions, at different times and between
+    applications. Seventy articles were included in the final meta-analysis.
+    Plant-related or “general” applications were more acceptable than
+    animal-related applications. Risk perceptions were greater in Europe than
+    North America and Asia. The reverse was true of benefit perceptions. Moral
+    concerns are higher in North America and Asia. Both risk and benefit
+    perceptions increased with time.
+  accessed:
+    - year: 2016
+      month: 5
+      day: 26
+  author:
+    - family: Frewer
+      given: Lynn J.
+    - family: Lans
+      given: Ivo A.
+      non-dropping-particle: van der
+    - family: Fischer
+      given: Arnout R. H.
+    - family: Reinders
+      given: Machiel J.
+    - family: Menozzi
+      given: Davide
+    - family: Zhang
+      given: Xiaoyong
+    - family: Berg
+      given: Isabelle
+      non-dropping-particle: van den
+    - family: Zimmermann
+      given: Karin L.
+  citation-key: FrewerPublicPerceptionsAgrifood2013
+  container-title: Trends in Food Science & Technology
+  container-title-short: Trends in Food Science & Technology
+  DOI: 10.1016/j.tifs.2013.01.003
+  ISSN: 0924-2244
+  issue: '2'
+  issued:
+    - year: 2013
+      month: 4
+  page: 142-152
+  source: ScienceDirect
+  title: >-
+    Public perceptions of agri-food applications of genetic modification – A
+    systematic review and meta-analysis
+  type: article-journal
+  URL: http://www.sciencedirect.com/science/article/pii/S0924224413000101
+  volume: '30'
+
 - id: FunkAmericansPoliticsScience2015
   abstract: >-
     The public’s political views are strongly linked to attitudes on climate and
@@ -582,6 +635,57 @@ references:
   type: article-journal
   URL: https://journals.publishing.umich.edu/ptpbio/article/id/2629/
   volume: '14'
+
+- id: HoweGeographicVariationOpinions2015
+  abstract: >-
+    Addressing climate change in the United States requires enactment of
+    national, state and local mitigation and adaptation policies. The success of
+    these initiatives depends on public opinion, policy support and behaviours
+    at appropriate scales. Public opinion, however, is typically measured with
+    national surveys that obscure geographic variability across regions, states
+    and localities. Here we present independently validated high-resolution
+    opinion estimates using a multilevel regression and poststratification
+    model. The model accurately predicts climate change beliefs, risk
+    perceptions and policy preferences at the state, congressional district,
+    metropolitan and county levels, using a concise set of demographic and
+    geographic predictors. The analysis finds substantial variation in public
+    opinion across the nation. Nationally, 63% of Americans believe global
+    warming is happening, but county-level estimates range from 43 to 80%,
+    leading to a diversity of political environments for climate policy. These
+    estimates provide an important new source of information for policymakers,
+    educators and scientists to more effectively address the challenges of
+    climate change.
+  accessed:
+    - year: 2016
+      month: 8
+      day: 15
+  author:
+    - family: Howe
+      given: Peter D.
+    - family: Mildenberger
+      given: Matto
+    - family: Marlon
+      given: Jennifer R.
+    - family: Leiserowitz
+      given: Anthony
+  citation-key: HoweGeographicVariationOpinions2015
+  container-title: Nature Climate Change
+  container-title-short: Nature Clim. Change
+  DOI: 10.1038/nclimate2583
+  ISSN: 1758-678X
+  issue: '6'
+  issued:
+    - year: 2015
+      month: 6
+  language: en
+  page: 596-603
+  source: www.nature.com
+  title: >-
+    Geographic variation in opinions on climate change at state and local scales
+    in the USA
+  type: article-journal
+  URL: http://www.nature.com/nclimate/journal/v5/n6/full/nclimate2583.html
+  volume: '5'
 
 - id: IannoneGtEasilyCreate2022
   abstract: >-
@@ -934,6 +1038,155 @@ references:
   URL: http://dx.doi.org/10.1080/08989621.2013.788384
   volume: '20'
 
+- id: MildenbergerDistributionClimateChange2016
+  abstract: >-
+    While climate scientists have developed high resolution data sets on the
+    distribution of climate risks, we still lack comparable data on the local
+    distribution of public climate change opinions. This paper provides the
+    first effort to estimate local climate and energy opinion variability
+    outside the United States. Using a multi-level regression and
+    post-stratification (MRP) approach, we estimate opinion in federal electoral
+    districts and provinces. We demonstrate that a majority of the Canadian
+    public consistently believes that climate change is happening. Belief in
+    climate change’s causes varies geographically, with more people attributing
+    it to human activity in urban as opposed to rural areas. Most prominently,
+    we find majority support for carbon cap and trade policy in every province
+    and district. By contrast, support for carbon taxation is more
+    heterogeneous. Compared to the distribution of US climate opinions,
+    Canadians believe climate change is happening at higher levels. This new
+    opinion data set will support climate policy analysis and climate policy
+    decision making at national, provincial and local levels.
+  accessed:
+    - year: 2017
+      month: 11
+      day: 30
+  author:
+    - family: Mildenberger
+      given: Matto
+    - family: Howe
+      given: Peter
+    - family: Lachapelle
+      given: Erick
+    - family: Stokes
+      given: Leah
+    - family: Marlon
+      given: Jennifer
+    - family: Gravelle
+      given: Timothy
+  citation-key: MildenbergerDistributionClimateChange2016
+  container-title: PLOS ONE
+  container-title-short: PLOS ONE
+  DOI: 10.1371/journal.pone.0159774
+  ISSN: 1932-6203
+  issue: '8'
+  issued:
+    - year: 2016
+      month: 8
+      day: 3
+  page: e0159774
+  source: PLoS Journals
+  title: The Distribution of Climate Change Public Opinion in Canada
+  type: article-journal
+  URL: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159774
+  volume: '11'
+
+- id: MildenbergerSpatialDistributionRepublican2017
+  abstract: >-
+    Even as US partisan polarization shapes climate and energy attitudes,
+    substantial heterogeneity in climate opinions still exists among both
+    Republicans and Democrats. To date, our understanding of this partisan
+    heterogeneity has been limited to analysis of national- or, less commonly,
+    state-level opinion poll subsamples. However, the dynamics of political
+    representation and issue commitments play out over more finely resolved
+    state and local scales. Here we use previously validated multilevel
+    regression and post-stratification (MRP) models (Howe et al., Nat Clim Chang
+    5(6):596–603 2015; Mildenberger et al., PLoS One 11(8):e0159774 2016)
+    combined with a novel approach to measuring the distribution of party
+    members to model, for the first time, the spatial distribution of partisan
+    climate and energy opinions. We find substantial geographic variation in
+    Republican climate opinions across states and congressional districts. While
+    Democratic party members consistently think human-caused global warming is
+    happening and support climate policy reforms, the intensity of their climate
+    beliefs also varies spatially at state and local scales. These results have
+    policy-relevant implications for the trajectory of US climate policy
+    reforms.
+  accessed:
+    - year: 2017
+      month: 11
+      day: 30
+  author:
+    - family: Mildenberger
+      given: Matto
+    - family: Marlon
+      given: Jennifer R.
+    - family: Howe
+      given: Peter D.
+    - family: Leiserowitz
+      given: Anthony
+  citation-key: MildenbergerSpatialDistributionRepublican2017
+  container-title: Climatic Change
+  container-title-short: Climatic Change
+  DOI: 10.1007/s10584-017-2103-0
+  ISSN: 0165-0009, 1573-1480
+  issued:
+    - year: 2017
+      month: 11
+      day: 29
+  language: en
+  page: 1-10
+  source: link.springer.com
+  title: >-
+    The spatial distribution of Republican and Democratic climate opinions at
+    state and local scales
+  type: article-journal
+  URL: https://link.springer.com/article/10.1007/s10584-017-2103-0
+
+- id: MilesPublicPerceptionScientific2003
+  abstract: >-
+    The research reported here aims to understand how people react to statements
+    expressing risk uncertainty information in the context of a commonly
+    experienced potential hazard, food related risks. Public perception of
+    seriousness of risk for themselves, and for other people was examined for
+    different types of uncertainty, for each of five different food hazards. The
+    results indicated that participants responded to the different types of
+    uncertainty in a uniform way, suggesting that perception of risk associated
+    with uncertainty is not affected by the 'type' of uncertainty. The results
+    further indicated that the seriousness of risk, in the presence of
+    statements of uncertainty, was perceived to be greater for pesticides and
+    genetic modification compared to BSE, high fat diets and Salmonella . It was
+    argued that this could be due to the perceptions of low personal control,
+    and high societal responsibility to protect people and societal control over
+    exposure to the potential risks of pesticides and genetic modification.
+    Under circumstances where people feel they have little personal control over
+    their exposure to a particular hazard, and those social institutions that
+    are perceived to be in control of protecting the public indicate that there
+    is uncertainty associated with risk estimates, the hazard may appear to be
+    'out of control', which is associated with a perception of serious risk.
+  accessed:
+    - year: 2015
+      month: 10
+      day: 29
+  author:
+    - family: Miles
+      given: Susan
+    - family: Frewer
+      given: Lynn J.
+  citation-key: MilesPublicPerceptionScientific2003
+  container-title: Journal of Risk Research
+  DOI: 10.1080/1366987032000088883
+  ISSN: 1366-9877
+  issue: '3'
+  issued:
+    - year: 2003
+      month: 7
+      day: 1
+  page: 267-283
+  source: Taylor and Francis+NEJM
+  title: Public perception of scientific uncertainty in relation to food hazards
+  type: article-journal
+  URL: http://dx.doi.org/10.1080/1366987032000088883
+  volume: '6'
+
 - id: PeerDataQualityPlatforms2021
   abstract: >-
     We examine key aspects of data quality for online behavioral research
@@ -1081,6 +1334,49 @@ references:
   type: article-journal
   URL: https://journal.r-project.org/archive/2021/RJ-2021-053/index.html
   volume: '13'
+
+- id: SturgisTrustScienceSocial2021
+  abstract: >-
+    While scholarly attention to date has focused almost entirely on
+    individual-level drivers of vaccine confidence, we show that macro-level
+    factors play an important role in understanding individual propensity to be
+    confident about vaccination. We analyse data from the 2018 Wellcome Global
+    Monitor survey covering over 120,000 respondents in 126 countries to assess
+    how societal-level trust in science is related to vaccine confidence. In
+    countries with a high aggregate level of trust in science, people are more
+    likely to be confident about vaccination, over and above their
+    individual-level scientific trust. Additionally, we show that societal
+    consensus around trust in science moderates these individual-level and
+    country-level relationships. In countries with a high level of consensus
+    regarding the trustworthiness of science and scientists, the positive
+    correlation between trust in science and vaccine confidence is stronger than
+    it is in comparable countries where the level of social consensus is weaker.
+  accessed:
+    - year: 2021
+      month: 5
+      day: 18
+  author:
+    - family: Sturgis
+      given: Patrick
+    - family: Brunton-Smith
+      given: Ian
+    - family: Jackson
+      given: Jonathan
+  citation-key: SturgisTrustScienceSocial2021
+  container-title: Nature Human Behaviour
+  DOI: 10.1038/s41562-021-01115-7
+  ISSN: 2397-3374
+  issued:
+    - year: 2021
+      month: 5
+      day: 17
+  language: en
+  page: 1-7
+  publisher: Nature Publishing Group
+  source: www.nature.com
+  title: Trust in science, social consensus and vaccine confidence
+  type: article-journal
+  URL: https://www.nature.com/articles/s41562-021-01115-7
 
 - id: WickhamWelcomeTidyverse2019
   abstract: >-
