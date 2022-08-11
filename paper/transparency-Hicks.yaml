@@ -625,6 +625,7 @@ references:
       month: 4
       day: 28
   language: eng
+  license: All rights reserved
   number: '0'
   publisher: Michigan Publishing
   source: journals.publishing.umich.edu
@@ -678,6 +679,7 @@ references:
     - year: 2015
       month: 6
   language: en
+  license: © 2014 Nature Publishing Group
   page: 596-603
   source: www.nature.com
   title: >-
@@ -710,10 +712,11 @@ references:
   citation-key: IannoneGtEasilyCreate2022
   issued:
     - year: 2022
+  license: MIT + file LICENSE
   source: R-Packages
   title: 'gt: Easily Create Presentation-Ready Display Tables'
   title-short: gt
-  type: book
+  type: software
   URL: https://CRAN.R-project.org/package=gt
   version: 0.5.0
 
@@ -1371,6 +1374,7 @@ references:
       month: 5
       day: 17
   language: en
+  license: 2021 The Author(s), under exclusive licence to Springer Nature Limited
   page: 1-7
   publisher: Nature Publishing Group
   source: www.nature.com
