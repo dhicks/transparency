@@ -18,6 +18,12 @@ data_dir = here("data")
 #read the data in
 df <- read.csv(here(data_dir, 'data.csv'))
 
+#correlations of the METI subscales
+meti_cor <- cor(df |> select(meti_competence,
+                             meti_integrity,
+                             meti_benevolence), use = "complete.obs") |> 
+    formatC(digits=2,format="f")
+meti_cor
 
 ## Values & Ideology Hypotheses ----
 #have to subset out the "other" and "prefer not to say" political ideology responses for the correlation
