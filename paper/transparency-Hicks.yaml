@@ -793,6 +793,37 @@ references:
   URL: https://doi.org/10.1080/02691728.2017.1410864
   volume: '32'
 
+- id: KahanPolarizingImpactScience2012
+  author:
+    - family: Kahan
+      given: Dan M
+    - family: Peters
+      given: Ellen
+    - family: Wittlin
+      given: Maggie
+    - family: Slovic
+      given: Paul
+    - family: Ouellette
+      given: Lisa Larrimore
+    - family: Braman
+      given: Donald
+    - family: Mandel
+      given: Gregory
+  citation-key: KahanPolarizingImpactScience2012
+  container-title: Nature Climate Change
+  container-title-short: Nature Climate Change
+  DOI: 10.1038/nclimate1547
+  issue: '10'
+  issued:
+    - year: 2012
+  page: 732-735
+  title: >-
+    The polarizing impact of science literacy and numeracy on perceived climate
+    change risks
+  type: article-journal
+  URL: http://www.nature.com/nclimate/journal/v2/n10/full/nclimate1547.html
+  volume: '2'
+
 - id: KennedyEvaluation2016Election2018
   abstract: >-
     The 2016 presidential election was a jarring event for polling in the United
@@ -1041,6 +1072,25 @@ references:
   URL: http://dx.doi.org/10.1080/08989621.2013.788384
   volume: '20'
 
+- id: MichaelsDoubtTheirProduct2008
+  author:
+    - family: Michaels
+      given: David
+  citation-key: MichaelsDoubtTheirProduct2008
+  event-place: Oxford
+  ISBN: 978-0-19-530067-3 0-19-530067-X 978-0-19-530067-3
+  issued:
+    - year: 2008
+  language: eng
+  number-of-pages: '372'
+  publisher: Oxford Univ. Press
+  publisher-place: Oxford
+  source: Gemeinsamer Bibliotheksverbund ISBN
+  title: >-
+    Doubt is their product how industry's assault on science threatens your
+    health
+  type: book
+
 - id: MildenbergerDistributionClimateChange2016
   abstract: >-
     While climate scientists have developed high resolution data sets on the
@@ -1190,6 +1240,49 @@ references:
   URL: http://dx.doi.org/10.1080/1366987032000088883
   volume: '6'
 
+- id: OreskesMerchantsDoubtHow2011
+  abstract: >-
+    The U.S. scientific community has long led the world in research on such
+    areas as public health, environmental science, and issues affecting quality
+    of life. These scientists have produced landmark studies on the dangers of
+    DDT, tobacco smoke, acid rain, and global warming. But at the same time, a
+    small yet potent subset of this community leads the world in vehement denial
+    of these dangers.Merchants of Doubt tells the story of how a loose-knit
+    group of high-level scientists and scientific advisers, with deep
+    connections in politics and industry, ran effective campaigns to mislead the
+    public and deny well-established scientific knowledge over four decades.
+    Remarkably, the same individuals surface repeatedly-some of the same figures
+    who have claimed that the science of global warming is "not settled" denied
+    the truth of studies linking smoking to lung cancer, coal smoke to acid
+    rain, and CFCs to the ozone hole. "Doubt is our product," wrote one tobacco
+    executive. These "experts" supplied it. Naomi Oreskes and Erik M. Conway,
+    historians of science, roll back the rug on this dark corner of the American
+    scientific community, showing how ideology and corporate interests, aided by
+    a too-compliant media, have skewed public understanding of some of the most
+    pressing issues of our era.
+  author:
+    - family: Oreskes
+      given: Naomi
+    - family: Conway
+      given: Erik M.
+  citation-key: OreskesMerchantsDoubtHow2011
+  event-place: New York, NY, USA
+  ISBN: 978-1-4088-2877-9
+  issued:
+    - year: 2011
+      month: 10
+      day: 3
+  language: en
+  number-of-pages: '368'
+  publisher: Bloomsbury
+  publisher-place: New York, NY, USA
+  source: Google Books
+  title: >-
+    Merchants of Doubt: How a Handful of Scientists Obscured the Truth on Issues
+    from Tobacco Smoke to Global Warming
+  title-short: Merchants of Doubt
+  type: book
+
 - id: PeerDataQualityPlatforms2021
   abstract: >-
     We examine key aspects of data quality for online behavioral research
@@ -1275,6 +1368,34 @@ references:
   publisher-place: Chicago and London
   source: Google Books
   title: Idealization and the Aims of Science
+  type: book
+
+- id: RaginComparativeMethodMoving2013
+  abstract: >-
+    Proposes a synthetic strategy, based on an application of Boolean algebra,
+    that combines the strengths of both qualitative and quantitative sociology.
+  accessed:
+    - year: 2022
+      month: 10
+      day: 12
+  author:
+    - family: Ragin
+      given: Charles C.
+  citation-key: RaginComparativeMethodMoving2013
+  event-place: Oakland, California
+  ISBN: 978-0-520-95735-0
+  issued:
+    - year: 2013
+  language: eng
+  note: 'OCLC: 881322765'
+  number-of-pages: '1'
+  publisher: University of California Press
+  publisher-place: Oakland, California
+  source: Open WorldCat
+  title: >-
+    The comparative method: Moving beyond qualitative and quantitative
+    strategies
+  title-short: The comparative method
   type: book
 
 - id: RCoreTeamLanguageEnvironmentStatistical2021
@@ -1381,6 +1502,460 @@ references:
   title: Trust in science, social consensus and vaccine confidence
   type: article-journal
   URL: https://www.nature.com/articles/s41562-021-01115-7
+
+- id: SupranAssessingExxonMobilClimate2017
+  abstract: >-
+    This paper assesses whether ExxonMobil Corporation has in the past misled
+    the general public about climate change. We present an empirical
+    document-by-document textual content analysis and comparison of 187 climate
+    change communications from ExxonMobil, including peer-reviewed and
+    non-peer-reviewed publications, internal company documents, and paid,
+    editorial-style advertisements (‘advertorials’) in The New York Times . We
+    examine whether these communications sent consistent messages about the
+    state of climate science and its implications—specifically, we compare their
+    positions on climate change as real, human-caused, serious, and solvable. In
+    all four cases, we find that as documents become more publicly accessible,
+    they increasingly communicate doubt. This discrepancy is most pronounced
+    between advertorials and all other documents. For example, accounting for
+    expressions of reasonable doubt, 83% of peer-reviewed papers and 80% of
+    internal documents acknowledge that climate change is real and human-caused,
+    yet only 12% of advertorials do so, with 81% instead expressing doubt. We
+    conclude that ExxonMobil contributed to advancing climate science—by way of
+    its scientists’ academic publications—but promoted doubt about it in
+    advertorials. Given this discrepancy, we conclude that ExxonMobil misled the
+    public. Our content analysis also examines ExxonMobil’s discussion of the
+    risks of stranded fossil fuel assets. We find the topic discussed and
+    sometimes quantified in 24 documents of various types, but absent from
+    advertorials. Finally, based on the available documents, we outline
+    ExxonMobil’s strategic approach to climate change research and
+    communication, which helps to contextualize our findings.
+  author:
+    - family: Supran
+      given: Geoffrey
+    - family: Oreskes
+      given: Naomi
+  citation-key: SupranAssessingExxonMobilClimate2017
+  container-title: Environmental Research Letters
+  container-title-short: Environ. Res. Lett.
+  DOI: 10.1088/1748-9326/aa815f
+  ISSN: 1748-9326
+  issue: '8'
+  issued:
+    - year: 2017
+  language: en
+  page: '084019'
+  source: Institute of Physics
+  title: Assessing ExxonMobil’s climate change communications (1977–2014)
+  type: article-journal
+  URL: http://stacks.iop.org/1748-9326/12/i=8/a=084019
+  volume: '12'
+
+- id: VogelItSafeBPA2013
+  abstract: >-
+    We are all just a little bit plastic. Traces of bisphenol A or BPA, a
+    chemical used in plastics production, are widely detected in our bodies and
+    environment. Is this chemical, and its presence in the human body, safe?
+    What is meant by safety? Who defines it, and according to what information?
+    Is It Safe? narrates how the meaning of the safety of industrial chemicals
+    has been historically produced by breakthroughs in environmental health
+    research, which in turn trigger contests among trade associations, lawyers,
+    politicians, and citizen activists to set new regulatory standards. Drawing
+    on archival research and extensive interviews, author Sarah Vogel explores
+    the roots of the contemporary debate over the safety of BPA, and the
+    concerns presented by its estrogen-like effects even at low doses.
+    Ultimately, she contends that science alone cannot resolve the political and
+    economic conflicts at play in the definition of safety. To strike a
+    sustainable balance between the interests of commerce and public health
+    requires recognition that powerful interests will always try to shape the
+    criteria for defining safety, and that the agenda for environmental health
+    research should be protected from capture by any single interest group.
+  author:
+    - family: Vogel
+      given: Sarah A.
+  citation-key: VogelItSafeBPA2013
+  event-place: Oakland, California
+  ISBN: 978-0-520-27357-3
+  issued:
+    - year: 2013
+  language: en
+  number-of-pages: '326'
+  publisher: University of California Press
+  publisher-place: Oakland, California
+  source: Google Books
+  title: 'Is It Safe?: BPA and the Struggle to Define the Safety of Chemicals'
+  title-short: Is It Safe?
+  type: book
+
+- id: vomSaalChapelHillBisphenol2007
+  abstract: >-
+    Existing cross-sectional studies indicated a positive association of
+    bisphenol A (BPA) with overweight and obesity. However, the relationship and
+    potential mechanisms underlying this association remain to be elucidated in
+    prospective studies.
+
+    This study was designed to investigate whether serum BPA is associated with
+    incident overweight and obesity risk, and to further explore whether
+    adiponectin plays a mediating role in the association.
+
+    We measured blood BPA and adiponectin in Chinese populations. The
+    association of serum BPA with overweight and obesity risk was evaluated
+    using multivariable logistic regression models. We further examined the
+    mediating effect of adiponectin by causal mediation analysis.
+
+    Among 796 participants free of overweight and obesity at baseline, 133
+    individuals developed overweight and obesity during the follow-up period.
+    Compared with those in the lowest quartile of serum BPA, those in the second
+    and third quartiles were positively associated with incident overweight and
+    obesity risk adjusting for covariates (all P-values < 0.05), whereas this
+    association was not observed in the fourth quartile. Further spline analysis
+    showed an inverted U-shaped dose-response relationship (Pnon-linear = 0.04).
+    Furthermore, each unit of serum log10-transformed BPA levels was associated
+    with higher changes in waist-to-height ratio and body roundness index (all
+    P-values < 0.05). Mediation analysis indicated significant indirect effects
+    of adiponectin on the associations of BPA with overweight and obesity
+    prevalence (mediation proportion: 46.08%; P = 0.02), and BMI levels
+    (mediation proportion: 30.32%; P = 0.03).
+
+    Serum BPA displayed a positive association with incident overweight and
+    obesity risk in a non-monotonic pattern, and adiponectin might mediate the
+    association. Further mechanistic studies are warranted.
+
+    Human exposure to bisphenol A (BPA) is mainly due to migration from plastic
+    packaging into food and beverages. Studies reported BPA endocrine
+    disruptions through interactions with different nuclear receptors, including
+    the arylhydrocarbon receptor (AhR). AhR mediates xenobiotic responses and
+    regulates expression of drug-metabolizing enzymes (DMEs), including many
+    CYP450s. This study aimed to assess the effects of BPA maternal exposure on
+    CYP450s expression in fetal brain. Sprague-Dawley dams were exposed to BPA
+    concentrations of 0, 0.5, 5, and 50 mg/L in drinking water, individually,
+    and with nicotine. Fetal brains were isolated at gestational days GD14 and
+    GD19, and protein expression was assessed by Western blotting. Results
+    showed a BPA-induced significant decrease in CYP1B1 expression levels at
+    GD14 (p = 0.001), and CYP19A1 (aromatase) expression at both mid- and
+    late-stage development (p < 0.001). In addition, nicotine individually
+    decreased expression levels of all examined protein targets, significantly
+    for CYP1B1 (p < 0.001), CYP19A1 (p = 0.010), AhRR (p = 0.042), and ARNT (p <
+    0.001), compared to control. When combined with BPA, nicotine suppressive
+    effects were attenuated at both GD14 and GD19. In conclusion, BPA suppresses
+    CYP1B1 and CYP19A1 expression in fetal brain, and attenuates the suppressive
+    effects of nicotine. Observed effects may be mediated by AhR-ARNT
+    independent mechanisms that need further examination.
+
+    Bisphenol analogues (BPs) are widely used in plastics, food packaging and
+    other commercial products as non safer alternative of BPA. As emerging
+    environmental contaminants, BPs have received considerable attention for
+    their adverse effects on human health. However, their effects on liver
+    metabolisms are only marginally understood. In this study, high-resolution
+    mass spectrometry-based global metabolomics and extracellular flux (XF)
+    analysis were applied to characterize the cellular metabolome alterations
+    and reveal the possible mechanisms of the metabolic disorders associated
+    with BPs-induced toxicity in HepG2 cells. BPE, BPB and BPAP with similar
+    chemical structures were selected to compare their interference with
+    different metabolic pathways. A total of 61 key metabolite profiles were
+    significantly altered after exposure to the three BPs. Overall, BPs altered
+    metabolites which are associated with energy metabolism, oxidative stress,
+    cell proliferation and nucleotides synthesis. The primary dysregulated
+    pathways included energy and nucleotides synthesis related Purine and
+    Glycolysis/Gluconeogenesis metabolism. In addition, attenuated mitochondrial
+    function and enhanced glycolysis were found under BPB and BPAP treatment.
+    While attenuated glycolysis was observed under BPE treatment. These findings
+    may provide potential biomarkers indicating the cytotoxicity of BPs and
+    prompt a deeper understanding of the intramolecular metabolic processes
+    induced by BPs exposure.
+
+    Testicular junctions are pivotal to male fertility and regulated by
+    constituent proteins. Increasing evidence suggests that environmental
+    chemicals, including bisphenol A (BPA), may impact these proteins, but
+    whether the impacts persist for generations is not yet known. Here, we
+    investigate the effect of BPA (a ubiquitous endocrine-disrupting chemical)
+    on testis and sperm functions and whether the effects are transferred to
+    subsequent generations. Male mice (F0) were exposed to corn oil (Control) or
+    5 or 50 mg BPA/kg body weight/day from 6 to 12 weeks of age. The F0 were
+    mated with wild-type females to produce the first filial (F1) generation. F2
+    and F3 were produced using similar procedures. Our results showed that BPA
+    doses decreased the levels of some junctional proteins partly via binding
+    with estrogen receptors (ERα and Erβ), upregulation of p-ERK1/2, P85, p-JNK
+    and activation of p38 mitogen-activated protein kinase signaling.
+    Consequently, testicular histological abnormalities, disrupted
+    spermatogenesis, decreased sperm count, and inability to fertilize eggs were
+    observed in mice exposed to BPA. These effects were transferred to
+    successive generations (F2), partly through DNA methylation, but mostly
+    alleviated in F3 males. Our findings suggest that paternal exposure to
+    chemicals promoting alteration of testicular junctional proteins and its
+    transgenerational inheritance is a key component of the origin of male
+    reproductive health problems.
+
+    The present study was aimed to investigate the association of Bisphenol-A
+    (BPA) and MDM2 SNP309 polymorphism with the risk of breast cancer in Indian
+    women.
+
+    Blood samples from breast cancer patients and healthy controls were analyzed
+    by using UV visible spectrophotometry for structural changes in blood
+    components by BPAQ. MDM2 SNP309 polymorphism was investigated by using TETRA
+    ARMS-PCR.
+
+    On comparing control groups, there is an increased mean absorbance at a
+    range of 250 nm to 300 nm and 360 nm to 450 nm in breast cancer patients.
+    The allele frequencies of case subjects (T, 0.47; G, 0.53) were
+    significantly different from those of control subjects (T, 0.66; G, 0.34) (p
+    = 0.011). The proportion of GG genotype of the SNP309 in breast cancer
+    patients (28.88%) was significantly higher than that of control groups
+    (13.33%). With TT genotype as reference, the genotypes (TG + GG) containing
+    G allele as dominant form in breast cancer patients (OR, 2.80; 95% CI,
+    1.12–7.00); p = 0.025) were significantly associated with breast cancer.
+
+    The results revealed that there is an association between active metabolite
+    of Bisphenol-A and MDM2 SNP309 G variant with the risk of breast cancer in
+    Indian population.
+
+    Perfluorooctanoic acid (PFOA) is a persistent environmental pollutant and
+    will continually accumulate in blood due to its chemical inertness and
+    strong interaction with serum proteins, especially serum albumin (SA),
+    inducing highly adverse health risks. However, the molecular mechanisms of
+    dynamic interactions between PFOA with serum proteins remain unclear,
+    limiting the development of potential therapeutic strategies. Herein, we
+    developed an integrated structural strategy to systematically profile the
+    molecular details of dynamic interactions among PFOA, SA, and β-cyclodextrin
+    (β-CD) by combing native mass spectrometry (nMS), lysine reactivity
+    profiling (LRP), and molecular docking (MD) simulation. The SA site 1, site
+    2 pockets, and cleft nearby are observed as the primary interaction regions
+    of PFOA. Further, β-CD can disrupt the PFOA combinations with bovine SA
+    regions around sites Lys20, Lys280, Lys350, and Lys431–Lys439, with an
+    overall reversing efficiency of about 26% at an identical concentration to
+    PFOA. The interactome of PFOA with complex human serum proteins is globally
+    profiled with molecular interaction details, including human serum albumin,
+    apolipoprotein A-I, alpha-2-macroglobulin, and complement C3. Our results
+    reveal molecular insights into the detail of the interaction between PFOA
+    and serum proteins, beneficial to understanding PFOA toxicology.
+
+    Bisphenol A (BPA), an environmental endocrine disruptor, has attracted
+    increasing attention to its adverse effects on brain developmental process.
+    The previous study indicated that BPA rapidly increased motility and density
+    of dendritic filopodia and enhanced the phosphorylation of
+    N-methyl-d-aspartate (NMDA) receptor subunit NR2B in cultured hippocampal
+    neurons within 30 min. The purpose of the present study was further to
+    investigate the effects of BPA for 24 h on dendritic morphogenesis and the
+    underlying mechanisms. After cultured for 5 d in vitro, the hippocampal
+    neurons from 24 h-old rat were infected by AdV-EGFP to indicate time-lapse
+    imaging of living neurons. The results demonstrated that the exposure of the
+    cultured hippocampal neurons to BPA (10, 100 nM) or 17β-estradiol (17β-E2,
+    10 nM) for 24 h significantly promoted dendritic development, as evidenced
+    by the increased total length of dendrite and the enhanced motility and
+    density of dendritic filopodia. However, these changes were suppressed by an
+    ERs antagonist, ICI182,780, a non-competitive NMDA receptor antagonist,
+    MK-801, and a mitogen-activated ERK1/2-activating kinase (MEK1/2) inhibitor,
+    U0126. Meanwhile, the increased F-actin (filamentous actin) induced by BPA
+    (100 nM) was also completely eliminated by these blockers. Furthermore, the
+    result of western blot analyses showed that, the exposure of the cultures to
+    BPA or 17β-E2 for 24 h promoted the expression of Rac1/Cdc42 but inhibited
+    that of RhoA, suggesting Rac1 (Ras related C3 botulinum toxinsubstrate
+    1)/Cdc42 (cell divisioncycle 42) and RhoA (Ras homologous A), the Rho family
+    of small GTPases, were involved in BPA- or 17β-E2-induced changes in the
+    dendritic morphogenesis of neurons. These BPA- or 17β-E2-induced effects
+    were completely blocked by ICI182,780, and were partially suppressed by
+    U0126. These results reveal that, similar to 17β-E2, BPA exerts its effects
+    on dendritic morphogenesis by eliciting both nuclear actions and
+    extranuclear-initiated actions that are integrated to influence the
+    development of dendrite in hippocampal neurons.
+
+    The hypothalamus plays key roles in regulating reproduction and energy
+    balance. We determined the transcriptional profile of the hypothalamus (F0
+    and F1) to identify its relationship with the reproductive function and
+    metabolic phenotypes of rats under BPA exposure and the paternal
+    contribution. Male rats received 35 μg/kg bw/day BPA, 5 μg/kg bw/day
+    ethinylestradiol (EE2) or vehicle via diet. At PND 170, the sexual behaviour
+    of male F0 rats was assessed before mating. The metabolic and reproductive
+    phenotypes and the transcriptional profiles of the testis (F0) and
+    hypothalamus were tested in F0 and F1 rats. Male rats exposed to BPA
+    exhibited no changes in fertility, metabolic phenotypes, sperm quality or
+    serum sex hormones, but none of them ejaculated during the test period. Four
+    differentially expressed genes (DEGs) in the F0 hypothalamus and 51 DEGs in
+    the F0 testis were identified in the BPA group. Paternal BPA and EE2
+    exposure increased the body weight and food intake of male offspring, and
+    164 and 3433 DEGs were identified in the hypothalamus of BPA- and
+    EE2-treated rats (F1, male), respectively. The highest-ranked function
+    impaired by BPA and EE2 in the F1 hypothalamus was immune function. BPA and
+    EE2 exposure induced alterations in the metabolic phenotype in F1-generation
+    males, and this effect may be related to the altered inflammatory-related
+    signalling pathways in the hypothalamus but neither treatment affected the
+    F0 hypothalamus. Hundreds of genes in the F1 hypothalamus showed changes
+    upon BPA and EE2 treatment. Concern regarding paternal environmental
+    endocrine disruptor exposure should be raised.
+
+    We assessed the long-term effect of perinatal exposure to bisphenol A (BPA)
+    on the rat uterus and the uterine response to estrogen (E2) replacement
+    therapy. BPA (0.5 or 50 μg/kg/day) was administered in the drinking water
+    from gestational day 9 until weaning. We studied the uterus of female
+    offspring on postnatal day (PND) 90 and 360, and the uterine E2 response on
+    PND460 (PND460-E2). On PND90, BPA-exposed rats showed altered glandular
+    proliferation and α-actin expression. On PND360, BPA exposure increased the
+    incidence of abnormalities in the luminal and glandular epithelium. On
+    PND460-E2, the multiplicity of glands with squamous metaplasia increased in
+    BPA50 while the incidence of glands with daughter glands increased in
+    BPA0.5. The expression of steroid receptors, p63 and IGF-I was modified in
+    BPA-exposed rats on PND460-E2. The long-lasting effects of perinatal
+    exposure to BPA included induction of abnormalities in uterine tissue and
+    altered response to E2 replacement therapy.
+
+    As part of the 7th International Workshops on Genotoxicity Testing held in
+    Tokyo, Japan in November 2017, a workgroup of experts reviewed and assessed
+    the risk of aneugens for human health. The present manuscript is one of
+    three manuscripts from the workgroup and reports on the unanimous consensus
+    reached on the evidence for aneugens affecting germ cells, their mechanisms
+    of action and role in hereditary diseases. There are 24 chemicals with
+    strong or sufficient evidence for germ cell aneugenicity providing robust
+    support for the ability of chemicals to induce germ cell aneuploidy.
+    Interference with microtubule dynamics or inhibition of topoisomerase II
+    function are clear characteristics of germ cell aneugens. Although there are
+    mechanisms of chromosome segregation that are unique to germ cells, there is
+    currently no evidence for germ cell-specific aneugens. However, the
+    available data are heavily skewed toward chemicals that are aneugenic in
+    somatic cells. Development of high-throughput screening assays in suitable
+    animal models for exploring additional targets for aneuploidy induction,
+    such as meiosis-specific proteins, and to prioritize chemicals for the
+    potential to be germ cell aneugens is encouraged. Evidence in animal models
+    support that: oocytes are more sensitive than spermatocytes and somatic
+    cells to aneugens; exposure to aneugens leads to aneuploid conceptuses; and,
+    the frequencies of aneuploidy are similar in germ cells and zygotes.
+    Although aneuploidy in germ cells is a significant cause of infertility and
+    pregnancy loss in humans, there is currently limited evidence that aneugens
+    induce hereditary diseases in human populations because the great majority
+    of aneuploid conceptuses die in utero. Overall, the present work underscores
+    the importance of protecting the human population from exposure to chemicals
+    that can induce aneuploidy in germ cells that, in contrast to
+    carcinogenicity, is directly linked to an adverse outcome.
+
+    Bisphenol A is a known endocrine disrupting chemical and reproductive
+    toxicant. Previous studies indicate that in utero BPA exposure increases the
+    percentage of germ cells in nests and decreases the percentage of primordial
+    follicles. However, the mechanism by which BPA affects germ cell nest
+    breakdown is unknown. Thus, we hypothesized that BPA inhibits germ cell nest
+    breakdown by interfering with oxidative stress and apoptosis pathways. To
+    test our hypothesis, ovaries from newborn mice were collected and cultured
+    with vehicle (dimethyl sulfoxide, DMSO) or different doses of BPA (0.1, 1,
+    5, and 10 μg/mL). Ovaries then were subjected to histological evaluation of
+    germ cell nests and primordial follicles or to measurements of factors that
+    regulate oxidative stress and apoptosis. Our results indicate that in vitro
+    BPA exposure significantly inhibits germ cell nest breakdown by altering the
+    expression of key ovarian apoptotic genes, but not by interfering with the
+    oxidative stress pathway.
+
+    Endocrine disrupting chemicals (EDCs) have become of concern for a variety f
+    health issues. Due to their effects on the endocrine system they have been
+    thoroughly examined with regards to sexual dysfunction, malformation, and
+    cancers of reproductive origin. Bisphenol-A (BPA) is a widely studied EDC
+    and has been characterized regarding its estrogenic effects on a variety of
+    cell types. BPA also alters immune responses. In this review, we examine
+    some of the documented effects of EDCs, with a focus on BPA that pertain to
+    modulation of the immune system and various immune cell populations. We
+    highlight the multiple actions of BPA on altering T cell subsets, B cell
+    functions, and dendritic cell and macrophage biology. Finally, we consider
+    that these immunological activities of BPA may be mediated through estrogen
+    receptor signaling, arylhydrocarbon receptor, and the peroxisome
+    proliferator-activated receptor family of nuclear receptors.
+  accessed:
+    - year: 2022
+      month: 10
+      day: 12
+  author:
+    - family: Saal
+      given: Frederick S.
+      non-dropping-particle: vom
+    - family: Akingbemi
+      given: Benson T.
+    - family: Belcher
+      given: Scott M.
+    - family: Birnbaum
+      given: Linda S.
+    - family: Crain
+      given: D. Andrew
+    - family: Eriksen
+      given: Marcus
+    - family: Farabollini
+      given: Francesca
+    - family: Guillette
+      given: Louis J.
+    - family: Hauser
+      given: Russ
+    - family: Heindel
+      given: Jerrold J.
+    - family: Ho
+      given: Shuk-Mei
+    - family: Hunt
+      given: Patricia A.
+    - family: Iguchi
+      given: Taisen
+    - family: Jobling
+      given: Susan
+    - family: Kanno
+      given: Jun
+    - family: Keri
+      given: Ruth A.
+    - family: Knudsen
+      given: Karen E.
+    - family: Laufer
+      given: Hans
+    - family: LeBlanc
+      given: Gerald A.
+    - family: Marcus
+      given: Michele
+    - family: McLachlan
+      given: John A.
+    - family: Myers
+      given: John Peterson
+    - family: Nadal
+      given: Angel
+    - family: Newbold
+      given: Retha R.
+    - family: Olea
+      given: Nicolas
+    - family: Prins
+      given: Gail S.
+    - family: Richter
+      given: Catherine A.
+    - family: Rubin
+      given: Beverly S.
+    - family: Sonnenschein
+      given: Carlos
+    - family: Soto
+      given: Ana M.
+    - family: Talsness
+      given: Chris E.
+    - family: Vandenbergh
+      given: John G.
+    - family: Vandenberg
+      given: Laura N.
+    - family: Walser-Kuntz
+      given: Debby R.
+    - family: Watson
+      given: Cheryl S.
+    - family: Welshons
+      given: Wade V.
+    - family: Wetherill
+      given: Yelena
+    - family: Zoeller
+      given: R. Thomas
+  citation-key: vomSaalChapelHillBisphenol2007
+  container-title: Reproductive Toxicology
+  container-title-short: Reproductive Toxicology
+  DOI: 10.1016/j.reprotox.2007.07.005
+  ISSN: 0890-6238
+  issue: '2'
+  issued:
+    - year: 2007
+      month: 8
+      day: 1
+  language: en
+  page: 131-138
+  source: ScienceDirect
+  title: >-
+    Chapel Hill bisphenol A expert panel consensus statement: Integration of
+    mechanisms, effects in animals and potential to impact human health at
+    current levels of exposure
+  title-short: Chapel Hill bisphenol A expert panel consensus statement
+  type: article-journal
+  URL: https://www.sciencedirect.com/science/article/pii/S089062380700233X
+  volume: '24'
 
 - id: WickhamWelcomeTidyverse2019
   abstract: >-

@@ -203,7 +203,7 @@ harm) might effect perceived trustworthiness and that scientists who
 value public health and disclose this value might be perceived as more
 trustworthy.
 \end{abstract}
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, enhanced, frame hidden, breakable, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, interior hidden]}{\end{tcolorbox}}\fi
 
 Daniel J. Hicks\textsuperscript{1*}, Emilio Lobato\textsuperscript{1}\\
 \textsuperscript{1}: University of California, Merced, 5200 N Lake Road,
@@ -254,9 +254,18 @@ questions appeals to the ideal of transparency: scientists should
 disclose to the public the social and political values that have
 influenced their research (Elliott and Resnik 2014; McKaughan and
 Elliott 2013). But some philosophers have objected to this transparency
-proposal, arguing that it might actually undermine trust in science.
-According to this objection, members of the public generally accept the
-ideal of value-free science; values disclosures would violate this
+proposal, arguing that it might undermine trust in science.
+
+Specifically, ethicists make a distinction between trust and
+trustworthiness (Baier 1986). Trust is a verb: placing one's trust in
+someone else, with respect to some activity or domain. Trustworthiness
+is an assessment, of whether or not that trust is appropriate. According
+to the objection to the ideal of transparency, transparency would not
+change how trustworthy science actually is --- the science is conducted
+in the same way --- but might reduce public perceptions of
+trustworthiness --- as members of the public see how the scientific
+sausage is made. For instance, members of the public generally accept
+the ideal of value-free science; values disclosures would violate this
 ideal, making scientists (incorrectly) appear biased and untrustworthy
 (John 2017; Kovaka 2021).
 
@@ -331,29 +340,29 @@ Dr.~Spence's trustworthiness using a semantic differential scale.
 Elliott et al. (2017) used an ad hoc scale; we used the Muenster
 Epistemic Trustworthiness Inventory (METI; Hendriks, Kienhues, and
 Bromme 2015), which substantially overlaps but is not identical to the
-Elliott et al. (2017) scale. On the METI, participants rate the target
+Elliott et al. (2017) scale. Even though the ad hoc scale created by
+Elliot and colleagues had acceptable internal reliability, the METI was
+developed and psychometrically validated to measure the perceived
+trustworthiness of experts. On the METI, participants rate the target
 scientist (the fictional Dr.~Spence) on a 1-7 scale for 14 semantic
 differential items, where each item is anchored at the ends by a pair of
 words, such as competent-incompetent or responsible-irresponsible. The
 METI scale captures perceived trustworthiness of a target along three
 dimensions: competence, benevolence, and integrity. However, the three
-dimensions were strongly correlated in our sample. To avoid issues of
-multicollinearity in our analyses, we averaged participant scores into a
-single composite measure. In both Elliott et al. (2017) and our
-replication analysis, all items were averaged together to form a 1-7
-composite measure of trustworthiness. To aid interpretation, in the
-analysis the direction of the scale has been set so that increased
-values correspond to increased perceived trustworthiness.
+dimensions were strongly correlated in our sample (Pearson r values
+ranging from .75 to .92). To avoid issues of multicollinearity in our
+analyses, we averaged participant scores into a single composite
+measure. In both Elliott et al. (2017) and our replication analysis, all
+items were averaged together to form a 1-7 composite measure of
+trustworthiness. To aid interpretation, in the analysis the direction of
+the scale has been set so that increased values correspond to increased
+perceived trustworthiness.
 
-Ethicists make a key distinction between trust and trustworthiness
-(Baier 1986). Trust is a verb: placing one's trust in someone else, with
-respect to some activity or domain. Trustworthiness is an assessment, of
-whether or not that trust is appropriate. In the experiment,
-participants might trust Dr.~Spence's conclusion even if they judge
-Spence to be untrustworthy, or vice versa; though we would typically
-expect these two to go together. As its name indicates, METI assesses
-perceived trustworthiness, not trust (such as accepting Dr.~Spence's
-conclusion about BPA).
+As its name indicates, METI assesses perceived trustworthiness rather
+than trust (such as accepting Dr.~Spence's conclusion about BPA). It is
+conceivable that participants might trust Dr.~Spence's conclusion even
+if they judge Spence to be untrustworthy, or vice versa. But we would
+typically trust and trustworthiness to go together.
 
 Elliott et al. (2017) explain that they selected BPA as a complex,
 ongoing, public scientific controversy. For our replication, we chose to
@@ -366,8 +375,9 @@ with prominent public experts and counterexperts (Goldenberg 2021,
 partisanship in the BPA case, we felt it would be less likely to swamp
 the values disclosure that was our primary interest.
 
-After filling in the METI, participants provided demographic information
-and other sections of the survey that are not examined here. Due to
+After filling in the METI, participants provided demographic
+information, including self-identifying their political ideology, and
+other sections of the survey that are not examined here. Due to
 researcher error, a question about the participants' values (whether
 they prioritize economic growth or public health) was omitted in the
 first wave of data collection; this question was asked in a followup
@@ -399,8 +409,8 @@ scientist share the same values, the scientist is perceived as more
 trustworthy than if the participant and scientist have discordant
 values.
 \item[H5. Variation in effects]
-The magnitude of the effects 2-4 vary depending on whether the
-participant prioritizes public health or economic growth.
+The magnitude of the effects for hypotheses 2-4 vary depending on
+whether the participant prioritizes public health or economic growth.
 \end{description}
 
 Hypothesis H3, the transparency penalty, corresponds to the objection to
@@ -408,15 +418,16 @@ transparency: disclosing values undermines trust in science. However,
 the shared values effect works in the opposite direction, counteracting
 the transparency penalty.
 
-Hypothesis 1 was analyzed using Spearman rank order correlation and
-visually. Hypotheses 2-5 were analyzed using linear regression models as
-a common framework, with a direct acyclic graph (DAG) constructed
-\emph{a priori} to identify appropriate adjustments (covariates) for H4
-and 5. Because Elliott et al. (2017) made their data publicly available,
-and our analytical approaches differ somewhat from theirs, we conducted
-parallel analyses of their data, and report these parallel results for
-H2 and 3. Exploratory data analysis was used throughout to support data
-validation and aid interpretation.
+Hypothesis 1 was analyzed using Spearman rank order correlation to test
+H1a and a visual inspection of descriptive statistics to test H1b.
+Hypotheses 2-5 were analyzed using linear regression models as a common
+framework, with a direct acyclic graph (DAG) constructed \emph{a priori}
+to identify appropriate adjustments (covariates) for H4 and 5. Because
+Elliott et al. (2017) made their data publicly available, and our
+analytical approaches differ somewhat from theirs, we conducted parallel
+analyses of their data, and report these parallel results for H2 and 3.
+Exploratory data analysis was used throughout to support data validation
+and aid interpretation.
 
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
@@ -445,11 +456,12 @@ condition, 165 assigned to the Economic Growth + Causes Harm condition,
 165 assigned to the Economic Growth + Does Not Cause Harm condition, 168
 assigned to the Public Health + Causes Harm condition, and 162 assigned
 to the Public Health + Does Not Cause Harm condition
-(Table~\ref{tbl-condition}). Of the full 988 participants, 844
-participants (85\%) responded to the followup question about their own
-values (participant prioritizes economic growth or public health).
-Consequently, subsamples for hypotheses 4 and 5 were substantially
-smaller than the full analysis sample.
+(Table~\ref{tbl-condition}). Due to researcher error a question about
+participants' values was not included in the original survey. Of the
+full 988 participants, 844 participants (85\%) responded to the followup
+question about their own values (participant prioritizes economic growth
+or public health). Consequently, subsamples for hypotheses 4 and 5 were
+substantially smaller than the full analysis sample.
 
 \hypertarget{tbl-condition}{}
 \begin{table}
@@ -471,11 +483,10 @@ disclosure/values &  & \\
 \end{table}
 
 The study was approved by the UC Merced IRB on August 17, 2021, and data
-collection ran October 18-20, 2021. As mentioned above, due to
-researcher error a question about participants' values was not included
-in the original survey. A followup survey asking this question of the
-same group of participants was conducted December 8, 2021 through March
-5, 2022.
+collection ran October 18-20, 2021. The followup survey asking the
+initial sample of participants about their own values regarding economic
+growth and public health was conducted December 8, 2021 through March 5,
+2022.
 
 \hypertarget{software-and-reproducibility}{%
 \subsection{Software and
@@ -1033,7 +1044,7 @@ estimate for shared values was not statistically significant, \(\beta\)
 = 0.29, \emph{t}(335) = 1.75, \emph{p} = 0.08; while the estimate for
 scientist values was statistically significant, \(\beta\) = 0.41,
 \emph{t}(335) = 2.48, \emph{p} = 0.014. It seems likely that claims of a
-shared values effect could have been the result of a less appropriate
+shared values effect could have been an artifact of a less appropriate
 analytic approach given the nature of the data.
 
 The disagreement over a transparency penalty is more difficult to
@@ -1041,8 +1052,8 @@ explain. Using our approach and the data from Elliott et al. (2017), the
 estimate for a values disclosure was statistically significant
 (Table~\ref{tbl-bc} model 1). One possible explanation is that, over the
 course of the COVID-19 pandemic, members of the general public have
-become used to ``scientists'' (including both bench researchers and
-public health officials) making claims about the importance of
+become used to ``scientists'' (broadly including both bench researchers
+and public health officials) making claims about the importance of
 protecting public health. A values disclosure that might have been
 regarded as violating the value-free ideal, pre-pandemic, might now be
 seen as routine.
@@ -1060,6 +1071,49 @@ aims, it is morally wrong for a scientist to promote those values.
 Rather than violating the value-free ideal, a scientist who discloses
 valuing public health might be seen as following the norms of the field
 of public health.
+
+All together, regarding the philosophical debates over values in
+science, the evidence from this replication study suggests that the
+effects of transparency on perceived trustworthiness might be
+context-dependent. Transparency about the influence of might be
+detrimental in some cases, beneficial in others, and neutral in still
+others. Notably, both of the papers cited as objecting to transparency
+(John 2017; Kovaka 2021) focus on climate change, while many of
+Elliott's examples come from toxicology or environmental public health.
+The critics might be right that transparency has undermined trust in the
+climate context, while Elliott might be right that transparency can be
+neutral or even beneficial in some public health contexts. Because
+philosophers of science tend to work with a small number of rich case
+studies, methods such as qualitative comparative analysis (QCA; Ragin
+2013) would be worth exploring.
+
+An obvious difference between climate and BPA is the public prominence
+and political polarization of the two issues. For decades, the fossil
+fuels industry has used a range of strategies to successfully attack the
+perceived trustworthiness of climate scientists, especially in the minds
+of conservative publics (Oreskes and Conway 2011; Supran and Oreskes
+2017). While the chemical industry has also had a substantial influence
+on the environmental safety regulatory system (Michaels 2008; Vogel
+2013), controversies over BPA have received much less public attention.
+A LexiNexis search indicates that uses of ``bisphenol'' in US newspapers
+rose and then almost immediately fell around 2008, shortly after a US
+consensus conference concluded that ``BPA at concentrations found in the
+human body is associated with organizational changes'' in a number of
+major physiological systems (vom Saal et al. 2007).
+
+In more prominent and/or polarized cases than BPA, a number of other
+psychological mechanisms might be activated. Motivated reasoning or
+identity-protective cognition (Kahan et al. 2012) might cause members of
+the general public to rate a scientist as more or less trustworthy
+insofar as the scientist agrees with the respondent's ``side'' of the
+debate, regardless of whether and which values are disclosed. That is,
+the scientist conclusion might have a larger effect than scientist
+values. Alternatively, respondents might use values disclosures to
+identify which scientists are on ``their side,'' and so scientist values
+would have a larger effect than scientist conclusion. Careful attention
+to experimental design will be needed to separate these potential
+multiway interactions between conclusions, disclosures, and public
+prominence.
 
 \hypertarget{limitations}{%
 \subsection{Limitations}\label{limitations}}
@@ -1297,6 +1351,13 @@ Communication: Against Transparency, Openness, Sincerity and Honesty.''}
 \emph{Social Epistemology} 32 (2): 75--87.
 \url{https://doi.org/10.1080/02691728.2017.1410864}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-KahanPolarizingImpactScience2012}{}}%
+Kahan, Dan M, Ellen Peters, Maggie Wittlin, Paul Slovic, Lisa Larrimore
+Ouellette, Donald Braman, and Gregory Mandel. 2012. {``The Polarizing
+Impact of Science Literacy and Numeracy on Perceived Climate Change
+Risks.''} \emph{Nature Climate Change} 2 (10): 732--35.
+\url{https://doi.org/10.1038/nclimate1547}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-KennedyEvaluation2016Election2018}{}}%
 Kennedy, Courtney, Mark Blumenthal, Scott Clement, Joshua D Clinton,
 Claire Durand, Charles Franklin, Kyley McGeeney, et al. 2018. {``An
@@ -1331,6 +1392,10 @@ the Ethics of Framing: Lessons from Voles and Vasopressin.''}
 \emph{Accountability in Research} 20 (3): 206--26.
 \url{https://doi.org/10.1080/08989621.2013.788384}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-MichaelsDoubtTheirProduct2008}{}}%
+Michaels, David. 2008. \emph{Doubt is their product how industry's
+assault on science threatens your health}. Oxford: Oxford Univ. Press.
+
 \leavevmode\vadjust pre{\hypertarget{ref-MildenbergerDistributionClimateChange2016}{}}%
 Mildenberger, Matto, Peter Howe, Erick Lachapelle, Leah Stokes, Jennifer
 Marlon, and Timothy Gravelle. 2016. {``The Distribution of Climate
@@ -1350,6 +1415,11 @@ Scientific Uncertainty in Relation to Food Hazards.''} \emph{Journal of
 Risk Research} 6 (3): 267--83.
 \url{https://doi.org/10.1080/1366987032000088883}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-OreskesMerchantsDoubtHow2011}{}}%
+Oreskes, Naomi, and Erik M. Conway. 2011. \emph{Merchants of Doubt: How
+a Handful of Scientists Obscured the Truth on Issues from Tobacco Smoke
+to Global Warming}. New York, NY, USA: Bloomsbury.
+
 \leavevmode\vadjust pre{\hypertarget{ref-PeerDataQualityPlatforms2021}{}}%
 Peer, Eyal, David Rothschild, Andrew Gordon, Zak Evernden, and Ekaterina
 Damer. 2021. {``Data Quality of Platforms and Panels for Online
@@ -1365,9 +1435,23 @@ R Core Team. 2021. {``R: A Language and Environment for Statistical
 Computing.''} R Foundation for Statistical Computing.
 \url{https://www.r-project.org/}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-RaginComparativeMethodMoving2013}{}}%
+Ragin, Charles C. 2013. \emph{The comparative method: Moving beyond
+qualitative and quantitative strategies}. Oakland, California:
+University of California Press.
+
 \leavevmode\vadjust pre{\hypertarget{ref-RepresentativeSamplesFAQ2022}{}}%
 {``Representative Samples FAQ.''} 2022. Prolific. March 13, 2022.
 \url{https://web.archive.org/web/20220313050153/https://researcher-help.prolific.co/hc/en-gb/articles/360019238413-Representative-samples-FAQ}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-vomSaalChapelHillBisphenol2007}{}}%
+Saal, Frederick S. vom, Benson T. Akingbemi, Scott M. Belcher, Linda S.
+Birnbaum, D. Andrew Crain, Marcus Eriksen, Francesca Farabollini, et al.
+2007. {``Chapel Hill Bisphenol A Expert Panel Consensus Statement:
+Integration of Mechanisms, Effects in Animals and Potential to Impact
+Human Health at Current Levels of Exposure.''} \emph{Reproductive
+Toxicology} 24 (2): 131--38.
+\url{https://doi.org/10.1016/j.reprotox.2007.07.005}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-SjobergReproducibleSummaryTables2021}{}}%
 Sjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery,
@@ -1380,6 +1464,17 @@ Sturgis, Patrick, Ian Brunton-Smith, and Jonathan Jackson. 2021.
 {``Trust in Science, Social Consensus and Vaccine Confidence.''}
 \emph{Nature Human Behaviour}, May, 1--7.
 \url{https://doi.org/10.1038/s41562-021-01115-7}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-SupranAssessingExxonMobilClimate2017}{}}%
+Supran, Geoffrey, and Naomi Oreskes. 2017. {``Assessing ExxonMobil's
+Climate Change Communications (1977--2014).''} \emph{Environmental
+Research Letters} 12 (8): 084019.
+\url{https://doi.org/10.1088/1748-9326/aa815f}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-VogelItSafeBPA2013}{}}%
+Vogel, Sarah A. 2013. \emph{Is It Safe?: BPA and the Struggle to Define
+the Safety of Chemicals}. Oakland, California: University of California
+Press.
 
 \leavevmode\vadjust pre{\hypertarget{ref-WickhamWelcomeTidyverse2019}{}}%
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
